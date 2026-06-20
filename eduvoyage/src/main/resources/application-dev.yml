@@ -1,0 +1,53 @@
+spring:
+  # ---- MySQL via R2DBC (runtime, non-blocking) ----
+  r2dbc:
+    url: ${R2DBC_URL:r2dbc:mysql://localhost:3306/eduvoyage?useServerPrepareStatement=true}
+    username: ${R2DBC_USERNAME:eduvoyage}
+    password: ${R2DBC_PASSWORD:eduvoyage}
+    pool:
+      enabled: true
+      initial-size: 5
+      max-size: 20
+      max-idle-time: 30m
+  # ---- Dev: initialize schema + seed data through R2DBC ----
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:db/schema.sql
+      data-locations: classpath:db/data.sql
+  # ---- MongoDB (reactive) ----
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb://root:secret@localhost:27017/eduvoyage?authSource=admin}
+      auto-index-creation: true
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
+      database: 0
+      timeout: 3s
+      lettuce:
+        pool:
+          enabled: true
+          max-active: 16
+          max-idle: 8
+          min-idle: 2
+    elasticsearch:
+      repositories:
+        enabled: true
+  elasticsearch:
+    uris: ${ELASTICSEARCH_URIS:http://localhost:9200}
+    username: ${ELASTICSEARCH_USERNAME:}
+    password: ${ELASTICSEARCH_PASSWORD:}
+    connection-timeout: 3s
+    socket-timeout: 10s
+  # docker-compose lifecycle is managed manually in dev
+  docker:
+    compose:
+      enabled: false
+
+logging:
+  level:
+    cn.edu.shmtu.eduvoyage: DEBUG
+    org.springframework.r2dbc: INFO
+    io.r2dbc.mysql: INFO

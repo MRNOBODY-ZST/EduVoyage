@@ -1,0 +1,51 @@
+spring:
+  r2dbc:
+    url: ${R2DBC_URL}
+    username: ${R2DBC_USERNAME}
+    password: ${R2DBC_PASSWORD}
+    pool:
+      enabled: true
+      initial-size: 10
+      max-size: 50
+      max-idle-time: 30m
+  # In prod, DDL is applied by Flyway-over-JDBC before startup (see README);
+  # R2DBC sql.init is disabled to avoid running schema scripts at runtime.
+  sql:
+    init:
+      mode: never
+  data:
+    mongodb:
+      uri: ${MONGODB_URI}
+      auto-index-creation: false
+    redis:
+      host: ${REDIS_HOST}
+      port: ${REDIS_PORT}
+      password: ${REDIS_PASSWORD}
+      database: 0
+      timeout: 3s
+      lettuce:
+        pool:
+          enabled: true
+          max-active: 32
+          max-idle: 16
+          min-idle: 4
+    elasticsearch:
+      repositories:
+        enabled: true
+  elasticsearch:
+    uris: ${ELASTICSEARCH_URIS}
+    username: ${ELASTICSEARCH_USERNAME}
+    password: ${ELASTICSEARCH_PASSWORD}
+  docker:
+    compose:
+      enabled: false
+
+logging:
+  level:
+    root: INFO
+    cn.edu.shmtu.eduvoyage: INFO
+
+management:
+  endpoint:
+    health:
+      show-details: never

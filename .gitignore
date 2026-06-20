@@ -1,0 +1,29 @@
+# ---- Build output ----
+**/build/
+**/.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+
+# ---- IDE ----
+.idea/
+*.iml
+.vscode/
+.project
+.classpath
+.settings/
+
+# ---- OS ----
+.DS_Store
+Thumbs.db
+
+# ---- Logs ----
+logs/
+*.log
+
+# ---- Node / frontend (Phase 4) ----
+node_modules/
+frontend/dist/
+.env
+.env.local
+
+# ---- Misc ----
+HELP.md

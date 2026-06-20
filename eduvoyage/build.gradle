@@ -1,0 +1,113 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '4.1.0'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'cn.edu.shmtu'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(25)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+ext {
+	set('springModulithVersion', "2.1.0-RC1")
+	set('jjwtVersion', "0.13.0")
+	set('minioVersion', "9.0.3")
+	set('springdocVersion', "3.0.3")
+	set('testcontainersVersion', "2.0.5")
+}
+
+dependencies {
+	// --- Web / Reactive core (from template) ---
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+	implementation 'org.springframework.modulith:spring-modulith-starter-core'
+
+	// --- Data stores (from template) ---
+	implementation 'org.springframework.boot:spring-boot-starter-data-r2dbc'
+	implementation 'org.springframework.boot:spring-boot-starter-r2dbc'
+	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive'
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis-reactive'
+	// commons-pool2 backs the Lettuce connection pool enabled in application.yml
+	implementation 'org.apache.commons:commons-pool2'
+	implementation 'org.springframework.boot:spring-boot-starter-data-elasticsearch'
+	implementation 'org.springframework.boot:spring-boot-starter-elasticsearch'
+
+	// --- Security + JWT (added in Phase 2) ---
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation "io.jsonwebtoken:jjwt-api:${jjwtVersion}"
+	runtimeOnly "io.jsonwebtoken:jjwt-impl:${jjwtVersion}"
+	runtimeOnly "io.jsonwebtoken:jjwt-jackson:${jjwtVersion}"
+
+	// --- Validation (added in Phase 2) ---
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+	// --- Object storage: MinIO (added in Phase 2) ---
+	// NOTE: the MinIO client is blocking (OkHttp based); calls are offloaded to
+	// Reactor's boundedElastic scheduler in MinioStorageService to keep the
+	// event-loop threads non-blocking.
+	implementation "io.minio:minio:${minioVersion}"
+
+	// --- API docs: SpringDoc OpenAPI (added in Phase 2) ---
+	implementation "org.springdoc:springdoc-openapi-starter-webflux-ui:${springdocVersion}"
+
+	// --- Observability (added in Phase 2) ---
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
+
+	// --- Tooling (from template) ---
+	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
+	runtimeOnly 'com.mysql:mysql-connector-j'
+	runtimeOnly 'io.asyncer:r2dbc-mysql'
+	annotationProcessor 'org.projectlombok:lombok'
+	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+
+	// --- Tests (from template) ---
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.boot:spring-boot-starter-data-elasticsearch-test'
+	testImplementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive-test'
+	testImplementation 'org.springframework.boot:spring-boot-starter-data-r2dbc-test'
+	testImplementation 'org.springframework.boot:spring-boot-starter-data-redis-reactive-test'
+	testImplementation 'org.springframework.boot:spring-boot-starter-data-redis-test'
+	testImplementation 'org.springframework.boot:spring-boot-starter-elasticsearch-test'
+	testImplementation 'org.springframework.boot:spring-boot-starter-r2dbc-test'
+	testImplementation 'org.springframework.boot:spring-boot-starter-webflux-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+	testImplementation 'org.springframework.modulith:spring-modulith-starter-test'
+	testImplementation 'io.projectreactor:reactor-test'
+
+	// Testcontainers (integration tests in Phase 3+). 2.0.x artifacts use the
+	// 'testcontainers-' prefix and are version-managed by testcontainers-bom.
+	testImplementation 'org.testcontainers:testcontainers-junit-jupiter'
+	testImplementation 'org.testcontainers:testcontainers-mysql'
+	testImplementation 'org.testcontainers:testcontainers-r2dbc'
+	testImplementation 'org.testcontainers:testcontainers-mongodb'
+	testImplementation 'org.testcontainers:testcontainers-minio'
+	testImplementation 'org.springframework.boot:spring-boot-testcontainers'
+	testRuntimeOnly 'io.asyncer:r2dbc-mysql'
+
+	testCompileOnly 'org.projectlombok:lombok'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	testAnnotationProcessor 'org.projectlombok:lombok'
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.modulith:spring-modulith-bom:${springModulithVersion}"
+		mavenBom "org.testcontainers:testcontainers-bom:${testcontainersVersion}"
+	}
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
