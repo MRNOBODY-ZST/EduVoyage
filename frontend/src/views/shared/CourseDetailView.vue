@@ -12,6 +12,7 @@ import {
   LinkIcon,
   MapIcon,
   PencilSquareIcon,
+  TrashIcon,
 } from '@heroicons/vue/24/outline'
 
 import KnowledgeGraphCanvas from '@/components/charts/KnowledgeGraphCanvas.vue'
@@ -27,6 +28,10 @@ import {
   createCourseware,
   createGraphEdge,
   createKnowledgeNode,
+  deleteChapter,
+  deleteCourseware,
+  deleteGraphEdge,
+  deleteKnowledgeNode,
   enrollCourse,
   fetchChapters,
   fetchCourse,
@@ -156,6 +161,14 @@ function coursewareTypeLabel(type: number) {
   if (type === 2) return '文档'
   if (type === 3) return '图文'
   return '链接'
+}
+
+function nodeName(id: number) {
+  return nodes.value.find((node) => node.id === id)?.name || `节点 ${id}`
+}
+
+function edgeTypeLabel(type: string) {
+  return type === 'PREREQUISITE' ? '前置' : '关联'
 }
 
 function homeworkStatusLabel(status: number) {
@@ -318,6 +331,41 @@ async function submitCourseware() {
     coursewareForm.sortNo = 0
     await loadCoursewares(selectedNodeId.value)
   }, '课件已创建')
+}
+
+async function removeChapter(chapter: ChapterNode) {
+  if (!window.confirm(`确认删除章节“${chapter.title}”？`)) return
+  await runAuthoring(async () => {
+    await deleteChapter(chapter.id)
+    await load()
+  }, '章节已删除')
+}
+
+async function removeNode(node: KnowledgeNodeResponse) {
+  if (!window.confirm(`确认删除知识点“${node.name}”？`)) return
+  await runAuthoring(async () => {
+    await deleteKnowledgeNode(node.id)
+    if (selectedNodeId.value === node.id) {
+      selectedNodeId.value = null
+    }
+    await load()
+  }, '知识点已删除')
+}
+
+async function removeEdge(edgeId: number) {
+  if (!window.confirm('确认删除这条图谱关系？')) return
+  await runAuthoring(async () => {
+    await deleteGraphEdge(edgeId)
+    await load()
+  }, '图谱关系已删除')
+}
+
+async function removeCourseware(item: CoursewareResponse) {
+  if (!window.confirm(`确认删除课件“${item.title}”？`)) return
+  await runAuthoring(async () => {
+    await deleteCourseware(item.id)
+    await loadCoursewares(selectedNodeId.value)
+  }, '课件已删除')
 }
 
 watch(selectedNodeId, loadCoursewares)
@@ -686,6 +734,103 @@ onMounted(load)
               <button type="submit" class="btn-primary focus-ring mt-4 inline-flex h-10 items-center px-4 text-sm" :disabled="authoringBusy || !selectedNodeId">创建课件</button>
             </form>
           </div>
+
+          <section class="rounded-md border border-slate-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-slate-900">
+            <div class="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <h4 class="text-sm font-semibold text-slate-950 dark:text-white">现有内容管理</h4>
+                <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">删除操作会同步刷新课程结构、图谱和课件列表。</p>
+              </div>
+              <button type="button" class="text-sm font-semibold text-[rgb(var(--color-brand))] hover:underline" @click="load">刷新</button>
+            </div>
+
+            <div class="mt-5 grid gap-5 xl:grid-cols-4">
+              <div>
+                <h5 class="text-xs font-semibold uppercase tracking-wide text-slate-400">章节</h5>
+                <EmptyState v-if="flatChapters.length === 0" class="mt-3" title="暂无章节" description="创建章节后可在这里管理。" />
+                <ul v-else class="mt-3 divide-y divide-slate-100 rounded-md border border-slate-200 dark:divide-white/10 dark:border-white/10">
+                  <li v-for="chapter in flatChapters" :key="chapter.id" class="flex items-center justify-between gap-3 px-3 py-2">
+                    <span class="min-w-0 truncate text-sm text-slate-700 dark:text-slate-200">{{ '　'.repeat(chapter.level) }}{{ chapter.title }}</span>
+                    <button
+                      type="button"
+                      class="shrink-0 text-rose-600 hover:underline"
+                      :disabled="authoringBusy"
+                      @click="removeChapter(chapter)"
+                    >
+                      <TrashIcon class="size-4" aria-hidden="true" />
+                      <span class="sr-only">删除章节</span>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <h5 class="text-xs font-semibold uppercase tracking-wide text-slate-400">知识点</h5>
+                <EmptyState v-if="nodes.length === 0" class="mt-3" title="暂无知识点" description="创建知识点后可在这里管理。" />
+                <ul v-else class="mt-3 divide-y divide-slate-100 rounded-md border border-slate-200 dark:divide-white/10 dark:border-white/10">
+                  <li v-for="node in nodes" :key="node.id" class="flex items-center justify-between gap-3 px-3 py-2">
+                    <button type="button" class="min-w-0 truncate text-left text-sm text-slate-700 hover:text-[rgb(var(--color-brand))] dark:text-slate-200" @click="selectNode(node.id, 'materials')">
+                      {{ node.name }}
+                    </button>
+                    <button
+                      type="button"
+                      class="shrink-0 text-rose-600 hover:underline"
+                      :disabled="authoringBusy"
+                      @click="removeNode(node)"
+                    >
+                      <TrashIcon class="size-4" aria-hidden="true" />
+                      <span class="sr-only">删除知识点</span>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <h5 class="text-xs font-semibold uppercase tracking-wide text-slate-400">图谱关系</h5>
+                <EmptyState v-if="!graph?.links.length" class="mt-3" title="暂无关系" description="创建关系后可在这里管理。" />
+                <ul v-else class="mt-3 divide-y divide-slate-100 rounded-md border border-slate-200 dark:divide-white/10 dark:border-white/10">
+                  <li v-for="edge in graph.links" :key="edge.id" class="flex items-center justify-between gap-3 px-3 py-2">
+                    <span class="min-w-0 text-sm text-slate-700 dark:text-slate-200">
+                      <span class="block truncate">{{ nodeName(edge.fromId) }} → {{ nodeName(edge.toId) }}</span>
+                      <span class="text-xs text-slate-400">{{ edgeTypeLabel(edge.type) }}</span>
+                    </span>
+                    <button
+                      type="button"
+                      class="shrink-0 text-rose-600 hover:underline"
+                      :disabled="authoringBusy"
+                      @click="removeEdge(edge.id)"
+                    >
+                      <TrashIcon class="size-4" aria-hidden="true" />
+                      <span class="sr-only">删除图谱关系</span>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <h5 class="text-xs font-semibold uppercase tracking-wide text-slate-400">当前节点课件</h5>
+                <EmptyState v-if="!selectedNode" class="mt-3" title="未选择知识点" description="先选择一个知识点。" />
+                <EmptyState v-else-if="coursewares.length === 0" class="mt-3" title="暂无课件" description="创建课件后可在这里管理。" />
+                <ul v-else class="mt-3 divide-y divide-slate-100 rounded-md border border-slate-200 dark:divide-white/10 dark:border-white/10">
+                  <li v-for="item in coursewares" :key="item.id" class="flex items-center justify-between gap-3 px-3 py-2">
+                    <span class="min-w-0 text-sm text-slate-700 dark:text-slate-200">
+                      <span class="block truncate">{{ item.title }}</span>
+                      <span class="text-xs text-slate-400">{{ coursewareTypeLabel(item.type) }}</span>
+                    </span>
+                    <button
+                      type="button"
+                      class="shrink-0 text-rose-600 hover:underline"
+                      :disabled="authoringBusy"
+                      @click="removeCourseware(item)"
+                    >
+                      <TrashIcon class="size-4" aria-hidden="true" />
+                      <span class="sr-only">删除课件</span>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
 
           <TeacherAssessmentAuthoring
             v-if="auth.hasPermission('homework:create')"

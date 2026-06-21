@@ -146,6 +146,10 @@ export function createChapter(courseId: number, payload: { title: string; parent
   return postData<ChapterNode>(`/api/courses/${courseId}/chapters`, payload)
 }
 
+export function deleteChapter(id: number) {
+  return deleteData<void>(`/api/chapters/${id}`)
+}
+
 export function fetchKnowledgeNodes(courseId: number, chapterId?: number) {
   return getData<KnowledgeNodeResponse[]>(`/api/courses/${courseId}/nodes`, {
     params: { chapterId },
@@ -167,6 +171,10 @@ export function createKnowledgeNode(
   return postData<KnowledgeNodeResponse>(`/api/courses/${courseId}/nodes`, payload)
 }
 
+export function deleteKnowledgeNode(id: number) {
+  return deleteData<void>(`/api/nodes/${id}`)
+}
+
 export function fetchCoursewares(nodeId: number) {
   return getData<CoursewareResponse[]>(`/api/nodes/${nodeId}/coursewares`)
 }
@@ -185,6 +193,10 @@ export function createCourseware(
   return postData<CoursewareResponse>(`/api/nodes/${nodeId}/coursewares`, payload)
 }
 
+export function deleteCourseware(id: number) {
+  return deleteData<void>(`/api/coursewares/${id}`)
+}
+
 export function fetchGraph(courseId: number) {
   return getData<GraphView>(`/api/courses/${courseId}/graph`)
 }
@@ -194,6 +206,10 @@ export function createGraphEdge(
   payload: { fromId: number; toId: number; type: 'PREREQUISITE' | 'RELATED'; weight?: number },
 ) {
   return postData(`/api/courses/${courseId}/graph/edges`, payload)
+}
+
+export function deleteGraphEdge(id: number) {
+  return deleteData<void>(`/api/graph/edges/${id}`)
 }
 
 export function fetchLearningPath(courseId: number) {
@@ -223,6 +239,14 @@ export function publishHomework(homeworkId: number) {
   return postData<HomeworkResponse>(`/api/homeworks/${homeworkId}/publish`)
 }
 
+export function closeHomework(homeworkId: number) {
+  return postData<HomeworkResponse>(`/api/homeworks/${homeworkId}/close`)
+}
+
+export function deleteHomework(homeworkId: number) {
+  return deleteData<void>(`/api/homeworks/${homeworkId}`)
+}
+
 export function fetchQuestions(params: {
   courseId?: number
   keyword?: string
@@ -247,6 +271,10 @@ export function createQuestion(payload: {
   options?: Array<{ optionKey: string; content: string; correct: boolean; sortNo?: number }>
 }) {
   return postData<QuestionResponse>('/api/questions', payload)
+}
+
+export function deleteQuestion(id: number) {
+  return deleteData<void>(`/api/questions/${id}`)
 }
 
 export function startSubmission(homeworkId: number) {

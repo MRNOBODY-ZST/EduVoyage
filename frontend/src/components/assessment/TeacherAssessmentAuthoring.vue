@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed, onMounted, reactive, ref } from 'vue'
-import { PlusIcon, RocketLaunchIcon } from '@heroicons/vue/24/outline'
+import { PlusIcon, RocketLaunchIcon, TrashIcon, XCircleIcon } from '@heroicons/vue/24/outline'
 
 import EmptyState from '@/components/state/EmptyState.vue'
-import { createHomework, createQuestion, fetchQuestions, publishHomework } from '@/lib/services'
+import { closeHomework, createHomework, createQuestion, deleteHomework, deleteQuestion, fetchQuestions, publishHomework } from '@/lib/services'
 import type { HomeworkResponse, KnowledgeNodeResponse, QuestionResponse } from '@/types/api'
 
 const props = defineProps<{
@@ -184,6 +184,56 @@ async function publish(id: number) {
   }
 }
 
+async function removeQuestion(question: QuestionResponse) {
+  if (!window.confirm('确认删除这道题目？')) {
+    return
+  }
+  loading.value = true
+  error.value = ''
+  try {
+    await deleteQuestion(question.id)
+    selectedQuestionIds.value = selectedQuestionIds.value.filter((id) => id !== question.id)
+    delete scoreMap[question.id]
+    message.value = '题目已删除'
+    await loadQuestions()
+  } catch (e) {
+    error.value = e instanceof Error ? e.message : '题目删除失败'
+  } finally {
+    loading.value = false
+  }
+}
+
+async function close(id: number) {
+  loading.value = true
+  error.value = ''
+  try {
+    await closeHomework(id)
+    message.value = '作业已关闭'
+    emit('refresh')
+  } catch (e) {
+    error.value = e instanceof Error ? e.message : '关闭失败'
+  } finally {
+    loading.value = false
+  }
+}
+
+async function removeHomework(homework: HomeworkResponse) {
+  if (!window.confirm(`确认删除作业“${homework.title}”？`)) {
+    return
+  }
+  loading.value = true
+  error.value = ''
+  try {
+    await deleteHomework(homework.id)
+    message.value = '作业已删除'
+    emit('refresh')
+  } catch (e) {
+    error.value = e instanceof Error ? e.message : '作业删除失败'
+  } finally {
+    loading.value = false
+  }
+}
+
 onMounted(loadQuestions)
 </script>
 
@@ -309,6 +359,10 @@ onMounted(loadQuestions)
                   step="0.5"
                   class="focus-ring h-8 w-20 rounded-md border border-slate-300 bg-white px-2 text-sm text-slate-950 dark:border-white/10 dark:bg-white/5 dark:text-white"
                 />
+                <button type="button" class="shrink-0 text-rose-600 hover:underline" :disabled="loading" @click="removeQuestion(question)">
+                  <TrashIcon class="size-4" aria-hidden="true" />
+                  <span class="sr-only">删除题目</span>
+                </button>
               </div>
             </li>
           </ul>
@@ -330,19 +384,35 @@ onMounted(loadQuestions)
             <p class="truncate text-sm font-medium text-slate-950 dark:text-white">{{ homework.title }}</p>
             <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">题量 {{ homework.questionCount }} · 总分 {{ Number(homework.totalScore || 0).toFixed(1) }}</p>
           </div>
-          <button
-            v-if="homework.status === 0"
-            type="button"
-            class="btn-primary focus-ring inline-flex h-9 items-center gap-2 px-3 text-sm"
-            :disabled="loading"
-            @click="publish(homework.id)"
-          >
-            <RocketLaunchIcon class="size-4" aria-hidden="true" />
-            发布
-          </button>
-          <span v-else class="rounded-md bg-slate-100 px-2 py-1 text-xs text-slate-600 dark:bg-white/10 dark:text-slate-300">
-            {{ homework.status === 1 ? '已发布' : '已关闭' }}
-          </span>
+          <div class="flex shrink-0 items-center gap-2">
+            <button
+              v-if="homework.status === 0"
+              type="button"
+              class="btn-primary focus-ring inline-flex h-9 items-center gap-2 px-3 text-sm"
+              :disabled="loading"
+              @click="publish(homework.id)"
+            >
+              <RocketLaunchIcon class="size-4" aria-hidden="true" />
+              发布
+            </button>
+            <button
+              v-if="homework.status === 1"
+              type="button"
+              class="focus-ring inline-flex h-9 items-center gap-2 rounded-md border border-slate-200 px-3 text-sm font-semibold text-slate-700 hover:bg-slate-50 dark:border-white/10 dark:text-slate-200 dark:hover:bg-white/10"
+              :disabled="loading"
+              @click="close(homework.id)"
+            >
+              <XCircleIcon class="size-4" aria-hidden="true" />
+              关闭
+            </button>
+            <span v-if="homework.status === 2" class="rounded-md bg-slate-100 px-2 py-1 text-xs text-slate-600 dark:bg-white/10 dark:text-slate-300">
+              已关闭
+            </span>
+            <button type="button" class="inline-flex items-center gap-1 text-sm font-semibold text-rose-600 hover:underline" :disabled="loading" @click="removeHomework(homework)">
+              <TrashIcon class="size-4" aria-hidden="true" />
+              删除
+            </button>
+          </div>
         </li>
       </ul>
     </section>
