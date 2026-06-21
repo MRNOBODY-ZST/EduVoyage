@@ -149,6 +149,73 @@ export interface HomeworkResponse {
   createdAt?: string
 }
 
+export interface QuestionOptionView {
+  id: number
+  optionKey: string
+  content: string
+  correct: boolean
+  sortNo?: number
+}
+
+export interface QuestionResponse {
+  id: number
+  courseId?: number
+  type: number
+  stem: string
+  answer?: string
+  analysis?: string
+  difficulty?: number
+  nodeId?: number
+  lang?: string
+  options: QuestionOptionView[]
+  createdAt?: string
+}
+
+export interface StudentOption {
+  optionKey: string
+  content: string
+}
+
+export interface StudentQuestion {
+  id: number
+  type: number
+  stem: string
+  difficulty?: number
+  lang?: string
+  score: number
+  options: StudentOption[]
+}
+
+export interface ExamPaper {
+  submissionId: number
+  homeworkId: number
+  title: string
+  attemptNo: number
+  timeLimit?: number
+  deadline?: string
+  totalScore: number
+  questions: StudentQuestion[]
+}
+
+export interface AnswerResult {
+  questionId: number
+  answer?: string
+  score?: number
+  isCorrect?: number
+  comment?: string
+}
+
+export interface SubmissionResult {
+  id: number
+  homeworkId: number
+  studentId: number
+  attemptNo: number
+  status: number
+  totalScore?: number
+  submittedAt?: string
+  answers: AnswerResult[]
+}
+
 export interface WrongBookEntry {
   id: number
   questionId: number

@@ -9,6 +9,7 @@ import type {
   DiscussionResponse,
   DriveNodeResponse,
   DriveTreeNode,
+  ExamPaper,
   FileUrlResponse,
   GraphView,
   HomeworkResponse,
@@ -17,7 +18,9 @@ import type {
   NotificationResponse,
   PageResult,
   QuotaResponse,
+  QuestionResponse,
   ShareResponse,
+  SubmissionResult,
   StudentDashboardResponse,
   UnreadCountResponse,
   UserProfile,
@@ -117,6 +120,63 @@ export function fetchLearningPath(courseId: number) {
 
 export function fetchHomeworks(courseId: number) {
   return getData<HomeworkResponse[]>(`/api/courses/${courseId}/homeworks`)
+}
+
+export function createHomework(
+  courseId: number,
+  payload: {
+    title: string
+    timeLimit?: number
+    deadline?: string
+    maxAttempts?: number
+    shuffle: boolean
+    antiSwitch: boolean
+    items: Array<{ questionId: number; score: number; sortNo?: number }>
+  },
+) {
+  return postData<HomeworkResponse>(`/api/courses/${courseId}/homeworks`, payload)
+}
+
+export function publishHomework(homeworkId: number) {
+  return postData<HomeworkResponse>(`/api/homeworks/${homeworkId}/publish`)
+}
+
+export function fetchQuestions(params: {
+  courseId?: number
+  keyword?: string
+  type?: number
+  difficulty?: number
+  nodeId?: number
+  pageNo?: number
+  pageSize?: number
+}) {
+  return getData<PageResult<QuestionResponse>>('/api/questions', { params })
+}
+
+export function createQuestion(payload: {
+  courseId?: number
+  type: number
+  stem: string
+  answer?: string
+  analysis?: string
+  difficulty?: number
+  nodeId?: number
+  lang?: string
+  options?: Array<{ optionKey: string; content: string; correct: boolean; sortNo?: number }>
+}) {
+  return postData<QuestionResponse>('/api/questions', payload)
+}
+
+export function startSubmission(homeworkId: number) {
+  return postData<ExamPaper>(`/api/homeworks/${homeworkId}/submissions/start`)
+}
+
+export function submitSubmission(submissionId: number, payload: { answers: Array<{ questionId: number; answer?: string }>; switchCount?: number }) {
+  return postData<SubmissionResult>(`/api/submissions/${submissionId}/submit`, payload)
+}
+
+export function fetchMySubmissions(homeworkId: number) {
+  return getData<SubmissionResult[]>(`/api/homeworks/${homeworkId}/submissions/me`)
 }
 
 export function fetchWrongBook(onlyUnmastered = false) {

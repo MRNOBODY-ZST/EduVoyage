@@ -15,6 +15,8 @@ import {
 } from '@heroicons/vue/24/outline'
 
 import KnowledgeGraphCanvas from '@/components/charts/KnowledgeGraphCanvas.vue'
+import StudentHomeworkPanel from '@/components/assessment/StudentHomeworkPanel.vue'
+import TeacherAssessmentAuthoring from '@/components/assessment/TeacherAssessmentAuthoring.vue'
 import StatCard from '@/components/data/StatCard.vue'
 import EmptyState from '@/components/state/EmptyState.vue'
 import ErrorState from '@/components/state/ErrorState.vue'
@@ -193,6 +195,13 @@ async function load() {
   } finally {
     loading.value = false
   }
+}
+
+async function refreshHomeworks() {
+  if (!auth.hasPermission('homework:read')) {
+    return
+  }
+  homeworks.value = await fetchHomeworks(courseId.value).catch(() => [])
 }
 
 async function loadCoursewares(nodeId: number | null) {
@@ -517,37 +526,8 @@ onMounted(load)
           </ul>
         </section>
 
-        <section v-else-if="activeTab === 'homeworks'" class="overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm dark:border-white/10 dark:bg-slate-900">
-          <div class="border-b border-slate-200 px-5 py-4 dark:border-white/10">
-            <h3 class="text-base font-semibold text-slate-950 dark:text-white">课程作业</h3>
-          </div>
-          <EmptyState v-if="homeworks.length === 0" class="m-5" title="暂无作业" description="发布作业后会显示在这里。" />
-          <div v-else class="overflow-x-auto">
-            <table class="min-w-full divide-y divide-slate-200 dark:divide-white/10">
-              <thead class="bg-slate-50 dark:bg-white/5">
-                <tr>
-                  <th class="px-5 py-3 text-left text-sm font-semibold text-slate-900 dark:text-white">标题</th>
-                  <th class="px-5 py-3 text-left text-sm font-semibold text-slate-900 dark:text-white">总分</th>
-                  <th class="px-5 py-3 text-left text-sm font-semibold text-slate-900 dark:text-white">题量</th>
-                  <th class="px-5 py-3 text-left text-sm font-semibold text-slate-900 dark:text-white">截止</th>
-                  <th class="px-5 py-3 text-left text-sm font-semibold text-slate-900 dark:text-white">状态</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-slate-100 dark:divide-white/10">
-                <tr v-for="item in homeworks" :key="item.id">
-                  <td class="px-5 py-4 text-sm font-medium text-slate-950 dark:text-white">{{ item.title }}</td>
-                  <td class="px-5 py-4 text-sm text-slate-500 dark:text-slate-400">{{ Number(item.totalScore || 0).toFixed(1) }}</td>
-                  <td class="px-5 py-4 text-sm text-slate-500 dark:text-slate-400">{{ item.questionCount }}</td>
-                  <td class="px-5 py-4 text-sm text-slate-500 dark:text-slate-400">{{ formatDateTime(item.deadline) }}</td>
-                  <td class="px-5 py-4">
-                    <span class="rounded-md bg-slate-100 px-2 py-1 text-xs font-medium text-slate-700 dark:bg-white/10 dark:text-slate-200">
-                      {{ homeworkStatusLabel(item.status) }}
-                    </span>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+        <section v-else-if="activeTab === 'homeworks'">
+          <StudentHomeworkPanel :homeworks="homeworks" />
         </section>
 
         <section v-else-if="activeTab === 'wrong-book'" class="rounded-md border border-slate-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-slate-900">
@@ -706,6 +686,14 @@ onMounted(load)
               <button type="submit" class="btn-primary focus-ring mt-4 inline-flex h-10 items-center px-4 text-sm" :disabled="authoringBusy || !selectedNodeId">创建课件</button>
             </form>
           </div>
+
+          <TeacherAssessmentAuthoring
+            v-if="auth.hasPermission('homework:create')"
+            :course-id="courseId"
+            :nodes="nodes"
+            :homeworks="homeworks"
+            @refresh="refreshHomeworks"
+          />
         </section>
 
       </div>
