@@ -58,6 +58,106 @@ export interface CourseResponse {
   favorite?: boolean
 }
 
+export interface ChapterNode {
+  id: number
+  courseId: number
+  parentId: number
+  title: string
+  sortNo?: number
+  children: ChapterNode[]
+}
+
+export interface KnowledgeNodeResponse {
+  id: number
+  courseId: number
+  chapterId?: number
+  graphId: number
+  name: string
+  description?: string
+  learnGoal?: string
+  estMinutes?: number
+  posX?: number
+  posY?: number
+  createdAt?: string
+}
+
+export interface CoursewareResponse {
+  id: number
+  nodeId: number
+  title: string
+  type: number
+  contentRef?: string
+  fileId?: number
+  durationSec?: number
+  sortNo?: number
+  createdAt?: string
+}
+
+export interface GraphNode {
+  id: number
+  name: string
+  chapterId?: number
+  estMinutes?: number
+  posX?: number
+  posY?: number
+}
+
+export interface GraphLink {
+  id: number
+  fromId: number
+  toId: number
+  type: 'PREREQUISITE' | 'RELATED' | string
+  weight?: number
+}
+
+export interface GraphView {
+  graphId: number
+  courseId: number
+  name: string
+  nodes: GraphNode[]
+  links: GraphLink[]
+}
+
+export interface PathNode {
+  id: number
+  name: string
+  estMinutes?: number
+  mastered: boolean
+}
+
+export interface LearningPath {
+  graphId: number
+  courseId: number
+  masteredCount: number
+  totalCount: number
+  learnable: PathNode[]
+  recommended: PathNode[]
+}
+
+export interface HomeworkResponse {
+  id: number
+  courseId: number
+  title: string
+  totalScore: number
+  timeLimit?: number
+  deadline?: string
+  maxAttempts?: number
+  shuffle: boolean
+  antiSwitch: boolean
+  status: number
+  questionCount: number
+  createdAt?: string
+}
+
+export interface WrongBookEntry {
+  id: number
+  questionId: number
+  nodeId?: number
+  wrongCount: number
+  lastWrongAt?: string
+  mastered: boolean
+}
+
 export interface NotificationResponse {
   id: string
   toUserId: number

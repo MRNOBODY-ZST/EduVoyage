@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted, reactive, ref } from 'vue'
+import { RouterLink } from 'vue-router'
 import { ArrowPathIcon, PlusIcon, RocketLaunchIcon } from '@heroicons/vue/24/outline'
 
 import EmptyState from '@/components/state/EmptyState.vue'
@@ -173,7 +174,9 @@ onMounted(load)
           <tbody class="divide-y divide-slate-100 dark:divide-white/10">
             <tr v-for="course in courses" :key="course.id">
               <td class="px-4 py-4">
-                <p class="max-w-md truncate text-sm font-medium text-slate-950 dark:text-white">{{ course.title }}</p>
+                <RouterLink :to="`/courses/${course.id}`" class="max-w-md truncate text-sm font-medium text-slate-950 hover:text-[rgb(var(--color-brand))] dark:text-white">
+                  {{ course.title }}
+                </RouterLink>
                 <p class="mt-1 max-w-md truncate text-xs text-slate-500 dark:text-slate-400">{{ course.intro || '暂无简介' }}</p>
               </td>
               <td class="px-4 py-4 text-sm text-slate-600 dark:text-slate-300">{{ course.credit ?? 0 }}</td>

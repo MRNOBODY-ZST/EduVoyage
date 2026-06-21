@@ -59,6 +59,12 @@ const routes = [
         meta: { title: '课程中心' },
       },
       {
+        path: 'courses/:courseId',
+        name: 'course-detail',
+        component: () => import('@/views/shared/CourseDetailView.vue'),
+        meta: { title: '课程学习工作台', permission: 'course:read' },
+      },
+      {
         path: 'drive',
         name: 'drive',
         component: () => import('@/views/shared/DriveView.vue'),

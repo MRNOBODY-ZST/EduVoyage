@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
+import { RouterLink } from 'vue-router'
 import { AcademicCapIcon, ArrowPathIcon, MagnifyingGlassIcon, PlusCircleIcon } from '@heroicons/vue/24/outline'
 
 import EmptyState from '@/components/state/EmptyState.vue'
@@ -95,7 +96,9 @@ onMounted(load)
         <div class="p-5">
           <div class="flex items-start justify-between gap-3">
             <div class="min-w-0">
-              <h3 class="truncate text-base font-semibold text-slate-950 dark:text-white">{{ course.title }}</h3>
+              <RouterLink :to="`/courses/${course.id}`" class="truncate text-base font-semibold text-slate-950 hover:text-[rgb(var(--color-brand))] dark:text-white">
+                {{ course.title }}
+              </RouterLink>
               <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">教师 {{ course.teacherId }} · {{ course.credit ?? 0 }} 学分</p>
             </div>
             <span class="shrink-0 rounded-md bg-slate-100 px-2 py-1 text-xs font-medium text-slate-700 dark:bg-white/10 dark:text-slate-200">
@@ -106,7 +109,7 @@ onMounted(load)
             {{ course.intro || '暂无课程简介' }}
           </p>
           <div class="mt-5 flex items-center justify-between gap-3">
-            <span class="text-xs text-slate-500 dark:text-slate-400">{{ formatDateTime(course.createdAt) }}</span>
+            <RouterLink :to="`/courses/${course.id}`" class="text-xs font-medium text-[rgb(var(--color-brand))] hover:underline">进入课程</RouterLink>
             <button
               v-if="auth.hasPermission('course:enroll')"
               type="button"

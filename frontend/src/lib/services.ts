@@ -2,12 +2,18 @@ import { api, deleteData, getData, postData, putData } from '@/lib/http'
 import type {
   AdminDashboardResponse,
   BreadcrumbItem,
+  ChapterNode,
   CourseAnalyticsResponse,
   CourseResponse,
+  CoursewareResponse,
   DiscussionResponse,
   DriveNodeResponse,
   DriveTreeNode,
   FileUrlResponse,
+  GraphView,
+  HomeworkResponse,
+  KnowledgeNodeResponse,
+  LearningPath,
   NotificationResponse,
   PageResult,
   QuotaResponse,
@@ -15,10 +21,15 @@ import type {
   StudentDashboardResponse,
   UnreadCountResponse,
   UserProfile,
+  WrongBookEntry,
 } from '@/types/api'
 
 export function fetchCourses(params: { keyword?: string; teacherId?: number; pageNo?: number; pageSize?: number }) {
   return getData<PageResult<CourseResponse>>('/api/courses', { params })
+}
+
+export function fetchCourse(courseId: number) {
+  return getData<CourseResponse>(`/api/courses/${courseId}`)
 }
 
 export function createCourse(payload: {
@@ -40,6 +51,38 @@ export function publishCourse(courseId: number) {
 
 export function enrollCourse(courseId: number) {
   return postData(`/api/courses/${courseId}/enroll`)
+}
+
+export function fetchChapters(courseId: number) {
+  return getData<ChapterNode[]>(`/api/courses/${courseId}/chapters`)
+}
+
+export function fetchKnowledgeNodes(courseId: number, chapterId?: number) {
+  return getData<KnowledgeNodeResponse[]>(`/api/courses/${courseId}/nodes`, {
+    params: { chapterId },
+  })
+}
+
+export function fetchCoursewares(nodeId: number) {
+  return getData<CoursewareResponse[]>(`/api/nodes/${nodeId}/coursewares`)
+}
+
+export function fetchGraph(courseId: number) {
+  return getData<GraphView>(`/api/courses/${courseId}/graph`)
+}
+
+export function fetchLearningPath(courseId: number) {
+  return getData<LearningPath>(`/api/courses/${courseId}/graph/learning-path`)
+}
+
+export function fetchHomeworks(courseId: number) {
+  return getData<HomeworkResponse[]>(`/api/courses/${courseId}/homeworks`)
+}
+
+export function fetchWrongBook(onlyUnmastered = false) {
+  return getData<WrongBookEntry[]>('/api/wrong-book/me', {
+    params: { onlyUnmastered },
+  })
 }
 
 export function fetchStudentDashboard() {
