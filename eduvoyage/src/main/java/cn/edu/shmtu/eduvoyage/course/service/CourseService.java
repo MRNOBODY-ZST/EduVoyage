@@ -192,7 +192,7 @@ public class CourseService {
     }
 
     /** Loads the course and asserts the editor may mutate it (owner/co-teacher/admin). */
-    Mono<Course> requireCourseEditable(Long id, AuthUser editor) {
+    public Mono<Course> requireCourseEditable(Long id, AuthUser editor) {
         return requireCourse(id)
                 .flatMap(course -> canEdit(course, editor)
                         .flatMap(ok -> ok ? Mono.just(course)
