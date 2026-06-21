@@ -3,9 +3,11 @@ import type {
   AdminDashboardResponse,
   BreadcrumbItem,
   ChapterNode,
+  ClassResponse,
   CourseAnalyticsResponse,
   CourseResponse,
   CoursewareResponse,
+  DepartmentResponse,
   DiscussionResponse,
   DriveNodeResponse,
   DriveTreeNode,
@@ -15,10 +17,12 @@ import type {
   HomeworkResponse,
   KnowledgeNodeResponse,
   LearningPath,
+  MajorResponse,
   NotificationResponse,
   PageResult,
   QuotaResponse,
   QuestionResponse,
+  RoleResponse,
   ShareResponse,
   SubmissionResult,
   StudentDashboardResponse,
@@ -26,6 +30,83 @@ import type {
   UserProfile,
   WrongBookEntry,
 } from '@/types/api'
+
+export function fetchUsers(params: { keyword?: string; status?: number; classId?: number; pageNo?: number; pageSize?: number }) {
+  return getData<PageResult<UserProfile>>('/api/users', { params })
+}
+
+export function createUser(payload: {
+  username: string
+  password: string
+  realName?: string
+  email?: string
+  phone?: string
+  gender?: number
+  classId?: number
+  roleCodes: string[]
+}) {
+  return postData<UserProfile>('/api/users', payload)
+}
+
+export function updateUser(
+  id: number,
+  payload: {
+    realName?: string
+    email?: string
+    phone?: string
+    gender?: number
+    avatarUrl?: string
+    status?: number
+    classId?: number
+    roleCodes?: string[]
+  },
+) {
+  return putData<UserProfile>(`/api/users/${id}`, payload)
+}
+
+export function deleteUser(id: number) {
+  return deleteData<void>(`/api/users/${id}`)
+}
+
+export function fetchRoles() {
+  return getData<RoleResponse[]>('/api/roles')
+}
+
+export function fetchDepartments() {
+  return getData<DepartmentResponse[]>('/api/org/departments')
+}
+
+export function createDepartment(payload: { name: string; code?: string }) {
+  return postData<DepartmentResponse>('/api/org/departments', payload)
+}
+
+export function deleteDepartment(id: number) {
+  return deleteData<void>(`/api/org/departments/${id}`)
+}
+
+export function fetchMajors(departmentId?: number) {
+  return getData<MajorResponse[]>('/api/org/majors', { params: { departmentId } })
+}
+
+export function createMajor(payload: { departmentId: number; name: string; code?: string }) {
+  return postData<MajorResponse>('/api/org/majors', payload)
+}
+
+export function deleteMajor(id: number) {
+  return deleteData<void>(`/api/org/majors/${id}`)
+}
+
+export function fetchClasses(majorId?: number) {
+  return getData<ClassResponse[]>('/api/org/classes', { params: { majorId } })
+}
+
+export function createOrgClass(payload: { majorId: number; name: string; grade?: number }) {
+  return postData<ClassResponse>('/api/org/classes', payload)
+}
+
+export function deleteOrgClass(id: number) {
+  return deleteData<void>(`/api/org/classes/${id}`)
+}
 
 export function fetchCourses(params: { keyword?: string; teacherId?: number; pageNo?: number; pageSize?: number }) {
   return getData<PageResult<CourseResponse>>('/api/courses', { params })

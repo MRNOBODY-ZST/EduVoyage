@@ -27,6 +27,34 @@ export interface UserProfile {
   roles?: string[]
 }
 
+export interface RoleResponse {
+  id: number
+  code: string
+  name: string
+  description?: string
+  permissions: string[]
+}
+
+export interface DepartmentResponse {
+  id: number
+  name: string
+  code?: string
+}
+
+export interface MajorResponse {
+  id: number
+  departmentId: number
+  name: string
+  code?: string
+}
+
+export interface ClassResponse {
+  id: number
+  majorId: number
+  name: string
+  grade?: number
+}
+
 export interface MeResponse {
   profile: UserProfile
   roles: string[]

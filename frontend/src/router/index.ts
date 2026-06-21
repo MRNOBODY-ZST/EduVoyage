@@ -53,6 +53,18 @@ const routes = [
         meta: { title: '运营大盘', permission: 'analytics:view', roles: ['ADMIN'] },
       },
       {
+        path: 'admin/users',
+        name: 'admin-users',
+        component: () => import('@/views/admin/AdminUsersView.vue'),
+        meta: { title: '用户管理', permission: 'user:read', roles: ['ADMIN'] },
+      },
+      {
+        path: 'admin/org',
+        name: 'admin-org',
+        component: () => import('@/views/admin/AdminOrgView.vue'),
+        meta: { title: '组织架构', permission: 'org:manage', roles: ['ADMIN'] },
+      },
+      {
         path: 'courses',
         name: 'courses',
         component: () => import('@/views/shared/CoursesView.vue'),

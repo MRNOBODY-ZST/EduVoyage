@@ -14,6 +14,7 @@ import {
 import {
   AcademicCapIcon,
   Bars3Icon,
+  BuildingLibraryIcon,
   ChartBarSquareIcon,
   ChatBubbleLeftRightIcon,
   Cog6ToothIcon,
@@ -22,6 +23,7 @@ import {
   MagnifyingGlassIcon,
   RectangleStackIcon,
   ServerStackIcon,
+  UsersIcon,
   XMarkIcon,
 } from '@heroicons/vue/24/outline'
 import { ChevronDownIcon } from '@heroicons/vue/20/solid'
@@ -54,6 +56,8 @@ const groups: Array<{ name: string; items: NavigationItem[] }> = [
       { name: '课程工作台', to: '/teacher/courses', icon: RectangleStackIcon, permission: 'course:read', roles: ['TEACHER'] },
       { name: '教学分析', to: '/teacher/analytics', icon: ChartBarSquareIcon, permission: 'analytics:view', roles: ['TEACHER'] },
       { name: '运营大盘', to: '/admin/dashboard', icon: ServerStackIcon, permission: 'analytics:view', roles: ['ADMIN'] },
+      { name: '用户管理', to: '/admin/users', icon: UsersIcon, permission: 'user:read', roles: ['ADMIN'] },
+      { name: '组织架构', to: '/admin/org', icon: BuildingLibraryIcon, permission: 'org:manage', roles: ['ADMIN'] },
     ],
   },
   {
