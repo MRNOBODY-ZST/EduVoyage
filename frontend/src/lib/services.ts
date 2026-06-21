@@ -289,6 +289,14 @@ export function fetchMySubmissions(homeworkId: number) {
   return getData<SubmissionResult[]>(`/api/homeworks/${homeworkId}/submissions/me`)
 }
 
+export function fetchHomeworkSubmissions(homeworkId: number) {
+  return getData<SubmissionResult[]>(`/api/homeworks/${homeworkId}/submissions`)
+}
+
+export function gradeSubmission(submissionId: number, payload: { grades: Array<{ questionId: number; score: number; comment?: string }> }) {
+  return postData<SubmissionResult>(`/api/submissions/${submissionId}/grade`, payload)
+}
+
 export function fetchWrongBook(onlyUnmastered = false) {
   return getData<WrongBookEntry[]>('/api/wrong-book/me', {
     params: { onlyUnmastered },

@@ -152,6 +152,13 @@ class AssessmentModuleIntegrationTest {
         assertThat(submitted.status()).isEqualTo(Submission.STATUS_SUBMITTED);
         assertThat(submitted.totalScore()).isEqualByComparingTo("40");
 
+        // ---- teacher can list submissions for grading ----
+        List<SubmissionResult> teacherQueue = submissionService.listByHomework(homeworkId, TEACHER).block();
+        assertThat(teacherQueue).isNotNull();
+        assertThat(teacherQueue)
+                .extracting(SubmissionResult::id)
+                .contains(submissionId);
+
         // ---- teacher grades the essay 50/60 → status GRADED, total 90 ----
         GradeRequest grade = new GradeRequest(List.of(
                 new GradeItem(essay.id(), new BigDecimal("50"), "答得不错")));

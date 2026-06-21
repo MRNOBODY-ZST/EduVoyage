@@ -306,6 +306,16 @@ public class SubmissionService {
                 .collectList();
     }
 
+    public Mono<List<SubmissionResult>> listByHomework(Long homeworkId, AuthUser grader) {
+        return requireHomeworkEditable(homeworkId, grader)
+                .thenMany(Flux.defer(() -> submissionRepository.findByHomeworkId(homeworkId)))
+                .flatMap(submission -> answerRepository.findBySubmissionId(submission.getId())
+                        .map(AnswerResult::from)
+                        .collectList()
+                        .map(answers -> SubmissionResult.from(submission, answers)))
+                .collectList();
+    }
+
     // ------------------------------------------------------------ helpers
 
     private Mono<Homework> requireOpenHomework(Long homeworkId) {

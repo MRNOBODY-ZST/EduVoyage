@@ -70,6 +70,14 @@ public class SubmissionController {
         return submissionService.myAttempts(homeworkId, user.id()).map(Result::success);
     }
 
+    @Operation(summary = "教师查看某作业提交记录")
+    @PreAuthorize("hasAuthority('homework:grade')")
+    @GetMapping("/api/homeworks/{homeworkId}/submissions")
+    public Mono<Result<List<SubmissionResult>>> listByHomework(@PathVariable Long homeworkId,
+                                                               @AuthenticationPrincipal AuthUser user) {
+        return submissionService.listByHomework(homeworkId, user).map(Result::success);
+    }
+
     @Operation(summary = "教师批改提交")
     @PreAuthorize("hasAuthority('homework:grade')")
     @PostMapping("/api/submissions/{submissionId}/grade")
