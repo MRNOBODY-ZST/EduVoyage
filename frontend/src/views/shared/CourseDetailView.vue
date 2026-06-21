@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, ref, watch } from 'vue'
+import { computed, onMounted, reactive, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import {
   AcademicCapIcon,
@@ -11,6 +11,7 @@ import {
   ExclamationCircleIcon,
   LinkIcon,
   MapIcon,
+  PencilSquareIcon,
 } from '@heroicons/vue/24/outline'
 
 import KnowledgeGraphCanvas from '@/components/charts/KnowledgeGraphCanvas.vue'
@@ -20,6 +21,10 @@ import ErrorState from '@/components/state/ErrorState.vue'
 import LoadingState from '@/components/state/LoadingState.vue'
 import { courseStatusLabel, formatDateTime, formatDuration, formatNumber, formatPercent } from '@/lib/format'
 import {
+  createChapter,
+  createCourseware,
+  createGraphEdge,
+  createKnowledgeNode,
   enrollCourse,
   fetchChapters,
   fetchCourse,
@@ -42,7 +47,7 @@ import type {
   WrongBookEntry,
 } from '@/types/api'
 
-type TabKey = 'graph' | 'path' | 'materials' | 'homeworks' | 'wrong-book'
+type TabKey = 'graph' | 'path' | 'materials' | 'homeworks' | 'wrong-book' | 'authoring'
 
 interface FlatChapter extends ChapterNode {
   level: number
@@ -65,6 +70,39 @@ const homeworks = ref<HomeworkResponse[]>([])
 const wrongBook = ref<WrongBookEntry[]>([])
 const coursewares = ref<CoursewareResponse[]>([])
 const selectedNodeId = ref<number | null>(null)
+const authoringBusy = ref(false)
+const authoringMessage = ref('')
+const authoringError = ref('')
+
+const chapterForm = reactive({
+  title: '',
+  parentId: 0,
+  sortNo: 0,
+})
+
+const nodeForm = reactive({
+  name: '',
+  chapterId: 0,
+  description: '',
+  learnGoal: '',
+  estMinutes: 30,
+})
+
+const edgeForm = reactive({
+  fromId: 0,
+  toId: 0,
+  type: 'PREREQUISITE' as 'PREREQUISITE' | 'RELATED',
+  weight: 1,
+})
+
+const coursewareForm = reactive({
+  title: '',
+  type: 4,
+  contentRef: '',
+  fileId: null as number | null,
+  durationSec: null as number | null,
+  sortNo: 0,
+})
 
 const courseId = computed(() => Number(route.params.courseId))
 
@@ -90,6 +128,7 @@ const tabs = computed(() => [
   { key: 'materials' as const, label: '课件资源', icon: LinkIcon, visible: true },
   { key: 'homeworks' as const, label: '课程作业', icon: DocumentTextIcon, visible: auth.hasPermission('homework:read') },
   { key: 'wrong-book' as const, label: '错题本', icon: ExclamationCircleIcon, visible: auth.hasPermission('homework:submit') },
+  { key: 'authoring' as const, label: '内容维护', icon: PencilSquareIcon, visible: auth.hasPermission('course:update') },
 ])
 
 function flatten(items: ChapterNode[], level = 0): FlatChapter[] {
@@ -182,6 +221,94 @@ async function enroll() {
   } finally {
     enrolling.value = false
   }
+}
+
+async function runAuthoring(action: () => Promise<void>, success: string) {
+  authoringBusy.value = true
+  authoringError.value = ''
+  authoringMessage.value = ''
+  try {
+    await action()
+    authoringMessage.value = success
+  } catch (e) {
+    authoringError.value = e instanceof Error ? e.message : '保存失败'
+  } finally {
+    authoringBusy.value = false
+  }
+}
+
+async function submitChapter() {
+  if (!chapterForm.title.trim()) return
+  await runAuthoring(async () => {
+    await createChapter(courseId.value, {
+      title: chapterForm.title.trim(),
+      parentId: chapterForm.parentId || undefined,
+      sortNo: chapterForm.sortNo || undefined,
+    })
+    chapterForm.title = ''
+    chapterForm.parentId = 0
+    chapterForm.sortNo = 0
+    await load()
+  }, '章节已创建')
+}
+
+async function submitNode() {
+  if (!nodeForm.name.trim()) return
+  await runAuthoring(async () => {
+    const created = await createKnowledgeNode(courseId.value, {
+      name: nodeForm.name.trim(),
+      chapterId: nodeForm.chapterId || undefined,
+      description: nodeForm.description || undefined,
+      learnGoal: nodeForm.learnGoal || undefined,
+      estMinutes: nodeForm.estMinutes || undefined,
+    })
+    selectedNodeId.value = created.id
+    nodeForm.name = ''
+    nodeForm.description = ''
+    nodeForm.learnGoal = ''
+    nodeForm.estMinutes = 30
+    await load()
+  }, '知识点已创建')
+}
+
+async function submitEdge() {
+  if (!edgeForm.fromId || !edgeForm.toId || edgeForm.fromId === edgeForm.toId) {
+    authoringError.value = '请选择两个不同的知识点'
+    return
+  }
+  await runAuthoring(async () => {
+    await createGraphEdge(courseId.value, {
+      fromId: edgeForm.fromId,
+      toId: edgeForm.toId,
+      type: edgeForm.type,
+      weight: edgeForm.weight || undefined,
+    })
+    edgeForm.fromId = 0
+    edgeForm.toId = 0
+    edgeForm.type = 'PREREQUISITE'
+    edgeForm.weight = 1
+    await load()
+  }, '图谱关系已创建')
+}
+
+async function submitCourseware() {
+  if (!selectedNodeId.value || !coursewareForm.title.trim()) return
+  await runAuthoring(async () => {
+    await createCourseware(selectedNodeId.value!, {
+      title: coursewareForm.title.trim(),
+      type: coursewareForm.type,
+      contentRef: coursewareForm.contentRef || undefined,
+      fileId: coursewareForm.fileId || undefined,
+      durationSec: coursewareForm.durationSec || undefined,
+      sortNo: coursewareForm.sortNo || undefined,
+    })
+    coursewareForm.title = ''
+    coursewareForm.contentRef = ''
+    coursewareForm.fileId = null
+    coursewareForm.durationSec = null
+    coursewareForm.sortNo = 0
+    await loadCoursewares(selectedNodeId.value)
+  }, '课件已创建')
 }
 
 watch(selectedNodeId, loadCoursewares)
@@ -423,7 +550,7 @@ onMounted(load)
           </div>
         </section>
 
-        <section v-else class="rounded-md border border-slate-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-slate-900">
+        <section v-else-if="activeTab === 'wrong-book'" class="rounded-md border border-slate-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-slate-900">
           <h3 class="text-base font-semibold text-slate-950 dark:text-white">未掌握错题</h3>
           <EmptyState v-if="wrongBook.length === 0" class="mt-4" title="暂无错题" description="作业批改后错题会自动进入错题本。" />
           <ul v-else class="mt-4 divide-y divide-slate-100 dark:divide-white/10">
@@ -438,6 +565,149 @@ onMounted(load)
             </li>
           </ul>
         </section>
+
+        <section v-else-if="activeTab === 'authoring'" class="space-y-6">
+          <div class="rounded-md border border-slate-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-slate-900">
+            <div class="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <h3 class="text-base font-semibold text-slate-950 dark:text-white">内容维护</h3>
+                <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">章节、知识点、图谱边和课件的轻量维护入口</p>
+              </div>
+              <span v-if="selectedNode" class="rounded-md bg-slate-100 px-2 py-1 text-xs text-slate-600 dark:bg-white/10 dark:text-slate-300">
+                当前节点：{{ selectedNode.name }}
+              </span>
+            </div>
+            <p v-if="authoringMessage" class="mt-4 rounded-md bg-emerald-50 px-3 py-2 text-sm text-emerald-700 dark:bg-emerald-400/10 dark:text-emerald-200">
+              {{ authoringMessage }}
+            </p>
+            <p v-if="authoringError" class="mt-4 rounded-md bg-rose-50 px-3 py-2 text-sm text-rose-700 dark:bg-rose-400/10 dark:text-rose-200">
+              {{ authoringError }}
+            </p>
+          </div>
+
+          <div class="grid gap-6 xl:grid-cols-2">
+            <form class="rounded-md border border-slate-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-slate-900" @submit.prevent="submitChapter">
+              <h4 class="text-sm font-semibold text-slate-950 dark:text-white">新增章节</h4>
+              <div class="mt-4 grid gap-4 sm:grid-cols-2">
+                <label class="sm:col-span-2">
+                  <span class="text-sm font-medium text-slate-700 dark:text-slate-200">标题</span>
+                  <input v-model.trim="chapterForm.title" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-white/5 dark:text-white" required />
+                </label>
+                <label>
+                  <span class="text-sm font-medium text-slate-700 dark:text-slate-200">父章节</span>
+                  <select v-model.number="chapterForm.parentId" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white">
+                    <option :value="0">顶级章节</option>
+                    <option v-for="chapter in flatChapters" :key="chapter.id" :value="chapter.id">{{ '　'.repeat(chapter.level) }}{{ chapter.title }}</option>
+                  </select>
+                </label>
+                <label>
+                  <span class="text-sm font-medium text-slate-700 dark:text-slate-200">排序</span>
+                  <input v-model.number="chapterForm.sortNo" type="number" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-white/5 dark:text-white" />
+                </label>
+              </div>
+              <button type="submit" class="btn-primary focus-ring mt-4 inline-flex h-10 items-center px-4 text-sm" :disabled="authoringBusy">创建章节</button>
+            </form>
+
+            <form class="rounded-md border border-slate-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-slate-900" @submit.prevent="submitNode">
+              <h4 class="text-sm font-semibold text-slate-950 dark:text-white">新增知识点</h4>
+              <div class="mt-4 grid gap-4 sm:grid-cols-2">
+                <label class="sm:col-span-2">
+                  <span class="text-sm font-medium text-slate-700 dark:text-slate-200">名称</span>
+                  <input v-model.trim="nodeForm.name" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-white/5 dark:text-white" required />
+                </label>
+                <label>
+                  <span class="text-sm font-medium text-slate-700 dark:text-slate-200">章节</span>
+                  <select v-model.number="nodeForm.chapterId" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white">
+                    <option :value="0">不归入章节</option>
+                    <option v-for="chapter in flatChapters" :key="chapter.id" :value="chapter.id">{{ '　'.repeat(chapter.level) }}{{ chapter.title }}</option>
+                  </select>
+                </label>
+                <label>
+                  <span class="text-sm font-medium text-slate-700 dark:text-slate-200">预计分钟</span>
+                  <input v-model.number="nodeForm.estMinutes" type="number" min="0" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-white/5 dark:text-white" />
+                </label>
+                <label class="sm:col-span-2">
+                  <span class="text-sm font-medium text-slate-700 dark:text-slate-200">学习目标</span>
+                  <input v-model.trim="nodeForm.learnGoal" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-white/5 dark:text-white" />
+                </label>
+                <label class="sm:col-span-2">
+                  <span class="text-sm font-medium text-slate-700 dark:text-slate-200">描述</span>
+                  <textarea v-model.trim="nodeForm.description" rows="3" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-white/5 dark:text-white" />
+                </label>
+              </div>
+              <button type="submit" class="btn-primary focus-ring mt-4 inline-flex h-10 items-center px-4 text-sm" :disabled="authoringBusy">创建知识点</button>
+            </form>
+
+            <form class="rounded-md border border-slate-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-slate-900" @submit.prevent="submitEdge">
+              <h4 class="text-sm font-semibold text-slate-950 dark:text-white">新增图谱关系</h4>
+              <div class="mt-4 grid gap-4 sm:grid-cols-2">
+                <label>
+                  <span class="text-sm font-medium text-slate-700 dark:text-slate-200">起点</span>
+                  <select v-model.number="edgeForm.fromId" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" required>
+                    <option :value="0">请选择</option>
+                    <option v-for="node in nodes" :key="node.id" :value="node.id">{{ node.name }}</option>
+                  </select>
+                </label>
+                <label>
+                  <span class="text-sm font-medium text-slate-700 dark:text-slate-200">终点</span>
+                  <select v-model.number="edgeForm.toId" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" required>
+                    <option :value="0">请选择</option>
+                    <option v-for="node in nodes" :key="node.id" :value="node.id">{{ node.name }}</option>
+                  </select>
+                </label>
+                <label>
+                  <span class="text-sm font-medium text-slate-700 dark:text-slate-200">类型</span>
+                  <select v-model="edgeForm.type" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white">
+                    <option value="PREREQUISITE">前置</option>
+                    <option value="RELATED">关联</option>
+                  </select>
+                </label>
+                <label>
+                  <span class="text-sm font-medium text-slate-700 dark:text-slate-200">权重</span>
+                  <input v-model.number="edgeForm.weight" type="number" min="0" step="0.1" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-white/5 dark:text-white" />
+                </label>
+              </div>
+              <button type="submit" class="btn-primary focus-ring mt-4 inline-flex h-10 items-center px-4 text-sm" :disabled="authoringBusy || nodes.length < 2">创建关系</button>
+            </form>
+
+            <form class="rounded-md border border-slate-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-slate-900" @submit.prevent="submitCourseware">
+              <h4 class="text-sm font-semibold text-slate-950 dark:text-white">新增课件</h4>
+              <div class="mt-4 grid gap-4 sm:grid-cols-2">
+                <label class="sm:col-span-2">
+                  <span class="text-sm font-medium text-slate-700 dark:text-slate-200">标题</span>
+                  <input v-model.trim="coursewareForm.title" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-white/5 dark:text-white" required />
+                </label>
+                <label>
+                  <span class="text-sm font-medium text-slate-700 dark:text-slate-200">类型</span>
+                  <select v-model.number="coursewareForm.type" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white">
+                    <option :value="1">视频</option>
+                    <option :value="2">文档</option>
+                    <option :value="3">图文</option>
+                    <option :value="4">链接</option>
+                  </select>
+                </label>
+                <label>
+                  <span class="text-sm font-medium text-slate-700 dark:text-slate-200">排序</span>
+                  <input v-model.number="coursewareForm.sortNo" type="number" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-white/5 dark:text-white" />
+                </label>
+                <label>
+                  <span class="text-sm font-medium text-slate-700 dark:text-slate-200">文件 ID</span>
+                  <input v-model.number="coursewareForm.fileId" type="number" min="1" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-white/5 dark:text-white" />
+                </label>
+                <label>
+                  <span class="text-sm font-medium text-slate-700 dark:text-slate-200">时长秒</span>
+                  <input v-model.number="coursewareForm.durationSec" type="number" min="0" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-white/5 dark:text-white" />
+                </label>
+                <label class="sm:col-span-2">
+                  <span class="text-sm font-medium text-slate-700 dark:text-slate-200">内容引用</span>
+                  <input v-model.trim="coursewareForm.contentRef" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-white/5 dark:text-white" placeholder="链接 URL 或图文内容引用" />
+                </label>
+              </div>
+              <button type="submit" class="btn-primary focus-ring mt-4 inline-flex h-10 items-center px-4 text-sm" :disabled="authoringBusy || !selectedNodeId">创建课件</button>
+            </form>
+          </div>
+        </section>
+
       </div>
     </section>
   </div>

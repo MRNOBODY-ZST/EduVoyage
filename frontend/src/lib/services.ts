@@ -57,18 +57,58 @@ export function fetchChapters(courseId: number) {
   return getData<ChapterNode[]>(`/api/courses/${courseId}/chapters`)
 }
 
+export function createChapter(courseId: number, payload: { title: string; parentId?: number; sortNo?: number }) {
+  return postData<ChapterNode>(`/api/courses/${courseId}/chapters`, payload)
+}
+
 export function fetchKnowledgeNodes(courseId: number, chapterId?: number) {
   return getData<KnowledgeNodeResponse[]>(`/api/courses/${courseId}/nodes`, {
     params: { chapterId },
   })
 }
 
+export function createKnowledgeNode(
+  courseId: number,
+  payload: {
+    name: string
+    chapterId?: number
+    description?: string
+    learnGoal?: string
+    estMinutes?: number
+    posX?: number
+    posY?: number
+  },
+) {
+  return postData<KnowledgeNodeResponse>(`/api/courses/${courseId}/nodes`, payload)
+}
+
 export function fetchCoursewares(nodeId: number) {
   return getData<CoursewareResponse[]>(`/api/nodes/${nodeId}/coursewares`)
 }
 
+export function createCourseware(
+  nodeId: number,
+  payload: {
+    title: string
+    type: number
+    contentRef?: string
+    fileId?: number
+    durationSec?: number
+    sortNo?: number
+  },
+) {
+  return postData<CoursewareResponse>(`/api/nodes/${nodeId}/coursewares`, payload)
+}
+
 export function fetchGraph(courseId: number) {
   return getData<GraphView>(`/api/courses/${courseId}/graph`)
+}
+
+export function createGraphEdge(
+  courseId: number,
+  payload: { fromId: number; toId: number; type: 'PREREQUISITE' | 'RELATED'; weight?: number },
+) {
+  return postData(`/api/courses/${courseId}/graph/edges`, payload)
 }
 
 export function fetchLearningPath(courseId: number) {
