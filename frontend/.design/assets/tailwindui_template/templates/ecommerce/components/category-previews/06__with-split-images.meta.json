@@ -1,0 +1,24 @@
+{
+  "product": "ecommerce",
+  "group_name": "Components",
+  "subcategory_name": "Category Previews",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/ecommerce/components/category-previews",
+  "component_id": "fb276b5490d5ef7ebd8352e50043a5de",
+  "component_uuid": "fb276b5490d5ef7ebd8352e50043a5de",
+  "component_name": "With split images",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": null,
+    "supportsDarkMode": false
+  },
+  "target_compliant": false,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/ecommerce/components/category-previews/06__with-split-images.vue",
+    "preview": "templates/ecommerce/components/category-previews/06__with-split-images.preview.html"
+  }
+}

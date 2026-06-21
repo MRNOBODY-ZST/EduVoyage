@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Forms",
+  "subcategory_name": "Input Groups",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/forms/input-groups",
+  "component_id": "7a5297f99a5ed22df80939dd1986de5f",
+  "component_uuid": "7a5297f99a5ed22df80939dd1986de5f",
+  "component_name": "Input with validation error",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/forms/input-groups/03__input-with-validation-error.vue",
+    "preview": "templates/application-ui/forms/input-groups/03__input-with-validation-error.preview.html"
+  }
+}

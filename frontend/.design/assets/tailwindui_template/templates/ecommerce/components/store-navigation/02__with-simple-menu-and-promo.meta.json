@@ -1,0 +1,24 @@
+{
+  "product": "ecommerce",
+  "group_name": "Components",
+  "subcategory_name": "Store Navigation",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/ecommerce/components/store-navigation",
+  "component_id": "05d207688239bbe040029b5bfa5ddf92",
+  "component_uuid": "05d207688239bbe040029b5bfa5ddf92",
+  "component_name": "With simple menu and promo",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": null,
+    "supportsDarkMode": false
+  },
+  "target_compliant": false,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/ecommerce/components/store-navigation/02__with-simple-menu-and-promo.vue",
+    "preview": "templates/ecommerce/components/store-navigation/02__with-simple-menu-and-promo.preview.html"
+  }
+}

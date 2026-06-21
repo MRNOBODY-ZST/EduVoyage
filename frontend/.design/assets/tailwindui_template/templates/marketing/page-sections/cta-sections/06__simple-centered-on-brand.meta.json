@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "CTA Sections",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/cta-sections",
+  "component_id": "211a2608506db0061bc968f07b98d61c",
+  "component_uuid": "211a2608506db0061bc968f07b98d61c",
+  "component_name": "Simple centered on brand",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/cta-sections/06__simple-centered-on-brand.vue",
+    "preview": "templates/marketing/page-sections/cta-sections/06__simple-centered-on-brand.preview.html"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Pricing Sections",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/pricing",
+  "component_id": "56cbd4f191ac0d54e5a5c0287481d5b9",
+  "component_uuid": "56cbd4f191ac0d54e5a5c0287481d5b9",
+  "component_name": "Single price with details",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/pricing-sections/05__single-price-with-details.vue",
+    "preview": "templates/marketing/page-sections/pricing-sections/05__single-price-with-details.preview.html"
+  }
+}

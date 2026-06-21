@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Elements",
+  "subcategory_name": "Dropdowns",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/elements/dropdowns",
+  "component_id": "c9d423234fd92f72951b96480518868a",
+  "component_uuid": "c9d423234fd92f72951b96480518868a",
+  "component_name": "With minimal menu icon",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/elements/dropdowns/04__with-minimal-menu-icon.vue",
+    "preview": "templates/application-ui/elements/dropdowns/04__with-minimal-menu-icon.preview.html"
+  }
+}

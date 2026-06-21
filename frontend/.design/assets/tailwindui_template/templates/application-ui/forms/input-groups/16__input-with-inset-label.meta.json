@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Forms",
+  "subcategory_name": "Input Groups",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/forms/input-groups",
+  "component_id": "85e0087460af7ce9f5160485832f72b2",
+  "component_uuid": "85e0087460af7ce9f5160485832f72b2",
+  "component_name": "Input with inset label",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/forms/input-groups/16__input-with-inset-label.vue",
+    "preview": "templates/application-ui/forms/input-groups/16__input-with-inset-label.preview.html"
+  }
+}

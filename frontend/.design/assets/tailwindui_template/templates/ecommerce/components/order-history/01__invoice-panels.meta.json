@@ -1,0 +1,24 @@
+{
+  "product": "ecommerce",
+  "group_name": "Components",
+  "subcategory_name": "Order History",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/ecommerce/components/order-history",
+  "component_id": "90c39adb3053a6f09205e7f4e3e506d1",
+  "component_uuid": "90c39adb3053a6f09205e7f4e3e506d1",
+  "component_name": "Invoice panels",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": null,
+    "supportsDarkMode": false
+  },
+  "target_compliant": false,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/ecommerce/components/order-history/01__invoice-panels.vue",
+    "preview": "templates/ecommerce/components/order-history/01__invoice-panels.preview.html"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Headings",
+  "subcategory_name": "Section Headings",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/headings/section-headings",
+  "component_id": "3783741bf2b1859f7a43f4a191f22acc",
+  "component_uuid": "3783741bf2b1859f7a43f4a191f22acc",
+  "component_name": "With actions and tabs",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/headings/section-headings/07__with-actions-and-tabs.vue",
+    "preview": "templates/application-ui/headings/section-headings/07__with-actions-and-tabs.preview.html"
+  }
+}

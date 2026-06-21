@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Navigation",
+  "subcategory_name": "Tabs",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/navigation/tabs",
+  "component_id": "83b472fc38b57e49a566805a5e5bb2f7",
+  "component_uuid": "83b472fc38b57e49a566805a5e5bb2f7",
+  "component_name": "Bar with underline",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/navigation/tabs/07__bar-with-underline.vue",
+    "preview": "templates/application-ui/navigation/tabs/07__bar-with-underline.preview.html"
+  }
+}

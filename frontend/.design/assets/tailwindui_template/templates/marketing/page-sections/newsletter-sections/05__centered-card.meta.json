@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Newsletter Sections",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/newsletter-sections",
+  "component_id": "fc2ec9e02ab2fe1136ea7091f841e79c",
+  "component_uuid": "fc2ec9e02ab2fe1136ea7091f841e79c",
+  "component_name": "Centered card",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/newsletter-sections/05__centered-card.vue",
+    "preview": "templates/marketing/page-sections/newsletter-sections/05__centered-card.preview.html"
+  }
+}

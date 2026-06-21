@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Feedback",
+  "subcategory_name": "Empty States",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/feedback/empty-states",
+  "component_id": "680f71a6b1841658956e1546648937d5",
+  "component_uuid": "680f71a6b1841658956e1546648937d5",
+  "component_name": "With dashed border",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/feedback/empty-states/02__with-dashed-border.vue",
+    "preview": "templates/application-ui/feedback/empty-states/02__with-dashed-border.preview.html"
+  }
+}

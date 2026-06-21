@@ -70,6 +70,9 @@
 > （`<html class="dark">`，支持 auto/system 跟随）。
 
 ### 3.1 颜色
+> **主色策略（已定）**：默认 **蓝色**（`brand` = blue-600）。但主色不写死——在 **Settings（设置）页提供主题色方案供用户选择**（见 §7.1），
+> 选定后写入 CSS 变量与 `localStorage`，全局即时生效。下表的 `brand*` 为默认蓝方案的取值。
+
 | 角色 | Token | 亮色 | 暗色 | 用途 |
 |---|---|---|---|---|
 | 品牌主色 | `brand` | `#2563eb` (blue-600) | `#3b82f6` | 主按钮、链接、激活态。呼应"航行/Voyage"的蓝 |
@@ -159,11 +162,13 @@
 
 ---
 
-## 6. 依赖与图标
-- 图标库：**Heroicons**（`@heroicons/vue/24/outline` + `/24/solid`），与 Skill 区块默认一致，零额外映射成本。
+## 6. 依赖与图标（已定）
+- 图标库：**Heroicons**（`@heroicons/vue/24/outline` + `/24/solid`），与 Skill 区块默认一致，零额外映射成本。✅ 已确认
 - 无障碍交互原语：**Headless UI**（`@headlessui/vue`）—— Dialog/Menu/Listbox/Disclosure/Switch，
-  区块直接可用，且自带键盘可达与焦点管理。
+  区块直接可用，且自带键盘可达与焦点管理。✅ 已确认
 - 不引入重型 UI 框架（如 Element Plus），以保持 Tailwind 区块的视觉一致性与可控性。
+- **设计素材已离线入库**：Skill 的 657 区块 + 检索脚本位于 [`frontend/.design/`](../frontend/.design/README.eduvoyage.md)，
+  第四阶段用 `python3 scripts/tailwind_templates.py search/show/copy` 离线检索。✅ 已确认
 
 ---
 
@@ -172,17 +177,34 @@
 - 所有令牌成对定义（§3.1）；优先选 `target_compliant=true` 区块，减少暗色补色工作。
 - 验收：每个页面亮/暗双跑，对比度达 WCAG AA。
 
+### 7.1 Settings 主题色方案选择（已定）
+主色不写死。Settings 页提供一组**预设主题色方案**供用户选择，默认 **蓝色**：
+
+| 方案 | 主色 (亮/暗) | 备注 |
+|---|---|---|
+| 海洋蓝（默认） | blue-600 `#2563eb` / `#3b82f6` | 默认，呼应 "Voyage" |
+| 青碧 | teal-600 `#0d9488` / `#14b8a6` | |
+| 靛紫 | indigo-600 `#4f46e5` / `#6366f1` | |
+| 翠绿 | emerald-600 `#059669` / `#10b981` | |
+| 玫红 | rose-600 `#e11d48` / `#f43f5e` | |
+
+落地方式：
+- 主色以 **CSS 变量**承载（如 `--color-brand`, `--color-brand-soft`），Tailwind 通过 `theme.extend.colors.brand = 'rgb(var(--color-brand) / <alpha-value>)'` 引用。
+- 选择后写 `localStorage('eduvoyage.theme.brand')`，应用启动时注入到 `:root`；切换即时生效，无需刷新。
+- 由 `useTheme()` composable + Pinia `settings` store 管理（亮/暗/auto + 主色方案统一在此）。
+- 仅切换"语义主色"，成功/警示/危险与知识图谱掌握度配色（§4.3）保持固定，确保语义稳定。
+
 ---
 
 ## 8. 第四阶段落地顺序（预告，待批准后执行）
-1. 项目骨架 + 公共封装（Vite/TS/Tailwind 配置、Axios 拦截器、Pinia stores、Router 守卫、`AppShell` 与三套 Layout、§5 通用组件库、设计令牌）。
+1. 项目骨架 + 公共封装（Vite/TS/Tailwind 配置、Axios 拦截器、Pinia stores、Router 守卫、`AppShell` 与三套 Layout、§5 通用组件库、设计令牌、§7.1 主题色系统）。
 2. 学生端 → 3. 教师端 → 4. 管理后台。
 
-每一步用 Skill 的 `search`/`copy` 选区块 → 适配 → 接 API → 亮暗+响应式验证 → 提交。
+每一步用 Skill 的 `search`/`copy`（[`frontend/.design/`](../frontend/.design/README.eduvoyage.md)）选区块 → 适配 → 接 API → 亮暗+响应式验证 → 提交。
 
 ---
 
-## 待确认
-1. 上面的设计令牌（主色蓝、字体、圆角/阴影尺度）是否符合你的预期？是否要换主色或加入学校 VI 色？
-2. 图标库 Heroicons + Headless UI 是否接受（与 Skill 区块最契合）？
-3. 是否现在就把 `frontend-tailwind-css/` 这套 Skill 资源（657 区块 + 脚本）拉入仓库作为 `frontend/.design/` 离线素材，便于第四阶段直接检索？
+## 决策记录（已确认）
+1. ✅ 主色：默认**蓝色**，并在 **Settings 提供主题色方案选择**（§7.1）。
+2. ✅ 图标 **Heroicons** + 交互原语 **Headless UI**（§6）。
+3. ✅ Skill 素材（657 区块 + 脚本）已离线入库到 `frontend/.design/`（§6）。

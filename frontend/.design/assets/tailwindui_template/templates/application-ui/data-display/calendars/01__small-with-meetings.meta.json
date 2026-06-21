@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Data Display",
+  "subcategory_name": "Calendars",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/data-display/calendars",
+  "component_id": "c6e8b2bf7f65e8987b7012d3bbe5caf1",
+  "component_uuid": "c6e8b2bf7f65e8987b7012d3bbe5caf1",
+  "component_name": "Small with meetings",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/data-display/calendars/01__small-with-meetings.vue",
+    "preview": "templates/application-ui/data-display/calendars/01__small-with-meetings.preview.html"
+  }
+}

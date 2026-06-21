@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Elements",
+  "subcategory_name": "Headers",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/elements/headers",
+  "component_id": "3b5e12493074827bcd9d77db75787d78",
+  "component_uuid": "3b5e12493074827bcd9d77db75787d78",
+  "component_name": "With icons in mobile menu",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/elements/headers/08__with-icons-in-mobile-menu.vue",
+    "preview": "templates/marketing/elements/headers/08__with-icons-in-mobile-menu.preview.html"
+  }
+}

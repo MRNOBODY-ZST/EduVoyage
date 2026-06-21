@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Lists",
+  "subcategory_name": "Grid Lists",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/lists/grid-lists",
+  "component_id": "4ec337def61b547035ce908c128bca5c",
+  "component_uuid": "4ec337def61b547035ce908c128bca5c",
+  "component_name": "Simple cards",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/lists/grid-lists/03__simple-cards.vue",
+    "preview": "templates/application-ui/lists/grid-lists/03__simple-cards.preview.html"
+  }
+}

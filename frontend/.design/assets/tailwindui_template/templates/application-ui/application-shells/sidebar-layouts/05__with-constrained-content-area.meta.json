@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Application Shells",
+  "subcategory_name": "Sidebar Layouts",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/application-shells/sidebar",
+  "component_id": "9d1c8401d0b558af19422eb15ddc8620",
+  "component_uuid": "9d1c8401d0b558af19422eb15ddc8620",
+  "component_name": "With constrained content area",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/application-shells/sidebar-layouts/05__with-constrained-content-area.vue",
+    "preview": "templates/application-ui/application-shells/sidebar-layouts/05__with-constrained-content-area.preview.html"
+  }
+}

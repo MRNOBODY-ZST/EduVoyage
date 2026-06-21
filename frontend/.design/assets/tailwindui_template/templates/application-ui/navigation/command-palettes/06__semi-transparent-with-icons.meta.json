@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Navigation",
+  "subcategory_name": "Command Palettes",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/navigation/command-palettes",
+  "component_id": "69fd3cc3634e02f74717c1046d51aa76",
+  "component_uuid": "69fd3cc3634e02f74717c1046d51aa76",
+  "component_name": "Semi-transparent with icons",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/navigation/command-palettes/06__semi-transparent-with-icons.vue",
+    "preview": "templates/application-ui/navigation/command-palettes/06__semi-transparent-with-icons.preview.html"
+  }
+}

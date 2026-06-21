@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Feature Sections",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/feature-sections",
+  "component_id": "a8001ec7e007def1caf4383c1ddaa8a9",
+  "component_uuid": "a8001ec7e007def1caf4383c1ddaa8a9",
+  "component_name": "Simple three column with large icons",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/feature-sections/06__simple-three-column-with-large-icons.vue",
+    "preview": "templates/marketing/page-sections/feature-sections/06__simple-three-column-with-large-icons.preview.html"
+  }
+}

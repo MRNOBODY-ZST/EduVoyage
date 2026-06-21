@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "FAQs",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/faq-sections",
+  "component_id": "f23694a5070bbd968770234e5d1e178e",
+  "component_uuid": "f23694a5070bbd968770234e5d1e178e",
+  "component_name": "Two columns with centered introduction",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/faqs/07__two-columns-with-centered-introduction.vue",
+    "preview": "templates/marketing/page-sections/faqs/07__two-columns-with-centered-introduction.preview.html"
+  }
+}

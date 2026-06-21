@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Overlays",
+  "subcategory_name": "Modal Dialogs",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/overlays/modal-dialogs",
+  "component_id": "9a0cb3f6ddde116e8cc6d018e4852dfd",
+  "component_uuid": "9a0cb3f6ddde116e8cc6d018e4852dfd",
+  "component_name": "Centered with single action",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/overlays/modal-dialogs/01__centered-with-single-action.vue",
+    "preview": "templates/application-ui/overlays/modal-dialogs/01__centered-with-single-action.preview.html"
+  }
+}

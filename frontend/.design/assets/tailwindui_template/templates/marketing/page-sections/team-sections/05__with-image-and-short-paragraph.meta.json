@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Team Sections",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/team-sections",
+  "component_id": "0efa5ebc92e2aa72bc2332fcf5578869",
+  "component_uuid": "0efa5ebc92e2aa72bc2332fcf5578869",
+  "component_name": "With image and short paragraph",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/team-sections/05__with-image-and-short-paragraph.vue",
+    "preview": "templates/marketing/page-sections/team-sections/05__with-image-and-short-paragraph.preview.html"
+  }
+}

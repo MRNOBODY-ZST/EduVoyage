@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Forms",
+  "subcategory_name": "Checkboxes",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/forms/checkboxes",
+  "component_id": "28fc3a7039fe5a86455d33e8e988aa8c",
+  "component_uuid": "28fc3a7039fe5a86455d33e8e988aa8c",
+  "component_name": "List with checkbox on right",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/forms/checkboxes/03__list-with-checkbox-on-right.vue",
+    "preview": "templates/application-ui/forms/checkboxes/03__list-with-checkbox-on-right.preview.html"
+  }
+}

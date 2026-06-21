@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Footers",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/footers",
+  "component_id": "b2c41f4521a0b989aa8e3c0d6ee400c9",
+  "component_uuid": "b2c41f4521a0b989aa8e3c0d6ee400c9",
+  "component_name": "4-column with newsletter below",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/footers/05__4-column-with-newsletter-below.vue",
+    "preview": "templates/marketing/page-sections/footers/05__4-column-with-newsletter-below.preview.html"
+  }
+}

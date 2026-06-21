@@ -1,0 +1,24 @@
+{
+  "product": "ecommerce",
+  "group_name": "Page Examples",
+  "subcategory_name": "Storefront Pages",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/ecommerce/page-examples/storefront-pages",
+  "component_id": "738c2f255a1993e2224c28c461972844",
+  "component_uuid": "738c2f255a1993e2224c28c461972844",
+  "component_name": "With image tiles and feature sections",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": null,
+    "supportsDarkMode": false
+  },
+  "target_compliant": false,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/ecommerce/page-examples/storefront-pages/03__with-image-tiles-and-feature-sections.vue",
+    "preview": "templates/ecommerce/page-examples/storefront-pages/03__with-image-tiles-and-feature-sections.preview.html"
+  }
+}

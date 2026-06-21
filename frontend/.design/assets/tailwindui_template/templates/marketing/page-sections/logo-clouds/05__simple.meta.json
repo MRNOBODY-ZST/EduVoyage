@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Logo Clouds",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/logo-clouds",
+  "component_id": "fd820f87009f8bfcba4533c929686aad",
+  "component_uuid": "fd820f87009f8bfcba4533c929686aad",
+  "component_name": "Simple",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/logo-clouds/05__simple.vue",
+    "preview": "templates/marketing/page-sections/logo-clouds/05__simple.preview.html"
+  }
+}

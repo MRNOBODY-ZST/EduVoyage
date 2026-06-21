@@ -1,0 +1,24 @@
+{
+  "product": "ecommerce",
+  "group_name": "Components",
+  "subcategory_name": "Product Features",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/ecommerce/components/product-features",
+  "component_id": "62a074f00354815a5363c0bd268d64c6",
+  "component_uuid": "62a074f00354815a5363c0bd268d64c6",
+  "component_name": "With wide images",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": null,
+    "supportsDarkMode": false
+  },
+  "target_compliant": false,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/ecommerce/components/product-features/04__with-wide-images.vue",
+    "preview": "templates/ecommerce/components/product-features/04__with-wide-images.preview.html"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Headings",
+  "subcategory_name": "Section Headings",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/headings/section-headings",
+  "component_id": "ed0bd6107e9619f08a549f76f5073f20",
+  "component_uuid": "ed0bd6107e9619f08a549f76f5073f20",
+  "component_name": "With badge and dropdown",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/headings/section-headings/10__with-badge-and-dropdown.vue",
+    "preview": "templates/application-ui/headings/section-headings/10__with-badge-and-dropdown.preview.html"
+  }
+}

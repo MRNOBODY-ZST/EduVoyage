@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Page Examples",
+  "subcategory_name": "Detail Screens",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/page-examples/detail-screens",
+  "component_id": "b2e0bc6412fac1eed5e63be299388d58",
+  "component_uuid": "b2e0bc6412fac1eed5e63be299388d58",
+  "component_name": "Sidebar",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/page-examples/detail-screens/01__sidebar.vue",
+    "preview": "templates/application-ui/page-examples/detail-screens/01__sidebar.preview.html"
+  }
+}

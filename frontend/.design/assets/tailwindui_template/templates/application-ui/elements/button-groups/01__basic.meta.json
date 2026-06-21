@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Elements",
+  "subcategory_name": "Button Groups",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/elements/button-groups",
+  "component_id": "dc2468c1992adb5950f2d93cf589a65e",
+  "component_uuid": "dc2468c1992adb5950f2d93cf589a65e",
+  "component_name": "Basic",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/elements/button-groups/01__basic.vue",
+    "preview": "templates/application-ui/elements/button-groups/01__basic.preview.html"
+  }
+}

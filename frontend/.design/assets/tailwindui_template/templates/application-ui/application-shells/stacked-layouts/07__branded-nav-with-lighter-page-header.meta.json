@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Application Shells",
+  "subcategory_name": "Stacked Layouts",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/application-shells/stacked",
+  "component_id": "598386746ad5a838f5c9c6a8437be537",
+  "component_uuid": "598386746ad5a838f5c9c6a8437be537",
+  "component_name": "Branded nav with lighter page header",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/application-shells/stacked-layouts/07__branded-nav-with-lighter-page-header.vue",
+    "preview": "templates/application-ui/application-shells/stacked-layouts/07__branded-nav-with-lighter-page-header.preview.html"
+  }
+}

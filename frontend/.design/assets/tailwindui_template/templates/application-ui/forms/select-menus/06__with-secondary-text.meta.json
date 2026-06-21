@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Forms",
+  "subcategory_name": "Select Menus",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/forms/select-menus",
+  "component_id": "71680e7ae17adab2886761e3e2390f6a",
+  "component_uuid": "71680e7ae17adab2886761e3e2390f6a",
+  "component_name": "With secondary text",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/forms/select-menus/06__with-secondary-text.vue",
+    "preview": "templates/application-ui/forms/select-menus/06__with-secondary-text.preview.html"
+  }
+}

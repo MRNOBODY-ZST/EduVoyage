@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Application Shells",
+  "subcategory_name": "Multi-Column Layouts",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/application-shells/multi-column",
+  "component_id": "aa0e4b496e24d741e984c820f5e938ba",
+  "component_uuid": "aa0e4b496e24d741e984c820f5e938ba",
+  "component_name": "Full-width three-column",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/application-shells/multi-column-layouts/01__full-width-three-column.vue",
+    "preview": "templates/application-ui/application-shells/multi-column-layouts/01__full-width-three-column.preview.html"
+  }
+}

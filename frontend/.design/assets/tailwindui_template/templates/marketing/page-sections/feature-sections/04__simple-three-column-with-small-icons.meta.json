@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Feature Sections",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/feature-sections",
+  "component_id": "aa8136c1ee543132391e3a1753723305",
+  "component_uuid": "aa8136c1ee543132391e3a1753723305",
+  "component_name": "Simple three column with small icons",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/feature-sections/04__simple-three-column-with-small-icons.vue",
+    "preview": "templates/marketing/page-sections/feature-sections/04__simple-three-column-with-small-icons.preview.html"
+  }
+}

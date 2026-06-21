@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Examples",
+  "subcategory_name": "Landing Pages",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/page-examples/landing-pages",
+  "component_id": "09a9f8bd8b212b82cada14de363e1c02",
+  "component_uuid": "09a9f8bd8b212b82cada14de363e1c02",
+  "component_name": "With large screenshot and testimonial",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-examples/landing-pages/02__with-large-screenshot-and-testimonial.vue",
+    "preview": "templates/marketing/page-examples/landing-pages/02__with-large-screenshot-and-testimonial.preview.html"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "product": "ecommerce",
+  "group_name": "Components",
+  "subcategory_name": "Product Features",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/ecommerce/components/product-features",
+  "component_id": "4f0dd8497283578821e874e83a2de3a1",
+  "component_uuid": "4f0dd8497283578821e874e83a2de3a1",
+  "component_name": "With square images",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": null,
+    "supportsDarkMode": false
+  },
+  "target_compliant": false,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/ecommerce/components/product-features/08__with-square-images.vue",
+    "preview": "templates/ecommerce/components/product-features/08__with-square-images.preview.html"
+  }
+}

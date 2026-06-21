@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Hero Sections",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/heroes",
+  "component_id": "2652f5fb050435ca8d767d15a5800198",
+  "component_uuid": "2652f5fb050435ca8d767d15a5800198",
+  "component_name": "Split with bordered screenshot",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/hero-sections/03__split-with-bordered-screenshot.vue",
+    "preview": "templates/marketing/page-sections/hero-sections/03__split-with-bordered-screenshot.preview.html"
+  }
+}

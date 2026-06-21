@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Footers",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/footers",
+  "component_id": "2804f3d86cef85d9e040bee6d08633d6",
+  "component_uuid": "2804f3d86cef85d9e040bee6d08633d6",
+  "component_name": "Simple with social links",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/footers/07__simple-with-social-links.vue",
+    "preview": "templates/marketing/page-sections/footers/07__simple-with-social-links.preview.html"
+  }
+}

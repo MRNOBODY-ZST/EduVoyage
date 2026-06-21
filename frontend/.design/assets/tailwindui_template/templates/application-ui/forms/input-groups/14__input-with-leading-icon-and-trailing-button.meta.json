@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Forms",
+  "subcategory_name": "Input Groups",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/forms/input-groups",
+  "component_id": "a8d111fef35bfae4c800af505ea0d276",
+  "component_uuid": "a8d111fef35bfae4c800af505ea0d276",
+  "component_name": "Input with leading icon and trailing button",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/forms/input-groups/14__input-with-leading-icon-and-trailing-button.vue",
+    "preview": "templates/application-ui/forms/input-groups/14__input-with-leading-icon-and-trailing-button.preview.html"
+  }
+}

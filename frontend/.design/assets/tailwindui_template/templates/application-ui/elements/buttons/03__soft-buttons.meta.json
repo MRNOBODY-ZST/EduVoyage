@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Elements",
+  "subcategory_name": "Buttons",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/elements/buttons",
+  "component_id": "cc1fc7c0898d134a5e03a53ede94f622",
+  "component_uuid": "cc1fc7c0898d134a5e03a53ede94f622",
+  "component_name": "Soft buttons",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/elements/buttons/03__soft-buttons.vue",
+    "preview": "templates/application-ui/elements/buttons/03__soft-buttons.preview.html"
+  }
+}

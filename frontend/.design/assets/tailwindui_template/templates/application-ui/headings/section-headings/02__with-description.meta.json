@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Headings",
+  "subcategory_name": "Section Headings",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/headings/section-headings",
+  "component_id": "e41884f80859d3afa20019532c28c1fb",
+  "component_uuid": "e41884f80859d3afa20019532c28c1fb",
+  "component_name": "With description",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/headings/section-headings/02__with-description.vue",
+    "preview": "templates/application-ui/headings/section-headings/02__with-description.preview.html"
+  }
+}

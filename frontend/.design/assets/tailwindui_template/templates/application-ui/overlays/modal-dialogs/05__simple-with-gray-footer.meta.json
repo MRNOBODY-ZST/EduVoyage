@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Overlays",
+  "subcategory_name": "Modal Dialogs",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/overlays/modal-dialogs",
+  "component_id": "b6812b6c13fff16861f2645c4100ae5b",
+  "component_uuid": "b6812b6c13fff16861f2645c4100ae5b",
+  "component_name": "Simple with gray footer",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/overlays/modal-dialogs/05__simple-with-gray-footer.vue",
+    "preview": "templates/application-ui/overlays/modal-dialogs/05__simple-with-gray-footer.preview.html"
+  }
+}

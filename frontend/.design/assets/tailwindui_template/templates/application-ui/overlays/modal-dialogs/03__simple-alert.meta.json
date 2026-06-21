@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Overlays",
+  "subcategory_name": "Modal Dialogs",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/overlays/modal-dialogs",
+  "component_id": "5b2215402125bb9b2fa926f9af38e494",
+  "component_uuid": "5b2215402125bb9b2fa926f9af38e494",
+  "component_name": "Simple alert",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/overlays/modal-dialogs/03__simple-alert.vue",
+    "preview": "templates/application-ui/overlays/modal-dialogs/03__simple-alert.preview.html"
+  }
+}

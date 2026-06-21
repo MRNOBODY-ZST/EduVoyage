@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Overlays",
+  "subcategory_name": "Drawers",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/overlays/drawers",
+  "component_id": "dff90699fb6230e905c1de975230c736",
+  "component_uuid": "dff90699fb6230e905c1de975230c736",
+  "component_name": "Wide create project form example",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/overlays/drawers/08__wide-create-project-form-example.vue",
+    "preview": "templates/application-ui/overlays/drawers/08__wide-create-project-form-example.preview.html"
+  }
+}

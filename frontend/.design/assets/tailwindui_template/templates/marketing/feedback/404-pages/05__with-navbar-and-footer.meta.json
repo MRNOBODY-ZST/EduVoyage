@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Feedback",
+  "subcategory_name": "404 Pages",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/feedback/404-pages",
+  "component_id": "5792f8fd3c3c2be236e72c170345a0ce",
+  "component_uuid": "5792f8fd3c3c2be236e72c170345a0ce",
+  "component_name": "With navbar and footer",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/feedback/404-pages/05__with-navbar-and-footer.vue",
+    "preview": "templates/marketing/feedback/404-pages/05__with-navbar-and-footer.preview.html"
+  }
+}

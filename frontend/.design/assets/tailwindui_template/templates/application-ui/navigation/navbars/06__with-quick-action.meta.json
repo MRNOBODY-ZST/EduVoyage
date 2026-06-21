@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Navigation",
+  "subcategory_name": "Navbars",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/navigation/navbars",
+  "component_id": "3e6e7ccf78d75f9c513df4663795d6c4",
+  "component_uuid": "3e6e7ccf78d75f9c513df4663795d6c4",
+  "component_name": "With quick action",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/navigation/navbars/06__with-quick-action.vue",
+    "preview": "templates/application-ui/navigation/navbars/06__with-quick-action.preview.html"
+  }
+}

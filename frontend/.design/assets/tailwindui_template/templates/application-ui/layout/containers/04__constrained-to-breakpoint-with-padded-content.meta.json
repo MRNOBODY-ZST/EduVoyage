@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Layout",
+  "subcategory_name": "Containers",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/layout/containers",
+  "component_id": "e704df9a95d4642b3cb165a1b71f5171",
+  "component_uuid": "e704df9a95d4642b3cb165a1b71f5171",
+  "component_name": "Constrained to breakpoint with padded content",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/layout/containers/04__constrained-to-breakpoint-with-padded-content.vue",
+    "preview": "templates/application-ui/layout/containers/04__constrained-to-breakpoint-with-padded-content.preview.html"
+  }
+}

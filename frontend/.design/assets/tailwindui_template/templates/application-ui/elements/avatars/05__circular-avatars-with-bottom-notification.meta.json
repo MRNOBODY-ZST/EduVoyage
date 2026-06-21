@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Elements",
+  "subcategory_name": "Avatars",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/elements/avatars",
+  "component_id": "beffc7e57aaf1acb644b3a27ad29a2f8",
+  "component_uuid": "beffc7e57aaf1acb644b3a27ad29a2f8",
+  "component_name": "Circular avatars with bottom notification",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/elements/avatars/05__circular-avatars-with-bottom-notification.vue",
+    "preview": "templates/application-ui/elements/avatars/05__circular-avatars-with-bottom-notification.preview.html"
+  }
+}

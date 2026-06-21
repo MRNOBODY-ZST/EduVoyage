@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Elements",
+  "subcategory_name": "Badges",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/elements/badges",
+  "component_id": "aca9a5b856afc07ad4ee04f5d1861256",
+  "component_uuid": "aca9a5b856afc07ad4ee04f5d1861256",
+  "component_name": "With border",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/elements/badges/01__with-border.vue",
+    "preview": "templates/application-ui/elements/badges/01__with-border.preview.html"
+  }
+}

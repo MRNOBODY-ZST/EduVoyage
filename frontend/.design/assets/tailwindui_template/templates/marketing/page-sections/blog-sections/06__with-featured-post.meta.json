@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Blog Sections",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/blog-sections",
+  "component_id": "6aa46ca7c95f0e163e8fc04b59de7670",
+  "component_uuid": "6aa46ca7c95f0e163e8fc04b59de7670",
+  "component_name": "With featured post",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/blog-sections/06__with-featured-post.vue",
+    "preview": "templates/marketing/page-sections/blog-sections/06__with-featured-post.preview.html"
+  }
+}

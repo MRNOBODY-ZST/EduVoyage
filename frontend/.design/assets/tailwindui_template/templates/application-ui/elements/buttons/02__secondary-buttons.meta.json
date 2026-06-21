@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Elements",
+  "subcategory_name": "Buttons",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/elements/buttons",
+  "component_id": "9fc8ac3ded8cb313876bfa01742a0570",
+  "component_uuid": "9fc8ac3ded8cb313876bfa01742a0570",
+  "component_name": "Secondary buttons",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/elements/buttons/02__secondary-buttons.vue",
+    "preview": "templates/application-ui/elements/buttons/02__secondary-buttons.preview.html"
+  }
+}

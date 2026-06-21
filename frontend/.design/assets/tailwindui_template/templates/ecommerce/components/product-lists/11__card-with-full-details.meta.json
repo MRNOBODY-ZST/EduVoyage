@@ -1,0 +1,24 @@
+{
+  "product": "ecommerce",
+  "group_name": "Components",
+  "subcategory_name": "Product Lists",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/ecommerce/components/product-lists",
+  "component_id": "ce3346a7007ed3114735fd9771b3d393",
+  "component_uuid": "ce3346a7007ed3114735fd9771b3d393",
+  "component_name": "Card with full details",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": null,
+    "supportsDarkMode": false
+  },
+  "target_compliant": false,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/ecommerce/components/product-lists/11__card-with-full-details.vue",
+    "preview": "templates/ecommerce/components/product-lists/11__card-with-full-details.preview.html"
+  }
+}

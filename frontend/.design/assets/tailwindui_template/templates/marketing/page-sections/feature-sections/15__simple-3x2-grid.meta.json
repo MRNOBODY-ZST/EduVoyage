@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Feature Sections",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/feature-sections",
+  "component_id": "8476b5eab4015287662c951b2e314cfa",
+  "component_uuid": "8476b5eab4015287662c951b2e314cfa",
+  "component_name": "Simple 3x2 grid",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/feature-sections/15__simple-3x2-grid.vue",
+    "preview": "templates/marketing/page-sections/feature-sections/15__simple-3x2-grid.preview.html"
+  }
+}

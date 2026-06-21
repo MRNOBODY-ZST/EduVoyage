@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Contact Sections",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/contact-sections",
+  "component_id": "6bd457a8f982faa1eca40d712ab7278b",
+  "component_uuid": "6bd457a8f982faa1eca40d712ab7278b",
+  "component_name": "Split with image",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/contact-sections/07__split-with-image.vue",
+    "preview": "templates/marketing/page-sections/contact-sections/07__split-with-image.preview.html"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Application Shells",
+  "subcategory_name": "Sidebar Layouts",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/application-shells/sidebar",
+  "component_id": "73d9b2c2e2af9184f305f06649710086",
+  "component_uuid": "73d9b2c2e2af9184f305f06649710086",
+  "component_name": "Brand sidebar with header",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/application-shells/sidebar-layouts/08__brand-sidebar-with-header.vue",
+    "preview": "templates/application-ui/application-shells/sidebar-layouts/08__brand-sidebar-with-header.preview.html"
+  }
+}

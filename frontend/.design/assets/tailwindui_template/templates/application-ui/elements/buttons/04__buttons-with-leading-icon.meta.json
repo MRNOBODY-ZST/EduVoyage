@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Elements",
+  "subcategory_name": "Buttons",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/elements/buttons",
+  "component_id": "6cef741e3fd54a859e5db689d52afcef",
+  "component_uuid": "6cef741e3fd54a859e5db689d52afcef",
+  "component_name": "Buttons with leading icon",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/elements/buttons/04__buttons-with-leading-icon.vue",
+    "preview": "templates/application-ui/elements/buttons/04__buttons-with-leading-icon.preview.html"
+  }
+}

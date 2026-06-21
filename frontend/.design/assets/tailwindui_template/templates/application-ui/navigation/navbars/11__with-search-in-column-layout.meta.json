@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Navigation",
+  "subcategory_name": "Navbars",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/navigation/navbars",
+  "component_id": "ac4ed72c2e03976dc5415ce711fe2f78",
+  "component_uuid": "ac4ed72c2e03976dc5415ce711fe2f78",
+  "component_name": "With search in column layout",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/navigation/navbars/11__with-search-in-column-layout.vue",
+    "preview": "templates/application-ui/navigation/navbars/11__with-search-in-column-layout.preview.html"
+  }
+}

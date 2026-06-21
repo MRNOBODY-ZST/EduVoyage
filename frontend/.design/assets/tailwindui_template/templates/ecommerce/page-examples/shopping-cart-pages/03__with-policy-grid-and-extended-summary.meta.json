@@ -1,0 +1,24 @@
+{
+  "product": "ecommerce",
+  "group_name": "Page Examples",
+  "subcategory_name": "Shopping Cart Pages",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/ecommerce/page-examples/shopping-cart-pages",
+  "component_id": "27394145c10deb90e94d468d3fcbb4c5",
+  "component_uuid": "27394145c10deb90e94d468d3fcbb4c5",
+  "component_name": "With policy grid and extended summary",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": null,
+    "supportsDarkMode": false
+  },
+  "target_compliant": false,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/ecommerce/page-examples/shopping-cart-pages/03__with-policy-grid-and-extended-summary.vue",
+    "preview": "templates/ecommerce/page-examples/shopping-cart-pages/03__with-policy-grid-and-extended-summary.preview.html"
+  }
+}

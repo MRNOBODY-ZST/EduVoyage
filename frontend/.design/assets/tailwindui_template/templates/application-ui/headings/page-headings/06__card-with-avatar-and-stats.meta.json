@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Headings",
+  "subcategory_name": "Page Headings",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/headings/page-headings",
+  "component_id": "9a6c0d01eb626ce1c5a63141be2e5271",
+  "component_uuid": "9a6c0d01eb626ce1c5a63141be2e5271",
+  "component_name": "Card with avatar and stats",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/headings/page-headings/06__card-with-avatar-and-stats.vue",
+    "preview": "templates/application-ui/headings/page-headings/06__card-with-avatar-and-stats.preview.html"
+  }
+}

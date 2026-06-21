@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Newsletter Sections",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/newsletter-sections",
+  "component_id": "545e4f870cc7bc80a882f6ea2f33fb9f",
+  "component_uuid": "545e4f870cc7bc80a882f6ea2f33fb9f",
+  "component_name": "Side-by-side on card",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/newsletter-sections/06__side-by-side-on-card.vue",
+    "preview": "templates/marketing/page-sections/newsletter-sections/06__side-by-side-on-card.preview.html"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Feedback",
+  "subcategory_name": "Empty States",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/feedback/empty-states",
+  "component_id": "77a8b943310fbb088169cf88b4df9eb5",
+  "component_uuid": "77a8b943310fbb088169cf88b4df9eb5",
+  "component_name": "With recommendations grid",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/feedback/empty-states/06__with-recommendations-grid.vue",
+    "preview": "templates/application-ui/feedback/empty-states/06__with-recommendations-grid.preview.html"
+  }
+}

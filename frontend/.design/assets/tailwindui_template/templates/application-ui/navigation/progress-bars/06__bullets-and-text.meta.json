@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Navigation",
+  "subcategory_name": "Progress Bars",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/navigation/progress-bars",
+  "component_id": "de81b2a07fe257c90fcc7a8c68489f02",
+  "component_uuid": "de81b2a07fe257c90fcc7a8c68489f02",
+  "component_name": "Bullets and text",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/navigation/progress-bars/06__bullets-and-text.vue",
+    "preview": "templates/application-ui/navigation/progress-bars/06__bullets-and-text.preview.html"
+  }
+}

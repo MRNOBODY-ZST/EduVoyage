@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Lists",
+  "subcategory_name": "Stacked Lists",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/lists/stacked-lists",
+  "component_id": "ddd6f8c57e5a07ac015b69ee0a71b0d4",
+  "component_uuid": "ddd6f8c57e5a07ac015b69ee0a71b0d4",
+  "component_name": "Full width with links",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/lists/stacked-lists/08__full-width-with-links.vue",
+    "preview": "templates/application-ui/lists/stacked-lists/08__full-width-with-links.preview.html"
+  }
+}

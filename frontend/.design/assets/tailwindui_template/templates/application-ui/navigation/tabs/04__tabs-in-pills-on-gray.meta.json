@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Navigation",
+  "subcategory_name": "Tabs",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/navigation/tabs",
+  "component_id": "2a66fc822e8ad55f59321825e5af0980",
+  "component_uuid": "2a66fc822e8ad55f59321825e5af0980",
+  "component_name": "Tabs in pills on gray",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/navigation/tabs/04__tabs-in-pills-on-gray.vue",
+    "preview": "templates/application-ui/navigation/tabs/04__tabs-in-pills-on-gray.preview.html"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Feedback",
+  "subcategory_name": "404 Pages",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/feedback/404-pages",
+  "component_id": "9e31dc71bccd709e04de0ed11a1328b0",
+  "component_uuid": "9e31dc71bccd709e04de0ed11a1328b0",
+  "component_name": "With background image",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/feedback/404-pages/04__with-background-image.vue",
+    "preview": "templates/marketing/feedback/404-pages/04__with-background-image.preview.html"
+  }
+}

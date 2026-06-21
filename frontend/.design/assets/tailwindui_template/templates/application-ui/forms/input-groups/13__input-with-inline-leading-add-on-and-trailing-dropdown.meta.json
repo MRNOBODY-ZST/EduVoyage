@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Forms",
+  "subcategory_name": "Input Groups",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/forms/input-groups",
+  "component_id": "2607d970262ada86428f063c72b1e7bd",
+  "component_uuid": "2607d970262ada86428f063c72b1e7bd",
+  "component_name": "Input with inline leading add-on and trailing dropdown",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/forms/input-groups/13__input-with-inline-leading-add-on-and-trailing-dropdown.vue",
+    "preview": "templates/application-ui/forms/input-groups/13__input-with-inline-leading-add-on-and-trailing-dropdown.preview.html"
+  }
+}

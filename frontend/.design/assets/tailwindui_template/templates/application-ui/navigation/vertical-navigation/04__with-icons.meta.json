@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Navigation",
+  "subcategory_name": "Vertical Navigation",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/navigation/vertical-navigation",
+  "component_id": "d6311f175e19add0c4342eb7602ec96c",
+  "component_uuid": "d6311f175e19add0c4342eb7602ec96c",
+  "component_name": "With icons",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/navigation/vertical-navigation/04__with-icons.vue",
+    "preview": "templates/application-ui/navigation/vertical-navigation/04__with-icons.preview.html"
+  }
+}

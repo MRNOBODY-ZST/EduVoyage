@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Elements",
+  "subcategory_name": "Avatars",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/elements/avatars",
+  "component_id": "00ccf3da2333eae32886bbc1d1ee362c",
+  "component_uuid": "00ccf3da2333eae32886bbc1d1ee362c",
+  "component_name": "Avatar group stacked top to bottom",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/elements/avatars/10__avatar-group-stacked-top-to-bottom.vue",
+    "preview": "templates/application-ui/elements/avatars/10__avatar-group-stacked-top-to-bottom.preview.html"
+  }
+}

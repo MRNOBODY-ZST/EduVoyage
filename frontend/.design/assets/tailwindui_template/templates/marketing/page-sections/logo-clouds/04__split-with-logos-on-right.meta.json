@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Logo Clouds",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/logo-clouds",
+  "component_id": "58e002f268559c7aba120b917e51ea65",
+  "component_uuid": "58e002f268559c7aba120b917e51ea65",
+  "component_name": "Split with logos on right",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/logo-clouds/04__split-with-logos-on-right.vue",
+    "preview": "templates/marketing/page-sections/logo-clouds/04__split-with-logos-on-right.preview.html"
+  }
+}

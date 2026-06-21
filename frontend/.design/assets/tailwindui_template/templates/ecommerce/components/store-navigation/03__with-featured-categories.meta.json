@@ -1,0 +1,24 @@
+{
+  "product": "ecommerce",
+  "group_name": "Components",
+  "subcategory_name": "Store Navigation",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/ecommerce/components/store-navigation",
+  "component_id": "870de0c4ec620ad31bb8538a2886e3f0",
+  "component_uuid": "870de0c4ec620ad31bb8538a2886e3f0",
+  "component_name": "With featured categories",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": null,
+    "supportsDarkMode": false
+  },
+  "target_compliant": false,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/ecommerce/components/store-navigation/03__with-featured-categories.vue",
+    "preview": "templates/ecommerce/components/store-navigation/03__with-featured-categories.preview.html"
+  }
+}

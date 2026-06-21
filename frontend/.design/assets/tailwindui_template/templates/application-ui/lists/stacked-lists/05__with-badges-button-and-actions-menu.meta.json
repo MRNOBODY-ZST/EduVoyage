@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Lists",
+  "subcategory_name": "Stacked Lists",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/lists/stacked-lists",
+  "component_id": "aa5eae5161e0a8cd045cc1ed3f80302c",
+  "component_uuid": "aa5eae5161e0a8cd045cc1ed3f80302c",
+  "component_name": "With badges, button, and actions menu",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/lists/stacked-lists/05__with-badges-button-and-actions-menu.vue",
+    "preview": "templates/application-ui/lists/stacked-lists/05__with-badges-button-and-actions-menu.preview.html"
+  }
+}

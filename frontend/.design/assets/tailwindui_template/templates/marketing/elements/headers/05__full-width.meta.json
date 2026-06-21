@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Elements",
+  "subcategory_name": "Headers",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/elements/headers",
+  "component_id": "593dc2239ad88d2f55f81ad94b6a4069",
+  "component_uuid": "593dc2239ad88d2f55f81ad94b6a4069",
+  "component_name": "Full width",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/elements/headers/05__full-width.vue",
+    "preview": "templates/marketing/elements/headers/05__full-width.preview.html"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Stats",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/stats-sections",
+  "component_id": "4c9c52ff7081cfbf4c91ffca03efd793",
+  "component_uuid": "4c9c52ff7081cfbf4c91ffca03efd793",
+  "component_name": "Simple grid",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/stats/02__simple-grid.vue",
+    "preview": "templates/marketing/page-sections/stats/02__simple-grid.preview.html"
+  }
+}

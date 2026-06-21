@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Elements",
+  "subcategory_name": "Headers",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/elements/headers",
+  "component_id": "9b3074c76a13e5151c82c2be12e52a6c",
+  "component_uuid": "9b3074c76a13e5151c82c2be12e52a6c",
+  "component_name": "With full width flyout menu",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/elements/headers/04__with-full-width-flyout-menu.vue",
+    "preview": "templates/marketing/elements/headers/04__with-full-width-flyout-menu.preview.html"
+  }
+}

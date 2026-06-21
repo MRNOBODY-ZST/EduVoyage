@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Elements",
+  "subcategory_name": "Avatars",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/elements/avatars",
+  "component_id": "fe95156cf85b5bffee23ff85c5b1a03c",
+  "component_uuid": "fe95156cf85b5bffee23ff85c5b1a03c",
+  "component_name": "Circular avatars with placeholder initials",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/elements/avatars/08__circular-avatars-with-placeholder-initials.vue",
+    "preview": "templates/application-ui/elements/avatars/08__circular-avatars-with-placeholder-initials.preview.html"
+  }
+}

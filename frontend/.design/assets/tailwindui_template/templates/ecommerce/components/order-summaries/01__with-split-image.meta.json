@@ -1,0 +1,24 @@
+{
+  "product": "ecommerce",
+  "group_name": "Components",
+  "subcategory_name": "Order Summaries",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/ecommerce/components/order-summaries",
+  "component_id": "f6f89cfa300f93a2a91b2000a955e617",
+  "component_uuid": "f6f89cfa300f93a2a91b2000a955e617",
+  "component_name": "With split image",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": null,
+    "supportsDarkMode": false
+  },
+  "target_compliant": false,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/ecommerce/components/order-summaries/01__with-split-image.vue",
+    "preview": "templates/ecommerce/components/order-summaries/01__with-split-image.preview.html"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Examples",
+  "subcategory_name": "Pricing Pages",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/page-examples/pricing-pages",
+  "component_id": "26a51e8206f93553482c120828f05656",
+  "component_uuid": "26a51e8206f93553482c120828f05656",
+  "component_name": "With three tiers and testimonials",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-examples/pricing-pages/03__with-three-tiers-and-testimonials.vue",
+    "preview": "templates/marketing/page-examples/pricing-pages/03__with-three-tiers-and-testimonials.preview.html"
+  }
+}

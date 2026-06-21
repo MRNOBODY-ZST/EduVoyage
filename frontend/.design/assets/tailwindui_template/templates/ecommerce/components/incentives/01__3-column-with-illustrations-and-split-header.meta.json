@@ -1,0 +1,24 @@
+{
+  "product": "ecommerce",
+  "group_name": "Components",
+  "subcategory_name": "Incentives",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/ecommerce/components/incentives",
+  "component_id": "8872b12a99b750e189f99b92c726ab75",
+  "component_uuid": "8872b12a99b750e189f99b92c726ab75",
+  "component_name": "3-column with illustrations and split header",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": null,
+    "supportsDarkMode": false
+  },
+  "target_compliant": false,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/ecommerce/components/incentives/01__3-column-with-illustrations-and-split-header.vue",
+    "preview": "templates/ecommerce/components/incentives/01__3-column-with-illustrations-and-split-header.preview.html"
+  }
+}

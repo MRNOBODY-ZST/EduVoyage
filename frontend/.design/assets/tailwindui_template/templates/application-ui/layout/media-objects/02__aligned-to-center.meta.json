@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Layout",
+  "subcategory_name": "Media Objects",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/layout/media-objects",
+  "component_id": "ef9df725bf54aa2d268260c36ef2bbb5",
+  "component_uuid": "ef9df725bf54aa2d268260c36ef2bbb5",
+  "component_name": "Aligned to center",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/layout/media-objects/02__aligned-to-center.vue",
+    "preview": "templates/application-ui/layout/media-objects/02__aligned-to-center.preview.html"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "product": "ecommerce",
+  "group_name": "Components",
+  "subcategory_name": "Incentives",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/ecommerce/components/incentives",
+  "component_id": "52ce80a2e5549b97abb3d5d3f76f739e",
+  "component_uuid": "52ce80a2e5549b97abb3d5d3f76f739e",
+  "component_name": "3-column with illustrations and centered text",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": null,
+    "supportsDarkMode": false
+  },
+  "target_compliant": false,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/ecommerce/components/incentives/04__3-column-with-illustrations-and-centered-text.vue",
+    "preview": "templates/ecommerce/components/incentives/04__3-column-with-illustrations-and-centered-text.preview.html"
+  }
+}

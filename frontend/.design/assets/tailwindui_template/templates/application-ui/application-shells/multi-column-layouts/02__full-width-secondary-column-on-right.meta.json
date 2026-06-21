@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Application Shells",
+  "subcategory_name": "Multi-Column Layouts",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/application-shells/multi-column",
+  "component_id": "65815af4357dfdcf9be55c390221c5fb",
+  "component_uuid": "65815af4357dfdcf9be55c390221c5fb",
+  "component_name": "Full-width secondary column on right",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/application-shells/multi-column-layouts/02__full-width-secondary-column-on-right.vue",
+    "preview": "templates/application-ui/application-shells/multi-column-layouts/02__full-width-secondary-column-on-right.preview.html"
+  }
+}

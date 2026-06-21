@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Hero Sections",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/heroes",
+  "component_id": "a3c09c7a3b8f4bd90d280722eaff9634",
+  "component_uuid": "a3c09c7a3b8f4bd90d280722eaff9634",
+  "component_name": "With angled image on right",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/hero-sections/10__with-angled-image-on-right.vue",
+    "preview": "templates/marketing/page-sections/hero-sections/10__with-angled-image-on-right.preview.html"
+  }
+}

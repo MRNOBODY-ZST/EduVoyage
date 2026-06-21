@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Header Sections",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/header",
+  "component_id": "8f5b6d408e9691e3336cadf06a8edaf8",
+  "component_uuid": "8f5b6d408e9691e3336cadf06a8edaf8",
+  "component_name": "Centered with eyebrow",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/header-sections/03__centered-with-eyebrow.vue",
+    "preview": "templates/marketing/page-sections/header-sections/03__centered-with-eyebrow.preview.html"
+  }
+}

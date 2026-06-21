@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Data Display",
+  "subcategory_name": "Description Lists",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/data-display/description-lists",
+  "component_id": "d9372707af2e94e67936e94d7339cbb3",
+  "component_uuid": "d9372707af2e94e67936e94d7339cbb3",
+  "component_name": "Left-aligned",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/data-display/description-lists/01__left-aligned.vue",
+    "preview": "templates/application-ui/data-display/description-lists/01__left-aligned.preview.html"
+  }
+}

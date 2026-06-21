@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Feedback",
+  "subcategory_name": "Alerts",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/feedback/alerts",
+  "component_id": "bfa7bc8484740ff2b3dfabe5fd318b25",
+  "component_uuid": "bfa7bc8484740ff2b3dfabe5fd318b25",
+  "component_name": "With list",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/feedback/alerts/02__with-list.vue",
+    "preview": "templates/application-ui/feedback/alerts/02__with-list.preview.html"
+  }
+}

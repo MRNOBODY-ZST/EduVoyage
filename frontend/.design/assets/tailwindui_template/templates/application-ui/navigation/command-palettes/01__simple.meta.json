@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Navigation",
+  "subcategory_name": "Command Palettes",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/navigation/command-palettes",
+  "component_id": "3b1e5d9bec70736c7d1afca2585ec39e",
+  "component_uuid": "3b1e5d9bec70736c7d1afca2585ec39e",
+  "component_name": "Simple",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/navigation/command-palettes/01__simple.vue",
+    "preview": "templates/application-ui/navigation/command-palettes/01__simple.preview.html"
+  }
+}

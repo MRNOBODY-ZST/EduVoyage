@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Contact Sections",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/contact-sections",
+  "component_id": "d79585443456bd5ff4d0f8915f16458c",
+  "component_uuid": "d79585443456bd5ff4d0f8915f16458c",
+  "component_name": "Split with pattern",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/contact-sections/03__split-with-pattern.vue",
+    "preview": "templates/marketing/page-sections/contact-sections/03__split-with-pattern.preview.html"
+  }
+}

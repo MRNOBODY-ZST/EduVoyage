@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Data Display",
+  "subcategory_name": "Calendars",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/data-display/calendars",
+  "component_id": "5bb74a1ac1c8cf96e7b3d1ea2bf4570b",
+  "component_uuid": "5bb74a1ac1c8cf96e7b3d1ea2bf4570b",
+  "component_name": "Borderless side-by-side",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/data-display/calendars/08__borderless-side-by-side.vue",
+    "preview": "templates/application-ui/data-display/calendars/08__borderless-side-by-side.preview.html"
+  }
+}

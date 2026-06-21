@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Layout",
+  "subcategory_name": "List containers",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/layout/list-containers",
+  "component_id": "7e616a9c8fa0ef72ed1b86d8d0a856f6",
+  "component_uuid": "7e616a9c8fa0ef72ed1b86d8d0a856f6",
+  "component_name": "Flat card with dividers",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/layout/list-containers/06__flat-card-with-dividers.vue",
+    "preview": "templates/application-ui/layout/list-containers/06__flat-card-with-dividers.preview.html"
+  }
+}

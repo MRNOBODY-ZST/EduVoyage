@@ -1,0 +1,24 @@
+{
+  "product": "ecommerce",
+  "group_name": "Components",
+  "subcategory_name": "Promo Sections",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/ecommerce/components/promo-sections",
+  "component_id": "d33c977953fba7ea4736a741436839af",
+  "component_uuid": "d33c977953fba7ea4736a741436839af",
+  "component_name": "With overlapping image tiles",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": null,
+    "supportsDarkMode": false
+  },
+  "target_compliant": false,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/ecommerce/components/promo-sections/05__with-overlapping-image-tiles.vue",
+    "preview": "templates/ecommerce/components/promo-sections/05__with-overlapping-image-tiles.preview.html"
+  }
+}

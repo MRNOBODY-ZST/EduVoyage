@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Forms",
+  "subcategory_name": "Radio Groups",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/forms/radio-groups",
+  "component_id": "eb6b38e5a758ade067d50aae93fa1b96",
+  "component_uuid": "eb6b38e5a758ade067d50aae93fa1b96",
+  "component_name": "Color picker",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/forms/radio-groups/09__color-picker.vue",
+    "preview": "templates/application-ui/forms/radio-groups/09__color-picker.preview.html"
+  }
+}

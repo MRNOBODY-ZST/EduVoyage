@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Lists",
+  "subcategory_name": "Stacked Lists",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/lists/stacked-lists",
+  "component_id": "28f13c987e42ce2edb6222e7ba3d2459",
+  "component_uuid": "28f13c987e42ce2edb6222e7ba3d2459",
+  "component_name": "Two columns with links",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/lists/stacked-lists/07__two-columns-with-links.vue",
+    "preview": "templates/application-ui/lists/stacked-lists/07__two-columns-with-links.preview.html"
+  }
+}

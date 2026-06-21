@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Forms",
+  "subcategory_name": "Form Layouts",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/forms/form-layouts",
+  "component_id": "cc5bee94bc88387c2511b0e5c3dfffef",
+  "component_uuid": "cc5bee94bc88387c2511b0e5c3dfffef",
+  "component_name": "Labels on left",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/forms/form-layouts/04__labels-on-left.vue",
+    "preview": "templates/application-ui/forms/form-layouts/04__labels-on-left.preview.html"
+  }
+}

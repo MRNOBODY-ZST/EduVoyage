@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Headings",
+  "subcategory_name": "Page Headings",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/headings/page-headings",
+  "component_id": "5504d8556f32418e14541117ecae48f0",
+  "component_uuid": "5504d8556f32418e14541117ecae48f0",
+  "component_name": "With logo, meta and actions",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/headings/page-headings/09__with-logo-meta-and-actions.vue",
+    "preview": "templates/application-ui/headings/page-headings/09__with-logo-meta-and-actions.preview.html"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Stats",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/stats-sections",
+  "component_id": "7c3226d4ac1d256492e023fd64173099",
+  "component_uuid": "7c3226d4ac1d256492e023fd64173099",
+  "component_name": "Timeline",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/stats/05__timeline.vue",
+    "preview": "templates/marketing/page-sections/stats/05__timeline.preview.html"
+  }
+}

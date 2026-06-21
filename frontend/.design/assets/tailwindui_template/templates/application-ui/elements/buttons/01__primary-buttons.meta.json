@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Elements",
+  "subcategory_name": "Buttons",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/elements/buttons",
+  "component_id": "80fd0d5ac7982f1a83b171bb0fb9e116",
+  "component_uuid": "80fd0d5ac7982f1a83b171bb0fb9e116",
+  "component_name": "Primary buttons",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/elements/buttons/01__primary-buttons.vue",
+    "preview": "templates/application-ui/elements/buttons/01__primary-buttons.preview.html"
+  }
+}

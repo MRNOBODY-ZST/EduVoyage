@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Elements",
+  "subcategory_name": "Avatars",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/elements/avatars",
+  "component_id": "f380d45911d89e9f8e781164e162cbb4",
+  "component_uuid": "f380d45911d89e9f8e781164e162cbb4",
+  "component_name": "Circular avatars with placeholder icon",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/elements/avatars/07__circular-avatars-with-placeholder-icon.vue",
+    "preview": "templates/application-ui/elements/avatars/07__circular-avatars-with-placeholder-icon.preview.html"
+  }
+}

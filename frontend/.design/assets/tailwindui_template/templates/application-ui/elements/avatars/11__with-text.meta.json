@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Elements",
+  "subcategory_name": "Avatars",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/elements/avatars",
+  "component_id": "8b80f3012579843ce76c1c637705ddc8",
+  "component_uuid": "8b80f3012579843ce76c1c637705ddc8",
+  "component_name": "With text",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/elements/avatars/11__with-text.vue",
+    "preview": "templates/application-ui/elements/avatars/11__with-text.preview.html"
+  }
+}

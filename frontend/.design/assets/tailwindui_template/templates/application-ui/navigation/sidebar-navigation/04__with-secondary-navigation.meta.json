@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Navigation",
+  "subcategory_name": "Sidebar Navigation",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/navigation/sidebar-navigation",
+  "component_id": "ea2064949c1427bc69284e1713dbbd6d",
+  "component_uuid": "ea2064949c1427bc69284e1713dbbd6d",
+  "component_name": "With secondary navigation",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/navigation/sidebar-navigation/04__with-secondary-navigation.vue",
+    "preview": "templates/application-ui/navigation/sidebar-navigation/04__with-secondary-navigation.preview.html"
+  }
+}

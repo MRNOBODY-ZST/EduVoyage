@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Examples",
+  "subcategory_name": "Pricing Pages",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/page-examples/pricing-pages",
+  "component_id": "5f3268c0a01e789d4578d1f0f505594e",
+  "component_uuid": "5f3268c0a01e789d4578d1f0f505594e",
+  "component_name": "With comparison table",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-examples/pricing-pages/02__with-comparison-table.vue",
+    "preview": "templates/marketing/page-examples/pricing-pages/02__with-comparison-table.preview.html"
+  }
+}

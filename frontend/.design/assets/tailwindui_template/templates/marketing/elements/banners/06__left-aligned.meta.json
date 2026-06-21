@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Elements",
+  "subcategory_name": "Banners",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/elements/banners",
+  "component_id": "49536ab3f61c13112b042a7cb8293dbb",
+  "component_uuid": "49536ab3f61c13112b042a7cb8293dbb",
+  "component_name": "Left-aligned",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/elements/banners/06__left-aligned.vue",
+    "preview": "templates/marketing/elements/banners/06__left-aligned.preview.html"
+  }
+}

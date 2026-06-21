@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Elements",
+  "subcategory_name": "Flyout Menus",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/elements/flyout-menus",
+  "component_id": "3a091a4d7664f1d576e29f48d523edfa",
+  "component_uuid": "3a091a4d7664f1d576e29f48d523edfa",
+  "component_name": "Simple",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/elements/flyout-menus/07__simple.vue",
+    "preview": "templates/marketing/elements/flyout-menus/07__simple.preview.html"
+  }
+}

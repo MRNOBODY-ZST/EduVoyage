@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Application Shells",
+  "subcategory_name": "Stacked Layouts",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/application-shells/stacked",
+  "component_id": "c0d6b19d73d2f3045ca388de0ab7c11b",
+  "component_uuid": "c0d6b19d73d2f3045ca388de0ab7c11b",
+  "component_name": "With bottom border",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/application-shells/stacked-layouts/01__with-bottom-border.vue",
+    "preview": "templates/application-ui/application-shells/stacked-layouts/01__with-bottom-border.preview.html"
+  }
+}

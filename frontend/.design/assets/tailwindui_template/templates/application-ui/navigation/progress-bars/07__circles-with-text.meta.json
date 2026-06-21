@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Navigation",
+  "subcategory_name": "Progress Bars",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/navigation/progress-bars",
+  "component_id": "e1655fc2b62c1d5280cb639a5c09f1f6",
+  "component_uuid": "e1655fc2b62c1d5280cb639a5c09f1f6",
+  "component_name": "Circles with text",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/navigation/progress-bars/07__circles-with-text.vue",
+    "preview": "templates/application-ui/navigation/progress-bars/07__circles-with-text.preview.html"
+  }
+}

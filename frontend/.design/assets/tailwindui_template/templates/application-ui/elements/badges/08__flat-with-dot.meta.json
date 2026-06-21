@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Elements",
+  "subcategory_name": "Badges",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/elements/badges",
+  "component_id": "7a572c03b50600e6da9768983a8e9043",
+  "component_uuid": "7a572c03b50600e6da9768983a8e9043",
+  "component_name": "Flat with dot",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/elements/badges/08__flat-with-dot.vue",
+    "preview": "templates/application-ui/elements/badges/08__flat-with-dot.preview.html"
+  }
+}

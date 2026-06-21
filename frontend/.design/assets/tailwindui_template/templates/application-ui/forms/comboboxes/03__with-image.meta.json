@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Forms",
+  "subcategory_name": "Comboboxes",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/forms/comboboxes",
+  "component_id": "32481db09d2a5728d5f30de53d69bc82",
+  "component_uuid": "32481db09d2a5728d5f30de53d69bc82",
+  "component_name": "With image",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/forms/comboboxes/03__with-image.vue",
+    "preview": "templates/application-ui/forms/comboboxes/03__with-image.preview.html"
+  }
+}

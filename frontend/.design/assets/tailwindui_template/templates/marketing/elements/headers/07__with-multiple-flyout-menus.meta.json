@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Elements",
+  "subcategory_name": "Headers",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/elements/headers",
+  "component_id": "6f74644bcfda42fc3d6735054d46bbe1",
+  "component_uuid": "6f74644bcfda42fc3d6735054d46bbe1",
+  "component_name": "With multiple flyout menus",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/elements/headers/07__with-multiple-flyout-menus.vue",
+    "preview": "templates/marketing/elements/headers/07__with-multiple-flyout-menus.preview.html"
+  }
+}

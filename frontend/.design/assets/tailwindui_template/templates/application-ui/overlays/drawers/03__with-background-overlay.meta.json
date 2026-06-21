@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Overlays",
+  "subcategory_name": "Drawers",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/overlays/drawers",
+  "component_id": "05a1aec573d7b5cd3909323c6db6723f",
+  "component_uuid": "05a1aec573d7b5cd3909323c6db6723f",
+  "component_name": "With background overlay",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/overlays/drawers/03__with-background-overlay.vue",
+    "preview": "templates/application-ui/overlays/drawers/03__with-background-overlay.preview.html"
+  }
+}

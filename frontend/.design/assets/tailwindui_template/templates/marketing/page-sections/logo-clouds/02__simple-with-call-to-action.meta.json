@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Logo Clouds",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/logo-clouds",
+  "component_id": "41819e575f2ea4dc492ce0155e48f5ee",
+  "component_uuid": "41819e575f2ea4dc492ce0155e48f5ee",
+  "component_name": "Simple with call-to-action",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/logo-clouds/02__simple-with-call-to-action.vue",
+    "preview": "templates/marketing/page-sections/logo-clouds/02__simple-with-call-to-action.preview.html"
+  }
+}

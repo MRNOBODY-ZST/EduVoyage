@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Lists",
+  "subcategory_name": "Stacked Lists",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/lists/stacked-lists",
+  "component_id": "0e46de7c930770b339e15800282bbc37",
+  "component_uuid": "0e46de7c930770b339e15800282bbc37",
+  "component_name": "With inline links and avatar group",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/lists/stacked-lists/03__with-inline-links-and-avatar-group.vue",
+    "preview": "templates/application-ui/lists/stacked-lists/03__with-inline-links-and-avatar-group.preview.html"
+  }
+}

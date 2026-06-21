@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Page Examples",
+  "subcategory_name": "Detail Screens",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/page-examples/detail-screens",
+  "component_id": "6d449ab606e4b9f99757efd317b768de",
+  "component_uuid": "6d449ab606e4b9f99757efd317b768de",
+  "component_name": "Stacked",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/page-examples/detail-screens/02__stacked.vue",
+    "preview": "templates/application-ui/page-examples/detail-screens/02__stacked.preview.html"
+  }
+}

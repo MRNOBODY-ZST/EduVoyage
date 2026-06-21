@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Hero Sections",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/heroes",
+  "component_id": "dc7ca59e587aa00e4aa8d78f6ed8aff3",
+  "component_uuid": "dc7ca59e587aa00e4aa8d78f6ed8aff3",
+  "component_name": "Split with code example",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/hero-sections/04__split-with-code-example.vue",
+    "preview": "templates/marketing/page-sections/hero-sections/04__split-with-code-example.preview.html"
+  }
+}

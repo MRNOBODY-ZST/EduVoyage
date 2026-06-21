@@ -1,0 +1,24 @@
+{
+  "product": "ecommerce",
+  "group_name": "Components",
+  "subcategory_name": "Shopping Carts",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/ecommerce/components/shopping-carts",
+  "component_id": "62d97a81daaa3dbe21ece61a58cdd0f8",
+  "component_uuid": "62d97a81daaa3dbe21ece61a58cdd0f8",
+  "component_name": "Two column with quantity dropdown",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": null,
+    "supportsDarkMode": false
+  },
+  "target_compliant": false,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/ecommerce/components/shopping-carts/01__two-column-with-quantity-dropdown.vue",
+    "preview": "templates/ecommerce/components/shopping-carts/01__two-column-with-quantity-dropdown.preview.html"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Feature Sections",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/feature-sections",
+  "component_id": "a17f8a661b0c18a30ef74897cdcdd168",
+  "component_uuid": "a17f8a661b0c18a30ef74897cdcdd168",
+  "component_name": "Contained in panel",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/feature-sections/07__contained-in-panel.vue",
+    "preview": "templates/marketing/page-sections/feature-sections/07__contained-in-panel.preview.html"
+  }
+}

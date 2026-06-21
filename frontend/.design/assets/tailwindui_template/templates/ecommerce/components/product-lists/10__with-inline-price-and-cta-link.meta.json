@@ -1,0 +1,24 @@
+{
+  "product": "ecommerce",
+  "group_name": "Components",
+  "subcategory_name": "Product Lists",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/ecommerce/components/product-lists",
+  "component_id": "fd91c8fdd2322460930a44680b4ee7b9",
+  "component_uuid": "fd91c8fdd2322460930a44680b4ee7b9",
+  "component_name": "With inline price and CTA link",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": null,
+    "supportsDarkMode": false
+  },
+  "target_compliant": false,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/ecommerce/components/product-lists/10__with-inline-price-and-cta-link.vue",
+    "preview": "templates/ecommerce/components/product-lists/10__with-inline-price-and-cta-link.preview.html"
+  }
+}

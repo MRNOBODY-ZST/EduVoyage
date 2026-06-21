@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Elements",
+  "subcategory_name": "Banners",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/elements/banners",
+  "component_id": "c5bc8a46a1093693fd286f0b74c631f4",
+  "component_uuid": "c5bc8a46a1093693fd286f0b74c631f4",
+  "component_name": "Privacy notice right-aligned",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/elements/banners/10__privacy-notice-right-aligned.vue",
+    "preview": "templates/marketing/elements/banners/10__privacy-notice-right-aligned.preview.html"
+  }
+}

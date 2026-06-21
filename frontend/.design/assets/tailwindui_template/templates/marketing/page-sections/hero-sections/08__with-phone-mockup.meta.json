@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Hero Sections",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/heroes",
+  "component_id": "816bf20fe4e1cd0cc2fefabfa6a6732b",
+  "component_uuid": "816bf20fe4e1cd0cc2fefabfa6a6732b",
+  "component_name": "With phone mockup",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/hero-sections/08__with-phone-mockup.vue",
+    "preview": "templates/marketing/page-sections/hero-sections/08__with-phone-mockup.preview.html"
+  }
+}

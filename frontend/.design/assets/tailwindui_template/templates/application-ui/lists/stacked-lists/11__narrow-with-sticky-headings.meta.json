@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Lists",
+  "subcategory_name": "Stacked Lists",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/lists/stacked-lists",
+  "component_id": "cb948bdbe04c717def4a7195a285d08b",
+  "component_uuid": "cb948bdbe04c717def4a7195a285d08b",
+  "component_name": "Narrow with sticky headings",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/lists/stacked-lists/11__narrow-with-sticky-headings.vue",
+    "preview": "templates/application-ui/lists/stacked-lists/11__narrow-with-sticky-headings.preview.html"
+  }
+}

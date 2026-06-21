@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Forms",
+  "subcategory_name": "Input Groups",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/forms/input-groups",
+  "component_id": "6e671f3ae1aaf020c3dfe26d7aaf7b3d",
+  "component_uuid": "6e671f3ae1aaf020c3dfe26d7aaf7b3d",
+  "component_name": "Input with inline leading dropdown",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/forms/input-groups/12__input-with-inline-leading-dropdown.vue",
+    "preview": "templates/application-ui/forms/input-groups/12__input-with-inline-leading-dropdown.preview.html"
+  }
+}

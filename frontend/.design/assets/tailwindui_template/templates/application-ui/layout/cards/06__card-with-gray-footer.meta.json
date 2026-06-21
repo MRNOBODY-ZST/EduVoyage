@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Layout",
+  "subcategory_name": "Cards",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/layout/cards",
+  "component_id": "9a3fd87f12f86dde0c5be88a9af1f6d8",
+  "component_uuid": "9a3fd87f12f86dde0c5be88a9af1f6d8",
+  "component_name": "Card with gray footer",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/layout/cards/06__card-with-gray-footer.vue",
+    "preview": "templates/application-ui/layout/cards/06__card-with-gray-footer.preview.html"
+  }
+}

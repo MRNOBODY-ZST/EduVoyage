@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Feedback",
+  "subcategory_name": "Alerts",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/feedback/alerts",
+  "component_id": "aa7cc38968c95d870db6ba62e76b8e0f",
+  "component_uuid": "aa7cc38968c95d870db6ba62e76b8e0f",
+  "component_name": "With dismiss button",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/feedback/alerts/06__with-dismiss-button.vue",
+    "preview": "templates/application-ui/feedback/alerts/06__with-dismiss-button.preview.html"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Layout",
+  "subcategory_name": "Containers",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/layout/containers",
+  "component_id": "633983e1e230752e046685c12c72a962",
+  "component_uuid": "633983e1e230752e046685c12c72a962",
+  "component_name": "Constrained with padded content",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/layout/containers/02__constrained-with-padded-content.vue",
+    "preview": "templates/application-ui/layout/containers/02__constrained-with-padded-content.preview.html"
+  }
+}

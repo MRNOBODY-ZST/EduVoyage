@@ -1,0 +1,24 @@
+{
+  "product": "ecommerce",
+  "group_name": "Components",
+  "subcategory_name": "Category Filters",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/ecommerce/components/category-filters",
+  "component_id": "8dbbe78f722647bcb452fab9ba8a3b9a",
+  "component_uuid": "8dbbe78f722647bcb452fab9ba8a3b9a",
+  "component_name": "With expandable product filter panel",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": null,
+    "supportsDarkMode": false
+  },
+  "target_compliant": false,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/ecommerce/components/category-filters/03__with-expandable-product-filter-panel.vue",
+    "preview": "templates/ecommerce/components/category-filters/03__with-expandable-product-filter-panel.preview.html"
+  }
+}

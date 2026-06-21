@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Elements",
+  "subcategory_name": "Flyout Menus",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/elements/flyout-menus",
+  "component_id": "51e7bd07cdcacb755fd1f4ad6fde01ab",
+  "component_uuid": "51e7bd07cdcacb755fd1f4ad6fde01ab",
+  "component_name": "Full-width",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/elements/flyout-menus/04__full-width.vue",
+    "preview": "templates/marketing/elements/flyout-menus/04__full-width.preview.html"
+  }
+}

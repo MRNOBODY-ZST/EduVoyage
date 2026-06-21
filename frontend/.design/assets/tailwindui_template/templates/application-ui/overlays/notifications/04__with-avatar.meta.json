@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Overlays",
+  "subcategory_name": "Notifications",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/overlays/notifications",
+  "component_id": "c1ce1d3e4b7269f8da91ec959046c395",
+  "component_uuid": "c1ce1d3e4b7269f8da91ec959046c395",
+  "component_name": "With avatar",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/overlays/notifications/04__with-avatar.vue",
+    "preview": "templates/application-ui/overlays/notifications/04__with-avatar.preview.html"
+  }
+}

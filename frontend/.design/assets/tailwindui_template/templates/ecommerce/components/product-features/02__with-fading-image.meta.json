@@ -1,0 +1,24 @@
+{
+  "product": "ecommerce",
+  "group_name": "Components",
+  "subcategory_name": "Product Features",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/ecommerce/components/product-features",
+  "component_id": "06554e4a18bf74da3a4d350601b3865d",
+  "component_uuid": "06554e4a18bf74da3a4d350601b3865d",
+  "component_name": "With fading image",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": null,
+    "supportsDarkMode": false
+  },
+  "target_compliant": false,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/ecommerce/components/product-features/02__with-fading-image.vue",
+    "preview": "templates/ecommerce/components/product-features/02__with-fading-image.preview.html"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "product": "ecommerce",
+  "group_name": "Components",
+  "subcategory_name": "Product Quickviews",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/ecommerce/components/product-quickviews",
+  "component_id": "fbb6aae7c79cee56e654c788f76835d9",
+  "component_uuid": "fbb6aae7c79cee56e654c788f76835d9",
+  "component_name": "With color selector and description",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": null,
+    "supportsDarkMode": false
+  },
+  "target_compliant": false,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/ecommerce/components/product-quickviews/04__with-color-selector-and-description.vue",
+    "preview": "templates/ecommerce/components/product-quickviews/04__with-color-selector-and-description.preview.html"
+  }
+}

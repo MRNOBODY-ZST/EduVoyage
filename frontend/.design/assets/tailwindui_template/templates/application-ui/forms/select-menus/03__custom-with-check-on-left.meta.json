@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Forms",
+  "subcategory_name": "Select Menus",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/forms/select-menus",
+  "component_id": "c549ac2695455cb78d529c3a00293fe0",
+  "component_uuid": "c549ac2695455cb78d529c3a00293fe0",
+  "component_name": "Custom with check on left",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/forms/select-menus/03__custom-with-check-on-left.vue",
+    "preview": "templates/application-ui/forms/select-menus/03__custom-with-check-on-left.preview.html"
+  }
+}

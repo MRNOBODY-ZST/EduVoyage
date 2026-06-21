@@ -1,0 +1,24 @@
+{
+  "product": "ecommerce",
+  "group_name": "Page Examples",
+  "subcategory_name": "Checkout Pages",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/ecommerce/page-examples/checkout-pages",
+  "component_id": "d6f0fd2a3b29de41b8bf61af8433be16",
+  "component_uuid": "d6f0fd2a3b29de41b8bf61af8433be16",
+  "component_name": "With mobile order summary overlay",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": null,
+    "supportsDarkMode": false
+  },
+  "target_compliant": false,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/ecommerce/page-examples/checkout-pages/03__with-mobile-order-summary-overlay.vue",
+    "preview": "templates/ecommerce/page-examples/checkout-pages/03__with-mobile-order-summary-overlay.preview.html"
+  }
+}

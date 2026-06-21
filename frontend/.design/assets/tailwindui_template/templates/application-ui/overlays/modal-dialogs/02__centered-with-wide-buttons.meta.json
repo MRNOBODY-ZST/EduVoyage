@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Overlays",
+  "subcategory_name": "Modal Dialogs",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/overlays/modal-dialogs",
+  "component_id": "230ebe97ca4f24eef13b0a225e41b87b",
+  "component_uuid": "230ebe97ca4f24eef13b0a225e41b87b",
+  "component_name": "Centered with wide buttons",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/overlays/modal-dialogs/02__centered-with-wide-buttons.vue",
+    "preview": "templates/application-ui/overlays/modal-dialogs/02__centered-with-wide-buttons.preview.html"
+  }
+}

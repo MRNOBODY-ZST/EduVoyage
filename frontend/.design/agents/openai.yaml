@@ -1,0 +1,4 @@
+interface:
+  display_name: "Frontend Tailwind CSS"
+  short_description: "Build polished Tailwind UI from curated Vue blocks"
+  default_prompt: "Use $frontend-tailwind-css to build a responsive Tailwind CSS frontend from the curated component library."

@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Overlays",
+  "subcategory_name": "Notifications",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/overlays/notifications",
+  "component_id": "fc4d5d4d23fdbfd7bbd531edf250e93a",
+  "component_uuid": "fc4d5d4d23fdbfd7bbd531edf250e93a",
+  "component_name": "With buttons below",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/overlays/notifications/06__with-buttons-below.vue",
+    "preview": "templates/application-ui/overlays/notifications/06__with-buttons-below.preview.html"
+  }
+}

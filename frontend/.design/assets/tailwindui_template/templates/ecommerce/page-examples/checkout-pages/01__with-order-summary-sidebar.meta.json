@@ -1,0 +1,24 @@
+{
+  "product": "ecommerce",
+  "group_name": "Page Examples",
+  "subcategory_name": "Checkout Pages",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/ecommerce/page-examples/checkout-pages",
+  "component_id": "f5dffb97e3fb18b74edb4ca4864cb359",
+  "component_uuid": "f5dffb97e3fb18b74edb4ca4864cb359",
+  "component_name": "With order summary sidebar",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": null,
+    "supportsDarkMode": false
+  },
+  "target_compliant": false,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/ecommerce/page-examples/checkout-pages/01__with-order-summary-sidebar.vue",
+    "preview": "templates/ecommerce/page-examples/checkout-pages/01__with-order-summary-sidebar.preview.html"
+  }
+}

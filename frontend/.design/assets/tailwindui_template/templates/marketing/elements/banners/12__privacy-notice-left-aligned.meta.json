@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Elements",
+  "subcategory_name": "Banners",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/elements/banners",
+  "component_id": "ec51d95b54eca6de6f1a07467a431e0c",
+  "component_uuid": "ec51d95b54eca6de6f1a07467a431e0c",
+  "component_name": "Privacy notice left-aligned",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/elements/banners/12__privacy-notice-left-aligned.vue",
+    "preview": "templates/marketing/elements/banners/12__privacy-notice-left-aligned.preview.html"
+  }
+}

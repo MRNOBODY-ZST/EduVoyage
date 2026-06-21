@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Navigation",
+  "subcategory_name": "Breadcrumbs",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/navigation/breadcrumbs",
+  "component_id": "09fbe246cb968a4ab03a97c5da4947ee",
+  "component_uuid": "09fbe246cb968a4ab03a97c5da4947ee",
+  "component_name": "Full-width bar",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/navigation/breadcrumbs/02__full-width-bar.vue",
+    "preview": "templates/application-ui/navigation/breadcrumbs/02__full-width-bar.preview.html"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Contact Sections",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/contact-sections",
+  "component_id": "b7a60fe9c1034409a2af488d723701a9",
+  "component_uuid": "b7a60fe9c1034409a2af488d723701a9",
+  "component_name": "Side-by-side grid",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/contact-sections/02__side-by-side-grid.vue",
+    "preview": "templates/marketing/page-sections/contact-sections/02__side-by-side-grid.preview.html"
+  }
+}

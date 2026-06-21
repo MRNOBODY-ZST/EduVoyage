@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Header Sections",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/header",
+  "component_id": "f295328e633edbb29e7612672e3d69cc",
+  "component_uuid": "f295328e633edbb29e7612672e3d69cc",
+  "component_name": "With cards",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/header-sections/04__with-cards.vue",
+    "preview": "templates/marketing/page-sections/header-sections/04__with-cards.preview.html"
+  }
+}

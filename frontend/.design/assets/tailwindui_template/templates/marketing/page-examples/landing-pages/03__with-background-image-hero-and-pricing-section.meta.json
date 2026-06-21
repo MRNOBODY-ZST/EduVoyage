@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Examples",
+  "subcategory_name": "Landing Pages",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/page-examples/landing-pages",
+  "component_id": "c9ffe5deded27ba87841128323150da9",
+  "component_uuid": "c9ffe5deded27ba87841128323150da9",
+  "component_name": "With background image hero and pricing section",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-examples/landing-pages/03__with-background-image-hero-and-pricing-section.vue",
+    "preview": "templates/marketing/page-examples/landing-pages/03__with-background-image-hero-and-pricing-section.preview.html"
+  }
+}

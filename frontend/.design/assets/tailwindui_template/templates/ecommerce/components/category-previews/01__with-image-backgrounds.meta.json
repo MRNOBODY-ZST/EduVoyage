@@ -1,0 +1,24 @@
+{
+  "product": "ecommerce",
+  "group_name": "Components",
+  "subcategory_name": "Category Previews",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/ecommerce/components/category-previews",
+  "component_id": "0bccd1058690fa6d03a79564f992f609",
+  "component_uuid": "0bccd1058690fa6d03a79564f992f609",
+  "component_name": "With image backgrounds",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": null,
+    "supportsDarkMode": false
+  },
+  "target_compliant": false,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/ecommerce/components/category-previews/01__with-image-backgrounds.vue",
+    "preview": "templates/ecommerce/components/category-previews/01__with-image-backgrounds.preview.html"
+  }
+}

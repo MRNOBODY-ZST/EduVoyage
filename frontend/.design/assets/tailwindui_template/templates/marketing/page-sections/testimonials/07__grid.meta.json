@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Testimonials",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/testimonials",
+  "component_id": "1d4641d9b778e6e47e5cb664d4d8a683",
+  "component_uuid": "1d4641d9b778e6e47e5cb664d4d8a683",
+  "component_name": "Grid",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/testimonials/07__grid.vue",
+    "preview": "templates/marketing/page-sections/testimonials/07__grid.preview.html"
+  }
+}

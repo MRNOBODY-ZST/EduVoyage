@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Elements",
+  "subcategory_name": "Banners",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/elements/banners",
+  "component_id": "4375397fcc9712be608b21b9d8f355c8",
+  "component_uuid": "4375397fcc9712be608b21b9d8f355c8",
+  "component_name": "On brand",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/elements/banners/03__on-brand.vue",
+    "preview": "templates/marketing/elements/banners/03__on-brand.preview.html"
+  }
+}

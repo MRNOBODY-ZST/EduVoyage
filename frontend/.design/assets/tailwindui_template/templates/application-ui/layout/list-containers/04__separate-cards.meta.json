@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Layout",
+  "subcategory_name": "List containers",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/layout/list-containers",
+  "component_id": "a0f475f9acf9194cd19255e19acde240",
+  "component_uuid": "a0f475f9acf9194cd19255e19acde240",
+  "component_name": "Separate cards",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/layout/list-containers/04__separate-cards.vue",
+    "preview": "templates/application-ui/layout/list-containers/04__separate-cards.preview.html"
+  }
+}

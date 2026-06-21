@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Layout",
+  "subcategory_name": "Cards",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/layout/cards",
+  "component_id": "19fd0a5dfcf9ea32f64b9d5f49d76db7",
+  "component_uuid": "19fd0a5dfcf9ea32f64b9d5f49d76db7",
+  "component_name": "Well on gray",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/layout/cards/09__well-on-gray.vue",
+    "preview": "templates/application-ui/layout/cards/09__well-on-gray.preview.html"
+  }
+}

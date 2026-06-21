@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Elements",
+  "subcategory_name": "Banners",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/elements/banners",
+  "component_id": "a6fe57a3075bcfcb790893a428c4cfb5",
+  "component_uuid": "a6fe57a3075bcfcb790893a428c4cfb5",
+  "component_name": "Bottom aligned",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/elements/banners/07__bottom-aligned.vue",
+    "preview": "templates/marketing/elements/banners/07__bottom-aligned.preview.html"
+  }
+}

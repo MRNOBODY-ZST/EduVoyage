@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Forms",
+  "subcategory_name": "Input Groups",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/forms/input-groups",
+  "component_id": "9d8a37880933ef4ce973cc81853cc959",
+  "component_uuid": "9d8a37880933ef4ce973cc81853cc959",
+  "component_name": "Inputs with inset labels and shared borders",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/forms/input-groups/17__inputs-with-inset-labels-and-shared-borders.vue",
+    "preview": "templates/application-ui/forms/input-groups/17__inputs-with-inset-labels-and-shared-borders.preview.html"
+  }
+}

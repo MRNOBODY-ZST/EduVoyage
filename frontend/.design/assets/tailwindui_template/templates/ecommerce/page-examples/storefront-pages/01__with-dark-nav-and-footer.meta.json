@@ -1,0 +1,24 @@
+{
+  "product": "ecommerce",
+  "group_name": "Page Examples",
+  "subcategory_name": "Storefront Pages",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/ecommerce/page-examples/storefront-pages",
+  "component_id": "04740945117f4ec46b10f866630a6347",
+  "component_uuid": "04740945117f4ec46b10f866630a6347",
+  "component_name": "With dark nav and footer",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": null,
+    "supportsDarkMode": false
+  },
+  "target_compliant": false,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/ecommerce/page-examples/storefront-pages/01__with-dark-nav-and-footer.vue",
+    "preview": "templates/ecommerce/page-examples/storefront-pages/01__with-dark-nav-and-footer.preview.html"
+  }
+}

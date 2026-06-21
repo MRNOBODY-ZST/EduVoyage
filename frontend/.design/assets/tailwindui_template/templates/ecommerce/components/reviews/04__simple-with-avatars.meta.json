@@ -1,0 +1,24 @@
+{
+  "product": "ecommerce",
+  "group_name": "Components",
+  "subcategory_name": "Reviews",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/ecommerce/components/reviews",
+  "component_id": "8ccc03eda40cd313b874c7f7ec612f78",
+  "component_uuid": "8ccc03eda40cd313b874c7f7ec612f78",
+  "component_name": "Simple with avatars",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": null,
+    "supportsDarkMode": false
+  },
+  "target_compliant": false,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/ecommerce/components/reviews/04__simple-with-avatars.vue",
+    "preview": "templates/ecommerce/components/reviews/04__simple-with-avatars.preview.html"
+  }
+}

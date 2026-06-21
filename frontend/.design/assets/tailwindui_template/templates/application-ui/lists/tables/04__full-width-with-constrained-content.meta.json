@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Lists",
+  "subcategory_name": "Tables",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/lists/tables",
+  "component_id": "38a65f3cd00435cddd893ece030d365e",
+  "component_uuid": "38a65f3cd00435cddd893ece030d365e",
+  "component_name": "Full width with constrained content",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/lists/tables/04__full-width-with-constrained-content.vue",
+    "preview": "templates/application-ui/lists/tables/04__full-width-with-constrained-content.preview.html"
+  }
+}

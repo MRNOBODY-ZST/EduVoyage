@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Lists",
+  "subcategory_name": "Tables",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/lists/tables",
+  "component_id": "3fc4f58b97988d00656bc99fbd1a81ae",
+  "component_uuid": "3fc4f58b97988d00656bc99fbd1a81ae",
+  "component_name": "With grouped rows",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/lists/tables/14__with-grouped-rows.vue",
+    "preview": "templates/application-ui/lists/tables/14__with-grouped-rows.preview.html"
+  }
+}

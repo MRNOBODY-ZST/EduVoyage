@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Forms",
+  "subcategory_name": "Input Groups",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/forms/input-groups",
+  "component_id": "676267bfc6ff8a0e1e198a25207a41d4",
+  "component_uuid": "676267bfc6ff8a0e1e198a25207a41d4",
+  "component_name": "Input with label and help text",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/forms/input-groups/02__input-with-label-and-help-text.vue",
+    "preview": "templates/application-ui/forms/input-groups/02__input-with-label-and-help-text.preview.html"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Navigation",
+  "subcategory_name": "Navbars",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/navigation/navbars",
+  "component_id": "1f0fd3139f66c75457637ca3746e3384",
+  "component_uuid": "1f0fd3139f66c75457637ca3746e3384",
+  "component_name": "Simple dark",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/navigation/navbars/03__simple-dark.vue",
+    "preview": "templates/application-ui/navigation/navbars/03__simple-dark.preview.html"
+  }
+}

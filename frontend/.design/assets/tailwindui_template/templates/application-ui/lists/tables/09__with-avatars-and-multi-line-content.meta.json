@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Lists",
+  "subcategory_name": "Tables",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/lists/tables",
+  "component_id": "822ab4bf111e9a34063e651275b381e6",
+  "component_uuid": "822ab4bf111e9a34063e651275b381e6",
+  "component_name": "With avatars and multi-line content",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/lists/tables/09__with-avatars-and-multi-line-content.vue",
+    "preview": "templates/application-ui/lists/tables/09__with-avatars-and-multi-line-content.preview.html"
+  }
+}

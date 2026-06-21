@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Navigation",
+  "subcategory_name": "Navbars",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/navigation/navbars",
+  "component_id": "97989af9f246f530d9dee5b94b076654",
+  "component_uuid": "97989af9f246f530d9dee5b94b076654",
+  "component_name": "Dark with centered search and secondary links",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/navigation/navbars/09__dark-with-centered-search-and-secondary-links.vue",
+    "preview": "templates/application-ui/navigation/navbars/09__dark-with-centered-search-and-secondary-links.preview.html"
+  }
+}

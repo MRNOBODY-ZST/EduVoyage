@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Elements",
+  "subcategory_name": "Dropdowns",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/elements/dropdowns",
+  "component_id": "1f7aa0b082c3b5074c78634c7d29588e",
+  "component_uuid": "1f7aa0b082c3b5074c78634c7d29588e",
+  "component_name": "With simple header",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/elements/dropdowns/05__with-simple-header.vue",
+    "preview": "templates/application-ui/elements/dropdowns/05__with-simple-header.preview.html"
+  }
+}

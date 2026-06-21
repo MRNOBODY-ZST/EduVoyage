@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Forms",
+  "subcategory_name": "Select Menus",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/forms/select-menus",
+  "component_id": "d47b46d3ffea1f6b159f51be4bcae2ff",
+  "component_uuid": "d47b46d3ffea1f6b159f51be4bcae2ff",
+  "component_name": "Branded with supported text",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/forms/select-menus/07__branded-with-supported-text.vue",
+    "preview": "templates/application-ui/forms/select-menus/07__branded-with-supported-text.preview.html"
+  }
+}

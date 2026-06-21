@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Examples",
+  "subcategory_name": "Pricing Pages",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/page-examples/pricing-pages",
+  "component_id": "fdbb8458107ec56935f49e41d1ebec70",
+  "component_uuid": "fdbb8458107ec56935f49e41d1ebec70",
+  "component_name": "With four tiers",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-examples/pricing-pages/01__with-four-tiers.vue",
+    "preview": "templates/marketing/page-examples/pricing-pages/01__with-four-tiers.preview.html"
+  }
+}

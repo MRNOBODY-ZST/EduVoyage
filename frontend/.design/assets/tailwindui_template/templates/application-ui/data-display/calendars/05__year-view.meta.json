@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Data Display",
+  "subcategory_name": "Calendars",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/data-display/calendars",
+  "component_id": "e5f12862f086eee6108f70ff74a502ff",
+  "component_uuid": "e5f12862f086eee6108f70ff74a502ff",
+  "component_name": "Year view",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/data-display/calendars/05__year-view.vue",
+    "preview": "templates/application-ui/data-display/calendars/05__year-view.preview.html"
+  }
+}

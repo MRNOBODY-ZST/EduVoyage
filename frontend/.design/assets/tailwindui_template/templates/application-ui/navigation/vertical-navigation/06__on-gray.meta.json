@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Navigation",
+  "subcategory_name": "Vertical Navigation",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/navigation/vertical-navigation",
+  "component_id": "2c89cc9bc554b56dba081876a969255c",
+  "component_uuid": "2c89cc9bc554b56dba081876a969255c",
+  "component_name": "On gray",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/navigation/vertical-navigation/06__on-gray.vue",
+    "preview": "templates/application-ui/navigation/vertical-navigation/06__on-gray.preview.html"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Elements",
+  "subcategory_name": "Banners",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/elements/banners",
+  "component_id": "43c7208d9b2cc7b884cd3c0918c2c268",
+  "component_uuid": "43c7208d9b2cc7b884cd3c0918c2c268",
+  "component_name": "Privacy notice full width",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/elements/banners/13__privacy-notice-full-width.vue",
+    "preview": "templates/marketing/elements/banners/13__privacy-notice-full-width.preview.html"
+  }
+}

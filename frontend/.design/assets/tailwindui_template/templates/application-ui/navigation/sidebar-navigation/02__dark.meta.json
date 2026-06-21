@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Navigation",
+  "subcategory_name": "Sidebar Navigation",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/navigation/sidebar-navigation",
+  "component_id": "6c780cba69f5c1f01742a45dc0bfaa76",
+  "component_uuid": "6c780cba69f5c1f01742a45dc0bfaa76",
+  "component_name": "Dark",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/navigation/sidebar-navigation/02__dark.vue",
+    "preview": "templates/application-ui/navigation/sidebar-navigation/02__dark.preview.html"
+  }
+}

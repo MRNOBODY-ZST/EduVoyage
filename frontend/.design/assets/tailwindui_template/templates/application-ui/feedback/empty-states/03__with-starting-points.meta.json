@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Feedback",
+  "subcategory_name": "Empty States",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/feedback/empty-states",
+  "component_id": "42312e49c9887a27078b43874d164f48",
+  "component_uuid": "42312e49c9887a27078b43874d164f48",
+  "component_name": "With starting points",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/feedback/empty-states/03__with-starting-points.vue",
+    "preview": "templates/application-ui/feedback/empty-states/03__with-starting-points.preview.html"
+  }
+}

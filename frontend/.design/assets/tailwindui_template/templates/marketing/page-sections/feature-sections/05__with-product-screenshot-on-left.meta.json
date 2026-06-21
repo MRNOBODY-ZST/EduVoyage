@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Feature Sections",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/feature-sections",
+  "component_id": "e1d4fc6a75d838708b6bc1a11dd42947",
+  "component_uuid": "e1d4fc6a75d838708b6bc1a11dd42947",
+  "component_name": "With product screenshot on left",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/feature-sections/05__with-product-screenshot-on-left.vue",
+    "preview": "templates/marketing/page-sections/feature-sections/05__with-product-screenshot-on-left.preview.html"
+  }
+}

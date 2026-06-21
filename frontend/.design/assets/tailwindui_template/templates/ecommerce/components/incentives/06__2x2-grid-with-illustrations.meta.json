@@ -1,0 +1,24 @@
+{
+  "product": "ecommerce",
+  "group_name": "Components",
+  "subcategory_name": "Incentives",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/ecommerce/components/incentives",
+  "component_id": "3899975a74f43a3fe103baffc0f1de86",
+  "component_uuid": "3899975a74f43a3fe103baffc0f1de86",
+  "component_name": "2x2 grid with illustrations",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": null,
+    "supportsDarkMode": false
+  },
+  "target_compliant": false,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/ecommerce/components/incentives/06__2x2-grid-with-illustrations.vue",
+    "preview": "templates/ecommerce/components/incentives/06__2x2-grid-with-illustrations.preview.html"
+  }
+}

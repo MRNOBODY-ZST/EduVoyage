@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Overlays",
+  "subcategory_name": "Drawers",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/overlays/drawers",
+  "component_id": "bd24b64e64a3f09b44de0dde1b76e28f",
+  "component_uuid": "bd24b64e64a3f09b44de0dde1b76e28f",
+  "component_name": "With sticky footer",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/overlays/drawers/06__with-sticky-footer.vue",
+    "preview": "templates/application-ui/overlays/drawers/06__with-sticky-footer.preview.html"
+  }
+}

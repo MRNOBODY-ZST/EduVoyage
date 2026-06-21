@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Stats",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/stats-sections",
+  "component_id": "9df8d30b1ea52307e8d5fd15a87a3a4c",
+  "component_uuid": "9df8d30b1ea52307e8d5fd15a87a3a4c",
+  "component_name": "With two column description",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/stats/07__with-two-column-description.vue",
+    "preview": "templates/marketing/page-sections/stats/07__with-two-column-description.preview.html"
+  }
+}

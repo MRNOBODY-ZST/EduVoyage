@@ -1,0 +1,24 @@
+{
+  "product": "ecommerce",
+  "group_name": "Components",
+  "subcategory_name": "Store Navigation",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/ecommerce/components/store-navigation",
+  "component_id": "8c91476c7d73e3d73f9629ec734ccffa",
+  "component_uuid": "8c91476c7d73e3d73f9629ec734ccffa",
+  "component_name": "With double column and persistent mobile nav",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": null,
+    "supportsDarkMode": false
+  },
+  "target_compliant": false,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/ecommerce/components/store-navigation/05__with-double-column-and-persistent-mobile-nav.vue",
+    "preview": "templates/ecommerce/components/store-navigation/05__with-double-column-and-persistent-mobile-nav.preview.html"
+  }
+}

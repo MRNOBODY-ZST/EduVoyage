@@ -1,0 +1,24 @@
+{
+  "product": "ecommerce",
+  "group_name": "Page Examples",
+  "subcategory_name": "Order Detail Pages",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/ecommerce/page-examples/order-detail-pages",
+  "component_id": "4138a5d042bc0fa0df5e8f86d25b1151",
+  "component_uuid": "4138a5d042bc0fa0df5e8f86d25b1151",
+  "component_name": "With large images and progress bars",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": null,
+    "supportsDarkMode": false
+  },
+  "target_compliant": false,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/ecommerce/page-examples/order-detail-pages/02__with-large-images-and-progress-bars.vue",
+    "preview": "templates/ecommerce/page-examples/order-detail-pages/02__with-large-images-and-progress-bars.preview.html"
+  }
+}

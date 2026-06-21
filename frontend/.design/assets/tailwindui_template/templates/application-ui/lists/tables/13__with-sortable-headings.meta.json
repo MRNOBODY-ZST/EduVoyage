@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Lists",
+  "subcategory_name": "Tables",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/lists/tables",
+  "component_id": "7b5a46e74e475708d966ca31716f1771",
+  "component_uuid": "7b5a46e74e475708d966ca31716f1771",
+  "component_name": "With sortable headings",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/lists/tables/13__with-sortable-headings.vue",
+    "preview": "templates/application-ui/lists/tables/13__with-sortable-headings.preview.html"
+  }
+}

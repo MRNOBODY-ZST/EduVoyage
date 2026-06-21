@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Elements",
+  "subcategory_name": "Flyout Menus",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/elements/flyout-menus",
+  "component_id": "911576fb54922e5199a9434ca8a273fd",
+  "component_uuid": "911576fb54922e5199a9434ca8a273fd",
+  "component_name": "Stacked with footer actions",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/elements/flyout-menus/01__stacked-with-footer-actions.vue",
+    "preview": "templates/marketing/elements/flyout-menus/01__stacked-with-footer-actions.preview.html"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Blog Sections",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/blog-sections",
+  "component_id": "12ae7abe5e2cc75a10bb36d767b63547",
+  "component_uuid": "12ae7abe5e2cc75a10bb36d767b63547",
+  "component_name": "Three-column with images",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/blog-sections/02__three-column-with-images.vue",
+    "preview": "templates/marketing/page-sections/blog-sections/02__three-column-with-images.preview.html"
+  }
+}

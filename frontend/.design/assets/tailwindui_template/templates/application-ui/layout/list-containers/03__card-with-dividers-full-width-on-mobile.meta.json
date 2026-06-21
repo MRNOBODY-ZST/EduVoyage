@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Layout",
+  "subcategory_name": "List containers",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/layout/list-containers",
+  "component_id": "338d89d9dfdf34b0f72bf271951ce687",
+  "component_uuid": "338d89d9dfdf34b0f72bf271951ce687",
+  "component_name": "Card with dividers, full-width on mobile",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/layout/list-containers/03__card-with-dividers-full-width-on-mobile.vue",
+    "preview": "templates/application-ui/layout/list-containers/03__card-with-dividers-full-width-on-mobile.preview.html"
+  }
+}

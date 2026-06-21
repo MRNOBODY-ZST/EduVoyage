@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Newsletter Sections",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/newsletter-sections",
+  "component_id": "82fc139db99143307df48bb9fe6152c5",
+  "component_uuid": "82fc139db99143307df48bb9fe6152c5",
+  "component_name": "Side-by-side with details",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/newsletter-sections/01__side-by-side-with-details.vue",
+    "preview": "templates/marketing/page-sections/newsletter-sections/01__side-by-side-with-details.preview.html"
+  }
+}

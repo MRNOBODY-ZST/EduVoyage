@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Overlays",
+  "subcategory_name": "Modal Dialogs",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/overlays/modal-dialogs",
+  "component_id": "f89a7babb527a1909590ce2fa868a45d",
+  "component_uuid": "f89a7babb527a1909590ce2fa868a45d",
+  "component_name": "Simple with dismiss button",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/overlays/modal-dialogs/04__simple-with-dismiss-button.vue",
+    "preview": "templates/application-ui/overlays/modal-dialogs/04__simple-with-dismiss-button.preview.html"
+  }
+}

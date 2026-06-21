@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Elements",
+  "subcategory_name": "Badges",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/elements/badges",
+  "component_id": "5b4600a7bccf95d0114406dafe3e6a99",
+  "component_uuid": "5b4600a7bccf95d0114406dafe3e6a99",
+  "component_name": "Small flat pill",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/elements/badges/14__small-flat-pill.vue",
+    "preview": "templates/application-ui/elements/badges/14__small-flat-pill.preview.html"
+  }
+}

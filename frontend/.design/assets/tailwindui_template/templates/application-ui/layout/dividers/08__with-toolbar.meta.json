@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Layout",
+  "subcategory_name": "Dividers",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/layout/dividers",
+  "component_id": "5942d989e5fcfa07fafb2df35300f682",
+  "component_uuid": "5942d989e5fcfa07fafb2df35300f682",
+  "component_name": "With toolbar",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/layout/dividers/08__with-toolbar.vue",
+    "preview": "templates/application-ui/layout/dividers/08__with-toolbar.preview.html"
+  }
+}

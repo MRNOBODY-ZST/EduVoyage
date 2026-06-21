@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Stats",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/stats-sections",
+  "component_id": "b5eb58f5c8fd565cc54bf488d647f02b",
+  "component_uuid": "b5eb58f5c8fd565cc54bf488d647f02b",
+  "component_name": "Simple",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/stats/01__simple.vue",
+    "preview": "templates/marketing/page-sections/stats/01__simple.preview.html"
+  }
+}

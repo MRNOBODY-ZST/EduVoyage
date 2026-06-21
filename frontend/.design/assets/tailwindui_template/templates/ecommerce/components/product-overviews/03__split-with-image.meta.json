@@ -1,0 +1,24 @@
+{
+  "product": "ecommerce",
+  "group_name": "Components",
+  "subcategory_name": "Product Overviews",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/ecommerce/components/product-overviews",
+  "component_id": "7343b727d03bb437b9617fb26bf35021",
+  "component_uuid": "7343b727d03bb437b9617fb26bf35021",
+  "component_name": "Split with image",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": null,
+    "supportsDarkMode": false
+  },
+  "target_compliant": false,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/ecommerce/components/product-overviews/03__split-with-image.vue",
+    "preview": "templates/ecommerce/components/product-overviews/03__split-with-image.preview.html"
+  }
+}

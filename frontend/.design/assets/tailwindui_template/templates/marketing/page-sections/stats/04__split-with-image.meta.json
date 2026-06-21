@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Stats",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/stats-sections",
+  "component_id": "f488532a6d2ff00f8ce0f9a787808a9c",
+  "component_uuid": "f488532a6d2ff00f8ce0f9a787808a9c",
+  "component_name": "Split with image",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/stats/04__split-with-image.vue",
+    "preview": "templates/marketing/page-sections/stats/04__split-with-image.preview.html"
+  }
+}

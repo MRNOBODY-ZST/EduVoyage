@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Elements",
+  "subcategory_name": "Banners",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/elements/banners",
+  "component_id": "a201de7379a84f1e46667dd219545953",
+  "component_uuid": "a201de7379a84f1e46667dd219545953",
+  "component_name": "Privacy notice centered",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/elements/banners/11__privacy-notice-centered.vue",
+    "preview": "templates/marketing/elements/banners/11__privacy-notice-centered.preview.html"
+  }
+}

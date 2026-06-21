@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Forms",
+  "subcategory_name": "Toggles",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/forms/toggles",
+  "component_id": "92732eaa2a1e1af9d23939f08cabd44f",
+  "component_uuid": "92732eaa2a1e1af9d23939f08cabd44f",
+  "component_name": "Simple toggle",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/forms/toggles/01__simple-toggle.vue",
+    "preview": "templates/application-ui/forms/toggles/01__simple-toggle.preview.html"
+  }
+}

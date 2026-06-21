@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Navigation",
+  "subcategory_name": "Sidebar Navigation",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/navigation/sidebar-navigation",
+  "component_id": "34180dd5b86e303286a8aa59b2ca9c34",
+  "component_uuid": "34180dd5b86e303286a8aa59b2ca9c34",
+  "component_name": "With expandable sections",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/navigation/sidebar-navigation/03__with-expandable-sections.vue",
+    "preview": "templates/application-ui/navigation/sidebar-navigation/03__with-expandable-sections.preview.html"
+  }
+}

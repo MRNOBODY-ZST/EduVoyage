@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Overlays",
+  "subcategory_name": "Drawers",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/overlays/drawers",
+  "component_id": "25da9793d85eab488fced233a57c92ac",
+  "component_uuid": "25da9793d85eab488fced233a57c92ac",
+  "component_name": "Contact list example",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/overlays/drawers/11__contact-list-example.vue",
+    "preview": "templates/application-ui/overlays/drawers/11__contact-list-example.preview.html"
+  }
+}

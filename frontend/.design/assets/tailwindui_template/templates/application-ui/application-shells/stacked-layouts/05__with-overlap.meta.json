@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Application Shells",
+  "subcategory_name": "Stacked Layouts",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/application-shells/stacked",
+  "component_id": "48f0c3d2f1718b7f594e777ed3864ccd",
+  "component_uuid": "48f0c3d2f1718b7f594e777ed3864ccd",
+  "component_name": "With overlap",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/application-shells/stacked-layouts/05__with-overlap.vue",
+    "preview": "templates/application-ui/application-shells/stacked-layouts/05__with-overlap.preview.html"
+  }
+}

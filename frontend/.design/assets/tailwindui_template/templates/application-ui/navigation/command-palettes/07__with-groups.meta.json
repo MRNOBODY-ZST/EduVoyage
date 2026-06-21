@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Navigation",
+  "subcategory_name": "Command Palettes",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/navigation/command-palettes",
+  "component_id": "16ca10c78340e94c4075a7c7d8af3c73",
+  "component_uuid": "16ca10c78340e94c4075a7c7d8af3c73",
+  "component_name": "With groups",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/navigation/command-palettes/07__with-groups.vue",
+    "preview": "templates/application-ui/navigation/command-palettes/07__with-groups.preview.html"
+  }
+}

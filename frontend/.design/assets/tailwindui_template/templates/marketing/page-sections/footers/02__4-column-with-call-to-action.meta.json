@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Footers",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/footers",
+  "component_id": "2e47a11aec9a4e1aab7fc0e20d6b5951",
+  "component_uuid": "2e47a11aec9a4e1aab7fc0e20d6b5951",
+  "component_name": "4-column with call-to-action",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/footers/02__4-column-with-call-to-action.vue",
+    "preview": "templates/marketing/page-sections/footers/02__4-column-with-call-to-action.preview.html"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Navigation",
+  "subcategory_name": "Tabs",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/navigation/tabs",
+  "component_id": "70db4dcecc9b8bad86b28ebe23546f27",
+  "component_uuid": "70db4dcecc9b8bad86b28ebe23546f27",
+  "component_name": "Tabs with underline and badges",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/navigation/tabs/08__tabs-with-underline-and-badges.vue",
+    "preview": "templates/application-ui/navigation/tabs/08__tabs-with-underline-and-badges.preview.html"
+  }
+}

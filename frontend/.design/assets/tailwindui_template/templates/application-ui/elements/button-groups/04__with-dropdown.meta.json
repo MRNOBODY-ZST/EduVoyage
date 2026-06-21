@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Elements",
+  "subcategory_name": "Button Groups",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/elements/button-groups",
+  "component_id": "bfc7e9cc9d7b5762cb139096ac3266c1",
+  "component_uuid": "bfc7e9cc9d7b5762cb139096ac3266c1",
+  "component_name": "With dropdown",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/elements/button-groups/04__with-dropdown.vue",
+    "preview": "templates/application-ui/elements/button-groups/04__with-dropdown.preview.html"
+  }
+}

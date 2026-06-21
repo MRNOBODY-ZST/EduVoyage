@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Newsletter Sections",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/newsletter-sections",
+  "component_id": "2da53d5b251438c875c9d2fec8b3d3c0",
+  "component_uuid": "2da53d5b251438c875c9d2fec8b3d3c0",
+  "component_name": "Simple stacked",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/newsletter-sections/04__simple-stacked.vue",
+    "preview": "templates/marketing/page-sections/newsletter-sections/04__simple-stacked.preview.html"
+  }
+}

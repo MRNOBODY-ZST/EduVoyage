@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Forms",
+  "subcategory_name": "Input Groups",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/forms/input-groups",
+  "component_id": "cd2d41bc1bca37b76acacab5925d507c",
+  "component_uuid": "cd2d41bc1bca37b76acacab5925d507c",
+  "component_name": "Input with corner hint",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/forms/input-groups/06__input-with-corner-hint.vue",
+    "preview": "templates/application-ui/forms/input-groups/06__input-with-corner-hint.preview.html"
+  }
+}

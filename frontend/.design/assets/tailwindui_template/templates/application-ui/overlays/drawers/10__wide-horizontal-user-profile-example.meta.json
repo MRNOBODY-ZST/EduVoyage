@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Overlays",
+  "subcategory_name": "Drawers",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/overlays/drawers",
+  "component_id": "bfaf7b76cebcda82afc880e39abf3118",
+  "component_uuid": "bfaf7b76cebcda82afc880e39abf3118",
+  "component_name": "Wide horizontal user profile example",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/overlays/drawers/10__wide-horizontal-user-profile-example.vue",
+    "preview": "templates/application-ui/overlays/drawers/10__wide-horizontal-user-profile-example.preview.html"
+  }
+}

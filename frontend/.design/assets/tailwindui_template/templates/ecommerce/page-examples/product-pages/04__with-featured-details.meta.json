@@ -1,0 +1,24 @@
+{
+  "product": "ecommerce",
+  "group_name": "Page Examples",
+  "subcategory_name": "Product Pages",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/ecommerce/page-examples/product-pages",
+  "component_id": "cb29ca8a047a5351c6b339cef1b952a7",
+  "component_uuid": "cb29ca8a047a5351c6b339cef1b952a7",
+  "component_name": "With featured details",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": null,
+    "supportsDarkMode": false
+  },
+  "target_compliant": false,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/ecommerce/page-examples/product-pages/04__with-featured-details.vue",
+    "preview": "templates/ecommerce/page-examples/product-pages/04__with-featured-details.preview.html"
+  }
+}

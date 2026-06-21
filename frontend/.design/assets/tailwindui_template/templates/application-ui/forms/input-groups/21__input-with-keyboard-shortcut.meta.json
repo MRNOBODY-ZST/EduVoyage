@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Forms",
+  "subcategory_name": "Input Groups",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/forms/input-groups",
+  "component_id": "3fc95e81175349142e7e2111d303296c",
+  "component_uuid": "3fc95e81175349142e7e2111d303296c",
+  "component_name": "Input with keyboard shortcut",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/forms/input-groups/21__input-with-keyboard-shortcut.vue",
+    "preview": "templates/application-ui/forms/input-groups/21__input-with-keyboard-shortcut.preview.html"
+  }
+}

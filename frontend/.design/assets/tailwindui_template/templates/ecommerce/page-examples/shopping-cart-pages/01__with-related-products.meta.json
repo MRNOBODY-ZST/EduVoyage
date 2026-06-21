@@ -1,0 +1,24 @@
+{
+  "product": "ecommerce",
+  "group_name": "Page Examples",
+  "subcategory_name": "Shopping Cart Pages",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/ecommerce/page-examples/shopping-cart-pages",
+  "component_id": "892edc8837628a6df55b8d42a4a5dbbf",
+  "component_uuid": "892edc8837628a6df55b8d42a4a5dbbf",
+  "component_name": "With related products",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": null,
+    "supportsDarkMode": false
+  },
+  "target_compliant": false,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/ecommerce/page-examples/shopping-cart-pages/01__with-related-products.vue",
+    "preview": "templates/ecommerce/page-examples/shopping-cart-pages/01__with-related-products.preview.html"
+  }
+}

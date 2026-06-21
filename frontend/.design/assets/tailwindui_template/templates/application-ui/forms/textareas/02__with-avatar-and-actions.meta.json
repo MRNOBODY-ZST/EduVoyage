@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Forms",
+  "subcategory_name": "Textareas",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/forms/textareas",
+  "component_id": "784309f82e9913989c2196a2d47eff4a",
+  "component_uuid": "784309f82e9913989c2196a2d47eff4a",
+  "component_name": "With avatar and actions",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/forms/textareas/02__with-avatar-and-actions.vue",
+    "preview": "templates/application-ui/forms/textareas/02__with-avatar-and-actions.preview.html"
+  }
+}

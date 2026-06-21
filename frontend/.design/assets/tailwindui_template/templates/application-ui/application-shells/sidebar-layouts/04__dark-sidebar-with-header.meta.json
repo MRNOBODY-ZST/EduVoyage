@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Application Shells",
+  "subcategory_name": "Sidebar Layouts",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/application-shells/sidebar",
+  "component_id": "5548358cb34897c6b28551f2ad885eec",
+  "component_uuid": "5548358cb34897c6b28551f2ad885eec",
+  "component_name": "Dark sidebar with header",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/application-shells/sidebar-layouts/04__dark-sidebar-with-header.vue",
+    "preview": "templates/application-ui/application-shells/sidebar-layouts/04__dark-sidebar-with-header.preview.html"
+  }
+}

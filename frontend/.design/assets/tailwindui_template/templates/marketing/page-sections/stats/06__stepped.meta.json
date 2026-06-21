@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Stats",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/stats-sections",
+  "component_id": "fbfbdf31759a62bee2bf8d52dffe0f00",
+  "component_uuid": "fbfbdf31759a62bee2bf8d52dffe0f00",
+  "component_name": "Stepped",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/stats/06__stepped.vue",
+    "preview": "templates/marketing/page-sections/stats/06__stepped.preview.html"
+  }
+}

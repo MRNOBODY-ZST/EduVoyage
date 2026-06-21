@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Elements",
+  "subcategory_name": "Headers",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/elements/headers",
+  "component_id": "048b06b7f859d2fa194752ee8805992a",
+  "component_uuid": "048b06b7f859d2fa194752ee8805992a",
+  "component_name": "On brand background",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/elements/headers/03__on-brand-background.vue",
+    "preview": "templates/marketing/elements/headers/03__on-brand-background.preview.html"
+  }
+}

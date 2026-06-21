@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Feature Sections",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/feature-sections",
+  "component_id": "4e23c14650a67ade50d44e1fb670d42a",
+  "component_uuid": "4e23c14650a67ade50d44e1fb670d42a",
+  "component_name": "With code example panel",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/feature-sections/11__with-code-example-panel.vue",
+    "preview": "templates/marketing/page-sections/feature-sections/11__with-code-example-panel.preview.html"
+  }
+}

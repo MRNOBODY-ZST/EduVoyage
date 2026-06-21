@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Headings",
+  "subcategory_name": "Page Headings",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/headings/page-headings",
+  "component_id": "ab799a0b48c911854636f6e31cb28915",
+  "component_uuid": "ab799a0b48c911854636f6e31cb28915",
+  "component_name": "With avatar and actions",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/headings/page-headings/05__with-avatar-and-actions.vue",
+    "preview": "templates/application-ui/headings/page-headings/05__with-avatar-and-actions.preview.html"
+  }
+}

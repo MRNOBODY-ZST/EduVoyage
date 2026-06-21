@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Navigation",
+  "subcategory_name": "Tabs",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/navigation/tabs",
+  "component_id": "8ea0a1bf2b3c2b1d7fc86019674bb55a",
+  "component_uuid": "8ea0a1bf2b3c2b1d7fc86019674bb55a",
+  "component_name": "Simple",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/navigation/tabs/09__simple.vue",
+    "preview": "templates/application-ui/navigation/tabs/09__simple.preview.html"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Team Sections",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/team-sections",
+  "component_id": "09826e92264e0f1fa45b8e6a88cb2725",
+  "component_uuid": "09826e92264e0f1fa45b8e6a88cb2725",
+  "component_name": "Large grid with cards",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/team-sections/04__large-grid-with-cards.vue",
+    "preview": "templates/marketing/page-sections/team-sections/04__large-grid-with-cards.preview.html"
+  }
+}

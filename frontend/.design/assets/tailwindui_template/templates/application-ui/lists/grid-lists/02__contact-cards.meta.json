@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Lists",
+  "subcategory_name": "Grid Lists",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/lists/grid-lists",
+  "component_id": "5d72b187beb968e12db89fe49f272b18",
+  "component_uuid": "5d72b187beb968e12db89fe49f272b18",
+  "component_name": "Contact cards",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/lists/grid-lists/02__contact-cards.vue",
+    "preview": "templates/application-ui/lists/grid-lists/02__contact-cards.preview.html"
+  }
+}

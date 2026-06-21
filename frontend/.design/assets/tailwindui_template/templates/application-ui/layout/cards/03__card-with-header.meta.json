@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Layout",
+  "subcategory_name": "Cards",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/layout/cards",
+  "component_id": "4beba7dd94a1e5d6fd88a6d46236b4b7",
+  "component_uuid": "4beba7dd94a1e5d6fd88a6d46236b4b7",
+  "component_name": "Card with header",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/layout/cards/03__card-with-header.vue",
+    "preview": "templates/application-ui/layout/cards/03__card-with-header.preview.html"
+  }
+}

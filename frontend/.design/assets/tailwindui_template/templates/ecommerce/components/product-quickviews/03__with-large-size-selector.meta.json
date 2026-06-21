@@ -1,0 +1,24 @@
+{
+  "product": "ecommerce",
+  "group_name": "Components",
+  "subcategory_name": "Product Quickviews",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/ecommerce/components/product-quickviews",
+  "component_id": "54247b2102ff85761ad0bc3b5d1e7aae",
+  "component_uuid": "54247b2102ff85761ad0bc3b5d1e7aae",
+  "component_name": "With large size selector",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": null,
+    "supportsDarkMode": false
+  },
+  "target_compliant": false,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/ecommerce/components/product-quickviews/03__with-large-size-selector.vue",
+    "preview": "templates/ecommerce/components/product-quickviews/03__with-large-size-selector.preview.html"
+  }
+}

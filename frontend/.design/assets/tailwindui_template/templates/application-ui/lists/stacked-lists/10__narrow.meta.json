@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Lists",
+  "subcategory_name": "Stacked Lists",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/lists/stacked-lists",
+  "component_id": "71bece8a145585e233f9ecbb2c2ddd86",
+  "component_uuid": "71bece8a145585e233f9ecbb2c2ddd86",
+  "component_name": "Narrow",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/lists/stacked-lists/10__narrow.vue",
+    "preview": "templates/application-ui/lists/stacked-lists/10__narrow.preview.html"
+  }
+}

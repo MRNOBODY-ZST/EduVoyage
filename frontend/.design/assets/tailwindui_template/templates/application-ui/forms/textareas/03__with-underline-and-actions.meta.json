@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Forms",
+  "subcategory_name": "Textareas",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/forms/textareas",
+  "component_id": "7c970c3497e5971b9e7e7c8d062d9e3b",
+  "component_uuid": "7c970c3497e5971b9e7e7c8d062d9e3b",
+  "component_name": "With underline and actions",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/forms/textareas/03__with-underline-and-actions.vue",
+    "preview": "templates/application-ui/forms/textareas/03__with-underline-and-actions.preview.html"
+  }
+}

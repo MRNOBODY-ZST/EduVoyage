@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Elements",
+  "subcategory_name": "Headers",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/elements/headers",
+  "component_id": "ee5df49936fc6550a95895277c81f43c",
+  "component_uuid": "ee5df49936fc6550a95895277c81f43c",
+  "component_name": "With call-to-action",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/elements/headers/06__with-call-to-action.vue",
+    "preview": "templates/marketing/elements/headers/06__with-call-to-action.preview.html"
+  }
+}

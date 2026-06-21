@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Lists",
+  "subcategory_name": "Feeds",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/lists/feeds",
+  "component_id": "81e5ec57a92ddcadaa913e7bb68336fe",
+  "component_uuid": "81e5ec57a92ddcadaa913e7bb68336fe",
+  "component_name": "With comments",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/lists/feeds/02__with-comments.vue",
+    "preview": "templates/application-ui/lists/feeds/02__with-comments.preview.html"
+  }
+}

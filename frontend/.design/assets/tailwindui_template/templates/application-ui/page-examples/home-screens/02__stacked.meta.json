@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Page Examples",
+  "subcategory_name": "Home Screens",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/page-examples/home-screens",
+  "component_id": "03fc6b9c0ebbb5609e996305274d9b95",
+  "component_uuid": "03fc6b9c0ebbb5609e996305274d9b95",
+  "component_name": "Stacked",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/page-examples/home-screens/02__stacked.vue",
+    "preview": "templates/application-ui/page-examples/home-screens/02__stacked.preview.html"
+  }
+}

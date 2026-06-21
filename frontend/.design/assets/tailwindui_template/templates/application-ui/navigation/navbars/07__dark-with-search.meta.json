@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Navigation",
+  "subcategory_name": "Navbars",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/navigation/navbars",
+  "component_id": "1be56e16325019ce5e105b23952d0b8b",
+  "component_uuid": "1be56e16325019ce5e105b23952d0b8b",
+  "component_name": "Dark with search",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/navigation/navbars/07__dark-with-search.vue",
+    "preview": "templates/application-ui/navigation/navbars/07__dark-with-search.preview.html"
+  }
+}

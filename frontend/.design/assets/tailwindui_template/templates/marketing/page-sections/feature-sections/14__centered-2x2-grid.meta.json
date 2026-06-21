@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Feature Sections",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/feature-sections",
+  "component_id": "64ac58e032276db96bf343a8d4f332a8",
+  "component_uuid": "64ac58e032276db96bf343a8d4f332a8",
+  "component_name": "Centered 2x2 grid",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/feature-sections/14__centered-2x2-grid.vue",
+    "preview": "templates/marketing/page-sections/feature-sections/14__centered-2x2-grid.preview.html"
+  }
+}

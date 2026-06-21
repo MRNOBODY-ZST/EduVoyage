@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Elements",
+  "subcategory_name": "Headers",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/elements/headers",
+  "component_id": "932f6f0193a320e97af8654a6493626e",
+  "component_uuid": "932f6f0193a320e97af8654a6493626e",
+  "component_name": "With centered logo",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/elements/headers/11__with-centered-logo.vue",
+    "preview": "templates/marketing/elements/headers/11__with-centered-logo.preview.html"
+  }
+}

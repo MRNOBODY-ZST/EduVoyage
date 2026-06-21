@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "FAQs",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/faq-sections",
+  "component_id": "8017f4faee579f7ca518cdde140d4689",
+  "component_uuid": "8017f4faee579f7ca518cdde140d4689",
+  "component_name": "Offset with supporting text",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/faqs/01__offset-with-supporting-text.vue",
+    "preview": "templates/marketing/page-sections/faqs/01__offset-with-supporting-text.preview.html"
+  }
+}

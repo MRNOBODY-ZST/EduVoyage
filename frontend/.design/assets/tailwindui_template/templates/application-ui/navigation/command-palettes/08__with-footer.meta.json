@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Navigation",
+  "subcategory_name": "Command Palettes",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/navigation/command-palettes",
+  "component_id": "540bdf1e4a0e2ec2f667a2c7c123ff0f",
+  "component_uuid": "540bdf1e4a0e2ec2f667a2c7c123ff0f",
+  "component_name": "With footer",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/navigation/command-palettes/08__with-footer.vue",
+    "preview": "templates/application-ui/navigation/command-palettes/08__with-footer.preview.html"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Forms",
+  "subcategory_name": "Select Menus",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/forms/select-menus",
+  "component_id": "79592f355ca6f6e3b081e0158109981c",
+  "component_uuid": "79592f355ca6f6e3b081e0158109981c",
+  "component_name": "Simple native",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/forms/select-menus/01__simple-native.vue",
+    "preview": "templates/application-ui/forms/select-menus/01__simple-native.preview.html"
+  }
+}

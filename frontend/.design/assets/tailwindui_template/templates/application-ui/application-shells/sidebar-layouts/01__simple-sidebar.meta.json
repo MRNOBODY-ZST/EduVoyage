@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Application Shells",
+  "subcategory_name": "Sidebar Layouts",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/application-shells/sidebar",
+  "component_id": "4fc26b6ea5843dc9b7660d49f19fd5a4",
+  "component_uuid": "4fc26b6ea5843dc9b7660d49f19fd5a4",
+  "component_name": "Simple sidebar",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/application-shells/sidebar-layouts/01__simple-sidebar.vue",
+    "preview": "templates/application-ui/application-shells/sidebar-layouts/01__simple-sidebar.preview.html"
+  }
+}

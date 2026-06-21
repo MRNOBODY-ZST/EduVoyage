@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Layout",
+  "subcategory_name": "Dividers",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/layout/dividers",
+  "component_id": "5b1c73b36ca9bc99f9f17fea27003e8e",
+  "component_uuid": "5b1c73b36ca9bc99f9f17fea27003e8e",
+  "component_name": "With label",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/layout/dividers/01__with-label.vue",
+    "preview": "templates/application-ui/layout/dividers/01__with-label.preview.html"
+  }
+}

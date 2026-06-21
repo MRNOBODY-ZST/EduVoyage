@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Elements",
+  "subcategory_name": "Flyout Menus",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/elements/flyout-menus",
+  "component_id": "f2922faa2add4efd389ddfccc77b2f22",
+  "component_uuid": "f2922faa2add4efd389ddfccc77b2f22",
+  "component_name": "Full-width two-columns",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/elements/flyout-menus/02__full-width-two-columns.vue",
+    "preview": "templates/marketing/elements/flyout-menus/02__full-width-two-columns.preview.html"
+  }
+}

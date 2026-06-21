@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Elements",
+  "subcategory_name": "Banners",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/elements/banners",
+  "component_id": "1804a38735a4d6d0ade6c2bcf4ee3f6c",
+  "component_uuid": "1804a38735a4d6d0ade6c2bcf4ee3f6c",
+  "component_name": "On dark",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/elements/banners/02__on-dark.vue",
+    "preview": "templates/marketing/elements/banners/02__on-dark.preview.html"
+  }
+}

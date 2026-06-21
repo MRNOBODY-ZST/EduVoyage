@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Pricing Sections",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/pricing",
+  "component_id": "d18ab876bc346ed08c7499a16281777c",
+  "component_uuid": "d18ab876bc346ed08c7499a16281777c",
+  "component_name": "Four tiers with toggle",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/pricing-sections/10__four-tiers-with-toggle.vue",
+    "preview": "templates/marketing/page-sections/pricing-sections/10__four-tiers-with-toggle.preview.html"
+  }
+}

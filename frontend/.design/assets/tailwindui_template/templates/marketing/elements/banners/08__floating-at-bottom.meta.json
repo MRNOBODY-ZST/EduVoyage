@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Elements",
+  "subcategory_name": "Banners",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/elements/banners",
+  "component_id": "39dd57897ef8e6d37aa07fbbafc188b1",
+  "component_uuid": "39dd57897ef8e6d37aa07fbbafc188b1",
+  "component_name": "Floating at bottom",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/elements/banners/08__floating-at-bottom.vue",
+    "preview": "templates/marketing/elements/banners/08__floating-at-bottom.preview.html"
+  }
+}

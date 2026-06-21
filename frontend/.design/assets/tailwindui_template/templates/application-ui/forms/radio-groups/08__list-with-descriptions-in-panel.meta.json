@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Forms",
+  "subcategory_name": "Radio Groups",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/forms/radio-groups",
+  "component_id": "7b583a008c3fc62c0fe403d10ca042bb",
+  "component_uuid": "7b583a008c3fc62c0fe403d10ca042bb",
+  "component_name": "List with descriptions in panel",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/forms/radio-groups/08__list-with-descriptions-in-panel.vue",
+    "preview": "templates/application-ui/forms/radio-groups/08__list-with-descriptions-in-panel.preview.html"
+  }
+}

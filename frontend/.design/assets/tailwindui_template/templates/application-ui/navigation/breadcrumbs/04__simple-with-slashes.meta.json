@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Navigation",
+  "subcategory_name": "Breadcrumbs",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/navigation/breadcrumbs",
+  "component_id": "30bf6b10109ab7c77e4a5ddf3e9506a8",
+  "component_uuid": "30bf6b10109ab7c77e4a5ddf3e9506a8",
+  "component_name": "Simple with slashes",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/navigation/breadcrumbs/04__simple-with-slashes.vue",
+    "preview": "templates/application-ui/navigation/breadcrumbs/04__simple-with-slashes.preview.html"
+  }
+}

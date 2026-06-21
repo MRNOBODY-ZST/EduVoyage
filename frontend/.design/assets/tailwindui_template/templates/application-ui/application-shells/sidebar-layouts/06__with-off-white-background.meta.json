@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Application Shells",
+  "subcategory_name": "Sidebar Layouts",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/application-shells/sidebar",
+  "component_id": "bcda0241bdc4768c6b966958a683047c",
+  "component_uuid": "bcda0241bdc4768c6b966958a683047c",
+  "component_name": "With off-white background",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/application-shells/sidebar-layouts/06__with-off-white-background.vue",
+    "preview": "templates/application-ui/application-shells/sidebar-layouts/06__with-off-white-background.preview.html"
+  }
+}

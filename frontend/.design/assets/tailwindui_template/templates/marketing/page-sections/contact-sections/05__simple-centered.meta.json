@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Contact Sections",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/contact-sections",
+  "component_id": "e2cd5d0297d305a708f0648b4632eaaa",
+  "component_uuid": "e2cd5d0297d305a708f0648b4632eaaa",
+  "component_name": "Simple centered",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/contact-sections/05__simple-centered.vue",
+    "preview": "templates/marketing/page-sections/contact-sections/05__simple-centered.preview.html"
+  }
+}

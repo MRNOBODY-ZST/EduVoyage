@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Layout",
+  "subcategory_name": "Media Objects",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/layout/media-objects",
+  "component_id": "452126c6f087d341b296dcc8d0fb86a5",
+  "component_uuid": "452126c6f087d341b296dcc8d0fb86a5",
+  "component_name": "Stretched to fit",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/layout/media-objects/04__stretched-to-fit.vue",
+    "preview": "templates/application-ui/layout/media-objects/04__stretched-to-fit.preview.html"
+  }
+}

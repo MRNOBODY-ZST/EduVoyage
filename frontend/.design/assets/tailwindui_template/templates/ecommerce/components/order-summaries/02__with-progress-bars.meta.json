@@ -1,0 +1,24 @@
+{
+  "product": "ecommerce",
+  "group_name": "Components",
+  "subcategory_name": "Order Summaries",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/ecommerce/components/order-summaries",
+  "component_id": "e2b488e9a1bb6dd01abae32ea6cefe15",
+  "component_uuid": "e2b488e9a1bb6dd01abae32ea6cefe15",
+  "component_name": "With progress bars",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": null,
+    "supportsDarkMode": false
+  },
+  "target_compliant": false,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/ecommerce/components/order-summaries/02__with-progress-bars.vue",
+    "preview": "templates/ecommerce/components/order-summaries/02__with-progress-bars.preview.html"
+  }
+}

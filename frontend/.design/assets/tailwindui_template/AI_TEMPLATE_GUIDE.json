@@ -1,0 +1,19 @@
+{
+  "usage": "Use this as retrieval index for prompt-time template selection.",
+  "guide_version": "1.0",
+  "index_file": "catalog.json",
+  "filters": {
+    "tailwind_version": "4.2",
+    "framework": "vue",
+    "mode": "system",
+    "require_dark_mode": true,
+    "strict_target_only": false,
+    "include_archived": false
+  },
+  "stats": {
+    "products": 3,
+    "subcategories": 93,
+    "components_kept": 657,
+    "components_target_compliant": 543
+  }
+}

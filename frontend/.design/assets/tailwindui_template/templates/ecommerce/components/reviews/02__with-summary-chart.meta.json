@@ -1,0 +1,24 @@
+{
+  "product": "ecommerce",
+  "group_name": "Components",
+  "subcategory_name": "Reviews",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/ecommerce/components/reviews",
+  "component_id": "3d2bb70379ce64ab64f0b4e38866cf8a",
+  "component_uuid": "3d2bb70379ce64ab64f0b4e38866cf8a",
+  "component_name": "With summary chart",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": null,
+    "supportsDarkMode": false
+  },
+  "target_compliant": false,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/ecommerce/components/reviews/02__with-summary-chart.vue",
+    "preview": "templates/ecommerce/components/reviews/02__with-summary-chart.preview.html"
+  }
+}

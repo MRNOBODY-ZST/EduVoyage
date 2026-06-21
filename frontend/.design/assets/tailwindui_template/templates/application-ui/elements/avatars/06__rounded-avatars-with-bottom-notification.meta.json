@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Elements",
+  "subcategory_name": "Avatars",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/elements/avatars",
+  "component_id": "d7e3987a5bcd99ecc19e6e55d448fccc",
+  "component_uuid": "d7e3987a5bcd99ecc19e6e55d448fccc",
+  "component_name": "Rounded avatars with bottom notification",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/elements/avatars/06__rounded-avatars-with-bottom-notification.vue",
+    "preview": "templates/application-ui/elements/avatars/06__rounded-avatars-with-bottom-notification.preview.html"
+  }
+}

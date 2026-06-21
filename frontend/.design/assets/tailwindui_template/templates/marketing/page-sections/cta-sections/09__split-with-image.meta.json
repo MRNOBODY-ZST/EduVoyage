@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "CTA Sections",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/cta-sections",
+  "component_id": "58b6441d042e26470c2d485039ead146",
+  "component_uuid": "58b6441d042e26470c2d485039ead146",
+  "component_name": "Split with image",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/cta-sections/09__split-with-image.vue",
+    "preview": "templates/marketing/page-sections/cta-sections/09__split-with-image.preview.html"
+  }
+}

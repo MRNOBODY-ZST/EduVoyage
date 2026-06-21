@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Forms",
+  "subcategory_name": "Toggles",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/forms/toggles",
+  "component_id": "b99e1c97056ef7d294767c9def084f7b",
+  "component_uuid": "b99e1c97056ef7d294767c9def084f7b",
+  "component_name": "With right label",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/forms/toggles/05__with-right-label.vue",
+    "preview": "templates/application-ui/forms/toggles/05__with-right-label.preview.html"
+  }
+}

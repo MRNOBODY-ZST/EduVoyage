@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Feedback",
+  "subcategory_name": "Empty States",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/feedback/empty-states",
+  "component_id": "fdd158a00f60e3f9cdf9415b5835e139",
+  "component_uuid": "fdd158a00f60e3f9cdf9415b5835e139",
+  "component_name": "With templates",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/feedback/empty-states/05__with-templates.vue",
+    "preview": "templates/application-ui/feedback/empty-states/05__with-templates.preview.html"
+  }
+}

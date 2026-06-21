@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Overlays",
+  "subcategory_name": "Notifications",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/overlays/notifications",
+  "component_id": "a065edf8f08a35f06943b2e266ca9af1",
+  "component_uuid": "a065edf8f08a35f06943b2e266ca9af1",
+  "component_name": "Simple",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/overlays/notifications/01__simple.vue",
+    "preview": "templates/application-ui/overlays/notifications/01__simple.preview.html"
+  }
+}

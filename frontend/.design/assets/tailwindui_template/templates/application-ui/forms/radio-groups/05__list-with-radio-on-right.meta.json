@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Forms",
+  "subcategory_name": "Radio Groups",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/forms/radio-groups",
+  "component_id": "f49fff01d7f8c41856ac0fc3bf82e972",
+  "component_uuid": "f49fff01d7f8c41856ac0fc3bf82e972",
+  "component_name": "List with radio on right",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/forms/radio-groups/05__list-with-radio-on-right.vue",
+    "preview": "templates/application-ui/forms/radio-groups/05__list-with-radio-on-right.preview.html"
+  }
+}

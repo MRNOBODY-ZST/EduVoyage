@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Header Sections",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/header",
+  "component_id": "fed988a810519f7aefef13224b3a814d",
+  "component_uuid": "fed988a810519f7aefef13224b3a814d",
+  "component_name": "Simple",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/header-sections/05__simple.vue",
+    "preview": "templates/marketing/page-sections/header-sections/05__simple.preview.html"
+  }
+}

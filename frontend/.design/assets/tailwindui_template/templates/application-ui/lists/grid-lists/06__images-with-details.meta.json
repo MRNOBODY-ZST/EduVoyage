@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Lists",
+  "subcategory_name": "Grid Lists",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/lists/grid-lists",
+  "component_id": "d6b6c178a9f460d37c542870139e940e",
+  "component_uuid": "d6b6c178a9f460d37c542870139e940e",
+  "component_name": "Images with details",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/lists/grid-lists/06__images-with-details.vue",
+    "preview": "templates/application-ui/lists/grid-lists/06__images-with-details.preview.html"
+  }
+}

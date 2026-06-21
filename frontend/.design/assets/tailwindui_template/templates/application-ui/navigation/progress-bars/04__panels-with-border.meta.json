@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Navigation",
+  "subcategory_name": "Progress Bars",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/navigation/progress-bars",
+  "component_id": "8d8661f38f3de5cbd0e8d704368ffc3d",
+  "component_uuid": "8d8661f38f3de5cbd0e8d704368ffc3d",
+  "component_name": "Panels with border",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/navigation/progress-bars/04__panels-with-border.vue",
+    "preview": "templates/application-ui/navigation/progress-bars/04__panels-with-border.preview.html"
+  }
+}

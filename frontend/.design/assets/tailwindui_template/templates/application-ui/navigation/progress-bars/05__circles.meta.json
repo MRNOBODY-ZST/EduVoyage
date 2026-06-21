@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Navigation",
+  "subcategory_name": "Progress Bars",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/navigation/progress-bars",
+  "component_id": "4b1efed043d1ab5688c705f2e27524f3",
+  "component_uuid": "4b1efed043d1ab5688c705f2e27524f3",
+  "component_name": "Circles",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/navigation/progress-bars/05__circles.vue",
+    "preview": "templates/application-ui/navigation/progress-bars/05__circles.preview.html"
+  }
+}

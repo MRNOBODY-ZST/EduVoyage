@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Navigation",
+  "subcategory_name": "Vertical Navigation",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/navigation/vertical-navigation",
+  "component_id": "2f1545962f702a1dd6c9b697238fcae3",
+  "component_uuid": "2f1545962f702a1dd6c9b697238fcae3",
+  "component_name": "With badges",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/navigation/vertical-navigation/02__with-badges.vue",
+    "preview": "templates/application-ui/navigation/vertical-navigation/02__with-badges.preview.html"
+  }
+}

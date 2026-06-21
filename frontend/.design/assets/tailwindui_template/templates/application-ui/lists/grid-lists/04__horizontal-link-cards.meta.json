@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Lists",
+  "subcategory_name": "Grid Lists",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/lists/grid-lists",
+  "component_id": "08e8555b844010db1f30cbafc8be6222",
+  "component_uuid": "08e8555b844010db1f30cbafc8be6222",
+  "component_name": "Horizontal link cards",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/lists/grid-lists/04__horizontal-link-cards.vue",
+    "preview": "templates/application-ui/lists/grid-lists/04__horizontal-link-cards.preview.html"
+  }
+}

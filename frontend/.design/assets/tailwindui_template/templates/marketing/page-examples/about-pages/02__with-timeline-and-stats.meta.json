@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Examples",
+  "subcategory_name": "About Pages",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/page-examples/about-pages",
+  "component_id": "b99f4e0ab650993f48cbf8f990ceb030",
+  "component_uuid": "b99f4e0ab650993f48cbf8f990ceb030",
+  "component_name": "With timeline and stats",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-examples/about-pages/02__with-timeline-and-stats.vue",
+    "preview": "templates/marketing/page-examples/about-pages/02__with-timeline-and-stats.preview.html"
+  }
+}

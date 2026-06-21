@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Page Examples",
+  "subcategory_name": "Settings Screens",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/page-examples/settings-screens",
+  "component_id": "caa8ef7bf6e8809077b5f2d91a57dabb",
+  "component_uuid": "caa8ef7bf6e8809077b5f2d91a57dabb",
+  "component_name": "Stacked",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/page-examples/settings-screens/02__stacked.vue",
+    "preview": "templates/application-ui/page-examples/settings-screens/02__stacked.preview.html"
+  }
+}

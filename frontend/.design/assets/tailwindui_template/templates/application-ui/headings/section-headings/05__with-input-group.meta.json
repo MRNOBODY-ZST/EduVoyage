@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Headings",
+  "subcategory_name": "Section Headings",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/headings/section-headings",
+  "component_id": "df8f39d7313327ae424064d721e61dad",
+  "component_uuid": "df8f39d7313327ae424064d721e61dad",
+  "component_name": "With input group",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/headings/section-headings/05__with-input-group.vue",
+    "preview": "templates/application-ui/headings/section-headings/05__with-input-group.preview.html"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Elements",
+  "subcategory_name": "Banners",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/elements/banners",
+  "component_id": "dd9098382f8067c3d90b99dbad8351a3",
+  "component_uuid": "dd9098382f8067c3d90b99dbad8351a3",
+  "component_name": "Floating at bottom centered",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/elements/banners/09__floating-at-bottom-centered.vue",
+    "preview": "templates/marketing/elements/banners/09__floating-at-bottom-centered.preview.html"
+  }
+}

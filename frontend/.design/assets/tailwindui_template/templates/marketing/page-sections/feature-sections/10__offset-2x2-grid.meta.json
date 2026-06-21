@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Feature Sections",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/feature-sections",
+  "component_id": "a49bfb9517be12ba0fe0dd841c3a8766",
+  "component_uuid": "a49bfb9517be12ba0fe0dd841c3a8766",
+  "component_name": "Offset 2x2 grid",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/feature-sections/10__offset-2x2-grid.vue",
+    "preview": "templates/marketing/page-sections/feature-sections/10__offset-2x2-grid.preview.html"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Pricing Sections",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/pricing",
+  "component_id": "e3a99fa65ed079374994c8d98ac55455",
+  "component_uuid": "e3a99fa65ed079374994c8d98ac55455",
+  "component_name": "Two tiers with extra tier",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/pricing-sections/04__two-tiers-with-extra-tier.vue",
+    "preview": "templates/marketing/page-sections/pricing-sections/04__two-tiers-with-extra-tier.preview.html"
+  }
+}

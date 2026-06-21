@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Forms",
+  "subcategory_name": "Form Layouts",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/forms/form-layouts",
+  "component_id": "dcf2bee8aa4fbef0d4623df5b9718da8",
+  "component_uuid": "dcf2bee8aa4fbef0d4623df5b9718da8",
+  "component_name": "Two-column with cards",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/forms/form-layouts/03__two-column-with-cards.vue",
+    "preview": "templates/application-ui/forms/form-layouts/03__two-column-with-cards.preview.html"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Hero Sections",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/heroes",
+  "component_id": "112b08cb1de2593034dfced08f67250d",
+  "component_uuid": "112b08cb1de2593034dfced08f67250d",
+  "component_name": "With bordered app screenshot",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/hero-sections/06__with-bordered-app-screenshot.vue",
+    "preview": "templates/marketing/page-sections/hero-sections/06__with-bordered-app-screenshot.preview.html"
+  }
+}

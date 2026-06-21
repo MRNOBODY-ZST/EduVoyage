@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Lists",
+  "subcategory_name": "Grid Lists",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/lists/grid-lists",
+  "component_id": "ce021f02f586e0e6a5f8de2ca2ee537b",
+  "component_uuid": "ce021f02f586e0e6a5f8de2ca2ee537b",
+  "component_name": "Contact cards with small portraits",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/lists/grid-lists/01__contact-cards-with-small-portraits.vue",
+    "preview": "templates/application-ui/lists/grid-lists/01__contact-cards-with-small-portraits.preview.html"
+  }
+}

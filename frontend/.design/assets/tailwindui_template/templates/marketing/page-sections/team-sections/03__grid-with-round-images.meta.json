@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Team Sections",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/team-sections",
+  "component_id": "d3acbf5cf2bb7ba7f94bbe6e0b30ed2f",
+  "component_uuid": "d3acbf5cf2bb7ba7f94bbe6e0b30ed2f",
+  "component_name": "Grid with round images",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/team-sections/03__grid-with-round-images.vue",
+    "preview": "templates/marketing/page-sections/team-sections/03__grid-with-round-images.preview.html"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Examples",
+  "subcategory_name": "Landing Pages",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/page-examples/landing-pages",
+  "component_id": "62d05bbc8f76a3fa971ccf1bd8072b33",
+  "component_uuid": "62d05bbc8f76a3fa971ccf1bd8072b33",
+  "component_name": "With screenshots and stats",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-examples/landing-pages/01__with-screenshots-and-stats.vue",
+    "preview": "templates/marketing/page-examples/landing-pages/01__with-screenshots-and-stats.preview.html"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Data Display",
+  "subcategory_name": "Calendars",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/data-display/calendars",
+  "component_id": "89f285aeebb60ddecb7ec8b5e664d525",
+  "component_uuid": "89f285aeebb60ddecb7ec8b5e664d525",
+  "component_name": "Week view",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/data-display/calendars/03__week-view.vue",
+    "preview": "templates/application-ui/data-display/calendars/03__week-view.preview.html"
+  }
+}

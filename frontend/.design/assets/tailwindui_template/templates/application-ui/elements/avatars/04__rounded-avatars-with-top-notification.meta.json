@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Elements",
+  "subcategory_name": "Avatars",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/elements/avatars",
+  "component_id": "df0d5861ae02ee238e7754e835ef283d",
+  "component_uuid": "df0d5861ae02ee238e7754e835ef283d",
+  "component_name": "Rounded avatars with top notification",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/elements/avatars/04__rounded-avatars-with-top-notification.vue",
+    "preview": "templates/application-ui/elements/avatars/04__rounded-avatars-with-top-notification.preview.html"
+  }
+}

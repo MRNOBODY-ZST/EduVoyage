@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Content Sections",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/content-sections",
+  "component_id": "ce25978b18b6bdf2e40d49fb6d21ef20",
+  "component_uuid": "ce25978b18b6bdf2e40d49fb6d21ef20",
+  "component_name": "Two columns with screenshot",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/content-sections/04__two-columns-with-screenshot.vue",
+    "preview": "templates/marketing/page-sections/content-sections/04__two-columns-with-screenshot.preview.html"
+  }
+}

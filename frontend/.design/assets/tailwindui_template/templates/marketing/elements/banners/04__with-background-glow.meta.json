@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Elements",
+  "subcategory_name": "Banners",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/elements/banners",
+  "component_id": "c94291a63bd63d01fd3ebf791093ab8d",
+  "component_uuid": "c94291a63bd63d01fd3ebf791093ab8d",
+  "component_name": "With background glow",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/elements/banners/04__with-background-glow.vue",
+    "preview": "templates/marketing/elements/banners/04__with-background-glow.preview.html"
+  }
+}

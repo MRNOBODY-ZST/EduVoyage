@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Feedback",
+  "subcategory_name": "404 Pages",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/feedback/404-pages",
+  "component_id": "ebef3404d06e7b5f42e85b7b2ca4a2a5",
+  "component_uuid": "ebef3404d06e7b5f42e85b7b2ca4a2a5",
+  "component_name": "Simple",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/feedback/404-pages/01__simple.vue",
+    "preview": "templates/marketing/feedback/404-pages/01__simple.preview.html"
+  }
+}

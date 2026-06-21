@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Header Sections",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/header",
+  "component_id": "a501b05b958dd7605d4e42aa2aa65b36",
+  "component_uuid": "a501b05b958dd7605d4e42aa2aa65b36",
+  "component_name": "Centered",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/header-sections/02__centered.vue",
+    "preview": "templates/marketing/page-sections/header-sections/02__centered.preview.html"
+  }
+}

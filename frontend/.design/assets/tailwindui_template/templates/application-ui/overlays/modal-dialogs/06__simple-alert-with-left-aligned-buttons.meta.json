@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Overlays",
+  "subcategory_name": "Modal Dialogs",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/overlays/modal-dialogs",
+  "component_id": "91a802d0d690e1fab88003f4fe449f0b",
+  "component_uuid": "91a802d0d690e1fab88003f4fe449f0b",
+  "component_name": "Simple alert with left-aligned buttons",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/overlays/modal-dialogs/06__simple-alert-with-left-aligned-buttons.vue",
+    "preview": "templates/application-ui/overlays/modal-dialogs/06__simple-alert-with-left-aligned-buttons.preview.html"
+  }
+}

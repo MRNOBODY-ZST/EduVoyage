@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Forms",
+  "subcategory_name": "Checkboxes",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/forms/checkboxes",
+  "component_id": "fa06ef87d471092fb404c8c09e1af8a5",
+  "component_uuid": "fa06ef87d471092fb404c8c09e1af8a5",
+  "component_name": "Simple list with heading",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/forms/checkboxes/04__simple-list-with-heading.vue",
+    "preview": "templates/application-ui/forms/checkboxes/04__simple-list-with-heading.preview.html"
+  }
+}

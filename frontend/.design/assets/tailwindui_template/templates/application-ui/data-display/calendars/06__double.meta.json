@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Data Display",
+  "subcategory_name": "Calendars",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/data-display/calendars",
+  "component_id": "3d940888b49b624701d5343b67536107",
+  "component_uuid": "3d940888b49b624701d5343b67536107",
+  "component_name": "Double",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/data-display/calendars/06__double.vue",
+    "preview": "templates/application-ui/data-display/calendars/06__double.preview.html"
+  }
+}

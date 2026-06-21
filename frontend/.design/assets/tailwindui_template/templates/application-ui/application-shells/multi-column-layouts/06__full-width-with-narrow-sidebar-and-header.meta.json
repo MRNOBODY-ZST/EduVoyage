@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Application Shells",
+  "subcategory_name": "Multi-Column Layouts",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/application-shells/multi-column",
+  "component_id": "d447e3faf2d20feaf42f06c4cbbcd94a",
+  "component_uuid": "d447e3faf2d20feaf42f06c4cbbcd94a",
+  "component_name": "Full-width with narrow sidebar and header",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/application-shells/multi-column-layouts/06__full-width-with-narrow-sidebar-and-header.vue",
+    "preview": "templates/application-ui/application-shells/multi-column-layouts/06__full-width-with-narrow-sidebar-and-header.preview.html"
+  }
+}

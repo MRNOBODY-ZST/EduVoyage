@@ -1,0 +1,24 @@
+{
+  "product": "ecommerce",
+  "group_name": "Components",
+  "subcategory_name": "Order Summaries",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/ecommerce/components/order-summaries",
+  "component_id": "3f2fd7d36b5d2464a445dbbc7233d644",
+  "component_uuid": "3f2fd7d36b5d2464a445dbbc7233d644",
+  "component_name": "Simple with full order details",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": null,
+    "supportsDarkMode": false
+  },
+  "target_compliant": false,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/ecommerce/components/order-summaries/04__simple-with-full-order-details.vue",
+    "preview": "templates/ecommerce/components/order-summaries/04__simple-with-full-order-details.preview.html"
+  }
+}

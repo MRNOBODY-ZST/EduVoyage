@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Contact Sections",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/contact-sections",
+  "component_id": "1a48413a7b6b49af32a9b2a75de4c0e8",
+  "component_uuid": "1a48413a7b6b49af32a9b2a75de4c0e8",
+  "component_name": "Simple four-column",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/contact-sections/04__simple-four-column.vue",
+    "preview": "templates/marketing/page-sections/contact-sections/04__simple-four-column.preview.html"
+  }
+}

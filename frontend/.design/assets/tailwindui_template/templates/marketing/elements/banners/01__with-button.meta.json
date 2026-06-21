@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Elements",
+  "subcategory_name": "Banners",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/elements/banners",
+  "component_id": "8904b9d9a9fbb9a2313df3975112f9d7",
+  "component_uuid": "8904b9d9a9fbb9a2313df3975112f9d7",
+  "component_name": "With button",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/elements/banners/01__with-button.vue",
+    "preview": "templates/marketing/elements/banners/01__with-button.preview.html"
+  }
+}

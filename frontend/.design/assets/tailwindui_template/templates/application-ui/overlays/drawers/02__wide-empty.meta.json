@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Overlays",
+  "subcategory_name": "Drawers",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/overlays/drawers",
+  "component_id": "5303c236f80366294c9871d49188c725",
+  "component_uuid": "5303c236f80366294c9871d49188c725",
+  "component_name": "Wide empty",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/overlays/drawers/02__wide-empty.vue",
+    "preview": "templates/application-ui/overlays/drawers/02__wide-empty.preview.html"
+  }
+}

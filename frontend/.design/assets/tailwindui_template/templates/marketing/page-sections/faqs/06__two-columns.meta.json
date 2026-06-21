@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "FAQs",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/faq-sections",
+  "component_id": "1c3fc65e9a4924a065d231ea14f07e16",
+  "component_uuid": "1c3fc65e9a4924a065d231ea14f07e16",
+  "component_name": "Two columns",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/faqs/06__two-columns.vue",
+    "preview": "templates/marketing/page-sections/faqs/06__two-columns.preview.html"
+  }
+}

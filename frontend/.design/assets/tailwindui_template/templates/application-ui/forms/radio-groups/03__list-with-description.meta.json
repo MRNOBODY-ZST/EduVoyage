@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Forms",
+  "subcategory_name": "Radio Groups",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/forms/radio-groups",
+  "component_id": "5a30657598f3154f9bc03a680cea7ff4",
+  "component_uuid": "5a30657598f3154f9bc03a680cea7ff4",
+  "component_name": "List with description",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/forms/radio-groups/03__list-with-description.vue",
+    "preview": "templates/application-ui/forms/radio-groups/03__list-with-description.preview.html"
+  }
+}

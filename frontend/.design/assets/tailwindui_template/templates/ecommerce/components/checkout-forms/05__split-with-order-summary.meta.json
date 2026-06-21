@@ -1,0 +1,24 @@
+{
+  "product": "ecommerce",
+  "group_name": "Components",
+  "subcategory_name": "Checkout Forms",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/ecommerce/components/checkout-forms",
+  "component_id": "4039d61d0f282837bdeab6864eb41a0a",
+  "component_uuid": "4039d61d0f282837bdeab6864eb41a0a",
+  "component_name": "Split with order summary",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": null,
+    "supportsDarkMode": false
+  },
+  "target_compliant": false,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/ecommerce/components/checkout-forms/05__split-with-order-summary.vue",
+    "preview": "templates/ecommerce/components/checkout-forms/05__split-with-order-summary.preview.html"
+  }
+}

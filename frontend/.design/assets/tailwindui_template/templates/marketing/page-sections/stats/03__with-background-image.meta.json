@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Stats",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/stats-sections",
+  "component_id": "be9be745d8c91cbf74f7f1ea40c45840",
+  "component_uuid": "be9be745d8c91cbf74f7f1ea40c45840",
+  "component_name": "With background image",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/stats/03__with-background-image.vue",
+    "preview": "templates/marketing/page-sections/stats/03__with-background-image.preview.html"
+  }
+}

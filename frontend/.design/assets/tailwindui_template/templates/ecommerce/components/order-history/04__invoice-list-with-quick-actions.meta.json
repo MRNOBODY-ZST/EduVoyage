@@ -1,0 +1,24 @@
+{
+  "product": "ecommerce",
+  "group_name": "Components",
+  "subcategory_name": "Order History",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/ecommerce/components/order-history",
+  "component_id": "60810ad73ac10929b250e2198d7d83ee",
+  "component_uuid": "60810ad73ac10929b250e2198d7d83ee",
+  "component_name": "Invoice list with quick actions",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": null,
+    "supportsDarkMode": false
+  },
+  "target_compliant": false,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/ecommerce/components/order-history/04__invoice-list-with-quick-actions.vue",
+    "preview": "templates/ecommerce/components/order-history/04__invoice-list-with-quick-actions.preview.html"
+  }
+}

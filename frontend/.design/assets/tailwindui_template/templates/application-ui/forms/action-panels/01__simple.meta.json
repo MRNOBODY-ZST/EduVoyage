@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Forms",
+  "subcategory_name": "Action Panels",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/forms/action-panels",
+  "component_id": "2f53677fe913f1a063fd93ac9a8fc425",
+  "component_uuid": "2f53677fe913f1a063fd93ac9a8fc425",
+  "component_name": "Simple",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/forms/action-panels/01__simple.vue",
+    "preview": "templates/application-ui/forms/action-panels/01__simple.preview.html"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Logo Clouds",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/logo-clouds",
+  "component_id": "0b335b8d706c7e91f42206937f0f240c",
+  "component_uuid": "0b335b8d706c7e91f42206937f0f240c",
+  "component_name": "Simple left-aligned",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/logo-clouds/03__simple-left-aligned.vue",
+    "preview": "templates/marketing/page-sections/logo-clouds/03__simple-left-aligned.preview.html"
+  }
+}

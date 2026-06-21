@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Layout",
+  "subcategory_name": "Cards",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/layout/cards",
+  "component_id": "87a1113483b8baaaedfc5b8db1533e18",
+  "component_uuid": "87a1113483b8baaaedfc5b8db1533e18",
+  "component_name": "Card with gray body",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/layout/cards/07__card-with-gray-body.vue",
+    "preview": "templates/application-ui/layout/cards/07__card-with-gray-body.preview.html"
+  }
+}

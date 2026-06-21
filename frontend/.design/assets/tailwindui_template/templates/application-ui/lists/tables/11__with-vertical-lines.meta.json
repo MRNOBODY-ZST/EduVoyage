@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Lists",
+  "subcategory_name": "Tables",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/lists/tables",
+  "component_id": "7a122c22da40836b00ab778182dd92ef",
+  "component_uuid": "7a122c22da40836b00ab778182dd92ef",
+  "component_name": "With vertical lines",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/lists/tables/11__with-vertical-lines.vue",
+    "preview": "templates/application-ui/lists/tables/11__with-vertical-lines.preview.html"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Headings",
+  "subcategory_name": "Card Headings",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/headings/card-headings",
+  "component_id": "566f127b7b70db160352896d06794a7f",
+  "component_uuid": "566f127b7b70db160352896d06794a7f",
+  "component_name": "With avatar, meta, and dropdown",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/headings/card-headings/06__with-avatar-meta-and-dropdown.vue",
+    "preview": "templates/application-ui/headings/card-headings/06__with-avatar-meta-and-dropdown.preview.html"
+  }
+}

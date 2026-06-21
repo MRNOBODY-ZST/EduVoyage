@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Layout",
+  "subcategory_name": "Containers",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/layout/containers",
+  "component_id": "7359808e2970a406ca075670f344028b",
+  "component_uuid": "7359808e2970a406ca075670f344028b",
+  "component_name": "Full-width on mobile, constrained to breakpoint with padded content above mobile",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/layout/containers/03__full-width-on-mobile-constrained-to-breakpoint-with-padded-content-above-mobile.vue",
+    "preview": "templates/application-ui/layout/containers/03__full-width-on-mobile-constrained-to-breakpoint-with-padded-content-above-mobile.preview.html"
+  }
+}

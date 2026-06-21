@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Forms",
+  "subcategory_name": "Input Groups",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/forms/input-groups",
+  "component_id": "04a268fee12196d74c94e82a43106f8d",
+  "component_uuid": "04a268fee12196d74c94e82a43106f8d",
+  "component_name": "Input with label",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/forms/input-groups/01__input-with-label.vue",
+    "preview": "templates/application-ui/forms/input-groups/01__input-with-label.preview.html"
+  }
+}

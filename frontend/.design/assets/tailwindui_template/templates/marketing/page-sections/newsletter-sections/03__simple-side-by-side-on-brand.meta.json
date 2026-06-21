@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Newsletter Sections",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/newsletter-sections",
+  "component_id": "0199bc4ef95ddc2e9442384f5d91f6a6",
+  "component_uuid": "0199bc4ef95ddc2e9442384f5d91f6a6",
+  "component_name": "Simple side-by-side on brand",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/newsletter-sections/03__simple-side-by-side-on-brand.vue",
+    "preview": "templates/marketing/page-sections/newsletter-sections/03__simple-side-by-side-on-brand.preview.html"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Data Display",
+  "subcategory_name": "Description Lists",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/data-display/description-lists",
+  "component_id": "abf967b89e0df5cf9648be5a30d7660e",
+  "component_uuid": "abf967b89e0df5cf9648be5a30d7660e",
+  "component_name": "Narrow with hidden labels",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/data-display/description-lists/06__narrow-with-hidden-labels.vue",
+    "preview": "templates/application-ui/data-display/description-lists/06__narrow-with-hidden-labels.preview.html"
+  }
+}

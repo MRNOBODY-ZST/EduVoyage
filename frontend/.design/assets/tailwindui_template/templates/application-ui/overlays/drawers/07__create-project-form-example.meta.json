@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Overlays",
+  "subcategory_name": "Drawers",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/overlays/drawers",
+  "component_id": "2036cb51318151226ce814d3e3efea91",
+  "component_uuid": "2036cb51318151226ce814d3e3efea91",
+  "component_name": "Create project form example",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/overlays/drawers/07__create-project-form-example.vue",
+    "preview": "templates/application-ui/overlays/drawers/07__create-project-form-example.preview.html"
+  }
+}

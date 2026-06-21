@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Layout",
+  "subcategory_name": "Cards",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/layout/cards",
+  "component_id": "59ac96978f0472ddd96179a713dc76bc",
+  "component_uuid": "59ac96978f0472ddd96179a713dc76bc",
+  "component_name": "Basic card",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/layout/cards/01__basic-card.vue",
+    "preview": "templates/application-ui/layout/cards/01__basic-card.preview.html"
+  }
+}

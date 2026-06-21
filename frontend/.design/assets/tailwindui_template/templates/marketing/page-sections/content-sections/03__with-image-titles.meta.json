@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Content Sections",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/content-sections",
+  "component_id": "e112c6098be3cddb51fdefe73581193d",
+  "component_uuid": "e112c6098be3cddb51fdefe73581193d",
+  "component_name": "With image titles",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/content-sections/03__with-image-titles.vue",
+    "preview": "templates/marketing/page-sections/content-sections/03__with-image-titles.preview.html"
+  }
+}

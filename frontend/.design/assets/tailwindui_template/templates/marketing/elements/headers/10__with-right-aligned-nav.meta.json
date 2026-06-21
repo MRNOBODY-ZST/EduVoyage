@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Elements",
+  "subcategory_name": "Headers",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/elements/headers",
+  "component_id": "732328363308a2daa1cb32f0247d481f",
+  "component_uuid": "732328363308a2daa1cb32f0247d481f",
+  "component_name": "With right-aligned nav",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/elements/headers/10__with-right-aligned-nav.vue",
+    "preview": "templates/marketing/elements/headers/10__with-right-aligned-nav.preview.html"
+  }
+}

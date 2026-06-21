@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Elements",
+  "subcategory_name": "Buttons",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/elements/buttons",
+  "component_id": "6702d62917fd70644340f4008b126943",
+  "component_uuid": "6702d62917fd70644340f4008b126943",
+  "component_name": "Circular buttons",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/elements/buttons/08__circular-buttons.vue",
+    "preview": "templates/application-ui/elements/buttons/08__circular-buttons.preview.html"
+  }
+}

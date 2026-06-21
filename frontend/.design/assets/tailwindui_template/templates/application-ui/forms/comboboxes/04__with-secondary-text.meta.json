@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Forms",
+  "subcategory_name": "Comboboxes",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/forms/comboboxes",
+  "component_id": "0834ed9ce704a78cc0045ef92f4af723",
+  "component_uuid": "0834ed9ce704a78cc0045ef92f4af723",
+  "component_name": "With secondary text",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/forms/comboboxes/04__with-secondary-text.vue",
+    "preview": "templates/application-ui/forms/comboboxes/04__with-secondary-text.preview.html"
+  }
+}

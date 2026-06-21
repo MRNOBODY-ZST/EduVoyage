@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Layout",
+  "subcategory_name": "Containers",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/layout/containers",
+  "component_id": "fa14d2deae17e4c14964ef86ea0a1603",
+  "component_uuid": "fa14d2deae17e4c14964ef86ea0a1603",
+  "component_name": "Full-width on mobile, constrained with padded content above",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/layout/containers/01__full-width-on-mobile-constrained-with-padded-content-above.vue",
+    "preview": "templates/application-ui/layout/containers/01__full-width-on-mobile-constrained-with-padded-content-above.preview.html"
+  }
+}

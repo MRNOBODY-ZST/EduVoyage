@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Data Display",
+  "subcategory_name": "Calendars",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/data-display/calendars",
+  "component_id": "c29139529079ea762f118812bbeaeb9e",
+  "component_uuid": "c29139529079ea762f118812bbeaeb9e",
+  "component_name": "Month view",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/data-display/calendars/02__month-view.vue",
+    "preview": "templates/application-ui/data-display/calendars/02__month-view.preview.html"
+  }
+}

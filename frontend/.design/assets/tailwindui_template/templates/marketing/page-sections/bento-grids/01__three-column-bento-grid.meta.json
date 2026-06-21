@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Bento Grids",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/bento-grids",
+  "component_id": "dc65cfa183921e10d45c401610332cca",
+  "component_uuid": "dc65cfa183921e10d45c401610332cca",
+  "component_name": "Three column bento grid",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/bento-grids/01__three-column-bento-grid.vue",
+    "preview": "templates/marketing/page-sections/bento-grids/01__three-column-bento-grid.preview.html"
+  }
+}

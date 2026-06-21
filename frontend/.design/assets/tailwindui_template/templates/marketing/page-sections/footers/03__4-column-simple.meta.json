@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Footers",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/footers",
+  "component_id": "c5a3339d6971da22d5ffe67aa4fd168b",
+  "component_uuid": "c5a3339d6971da22d5ffe67aa4fd168b",
+  "component_name": "4-column simple",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/footers/03__4-column-simple.vue",
+    "preview": "templates/marketing/page-sections/footers/03__4-column-simple.preview.html"
+  }
+}

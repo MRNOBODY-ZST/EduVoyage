@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Layout",
+  "subcategory_name": "Media Objects",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/layout/media-objects",
+  "component_id": "eda7e599a3c8507780c878cdeb9d409a",
+  "component_uuid": "eda7e599a3c8507780c878cdeb9d409a",
+  "component_name": "Basic",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/layout/media-objects/01__basic.vue",
+    "preview": "templates/application-ui/layout/media-objects/01__basic.preview.html"
+  }
+}

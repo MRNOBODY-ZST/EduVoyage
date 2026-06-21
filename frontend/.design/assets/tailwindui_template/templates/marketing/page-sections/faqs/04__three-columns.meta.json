@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "FAQs",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/faq-sections",
+  "component_id": "f273cb93c5b5acf64f2c1711417aadfa",
+  "component_uuid": "f273cb93c5b5acf64f2c1711417aadfa",
+  "component_name": "Three columns",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/faqs/04__three-columns.vue",
+    "preview": "templates/marketing/page-sections/faqs/04__three-columns.preview.html"
+  }
+}

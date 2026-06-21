@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Footers",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/footers",
+  "component_id": "8fd8a490ec2fae888154eb83685bbe23",
+  "component_uuid": "8fd8a490ec2fae888154eb83685bbe23",
+  "component_name": "Simple centered",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/footers/06__simple-centered.vue",
+    "preview": "templates/marketing/page-sections/footers/06__simple-centered.preview.html"
+  }
+}

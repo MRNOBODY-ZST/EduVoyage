@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Elements",
+  "subcategory_name": "Buttons",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/elements/buttons",
+  "component_id": "612a41e698bb076353c4922676292d13",
+  "component_uuid": "612a41e698bb076353c4922676292d13",
+  "component_name": "Buttons with trailing icon",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/elements/buttons/05__buttons-with-trailing-icon.vue",
+    "preview": "templates/application-ui/elements/buttons/05__buttons-with-trailing-icon.preview.html"
+  }
+}

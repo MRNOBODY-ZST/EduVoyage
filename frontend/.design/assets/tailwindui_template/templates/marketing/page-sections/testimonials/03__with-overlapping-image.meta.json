@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Testimonials",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/testimonials",
+  "component_id": "c5694e9aacc7edd691e3234d067adc62",
+  "component_uuid": "c5694e9aacc7edd691e3234d067adc62",
+  "component_name": "With overlapping image",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/testimonials/03__with-overlapping-image.vue",
+    "preview": "templates/marketing/page-sections/testimonials/03__with-overlapping-image.preview.html"
+  }
+}

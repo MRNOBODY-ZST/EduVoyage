@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Forms",
+  "subcategory_name": "Toggles",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/forms/toggles",
+  "component_id": "6ed378bcc4d9eb34a1789e77f0f44d16",
+  "component_uuid": "6ed378bcc4d9eb34a1789e77f0f44d16",
+  "component_name": "With left label and description",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/forms/toggles/04__with-left-label-and-description.vue",
+    "preview": "templates/application-ui/forms/toggles/04__with-left-label-and-description.preview.html"
+  }
+}

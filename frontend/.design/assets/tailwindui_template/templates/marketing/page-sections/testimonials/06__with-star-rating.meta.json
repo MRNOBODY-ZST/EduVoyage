@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Testimonials",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/testimonials",
+  "component_id": "fbb80c840a9674b8b49d86450938c32f",
+  "component_uuid": "fbb80c840a9674b8b49d86450938c32f",
+  "component_name": "With star rating",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/testimonials/06__with-star-rating.vue",
+    "preview": "templates/marketing/page-sections/testimonials/06__with-star-rating.preview.html"
+  }
+}

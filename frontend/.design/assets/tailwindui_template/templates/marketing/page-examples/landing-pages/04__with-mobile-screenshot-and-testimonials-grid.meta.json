@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Examples",
+  "subcategory_name": "Landing Pages",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/page-examples/landing-pages",
+  "component_id": "77f60f231bd54e888b9a10e0f9ecab56",
+  "component_uuid": "77f60f231bd54e888b9a10e0f9ecab56",
+  "component_name": "With mobile screenshot and testimonials grid",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-examples/landing-pages/04__with-mobile-screenshot-and-testimonials-grid.vue",
+    "preview": "templates/marketing/page-examples/landing-pages/04__with-mobile-screenshot-and-testimonials-grid.preview.html"
+  }
+}

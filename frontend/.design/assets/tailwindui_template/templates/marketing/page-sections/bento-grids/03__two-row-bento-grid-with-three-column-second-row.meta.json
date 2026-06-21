@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Bento Grids",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/bento-grids",
+  "component_id": "bd485a396268b63d0ef7d0cf7988a594",
+  "component_uuid": "bd485a396268b63d0ef7d0cf7988a594",
+  "component_name": "Two row bento grid with three column second row",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/bento-grids/03__two-row-bento-grid-with-three-column-second-row.vue",
+    "preview": "templates/marketing/page-sections/bento-grids/03__two-row-bento-grid-with-three-column-second-row.preview.html"
+  }
+}

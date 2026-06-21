@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Examples",
+  "subcategory_name": "About Pages",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/page-examples/about-pages",
+  "component_id": "239fe694f775611a8953ef4b02d6a4da",
+  "component_uuid": "239fe694f775611a8953ef4b02d6a4da",
+  "component_name": "With image tiles",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-examples/about-pages/01__with-image-tiles.vue",
+    "preview": "templates/marketing/page-examples/about-pages/01__with-image-tiles.preview.html"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Navigation",
+  "subcategory_name": "Command Palettes",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/navigation/command-palettes",
+  "component_id": "3c540cf65bd29ea737f1d08de55c59f1",
+  "component_uuid": "3c540cf65bd29ea737f1d08de55c59f1",
+  "component_name": "Simple with padding",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/navigation/command-palettes/02__simple-with-padding.vue",
+    "preview": "templates/application-ui/navigation/command-palettes/02__simple-with-padding.preview.html"
+  }
+}

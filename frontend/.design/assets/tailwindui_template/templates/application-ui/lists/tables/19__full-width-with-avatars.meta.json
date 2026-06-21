@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Lists",
+  "subcategory_name": "Tables",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/lists/tables",
+  "component_id": "e101ace281ff682c4b9f7ecee3a6f5d3",
+  "component_uuid": "e101ace281ff682c4b9f7ecee3a6f5d3",
+  "component_name": "Full width with avatars",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/lists/tables/19__full-width-with-avatars.vue",
+    "preview": "templates/application-ui/lists/tables/19__full-width-with-avatars.preview.html"
+  }
+}

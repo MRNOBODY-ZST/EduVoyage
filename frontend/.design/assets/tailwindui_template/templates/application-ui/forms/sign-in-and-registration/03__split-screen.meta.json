@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Forms",
+  "subcategory_name": "Sign-in and Registration",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/forms/sign-in-forms",
+  "component_id": "fef1d7e9849359af76d4d6ead796938b",
+  "component_uuid": "fef1d7e9849359af76d4d6ead796938b",
+  "component_name": "Split screen",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/forms/sign-in-and-registration/03__split-screen.vue",
+    "preview": "templates/application-ui/forms/sign-in-and-registration/03__split-screen.preview.html"
+  }
+}

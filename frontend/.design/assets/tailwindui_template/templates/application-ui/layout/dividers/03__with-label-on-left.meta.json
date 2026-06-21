@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Layout",
+  "subcategory_name": "Dividers",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/layout/dividers",
+  "component_id": "8fbd91ccd8fa7759ad4de9c874cfb23e",
+  "component_uuid": "8fbd91ccd8fa7759ad4de9c874cfb23e",
+  "component_name": "With label on left",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/layout/dividers/03__with-label-on-left.vue",
+    "preview": "templates/application-ui/layout/dividers/03__with-label-on-left.preview.html"
+  }
+}

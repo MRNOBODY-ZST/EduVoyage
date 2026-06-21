@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Navigation",
+  "subcategory_name": "Vertical Navigation",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/navigation/vertical-navigation",
+  "component_id": "d1e3b922b56cc8aa9454dc33217dda54",
+  "component_uuid": "d1e3b922b56cc8aa9454dc33217dda54",
+  "component_name": "Simple",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/navigation/vertical-navigation/01__simple.vue",
+    "preview": "templates/application-ui/navigation/vertical-navigation/01__simple.preview.html"
+  }
+}

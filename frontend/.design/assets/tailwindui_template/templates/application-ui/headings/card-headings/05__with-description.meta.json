@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Headings",
+  "subcategory_name": "Card Headings",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/headings/card-headings",
+  "component_id": "db063e3ead0c9a42d8b931c920062e56",
+  "component_uuid": "db063e3ead0c9a42d8b931c920062e56",
+  "component_name": "With description",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/headings/card-headings/05__with-description.vue",
+    "preview": "templates/application-ui/headings/card-headings/05__with-description.preview.html"
+  }
+}

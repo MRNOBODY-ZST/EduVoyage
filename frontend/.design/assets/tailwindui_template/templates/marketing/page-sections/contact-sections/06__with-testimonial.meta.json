@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Contact Sections",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/contact-sections",
+  "component_id": "d54ccff38efc93e5d282eac05498ca5d",
+  "component_uuid": "d54ccff38efc93e5d282eac05498ca5d",
+  "component_name": "With testimonial",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/contact-sections/06__with-testimonial.vue",
+    "preview": "templates/marketing/page-sections/contact-sections/06__with-testimonial.preview.html"
+  }
+}

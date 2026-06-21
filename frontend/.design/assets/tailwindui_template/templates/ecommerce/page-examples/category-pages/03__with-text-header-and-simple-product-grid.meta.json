@@ -1,0 +1,24 @@
+{
+  "product": "ecommerce",
+  "group_name": "Page Examples",
+  "subcategory_name": "Category Pages",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/ecommerce/page-examples/category-pages",
+  "component_id": "d26d67381a533dac62c1282d92c01f2e",
+  "component_uuid": "d26d67381a533dac62c1282d92c01f2e",
+  "component_name": "With text header and simple product grid",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": null,
+    "supportsDarkMode": false
+  },
+  "target_compliant": false,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/ecommerce/page-examples/category-pages/03__with-text-header-and-simple-product-grid.vue",
+    "preview": "templates/ecommerce/page-examples/category-pages/03__with-text-header-and-simple-product-grid.preview.html"
+  }
+}

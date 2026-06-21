@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Lists",
+  "subcategory_name": "Tables",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/lists/tables",
+  "component_id": "4738eac883e67bf84a9f7db2446e838a",
+  "component_uuid": "4738eac883e67bf84a9f7db2446e838a",
+  "component_name": "Simple in card",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/lists/tables/02__simple-in-card.vue",
+    "preview": "templates/application-ui/lists/tables/02__simple-in-card.preview.html"
+  }
+}

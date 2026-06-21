@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Forms",
+  "subcategory_name": "Textareas",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/forms/textareas",
+  "component_id": "532d35bcb49664c16a4f877d71658b12",
+  "component_uuid": "532d35bcb49664c16a4f877d71658b12",
+  "component_name": "With preview button",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/forms/textareas/05__with-preview-button.vue",
+    "preview": "templates/application-ui/forms/textareas/05__with-preview-button.preview.html"
+  }
+}

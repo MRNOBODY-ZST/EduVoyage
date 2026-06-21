@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Lists",
+  "subcategory_name": "Stacked Lists",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/lists/stacked-lists",
+  "component_id": "3e86787d0e3cb82b44746a24f61768e7",
+  "component_uuid": "3e86787d0e3cb82b44746a24f61768e7",
+  "component_name": "Narrow with small avatars",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/lists/stacked-lists/14__narrow-with-small-avatars.vue",
+    "preview": "templates/application-ui/lists/stacked-lists/14__narrow-with-small-avatars.preview.html"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Forms",
+  "subcategory_name": "Comboboxes",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/forms/comboboxes",
+  "component_id": "02fc8b97c1a1d2d7c0edb5c8c081b013",
+  "component_uuid": "02fc8b97c1a1d2d7c0edb5c8c081b013",
+  "component_name": "With status indicator",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/forms/comboboxes/02__with-status-indicator.vue",
+    "preview": "templates/application-ui/forms/comboboxes/02__with-status-indicator.preview.html"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Elements",
+  "subcategory_name": "Badges",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/elements/badges",
+  "component_id": "2f3ef5016b7f5b976cc8045b564dd774",
+  "component_uuid": "2f3ef5016b7f5b976cc8045b564dd774",
+  "component_name": "Small flat",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/elements/badges/12__small-flat.vue",
+    "preview": "templates/application-ui/elements/badges/12__small-flat.preview.html"
+  }
+}

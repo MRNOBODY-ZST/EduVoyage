@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Feature Sections",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/feature-sections",
+  "component_id": "a5dc894550bc75bd777e103badca9345",
+  "component_uuid": "a5dc894550bc75bd777e103badca9345",
+  "component_name": "Offset with feature list",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/feature-sections/12__offset-with-feature-list.vue",
+    "preview": "templates/marketing/page-sections/feature-sections/12__offset-with-feature-list.preview.html"
+  }
+}

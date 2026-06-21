@@ -1,0 +1,24 @@
+{
+  "product": "application-ui",
+  "group_name": "Page Examples",
+  "subcategory_name": "Settings Screens",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/application-ui/page-examples/settings-screens",
+  "component_id": "4df3bf06aaf8ab19c5e6bb0b09edacfd",
+  "component_uuid": "4df3bf06aaf8ab19c5e6bb0b09edacfd",
+  "component_name": "Sidebar",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/application-ui/page-examples/settings-screens/01__sidebar.vue",
+    "preview": "templates/application-ui/page-examples/settings-screens/01__sidebar.preview.html"
+  }
+}

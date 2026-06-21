@@ -1,0 +1,24 @@
+{
+  "product": "ecommerce",
+  "group_name": "Components",
+  "subcategory_name": "Reviews",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/ecommerce/components/reviews",
+  "component_id": "8507b37851ab6df2d36b6ae3f4e7c8cf",
+  "component_uuid": "8507b37851ab6df2d36b6ae3f4e7c8cf",
+  "component_name": "Avatars with separate description",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": null,
+    "supportsDarkMode": false
+  },
+  "target_compliant": false,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/ecommerce/components/reviews/03__avatars-with-separate-description.vue",
+    "preview": "templates/ecommerce/components/reviews/03__avatars-with-separate-description.preview.html"
+  }
+}

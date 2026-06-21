@@ -1,0 +1,24 @@
+{
+  "product": "marketing",
+  "group_name": "Page Sections",
+  "subcategory_name": "Pricing Sections",
+  "subcategory_url": "https://tailwindui.starxg.com/plus/ui-blocks/marketing/sections/pricing",
+  "component_id": "f3dd88b8abfd735d38873b8daa09d07d",
+  "component_uuid": "f3dd88b8abfd735d38873b8daa09d07d",
+  "component_name": "Three tiers",
+  "downloadable": true,
+  "archived": false,
+  "snippet": {
+    "framework": "vue",
+    "language": "html",
+    "version": 4,
+    "mode": "system",
+    "supportsDarkMode": true
+  },
+  "target_compliant": true,
+  "filter_result": "ok",
+  "files": {
+    "vue": "templates/marketing/page-sections/pricing-sections/06__three-tiers.vue",
+    "preview": "templates/marketing/page-sections/pricing-sections/06__three-tiers.preview.html"
+  }
+}
