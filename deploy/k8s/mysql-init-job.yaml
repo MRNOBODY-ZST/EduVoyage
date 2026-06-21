@@ -1,0 +1,44 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: mysql-init
+spec:
+  backoffLimit: 6
+  template:
+    spec:
+      restartPolicy: OnFailure
+      containers:
+        - name: mysql-init
+          image: mysql:9.0
+          env:
+            - name: MYSQL_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: eduvoyage-secret
+                  key: mysql-database
+            - name: MYSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: eduvoyage-secret
+                  key: mysql-user
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: eduvoyage-secret
+                  key: mysql-password
+          command: ["/bin/sh", "-c"]
+          args:
+            - |
+              until mysqladmin ping -h mysql -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" --silent; do
+                sleep 3
+              done
+              mysql -h mysql -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" "$MYSQL_DATABASE" < /init/schema.sql
+              mysql -h mysql -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" "$MYSQL_DATABASE" < /init/data.sql
+          volumeMounts:
+            - name: init-sql
+              mountPath: /init
+              readOnly: true
+      volumes:
+        - name: init-sql
+          configMap:
+            name: eduvoyage-db-init

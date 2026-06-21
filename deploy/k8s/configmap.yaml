@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: eduvoyage-config
+data:
+  SPRING_PROFILES_ACTIVE: prod
+  R2DBC_URL: r2dbc:mysql://mysql:3306/eduvoyage?useServerPrepareStatement=true
+  REDIS_HOST: redis
+  REDIS_PORT: "6379"
+  ELASTICSEARCH_URIS: http://elasticsearch:9200
+  MINIO_ENDPOINT: http://minio:9000
+  MINIO_BUCKET: eduvoyage

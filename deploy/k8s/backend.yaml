@@ -1,0 +1,129 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: eduvoyage-backend
+spec:
+  selector:
+    app: eduvoyage-backend
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eduvoyage-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: eduvoyage-backend
+  template:
+    metadata:
+      labels:
+        app: eduvoyage-backend
+    spec:
+      containers:
+        - name: backend
+          image: ghcr.io/mrnobody-zst/eduvoyage-backend:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+              name: http
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              valueFrom:
+                configMapKeyRef:
+                  name: eduvoyage-config
+                  key: SPRING_PROFILES_ACTIVE
+            - name: R2DBC_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: eduvoyage-config
+                  key: R2DBC_URL
+            - name: R2DBC_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: eduvoyage-secret
+                  key: mysql-user
+            - name: R2DBC_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: eduvoyage-secret
+                  key: mysql-password
+            - name: MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: eduvoyage-secret
+                  key: mongodb-uri
+            - name: REDIS_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: eduvoyage-config
+                  key: REDIS_HOST
+            - name: REDIS_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: eduvoyage-config
+                  key: REDIS_PORT
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: eduvoyage-secret
+                  key: redis-password
+            - name: ELASTICSEARCH_URIS
+              valueFrom:
+                configMapKeyRef:
+                  name: eduvoyage-config
+                  key: ELASTICSEARCH_URIS
+            - name: ELASTICSEARCH_USERNAME
+              value: ""
+            - name: ELASTICSEARCH_PASSWORD
+              value: ""
+            - name: MINIO_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: eduvoyage-config
+                  key: MINIO_ENDPOINT
+            - name: MINIO_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: eduvoyage-secret
+                  key: minio-access-key
+            - name: MINIO_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: eduvoyage-secret
+                  key: minio-secret-key
+            - name: MINIO_BUCKET
+              valueFrom:
+                configMapKeyRef:
+                  name: eduvoyage-config
+                  key: MINIO_BUCKET
+            - name: EDUVOYAGE_JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: eduvoyage-secret
+                  key: jwt-secret
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: http
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            failureThreshold: 6
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: http
+            initialDelaySeconds: 90
+            periodSeconds: 20
+            failureThreshold: 6
+          resources:
+            requests:
+              cpu: 300m
+              memory: 768Mi
+            limits:
+              cpu: "2"
+              memory: 2Gi
