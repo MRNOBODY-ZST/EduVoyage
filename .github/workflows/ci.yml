@@ -6,9 +6,24 @@ on:
   pull_request:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      push_images:
+        description: Push backend and frontend images to GHCR
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: read
+  packages: write
+
+concurrency:
+  group: eduvoyage-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  BACKEND_IMAGE: ghcr.io/mrnobody-zst/eduvoyage-backend
+  FRONTEND_IMAGE: ghcr.io/mrnobody-zst/eduvoyage-frontend
 
 jobs:
   backend:
@@ -59,11 +74,25 @@ jobs:
       - name: Build
         run: bun run build
 
+  manifests:
+    name: Compose and Kubernetes manifests
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate Docker Compose
+        run: docker compose config >/tmp/eduvoyage-compose-config.yml
+
+      - name: Render Kubernetes manifests
+        run: docker run --rm -v "$PWD":/work -w /work bitnami/kubectl:latest kustomize deploy/k8s >/tmp/eduvoyage-kustomize.yaml
+
   images:
     name: Docker image build
     runs-on: ubuntu-latest
     timeout-minutes: 30
-    needs: [backend, frontend]
+    needs: [backend, frontend, manifests]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -71,14 +100,22 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
+      - name: Log in to GHCR
+        if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.push_images == 'true' }}
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Build backend image
         uses: docker/build-push-action@v6
         with:
           context: ./eduvoyage
-          push: false
+          push: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.push_images == 'true' }}
           tags: |
-            ghcr.io/mrnobody-zst/eduvoyage-backend:${{ github.sha }}
-            ghcr.io/mrnobody-zst/eduvoyage-backend:latest
+            ${{ env.BACKEND_IMAGE }}:${{ github.sha }}
+            ${{ env.BACKEND_IMAGE }}:latest
           cache-from: type=gha,scope=backend
           cache-to: type=gha,scope=backend,mode=max
 
@@ -86,9 +123,9 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: ./frontend
-          push: false
+          push: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.push_images == 'true' }}
           tags: |
-            ghcr.io/mrnobody-zst/eduvoyage-frontend:${{ github.sha }}
-            ghcr.io/mrnobody-zst/eduvoyage-frontend:latest
+            ${{ env.FRONTEND_IMAGE }}:${{ github.sha }}
+            ${{ env.FRONTEND_IMAGE }}:latest
           cache-from: type=gha,scope=frontend
           cache-to: type=gha,scope=frontend,mode=max

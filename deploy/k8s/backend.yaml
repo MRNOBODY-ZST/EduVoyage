@@ -57,6 +57,16 @@ spec:
                 secretKeyRef:
                   name: eduvoyage-secret
                   key: mongodb-uri
+            - name: SPRING_MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: eduvoyage-secret
+                  key: mongodb-uri
+            - name: SPRING_DATA_MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: eduvoyage-secret
+                  key: mongodb-uri
             - name: REDIS_HOST
               valueFrom:
                 configMapKeyRef:

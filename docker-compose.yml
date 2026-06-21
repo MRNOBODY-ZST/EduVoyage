@@ -78,6 +78,8 @@ services:
 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:9.3.3
+    profiles:
+      - search
     environment:
       discovery.type: single-node
       xpack.security.enabled: "false"
@@ -106,20 +108,22 @@ services:
         condition: service_healthy
       minio-init:
         condition: service_completed_successfully
-      elasticsearch:
-        condition: service_healthy
     environment:
       SPRING_PROFILES_ACTIVE: dev
       R2DBC_URL: r2dbc:mysql://mysql:3306/eduvoyage?useServerPrepareStatement=true
       R2DBC_USERNAME: eduvoyage
       R2DBC_PASSWORD: eduvoyage
       MONGODB_URI: mongodb://root:secret@mongodb:27017/eduvoyage?authSource=admin
+      SPRING_MONGODB_URI: mongodb://root:secret@mongodb:27017/eduvoyage?authSource=admin
+      SPRING_DATA_MONGODB_URI: mongodb://root:secret@mongodb:27017/eduvoyage?authSource=admin
       REDIS_HOST: redis
       REDIS_PORT: "6379"
       REDIS_PASSWORD: ""
       ELASTICSEARCH_URIS: http://elasticsearch:9200
       ELASTICSEARCH_USERNAME: ""
       ELASTICSEARCH_PASSWORD: ""
+      SPRING_DATA_ELASTICSEARCH_REPOSITORIES_ENABLED: "false"
+      MANAGEMENT_HEALTH_ELASTICSEARCH_ENABLED: "false"
       MINIO_ENDPOINT: http://minio:9000
       MINIO_ACCESS_KEY: minioadmin
       MINIO_SECRET_KEY: minioadmin

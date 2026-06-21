@@ -16,9 +16,12 @@ WORKDIR /app
 RUN apt-get update \
     && apt-get install -y --no-install-recommends ca-certificates curl \
     && rm -rf /var/lib/apt/lists/* \
-    && useradd --create-home --shell /usr/sbin/nologin eduvoyage
+    && useradd --create-home --shell /usr/sbin/nologin eduvoyage \
+    && mkdir -p /app/logs \
+    && chown -R eduvoyage:eduvoyage /app
 
 COPY --from=build /workspace/build/libs/*.jar /app/app.jar
+RUN chown eduvoyage:eduvoyage /app/app.jar
 
 ENV SPRING_PROFILES_ACTIVE=prod \
     JAVA_OPTS="-XX:MaxRAMPercentage=75.0"

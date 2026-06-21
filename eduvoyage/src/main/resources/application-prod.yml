@@ -8,11 +8,14 @@ spring:
       initial-size: 10
       max-size: 50
       max-idle-time: 30m
-  # In prod, DDL is applied by Flyway-over-JDBC before startup (see README);
-  # R2DBC sql.init is disabled to avoid running schema scripts at runtime.
+  # In prod, DDL is applied before startup by the deployment migration/init
+  # process; R2DBC sql.init is disabled to avoid running schema scripts at
+  # runtime.
   sql:
     init:
       mode: never
+  mongodb:
+    uri: ${MONGODB_URI}
   data:
     mongodb:
       uri: ${MONGODB_URI}

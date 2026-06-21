@@ -1,61 +1,139 @@
 # EduVoyage
 
-EduVoyage 是一套面向高校在线教学场景的学习平台，产品形态对标“学习通”，核心组织方式是“课程章节 + 知识图谱 + 学习分析”。项目采用前后端分离但同仓库管理：
+English | [中文](README.zh-CN.md)
 
-- 后端：Spring Boot WebFlux 响应式模块化单体，包名 `cn.edu.shmtu.eduvoyage`
-- 前端：Vue 3 + Vite + TypeScript + Tailwind CSS
-- 数据：MySQL 9、MongoDB 7、Redis 7.2、MinIO、Elasticsearch
+EduVoyage is a university-oriented online learning platform inspired by Chaoxing Learning. It organizes courses around chapters, knowledge points, knowledge graphs, assessments, cloud drive files, discussion, notification, and learning analytics.
 
-## 项目结构
+The repository is a frontend/backend monorepo:
+
+- Backend: Java 25, Spring Boot 4.1, Spring WebFlux, reactive persistence, package `cn.edu.shmtu.eduvoyage`.
+- Frontend: Vue 3, Vite, TypeScript, Tailwind CSS, Pinia, Vue Router.
+- Data and infrastructure: MySQL 9, MongoDB 7, Redis 7.2, MinIO, optional Elasticsearch.
+
+## Current Docker Instance
+
+The Docker stack is running locally in this environment.
+
+| Service | URL / Port | Notes |
+|---|---:|---|
+| Frontend | `http://localhost:5173` | Main web app |
+| Backend API | `http://localhost:8080` | REST/SSE API |
+| Backend health | `http://localhost:8080/actuator/health` | Should return `UP` |
+| Swagger UI | `http://localhost:5173/swagger-ui/index.html` | Proxied through Nginx |
+| OpenAPI JSON | `http://localhost:8080/v3/api-docs` | Raw API schema |
+| MinIO Console | `http://localhost:9001` | `minioadmin` / `minioadmin` |
+| MySQL | `localhost:3306` | `eduvoyage` / `eduvoyage`, database `eduvoyage` |
+| MongoDB | `localhost:27017` | `root` / `secret`, database `eduvoyage` |
+| Redis | `localhost:6379` | No password in local compose |
+
+Default seed accounts:
+
+| Role | Username | Password |
+|---|---|---|
+| Admin | `admin` | `Admin@123` |
+| Teacher | `teacher` | `Teacher@123` |
+| Student | `student` | `Student@123` |
+
+## Project Structure
 
 ```text
 .
-├── docs/                         # 架构与前端设计文档
-├── deploy/k8s/                   # Kubernetes manifests + kustomization
-├── eduvoyage/                    # Spring Boot 后端
-│   ├── src/main/java/...         # identity/course/graph/assessment/drive/interaction/analytics
-│   ├── src/main/resources/db/    # schema.sql + data.sql
+├── .github/workflows/ci.yml          # GitHub Actions CI
+├── deploy/k8s/                       # Kubernetes manifests and Kustomize config
+├── docs/                             # Architecture and frontend design notes
+├── docker-compose.yml                # Local full-stack Docker runtime
+├── eduvoyage/                        # Spring Boot backend
+│   ├── src/main/java/...             # identity/course/graph/assessment/drive/interaction/analytics
+│   ├── src/main/resources/db/        # schema.sql and data.sql
 │   └── Dockerfile
-├── frontend/                     # Vue 前端
+├── frontend/                         # Vue frontend
 │   ├── src/
 │   ├── nginx.conf
 │   └── Dockerfile
-├── docker-compose.yml            # 一键本地完整栈
-└── .github/workflows/ci.yml      # CI：后端测试、前端构建、镜像构建
+└── README.zh-CN.md
 ```
 
-## 默认账号
+## Feature Map
 
-开发种子数据会创建三类账号：
+- Identity and organization: JWT access/refresh tokens, RBAC permissions, users, roles, departments, majors, classes.
+- Course system: courses, chapters, knowledge points, courseware, enrollments, learning progress.
+- Knowledge graph: graph editing APIs, prerequisite cycle detection, topological order, prerequisite chain, learning path.
+- Assessment: question bank, homework papers, attempts, auto grading, manual grading, wrong-book records.
+- Drive: personal/course space, directory tree, deduplication by SHA-256, quota, MinIO storage, share links.
+- Interaction: discussions, replies, likes, announcements, notifications, SSE unread updates.
+- Analytics: student, teacher, and admin dashboards backed by learning logs and aggregate queries.
 
-| 角色 | 用户名 | 密码 |
-|---|---|---|
-| 管理员 | `admin` | `Admin@123` |
-| 教师 | `teacher` | `Teacher@123` |
-| 学生 | `student` | `Student@123` |
+## Run With Docker
 
-## 本地开发
-
-环境要求：
-
-- JDK 25
-- Bun 1.3+
-- Docker / Docker Compose
-
-启动基础设施：
+Recommended command when Docker Buildx is available:
 
 ```bash
-docker compose up -d mysql redis mongodb minio minio-init elasticsearch
+docker compose up -d --build
 ```
 
-启动后端：
+This environment currently lacks the Docker Buildx CLI plugin, so use the compatible fallback below:
+
+```bash
+docker build -t eduvoyage/backend:local ./eduvoyage
+docker build -t eduvoyage/frontend:local ./frontend
+docker compose up -d --no-build
+```
+
+Check status:
+
+```bash
+docker compose ps
+curl -fsS http://localhost:8080/actuator/health
+curl -I http://localhost:5173/
+```
+
+View logs:
+
+```bash
+docker compose logs -f backend
+docker compose logs -f frontend
+```
+
+Stop the stack but keep data:
+
+```bash
+docker compose down
+```
+
+Stop and remove local data volumes:
+
+```bash
+docker compose down -v
+```
+
+### Optional Elasticsearch
+
+The current application code keeps Elasticsearch as infrastructure-ready configuration but does not rely on Elasticsearch repositories for the local development path. The default Docker stack therefore skips Elasticsearch to avoid a very large image pull during first setup.
+
+To include it:
+
+```bash
+docker compose --profile search up -d elasticsearch
+```
+
+If backend features later require Elasticsearch at runtime, enable repository/health settings and add the backend dependency back to the compose profile.
+
+## Local Development Without Full Docker App Images
+
+Start infrastructure:
+
+```bash
+docker compose up -d mysql redis mongodb minio minio-init
+```
+
+Run backend:
 
 ```bash
 cd eduvoyage
 ./gradlew bootRun
 ```
 
-启动前端：
+Run frontend:
 
 ```bash
 cd frontend
@@ -63,105 +141,25 @@ bun install
 bun run dev
 ```
 
-访问：
+Local dev URLs are the same:
 
-- 前端：`http://localhost:5173`
-- 后端：`http://localhost:8080`
-- Swagger UI：`http://localhost:8080/swagger-ui.html`
-- MinIO Console：`http://localhost:9001` (`minioadmin` / `minioadmin`)
+- Frontend: `http://localhost:5173`
+- Backend: `http://localhost:8080`
+- Swagger UI: `http://localhost:8080/swagger-ui/index.html`
 
-## Docker 一键启动
-
-根目录提供完整 `docker-compose.yml`，会启动 MySQL、Redis、MongoDB、MinIO、Elasticsearch、后端和前端。后端在 compose 中使用 `dev` profile，启动时会自动执行 `schema.sql` 和 `data.sql`。
-
-```bash
-docker compose up --build
-```
-
-访问：
-
-- 前端：`http://localhost:5173`
-- 后端 API：`http://localhost:8080`
-- Swagger UI：`http://localhost:5173/swagger-ui.html` 或 `http://localhost:8080/swagger-ui.html`
-
-停止并保留数据：
-
-```bash
-docker compose down
-```
-
-停止并清理本地卷：
-
-```bash
-docker compose down -v
-```
-
-## Kubernetes 部署
-
-K8S 清单位于 `deploy/k8s`，包含：
-
-- Namespace、ResourceQuota、LimitRange
-- MySQL / Redis / MongoDB / MinIO / Elasticsearch StatefulSet
-- MySQL 初始化 Job（通过 Kustomize 将 `schema.sql`、`data.sql` 打入 ConfigMap）
-- 后端、前端 Deployment + Service
-- Ingress
-- HPA
-
-`deploy/k8s/db/` 内随附一份初始化 SQL 副本，用于 Kustomize 生成数据库初始化 ConfigMap；后端 schema 或种子数据变更后请同步更新这里。
-
-部署前请先修改 `deploy/k8s/secret.yaml` 中所有占位密钥，并根据镜像仓库调整：
-
-```bash
-kubectl kustomize deploy/k8s | less
-kubectl apply -k deploy/k8s
-```
-
-如需使用自己的镜像：
-
-```bash
-kubectl -n eduvoyage set image deployment/eduvoyage-backend backend=your-registry/eduvoyage-backend:tag
-kubectl -n eduvoyage set image deployment/eduvoyage-frontend frontend=your-registry/eduvoyage-frontend:tag
-```
-
-默认 Ingress host 为 `eduvoyage.local`。本地测试可添加 hosts：
-
-```text
-127.0.0.1 eduvoyage.local
-```
-
-资源建议：
-
-- 单环境最小：4 CPU / 8 GiB RAM
-- 生产建议：将 MySQL、MongoDB、Redis、MinIO、Elasticsearch 托管化或独立高可用部署
-- HPA 依赖 metrics-server
-
-## API 概览
-
-所有接口统一返回 `Result<T>`，分页返回 `PageResult<T>`。主要路径：
-
-- 认证与用户：`/api/auth/**`、`/api/users/**`
-- 组织架构：`/api/org/**`
-- 课程与章节：`/api/courses/**`、`/api/chapters/**`
-- 知识点与课件：`/api/nodes/**`、`/api/coursewares/**`
-- 知识图谱：`/api/courses/{courseId}/graph/**`
-- 作业测评：`/api/questions/**`、`/api/homeworks/**`、`/api/submissions/**`
-- 网盘：`/api/drive/**`
-- 讨论与通知：`/api/discussions/**`、`/api/notifications/**`、`/api/sse/notifications`
-- 学习分析：`/api/analytics/**`
-- 运维：`/actuator/health`、`/actuator/prometheus`
-
-Swagger 分组在 `application.yml` 中配置，启动后访问 `/swagger-ui.html`。
-
-## 验证命令
-
-后端：
+## Backend Commands
 
 ```bash
 cd eduvoyage
-./gradlew compileJava compileTestJava test
+./gradlew compileJava
+./gradlew compileTestJava
+./gradlew test
+./gradlew bootRun
 ```
 
-前端：
+Integration tests use Testcontainers for MySQL/MongoDB/Redis/MinIO where needed. They are configured to skip automatically when Docker is unavailable.
+
+## Frontend Commands
 
 ```bash
 cd frontend
@@ -169,32 +167,184 @@ bun install
 bun run build
 ```
 
-镜像：
+The production frontend image builds the Vite app with Bun and serves it through Nginx. Nginx proxies `/api`, `/api/sse`, `/v3/api-docs`, `/swagger-ui`, `/swagger-ui.html`, and `/actuator` to the backend service.
+
+## API Usage
+
+Login:
+
+```bash
+curl -X POST http://localhost:8080/api/auth/login \
+  -H 'Content-Type: application/json' \
+  -d '{"username":"admin","password":"Admin@123"}'
+```
+
+All API responses use the shared envelope:
+
+```json
+{
+  "code": 0,
+  "message": "success",
+  "data": {},
+  "timestamp": "..."
+}
+```
+
+Important API groups:
+
+- Auth and users: `/api/auth/**`, `/api/users/**`
+- Organization: `/api/org/**`
+- Courses and chapters: `/api/courses/**`, `/api/chapters/**`
+- Knowledge nodes and courseware: `/api/nodes/**`, `/api/coursewares/**`
+- Knowledge graph: `/api/courses/{courseId}/graph/**`
+- Assessment: `/api/questions/**`, `/api/homeworks/**`, `/api/submissions/**`
+- Drive: `/api/drive/**`
+- Discussion and notifications: `/api/discussions/**`, `/api/notifications/**`, `/api/sse/notifications`
+- Analytics: `/api/analytics/**`
+- Operations: `/actuator/health`, `/actuator/prometheus`
+
+## Configuration
+
+Local Docker Compose uses safe local defaults. Do not reuse these values in production.
+
+Key environment variables:
+
+| Variable | Purpose |
+|---|---|
+| `SPRING_PROFILES_ACTIVE` | `dev` for local compose, `prod` for deployment |
+| `EDUVOYAGE_JWT_SECRET` | JWT signing secret, use 32+ random bytes |
+| `R2DBC_URL`, `R2DBC_USERNAME`, `R2DBC_PASSWORD` | MySQL R2DBC connection |
+| `MONGODB_URI`, `SPRING_MONGODB_URI`, `SPRING_DATA_MONGODB_URI` | MongoDB connection |
+| `REDIS_HOST`, `REDIS_PORT`, `REDIS_PASSWORD` | Redis connection |
+| `MINIO_ENDPOINT`, `MINIO_ACCESS_KEY`, `MINIO_SECRET_KEY`, `MINIO_BUCKET` | MinIO object storage |
+| `ELASTICSEARCH_URIS` | Optional Elasticsearch endpoint |
+
+## Kubernetes Deployment
+
+Kubernetes assets live in `deploy/k8s`.
+
+Included resources:
+
+- Namespace, ResourceQuota, LimitRange.
+- MySQL, Redis, MongoDB, MinIO, Elasticsearch StatefulSets.
+- MySQL initialization Job.
+- Backend and frontend Deployments/Services.
+- Ingress.
+- HPA.
+
+Render locally:
+
+```bash
+docker run --rm -v "$PWD":/work -w /work bitnami/kubectl:latest kustomize deploy/k8s
+```
+
+Apply to a cluster:
+
+```bash
+kubectl apply -k deploy/k8s
+```
+
+Before applying to a non-local cluster:
+
+- Replace every value in `deploy/k8s/secret.yaml`.
+- Update image names if you do not use the default GHCR repository.
+- Sync `deploy/k8s/db/schema.sql` and `deploy/k8s/db/data.sql` whenever backend DB scripts change.
+- Make sure metrics-server is installed if HPA is expected to scale workloads.
+
+Default ingress host:
+
+```text
+eduvoyage.local
+```
+
+For local ingress testing, add:
+
+```text
+127.0.0.1 eduvoyage.local
+```
+
+## GitHub Actions
+
+Workflow: `.github/workflows/ci.yml`
+
+Triggers:
+
+- Push to `main`.
+- Pull request targeting `main`.
+- Manual `workflow_dispatch`.
+
+Jobs:
+
+| Job | What It Does |
+|---|---|
+| `backend` | Sets up Java 25, runs `compileJava`, `compileTestJava`, and `test`. |
+| `frontend` | Sets up Bun 1.3.13, runs `bun install --frozen-lockfile`, then `bun run build`. |
+| `manifests` | Runs `docker compose config` and renders K8S manifests with Kustomize. |
+| `images` | Builds backend and frontend Docker images with Docker Buildx. |
+
+Automatic image validation happens on every push and pull request, but images are not pushed by default.
+
+To publish images to GHCR:
+
+1. Open the repository on GitHub.
+2. Go to **Actions**.
+3. Select the **CI** workflow.
+4. Click **Run workflow**.
+5. Enable `push_images`.
+6. Run the workflow.
+
+The workflow pushes:
+
+- `ghcr.io/mrnobody-zst/eduvoyage-backend:${GITHUB_SHA}`
+- `ghcr.io/mrnobody-zst/eduvoyage-backend:latest`
+- `ghcr.io/mrnobody-zst/eduvoyage-frontend:${GITHUB_SHA}`
+- `ghcr.io/mrnobody-zst/eduvoyage-frontend:latest`
+
+## Handoff Notes
+
+- Keep backend layers separated: controller -> service -> repository.
+- Keep DTOs separate from entities.
+- Preserve reactive contracts: use `Mono`/`Flux`; avoid blocking calls on event-loop threads.
+- Keep pure business logic in I/O-free classes and cover it with focused tests.
+- Use `BizException` and `BizErrorCode` for domain errors.
+- For Snowflake-style IDs with R2DBC entities, keep using `entityTemplate.insert(...).using(...)`.
+- When changing `schema.sql` or `data.sql`, also update `deploy/k8s/db/`.
+- When adding frontend API calls, use the shared Axios client and service wrapper style already in `frontend/src/services`.
+- When adding pages, wire routes through the role/permission-aware router and AppShell navigation.
+- Prefer `/swagger-ui/index.html` over `/swagger-ui.html` in local Docker, because the direct index path avoids a SpringDoc WebFlux redirect edge case.
+
+## Troubleshooting
+
+Buildx missing locally:
 
 ```bash
 docker build -t eduvoyage/backend:local ./eduvoyage
 docker build -t eduvoyage/frontend:local ./frontend
+docker compose up -d --no-build
 ```
 
-## CI
+Port already in use:
 
-`.github/workflows/ci.yml` 在 push / pull request 时执行：
+```bash
+ss -ltnp | rg ':(3306|6379|27017|9000|9001|8080|5173)\b'
+```
 
-1. 后端 `compileJava compileTestJava test`
-2. 前端 `bun install --frozen-lockfile` + `bun run build`
-3. 后端/前端 Docker image build
+Reset all local Docker data for this project:
 
-默认 CI 只构建镜像验证，不推送到 registry。生产镜像推送可在此 workflow 基础上增加 registry login 与 `push: true`。
+```bash
+docker compose down -v
+```
 
-## 配置与安全
+Check backend logs:
 
-后端生产 profile 使用环境变量注入敏感配置：
+```bash
+docker compose logs -f backend
+```
 
-- `EDUVOYAGE_JWT_SECRET`
-- `R2DBC_URL` / `R2DBC_USERNAME` / `R2DBC_PASSWORD`
-- `MONGODB_URI`
-- `REDIS_HOST` / `REDIS_PORT` / `REDIS_PASSWORD`
-- `MINIO_ENDPOINT` / `MINIO_ACCESS_KEY` / `MINIO_SECRET_KEY` / `MINIO_BUCKET`
-- `ELASTICSEARCH_URIS` / `ELASTICSEARCH_USERNAME` / `ELASTICSEARCH_PASSWORD`
+Check seeded login:
 
-不要在生产环境复用 compose 或 K8S 示例中的默认密码。
+```bash
+curl -X POST http://localhost:8080/api/auth/login \
+  -H 'Content-Type: application/json' \
+  -d '{"username":"admin","password":"Admin@123"}'
+```
