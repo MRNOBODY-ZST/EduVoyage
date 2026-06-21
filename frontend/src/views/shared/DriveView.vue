@@ -22,17 +22,26 @@ import {
   fetchDriveBreadcrumb,
   fetchDriveNodes,
   fetchDriveQuota,
+  fetchDriveTree,
   fetchMyShares,
   getDrivePreviewUrl,
+  moveDriveNode,
   renameDriveNode,
   uploadDriveFile,
 } from '@/lib/services'
-import type { BreadcrumbItem, DriveNodeResponse, QuotaResponse, ShareResponse } from '@/types/api'
+import type { BreadcrumbItem, DriveNodeResponse, DriveTreeNode, QuotaResponse, ShareResponse } from '@/types/api'
+
+interface DirectoryOption {
+  id: number
+  name: string
+  level: number
+}
 
 const loading = ref(true)
 const busy = ref(false)
 const error = ref('')
 const nodes = ref<DriveNodeResponse[]>([])
+const tree = ref<DriveTreeNode[]>([])
 const breadcrumb = ref<BreadcrumbItem[]>([])
 const quota = ref<QuotaResponse | null>(null)
 const shares = ref<ShareResponse[]>([])
@@ -42,8 +51,11 @@ const courseId = ref<number | null>(null)
 const directoryName = ref('')
 const selectedFile = ref<File | null>(null)
 const shareNode = ref<DriveNodeResponse | null>(null)
+const shareResult = ref<ShareResponse | null>(null)
 const shareCode = ref('')
 const shareExpireAt = ref('')
+const moveNode = ref<DriveNodeResponse | null>(null)
+const targetParentId = ref(0)
 
 const quotaPercent = computed(() => {
   if (!quota.value?.totalBytes) {
@@ -58,12 +70,38 @@ const params = computed(() => ({
   courseId: spaceType.value === 2 ? courseId.value || undefined : undefined,
 }))
 
+const treeParams = computed(() => ({
+  spaceType: spaceType.value,
+  courseId: spaceType.value === 2 ? courseId.value || undefined : undefined,
+}))
+
+const directoryOptions = computed(() => flattenDirectories(tree.value))
+
+function flattenDirectories(items: DriveTreeNode[], level = 0): DirectoryOption[] {
+  return items.flatMap((item) => {
+    if (!item.node.directory) {
+      return []
+    }
+    return [{ id: item.node.id, name: item.node.name, level }, ...flattenDirectories(item.children || [], level + 1)]
+  })
+}
+
+function shareUrl(token: string) {
+  return `${window.location.origin}/share/${token}`
+}
+
 async function load() {
   loading.value = true
   error.value = ''
   try {
-    const [list, quotaInfo, myShares] = await Promise.all([fetchDriveNodes(params.value), fetchDriveQuota(), fetchMyShares().catch(() => [])])
+    const [list, treeList, quotaInfo, myShares] = await Promise.all([
+      fetchDriveNodes(params.value),
+      fetchDriveTree(treeParams.value).catch(() => []),
+      fetchDriveQuota(),
+      fetchMyShares().catch(() => []),
+    ])
     nodes.value = list
+    tree.value = treeList
     quota.value = quotaInfo
     shares.value = myShares
     breadcrumb.value = currentParent.value ? await fetchDriveBreadcrumb(currentParent.value) : []
@@ -85,6 +123,11 @@ async function enterDirectory(node: DriveNodeResponse) {
 
 async function goRoot() {
   currentParent.value = 0
+  await load()
+}
+
+async function goDirectory(id: number) {
+  currentParent.value = id
   await load()
 }
 
@@ -159,6 +202,11 @@ async function remove(node: DriveNodeResponse) {
   await load()
 }
 
+function prepareMove(node: DriveNodeResponse) {
+  moveNode.value = node
+  targetParentId.value = currentParent.value
+}
+
 function onFileChange(event: Event) {
   const input = event.target as HTMLInputElement
   selectedFile.value = input.files?.[0] || null
@@ -170,7 +218,7 @@ async function submitShare() {
   }
   busy.value = true
   try {
-    await createDriveShare({
+    shareResult.value = await createDriveShare({
       nodeId: shareNode.value.id,
       extractCode: shareCode.value || undefined,
       expireAt: shareExpireAt.value || undefined,
@@ -184,6 +232,31 @@ async function submitShare() {
   } finally {
     busy.value = false
   }
+}
+
+async function submitMove() {
+  if (!moveNode.value) {
+    return
+  }
+  if (moveNode.value.id === targetParentId.value) {
+    error.value = '不能移动到自身'
+    return
+  }
+  busy.value = true
+  try {
+    await moveDriveNode(moveNode.value.id, targetParentId.value)
+    moveNode.value = null
+    targetParentId.value = 0
+    await load()
+  } catch (e) {
+    error.value = e instanceof Error ? e.message : '移动失败'
+  } finally {
+    busy.value = false
+  }
+}
+
+async function copyShare(token: string) {
+  await navigator.clipboard?.writeText(shareUrl(token)).catch(() => undefined)
 }
 
 onMounted(load)
@@ -266,6 +339,40 @@ onMounted(load)
 
     <ErrorState v-if="error" :message="error" @retry="load" />
 
+    <section class="rounded-md border border-slate-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-slate-900">
+      <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+        <div>
+          <h2 class="text-base font-semibold text-slate-950 dark:text-white">目录树</h2>
+          <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">快速跳转到任意目录，也可作为移动目标。</p>
+        </div>
+        <button type="button" class="text-sm font-semibold text-[rgb(var(--color-brand))] hover:underline" @click="goRoot">回到根目录</button>
+      </div>
+      <div class="mt-4 flex flex-wrap gap-2">
+        <button
+          type="button"
+          :class="[
+            currentParent === 0 ? 'border-[rgb(var(--color-brand))] bg-[rgb(var(--color-brand-soft))] text-[rgb(var(--color-brand-strong))] dark:text-white' : 'border-slate-200 text-slate-700 dark:border-white/10 dark:text-slate-200',
+            'focus-ring rounded-md border px-3 py-2 text-sm font-medium',
+          ]"
+          @click="goRoot"
+        >
+          根目录
+        </button>
+        <button
+          v-for="item in directoryOptions"
+          :key="item.id"
+          type="button"
+          :class="[
+            currentParent === item.id ? 'border-[rgb(var(--color-brand))] bg-[rgb(var(--color-brand-soft))] text-[rgb(var(--color-brand-strong))] dark:text-white' : 'border-slate-200 text-slate-700 dark:border-white/10 dark:text-slate-200',
+            'focus-ring rounded-md border px-3 py-2 text-sm font-medium',
+          ]"
+          @click="goDirectory(item.id)"
+        >
+          {{ '　'.repeat(item.level) }}{{ item.name }}
+        </button>
+      </div>
+    </section>
+
     <section class="rounded-md border border-slate-200 bg-white shadow-sm dark:border-white/10 dark:bg-slate-900">
       <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 px-5 py-3 text-sm dark:border-white/10">
         <button type="button" class="font-medium text-[rgb(var(--color-brand))] hover:underline" @click="goRoot">根目录</button>
@@ -307,6 +414,9 @@ onMounted(load)
                   <button type="button" class="text-sm font-medium text-slate-600 hover:text-[rgb(var(--color-brand))] dark:text-slate-300" @click="rename(node)">
                     重命名
                   </button>
+                  <button type="button" class="text-sm font-medium text-slate-600 hover:text-[rgb(var(--color-brand))] dark:text-slate-300" @click="prepareMove(node)">
+                    移动
+                  </button>
                   <button
                     type="button"
                     class="inline-flex items-center gap-1 text-sm font-medium text-slate-600 hover:text-[rgb(var(--color-brand))] dark:text-slate-300"
@@ -328,6 +438,30 @@ onMounted(load)
     </section>
 
     <section class="grid gap-6 xl:grid-cols-2">
+      <form
+        v-if="moveNode"
+        class="rounded-md border border-slate-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-slate-900"
+        @submit.prevent="submitMove"
+      >
+        <h2 class="text-base font-semibold text-slate-950 dark:text-white">移动 {{ moveNode.name }}</h2>
+        <label class="mt-4 block">
+          <span class="text-sm font-medium text-slate-700 dark:text-slate-200">目标目录</span>
+          <select
+            v-model.number="targetParentId"
+            class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white"
+          >
+            <option :value="0">根目录</option>
+            <option v-for="item in directoryOptions.filter((option) => option.id !== moveNode?.id)" :key="item.id" :value="item.id">
+              {{ '　'.repeat(item.level) }}{{ item.name }}
+            </option>
+          </select>
+        </label>
+        <div class="mt-4 flex gap-3">
+          <button type="submit" class="btn-primary focus-ring inline-flex h-10 items-center px-4 text-sm" :disabled="busy">确认移动</button>
+          <button type="button" class="text-sm font-semibold text-slate-600 dark:text-slate-300" @click="moveNode = null">取消</button>
+        </div>
+      </form>
+
       <form
         v-if="shareNode"
         class="rounded-md border border-slate-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-slate-900"
@@ -357,6 +491,16 @@ onMounted(load)
           <button type="submit" class="btn-primary focus-ring inline-flex h-10 items-center px-4 text-sm" :disabled="busy">生成分享</button>
           <button type="button" class="text-sm font-semibold text-slate-600 dark:text-slate-300" @click="shareNode = null">取消</button>
         </div>
+        <div v-if="shareResult" class="mt-4 rounded-md bg-slate-50 p-3 text-sm dark:bg-white/5">
+          <p class="font-medium text-slate-900 dark:text-white">分享链接已生成</p>
+          <div class="mt-2 flex flex-wrap items-center gap-2">
+            <a class="text-[rgb(var(--color-brand))] hover:underline" :href="shareUrl(shareResult.token)" target="_blank" rel="noreferrer">
+              {{ shareUrl(shareResult.token) }}
+            </a>
+            <button type="button" class="text-sm font-semibold text-slate-600 hover:underline dark:text-slate-300" @click="copyShare(shareResult.token)">复制</button>
+          </div>
+          <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">提取码 {{ shareResult.extractCode }}</p>
+        </div>
       </form>
 
       <div class="rounded-md border border-slate-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-slate-900">
@@ -368,7 +512,11 @@ onMounted(load)
                 <p class="truncate text-sm font-medium text-slate-950 dark:text-white">节点 {{ share.nodeId }}</p>
                 <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">提取码 {{ share.extractCode }} · 浏览 {{ share.viewCount }} 次</p>
               </div>
-              <span class="text-xs text-slate-400">{{ share.expireAt ? formatDateTime(share.expireAt) : '长期有效' }}</span>
+              <div class="flex shrink-0 items-center gap-3">
+                <a class="text-xs font-semibold text-[rgb(var(--color-brand))] hover:underline" :href="shareUrl(share.token)" target="_blank" rel="noreferrer">访问页</a>
+                <button type="button" class="text-xs font-semibold text-slate-500 hover:underline dark:text-slate-300" @click="copyShare(share.token)">复制</button>
+                <span class="text-xs text-slate-400">{{ share.expireAt ? formatDateTime(share.expireAt) : '长期有效' }}</span>
+              </div>
             </div>
           </li>
         </ul>

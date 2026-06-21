@@ -382,6 +382,14 @@ export interface ShareResponse {
   accessPath: string
 }
 
+export interface ShareViewResponse {
+  share: ShareResponse
+  node: DriveNodeResponse
+  children: DriveNodeResponse[]
+  url?: string
+  urlExpireAt?: string
+}
+
 export interface DiscussionResponse {
   id: string
   courseId: number

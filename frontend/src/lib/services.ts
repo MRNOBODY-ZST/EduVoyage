@@ -24,6 +24,7 @@ import type {
   QuestionResponse,
   RoleResponse,
   ShareResponse,
+  ShareViewResponse,
   SubmissionResult,
   StudentDashboardResponse,
   UnreadCountResponse,
@@ -322,6 +323,10 @@ export function renameDriveNode(id: number, name: string) {
   return putData<DriveNodeResponse>(`/api/drive/nodes/${id}/name`, { name })
 }
 
+export function moveDriveNode(id: number, targetParentId: number) {
+  return putData<DriveNodeResponse>(`/api/drive/nodes/${id}/parent`, { targetParentId })
+}
+
 export function deleteDriveNode(id: number) {
   return deleteData<void>(`/api/drive/nodes/${id}`)
 }
@@ -336,6 +341,10 @@ export function createDriveShare(payload: { nodeId: number; extractCode?: string
 
 export function fetchMyShares() {
   return getData<ShareResponse[]>('/api/drive/shares/my')
+}
+
+export function accessDriveShare(token: string, extractCode?: string) {
+  return postData<ShareViewResponse>(`/api/drive/share/${encodeURIComponent(token)}`, { extractCode: extractCode || undefined })
 }
 
 export function fetchDiscussions(courseId: number, params: { pageNo?: number; pageSize?: number; nodeId?: number } = {}) {

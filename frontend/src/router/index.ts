@@ -18,6 +18,12 @@ const routes = [
     meta: { title: '登录', public: true },
   },
   {
+    path: '/share/:token',
+    name: 'share-access',
+    component: () => import('@/views/shared/ShareAccessView.vue'),
+    meta: { title: '访问分享', public: true },
+  },
+  {
     path: '/',
     component: () => import('@/components/layout/AppShell.vue'),
     children: [
