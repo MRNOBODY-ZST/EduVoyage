@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 
 /**
- * Question-bank management. Browsing/detail requires {@code homework:read};
+ * Question-bank management. Browsing/detail requires {@code homework:create};
  * authoring requires {@code homework:create} plus the service-level course
  * ownership check (or ADMIN for the global bank). Reference answers are never
  * exposed through the student-facing exam paper — only here, to authors.
@@ -38,7 +38,7 @@ public class QuestionController {
     }
 
     @Operation(summary = "题目分页检索")
-    @PreAuthorize("hasAuthority('homework:read')")
+    @PreAuthorize("hasAuthority('homework:create')")
     @GetMapping("/api/questions")
     public Mono<Result<PageResult<QuestionResponse>>> page(
             @RequestParam(required = false) Long courseId,
@@ -53,7 +53,7 @@ public class QuestionController {
     }
 
     @Operation(summary = "题目详情")
-    @PreAuthorize("hasAuthority('homework:read')")
+    @PreAuthorize("hasAuthority('homework:create')")
     @GetMapping("/api/questions/{id}")
     public Mono<Result<QuestionResponse>> get(@PathVariable Long id) {
         return questionService.get(id).map(Result::success);

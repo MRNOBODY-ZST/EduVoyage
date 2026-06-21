@@ -1,13 +1,22 @@
 <script setup lang="ts">
 import { onMounted, reactive, ref } from 'vue'
 import { RouterLink } from 'vue-router'
-import { ArrowPathIcon, PlusIcon, RocketLaunchIcon } from '@heroicons/vue/24/outline'
+import {
+  ArchiveBoxIcon,
+  ArrowPathIcon,
+  CheckIcon,
+  PencilSquareIcon,
+  PlusIcon,
+  RocketLaunchIcon,
+  TrashIcon,
+  XMarkIcon,
+} from '@heroicons/vue/24/outline'
 
 import EmptyState from '@/components/state/EmptyState.vue'
 import ErrorState from '@/components/state/ErrorState.vue'
 import LoadingState from '@/components/state/LoadingState.vue'
 import { courseStatusLabel, formatDateTime, formatNumber } from '@/lib/format'
-import { createCourse, fetchCourses, publishCourse } from '@/lib/services'
+import { archiveCourse, createCourse, deleteCourse, fetchCourses, publishCourse, updateCourse } from '@/lib/services'
 import { useAuthStore } from '@/stores/auth'
 import type { CourseResponse } from '@/types/api'
 
@@ -15,8 +24,10 @@ const auth = useAuthStore()
 const loading = ref(true)
 const saving = ref(false)
 const error = ref('')
+const message = ref('')
 const keyword = ref('')
 const creating = ref(false)
+const editingCourseId = ref(0)
 const courses = ref<CourseResponse[]>([])
 const total = ref(0)
 
@@ -26,6 +37,38 @@ const form = reactive({
   credit: 3,
   visibility: 1,
 })
+
+const editForm = reactive({
+  title: '',
+  coverUrl: '',
+  intro: '',
+  credit: 3,
+  visibility: 1,
+  startDate: '',
+  endDate: '',
+})
+
+function startEdit(course: CourseResponse) {
+  editingCourseId.value = course.id
+  editForm.title = course.title
+  editForm.coverUrl = course.coverUrl || ''
+  editForm.intro = course.intro || ''
+  editForm.credit = Number(course.credit ?? 0)
+  editForm.visibility = course.visibility
+  editForm.startDate = course.startDate || ''
+  editForm.endDate = course.endDate || ''
+}
+
+function cancelEdit() {
+  editingCourseId.value = 0
+  editForm.title = ''
+  editForm.coverUrl = ''
+  editForm.intro = ''
+  editForm.credit = 3
+  editForm.visibility = 1
+  editForm.startDate = ''
+  editForm.endDate = ''
+}
 
 async function load() {
   loading.value = true
@@ -48,6 +91,8 @@ async function load() {
 
 async function submit() {
   saving.value = true
+  error.value = ''
+  message.value = ''
   try {
     await createCourse({
       title: form.title,
@@ -60,6 +105,7 @@ async function submit() {
     form.credit = 3
     form.visibility = 1
     creating.value = false
+    message.value = '课程已创建'
     await load()
   } catch (e) {
     error.value = e instanceof Error ? e.message : '课程创建失败'
@@ -69,8 +115,80 @@ async function submit() {
 }
 
 async function publish(id: number) {
-  await publishCourse(id)
-  await load()
+  saving.value = true
+  error.value = ''
+  message.value = ''
+  try {
+    await publishCourse(id)
+    message.value = '课程已发布'
+    await load()
+  } catch (e) {
+    error.value = e instanceof Error ? e.message : '课程发布失败'
+  } finally {
+    saving.value = false
+  }
+}
+
+async function submitEdit(course: CourseResponse) {
+  if (!editForm.title.trim()) {
+    error.value = '课程标题不能为空'
+    return
+  }
+  saving.value = true
+  error.value = ''
+  message.value = ''
+  try {
+    await updateCourse(course.id, {
+      title: editForm.title.trim(),
+      coverUrl: editForm.coverUrl || undefined,
+      intro: editForm.intro || undefined,
+      credit: editForm.credit,
+      visibility: editForm.visibility,
+      startDate: editForm.startDate || undefined,
+      endDate: editForm.endDate || undefined,
+      classScope: course.classScope,
+    })
+    cancelEdit()
+    message.value = '课程已更新'
+    await load()
+  } catch (e) {
+    error.value = e instanceof Error ? e.message : '课程更新失败'
+  } finally {
+    saving.value = false
+  }
+}
+
+async function archive(id: number) {
+  saving.value = true
+  error.value = ''
+  message.value = ''
+  try {
+    await archiveCourse(id)
+    message.value = '课程已归档'
+    await load()
+  } catch (e) {
+    error.value = e instanceof Error ? e.message : '课程归档失败'
+  } finally {
+    saving.value = false
+  }
+}
+
+async function remove(course: CourseResponse) {
+  if (!window.confirm(`确认删除课程“${course.title}”？`)) {
+    return
+  }
+  saving.value = true
+  error.value = ''
+  message.value = ''
+  try {
+    await deleteCourse(course.id)
+    message.value = '课程已删除'
+    await load()
+  } catch (e) {
+    error.value = e instanceof Error ? e.message : '课程删除失败'
+  } finally {
+    saving.value = false
+  }
 }
 
 onMounted(load)
@@ -156,6 +274,9 @@ onMounted(load)
       </form>
     </section>
 
+    <p v-if="message" class="rounded-md bg-emerald-50 px-3 py-2 text-sm text-emerald-700 dark:bg-emerald-400/10 dark:text-emerald-200">
+      {{ message }}
+    </p>
     <LoadingState v-if="loading" />
     <ErrorState v-else-if="error" :message="error" @retry="load" />
     <EmptyState v-else-if="courses.length === 0" title="暂无课程" description="创建课程后会显示在工作台。" />
@@ -172,32 +293,114 @@ onMounted(load)
             </tr>
           </thead>
           <tbody class="divide-y divide-slate-100 dark:divide-white/10">
-            <tr v-for="course in courses" :key="course.id">
-              <td class="px-4 py-4">
-                <RouterLink :to="`/courses/${course.id}`" class="max-w-md truncate text-sm font-medium text-slate-950 hover:text-[rgb(var(--color-brand))] dark:text-white">
-                  {{ course.title }}
-                </RouterLink>
-                <p class="mt-1 max-w-md truncate text-xs text-slate-500 dark:text-slate-400">{{ course.intro || '暂无简介' }}</p>
-              </td>
-              <td class="px-4 py-4 text-sm text-slate-600 dark:text-slate-300">{{ course.credit ?? 0 }}</td>
-              <td class="px-4 py-4">
-                <span class="rounded-md bg-slate-100 px-2 py-1 text-xs font-medium text-slate-700 dark:bg-white/10 dark:text-slate-200">
-                  {{ courseStatusLabel(course.status) }}
-                </span>
-              </td>
-              <td class="px-4 py-4 text-sm text-slate-500 dark:text-slate-400">{{ formatDateTime(course.createdAt) }}</td>
-              <td class="px-4 py-4 text-right">
-                <button
-                  v-if="course.status === 0 && auth.hasPermission('course:update')"
-                  type="button"
-                  class="inline-flex items-center gap-1 text-sm font-semibold text-[rgb(var(--color-brand))] hover:underline"
-                  @click="publish(course.id)"
-                >
-                  <RocketLaunchIcon class="size-4" aria-hidden="true" />
-                  发布
-                </button>
-              </td>
-            </tr>
+            <template v-for="course in courses" :key="course.id">
+              <tr>
+                <td class="px-4 py-4">
+                  <RouterLink :to="`/courses/${course.id}`" class="max-w-md truncate text-sm font-medium text-slate-950 hover:text-[rgb(var(--color-brand))] dark:text-white">
+                    {{ course.title }}
+                  </RouterLink>
+                  <p class="mt-1 max-w-md truncate text-xs text-slate-500 dark:text-slate-400">{{ course.intro || '暂无简介' }}</p>
+                </td>
+                <td class="px-4 py-4 text-sm text-slate-600 dark:text-slate-300">{{ course.credit ?? 0 }}</td>
+                <td class="px-4 py-4">
+                  <span class="rounded-md bg-slate-100 px-2 py-1 text-xs font-medium text-slate-700 dark:bg-white/10 dark:text-slate-200">
+                    {{ courseStatusLabel(course.status) }}
+                  </span>
+                </td>
+                <td class="px-4 py-4 text-sm text-slate-500 dark:text-slate-400">{{ formatDateTime(course.createdAt) }}</td>
+                <td class="px-4 py-4 text-right">
+                  <div class="flex flex-wrap justify-end gap-2">
+                    <button
+                      v-if="auth.hasPermission('course:update')"
+                      type="button"
+                      class="inline-flex items-center gap-1 text-sm font-semibold text-[rgb(var(--color-brand))] hover:underline"
+                      :disabled="saving"
+                      @click="startEdit(course)"
+                    >
+                      <PencilSquareIcon class="size-4" aria-hidden="true" />
+                      编辑
+                    </button>
+                    <button
+                      v-if="course.status === 0 && auth.hasPermission('course:update')"
+                      type="button"
+                      class="inline-flex items-center gap-1 text-sm font-semibold text-[rgb(var(--color-brand))] hover:underline"
+                      :disabled="saving"
+                      @click="publish(course.id)"
+                    >
+                      <RocketLaunchIcon class="size-4" aria-hidden="true" />
+                      发布
+                    </button>
+                    <button
+                      v-if="course.status !== 2 && auth.hasPermission('course:update')"
+                      type="button"
+                      class="inline-flex items-center gap-1 text-sm font-semibold text-slate-600 hover:underline dark:text-slate-300"
+                      :disabled="saving"
+                      @click="archive(course.id)"
+                    >
+                      <ArchiveBoxIcon class="size-4" aria-hidden="true" />
+                      归档
+                    </button>
+                    <button
+                      v-if="auth.hasPermission('course:delete')"
+                      type="button"
+                      class="inline-flex items-center gap-1 text-sm font-semibold text-rose-600 hover:underline"
+                      :disabled="saving"
+                      @click="remove(course)"
+                    >
+                      <TrashIcon class="size-4" aria-hidden="true" />
+                      删除
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr v-if="editingCourseId === course.id" class="bg-slate-50/80 dark:bg-white/5">
+                <td colspan="5" class="px-4 py-4">
+                  <form class="grid gap-4 md:grid-cols-4" @submit.prevent="submitEdit(course)">
+                    <label class="md:col-span-2">
+                      <span class="text-sm font-medium text-slate-700 dark:text-slate-200">课程标题</span>
+                      <input v-model.trim="editForm.title" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" required />
+                    </label>
+                    <label>
+                      <span class="text-sm font-medium text-slate-700 dark:text-slate-200">学分</span>
+                      <input v-model.number="editForm.credit" type="number" min="0" step="0.5" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" />
+                    </label>
+                    <label>
+                      <span class="text-sm font-medium text-slate-700 dark:text-slate-200">可见性</span>
+                      <select v-model.number="editForm.visibility" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white">
+                        <option :value="1">公开</option>
+                        <option :value="0">私有</option>
+                      </select>
+                    </label>
+                    <label class="md:col-span-2">
+                      <span class="text-sm font-medium text-slate-700 dark:text-slate-200">封面 URL</span>
+                      <input v-model.trim="editForm.coverUrl" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" />
+                    </label>
+                    <label>
+                      <span class="text-sm font-medium text-slate-700 dark:text-slate-200">开课日期</span>
+                      <input v-model="editForm.startDate" type="date" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" />
+                    </label>
+                    <label>
+                      <span class="text-sm font-medium text-slate-700 dark:text-slate-200">结课日期</span>
+                      <input v-model="editForm.endDate" type="date" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" />
+                    </label>
+                    <label class="md:col-span-4">
+                      <span class="text-sm font-medium text-slate-700 dark:text-slate-200">简介</span>
+                      <textarea v-model.trim="editForm.intro" rows="3" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" />
+                    </label>
+                    <div class="flex gap-2 md:col-span-4">
+                      <button type="submit" class="btn-primary focus-ring inline-flex h-10 items-center gap-2 px-4 text-sm" :disabled="saving">
+                        <CheckIcon class="size-4" aria-hidden="true" />
+                        保存修改
+                      </button>
+                      <button type="button" class="focus-ring inline-flex h-10 items-center gap-2 rounded-md border border-slate-200 px-4 text-sm font-semibold text-slate-700 dark:border-white/10 dark:text-slate-200" @click="cancelEdit">
+                        <XMarkIcon class="size-4" aria-hidden="true" />
+                        取消
+                      </button>
+                    </div>
+                  </form>
+                </td>
+              </tr>
+            </template>
           </tbody>
         </table>
       </div>

@@ -1,7 +1,14 @@
 <script setup lang="ts">
 import { nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
-import * as echarts from 'echarts'
-import type { ECharts, EChartsOption } from 'echarts'
+import { BarChart, LineChart } from 'echarts/charts'
+import {
+  GridComponent,
+  TooltipComponent,
+} from 'echarts/components'
+import { init, use, type ECharts, type EChartsOption } from 'echarts/core'
+import { CanvasRenderer } from 'echarts/renderers'
+
+use([BarChart, LineChart, GridComponent, TooltipComponent, CanvasRenderer])
 
 const props = defineProps<{
   option: EChartsOption
@@ -16,7 +23,7 @@ function render() {
   if (!chartEl.value) {
     return
   }
-  chart ??= echarts.init(chartEl.value)
+  chart ??= init(chartEl.value)
   chart.setOption(props.option, true)
 }
 

@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { computed, onMounted, reactive, ref, watch } from 'vue'
+import { computed, defineAsyncComponent, onMounted, reactive, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import {
   AcademicCapIcon,
   ArrowPathIcon,
   BookOpenIcon,
   CheckCircleIcon,
+  CheckIcon,
   ClockIcon,
   DocumentTextIcon,
   ExclamationCircleIcon,
@@ -13,9 +14,9 @@ import {
   MapIcon,
   PencilSquareIcon,
   TrashIcon,
+  XMarkIcon,
 } from '@heroicons/vue/24/outline'
 
-import KnowledgeGraphCanvas from '@/components/charts/KnowledgeGraphCanvas.vue'
 import StudentHomeworkPanel from '@/components/assessment/StudentHomeworkPanel.vue'
 import TeacherAssessmentAuthoring from '@/components/assessment/TeacherAssessmentAuthoring.vue'
 import StatCard from '@/components/data/StatCard.vue'
@@ -41,6 +42,9 @@ import {
   fetchKnowledgeNodes,
   fetchLearningPath,
   fetchWrongBook,
+  updateChapter,
+  updateCourseware,
+  updateKnowledgeNode,
 } from '@/lib/services'
 import { useAuthStore } from '@/stores/auth'
 import type {
@@ -59,6 +63,8 @@ type TabKey = 'graph' | 'path' | 'materials' | 'homeworks' | 'wrong-book' | 'aut
 interface FlatChapter extends ChapterNode {
   level: number
 }
+
+const KnowledgeGraphCanvas = defineAsyncComponent(() => import('@/components/charts/KnowledgeGraphCanvas.vue'))
 
 const route = useRoute()
 const auth = useAuthStore()
@@ -80,6 +86,9 @@ const selectedNodeId = ref<number | null>(null)
 const authoringBusy = ref(false)
 const authoringMessage = ref('')
 const authoringError = ref('')
+const editingChapterId = ref(0)
+const editingNodeId = ref(0)
+const editingCoursewareId = ref(0)
 
 const chapterForm = reactive({
   title: '',
@@ -103,6 +112,29 @@ const edgeForm = reactive({
 })
 
 const coursewareForm = reactive({
+  title: '',
+  type: 4,
+  contentRef: '',
+  fileId: null as number | null,
+  durationSec: null as number | null,
+  sortNo: 0,
+})
+
+const chapterEditForm = reactive({
+  title: '',
+  parentId: 0,
+  sortNo: 0,
+})
+
+const nodeEditForm = reactive({
+  name: '',
+  chapterId: 0,
+  description: '',
+  learnGoal: '',
+  estMinutes: 30,
+})
+
+const coursewareEditForm = reactive({
   title: '',
   type: 4,
   contentRef: '',
@@ -175,6 +207,58 @@ function homeworkStatusLabel(status: number) {
   if (status === 1) return '已发布'
   if (status === 2) return '已关闭'
   return '草稿'
+}
+
+function startChapterEdit(chapter: ChapterNode) {
+  editingChapterId.value = chapter.id
+  chapterEditForm.title = chapter.title
+  chapterEditForm.parentId = chapter.parentId || 0
+  chapterEditForm.sortNo = chapter.sortNo || 0
+}
+
+function startNodeEdit(node: KnowledgeNodeResponse) {
+  editingNodeId.value = node.id
+  nodeEditForm.name = node.name
+  nodeEditForm.chapterId = node.chapterId || 0
+  nodeEditForm.description = node.description || ''
+  nodeEditForm.learnGoal = node.learnGoal || ''
+  nodeEditForm.estMinutes = node.estMinutes || 30
+}
+
+function startCoursewareEdit(item: CoursewareResponse) {
+  editingCoursewareId.value = item.id
+  coursewareEditForm.title = item.title
+  coursewareEditForm.type = item.type
+  coursewareEditForm.contentRef = item.contentRef || ''
+  coursewareEditForm.fileId = item.fileId || null
+  coursewareEditForm.durationSec = item.durationSec || null
+  coursewareEditForm.sortNo = item.sortNo || 0
+}
+
+function cancelChapterEdit() {
+  editingChapterId.value = 0
+  chapterEditForm.title = ''
+  chapterEditForm.parentId = 0
+  chapterEditForm.sortNo = 0
+}
+
+function cancelNodeEdit() {
+  editingNodeId.value = 0
+  nodeEditForm.name = ''
+  nodeEditForm.chapterId = 0
+  nodeEditForm.description = ''
+  nodeEditForm.learnGoal = ''
+  nodeEditForm.estMinutes = 30
+}
+
+function cancelCoursewareEdit() {
+  editingCoursewareId.value = 0
+  coursewareEditForm.title = ''
+  coursewareEditForm.type = 4
+  coursewareEditForm.contentRef = ''
+  coursewareEditForm.fileId = null
+  coursewareEditForm.durationSec = null
+  coursewareEditForm.sortNo = 0
 }
 
 async function load() {
@@ -341,6 +425,19 @@ async function removeChapter(chapter: ChapterNode) {
   }, '章节已删除')
 }
 
+async function submitChapterEdit(chapter: ChapterNode) {
+  if (!chapterEditForm.title.trim()) return
+  await runAuthoring(async () => {
+    await updateChapter(chapter.id, {
+      title: chapterEditForm.title.trim(),
+      parentId: chapterEditForm.parentId || undefined,
+      sortNo: chapterEditForm.sortNo || undefined,
+    })
+    cancelChapterEdit()
+    await load()
+  }, '章节已更新')
+}
+
 async function removeNode(node: KnowledgeNodeResponse) {
   if (!window.confirm(`确认删除知识点“${node.name}”？`)) return
   await runAuthoring(async () => {
@@ -350,6 +447,23 @@ async function removeNode(node: KnowledgeNodeResponse) {
     }
     await load()
   }, '知识点已删除')
+}
+
+async function submitNodeEdit(node: KnowledgeNodeResponse) {
+  if (!nodeEditForm.name.trim()) return
+  await runAuthoring(async () => {
+    await updateKnowledgeNode(node.id, {
+      name: nodeEditForm.name.trim(),
+      chapterId: nodeEditForm.chapterId || undefined,
+      description: nodeEditForm.description || undefined,
+      learnGoal: nodeEditForm.learnGoal || undefined,
+      estMinutes: nodeEditForm.estMinutes || undefined,
+      posX: node.posX,
+      posY: node.posY,
+    })
+    cancelNodeEdit()
+    await load()
+  }, '知识点已更新')
 }
 
 async function removeEdge(edgeId: number) {
@@ -366,6 +480,22 @@ async function removeCourseware(item: CoursewareResponse) {
     await deleteCourseware(item.id)
     await loadCoursewares(selectedNodeId.value)
   }, '课件已删除')
+}
+
+async function submitCoursewareEdit(item: CoursewareResponse) {
+  if (!coursewareEditForm.title.trim()) return
+  await runAuthoring(async () => {
+    await updateCourseware(item.id, {
+      title: coursewareEditForm.title.trim(),
+      type: coursewareEditForm.type,
+      contentRef: coursewareEditForm.contentRef || undefined,
+      fileId: coursewareEditForm.fileId || undefined,
+      durationSec: coursewareEditForm.durationSec || undefined,
+      sortNo: coursewareEditForm.sortNo || undefined,
+    })
+    cancelCoursewareEdit()
+    await loadCoursewares(selectedNodeId.value)
+  }, '课件已更新')
 }
 
 watch(selectedNodeId, loadCoursewares)
@@ -749,17 +879,38 @@ onMounted(load)
                 <h5 class="text-xs font-semibold uppercase tracking-wide text-slate-400">章节</h5>
                 <EmptyState v-if="flatChapters.length === 0" class="mt-3" title="暂无章节" description="创建章节后可在这里管理。" />
                 <ul v-else class="mt-3 divide-y divide-slate-100 rounded-md border border-slate-200 dark:divide-white/10 dark:border-white/10">
-                  <li v-for="chapter in flatChapters" :key="chapter.id" class="flex items-center justify-between gap-3 px-3 py-2">
-                    <span class="min-w-0 truncate text-sm text-slate-700 dark:text-slate-200">{{ '　'.repeat(chapter.level) }}{{ chapter.title }}</span>
-                    <button
-                      type="button"
-                      class="shrink-0 text-rose-600 hover:underline"
-                      :disabled="authoringBusy"
-                      @click="removeChapter(chapter)"
-                    >
-                      <TrashIcon class="size-4" aria-hidden="true" />
-                      <span class="sr-only">删除章节</span>
-                    </button>
+                  <li v-for="chapter in flatChapters" :key="chapter.id" class="px-3 py-2">
+                    <div class="flex items-center justify-between gap-3">
+                      <span class="min-w-0 truncate text-sm text-slate-700 dark:text-slate-200">{{ '　'.repeat(chapter.level) }}{{ chapter.title }}</span>
+                      <div class="flex shrink-0 items-center gap-2">
+                        <button type="button" class="text-[rgb(var(--color-brand))] hover:underline" :disabled="authoringBusy" @click="startChapterEdit(chapter)">
+                          <PencilSquareIcon class="size-4" aria-hidden="true" />
+                          <span class="sr-only">编辑章节</span>
+                        </button>
+                        <button type="button" class="text-rose-600 hover:underline" :disabled="authoringBusy" @click="removeChapter(chapter)">
+                          <TrashIcon class="size-4" aria-hidden="true" />
+                          <span class="sr-only">删除章节</span>
+                        </button>
+                      </div>
+                    </div>
+                    <form v-if="editingChapterId === chapter.id" class="mt-3 grid gap-2" @submit.prevent="submitChapterEdit(chapter)">
+                      <input v-model.trim="chapterEditForm.title" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" required />
+                      <div class="grid gap-2 sm:grid-cols-2">
+                        <select v-model.number="chapterEditForm.parentId" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white">
+                          <option :value="0">顶级章节</option>
+                          <option v-for="option in flatChapters.filter((item) => item.id !== chapter.id)" :key="option.id" :value="option.id">{{ '　'.repeat(option.level) }}{{ option.title }}</option>
+                        </select>
+                        <input v-model.number="chapterEditForm.sortNo" type="number" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" />
+                      </div>
+                      <div class="flex gap-2">
+                        <button type="submit" class="focus-ring inline-flex h-9 items-center rounded-md bg-[rgb(var(--color-brand))] px-3 text-sm font-semibold text-white" :disabled="authoringBusy">
+                          <CheckIcon class="size-4" aria-hidden="true" />
+                        </button>
+                        <button type="button" class="focus-ring inline-flex h-9 items-center rounded-md border border-slate-200 px-3 text-sm font-semibold text-slate-700 dark:border-white/10 dark:text-slate-200" @click="cancelChapterEdit">
+                          <XMarkIcon class="size-4" aria-hidden="true" />
+                        </button>
+                      </div>
+                    </form>
                   </li>
                 </ul>
               </div>
@@ -768,19 +919,42 @@ onMounted(load)
                 <h5 class="text-xs font-semibold uppercase tracking-wide text-slate-400">知识点</h5>
                 <EmptyState v-if="nodes.length === 0" class="mt-3" title="暂无知识点" description="创建知识点后可在这里管理。" />
                 <ul v-else class="mt-3 divide-y divide-slate-100 rounded-md border border-slate-200 dark:divide-white/10 dark:border-white/10">
-                  <li v-for="node in nodes" :key="node.id" class="flex items-center justify-between gap-3 px-3 py-2">
-                    <button type="button" class="min-w-0 truncate text-left text-sm text-slate-700 hover:text-[rgb(var(--color-brand))] dark:text-slate-200" @click="selectNode(node.id, 'materials')">
-                      {{ node.name }}
-                    </button>
-                    <button
-                      type="button"
-                      class="shrink-0 text-rose-600 hover:underline"
-                      :disabled="authoringBusy"
-                      @click="removeNode(node)"
-                    >
-                      <TrashIcon class="size-4" aria-hidden="true" />
-                      <span class="sr-only">删除知识点</span>
-                    </button>
+                  <li v-for="node in nodes" :key="node.id" class="px-3 py-2">
+                    <div class="flex items-center justify-between gap-3">
+                      <button type="button" class="min-w-0 truncate text-left text-sm text-slate-700 hover:text-[rgb(var(--color-brand))] dark:text-slate-200" @click="selectNode(node.id, 'materials')">
+                        {{ node.name }}
+                      </button>
+                      <div class="flex shrink-0 items-center gap-2">
+                        <button type="button" class="text-[rgb(var(--color-brand))] hover:underline" :disabled="authoringBusy" @click="startNodeEdit(node)">
+                          <PencilSquareIcon class="size-4" aria-hidden="true" />
+                          <span class="sr-only">编辑知识点</span>
+                        </button>
+                        <button type="button" class="text-rose-600 hover:underline" :disabled="authoringBusy" @click="removeNode(node)">
+                          <TrashIcon class="size-4" aria-hidden="true" />
+                          <span class="sr-only">删除知识点</span>
+                        </button>
+                      </div>
+                    </div>
+                    <form v-if="editingNodeId === node.id" class="mt-3 grid gap-2" @submit.prevent="submitNodeEdit(node)">
+                      <input v-model.trim="nodeEditForm.name" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" required />
+                      <div class="grid gap-2 sm:grid-cols-2">
+                        <select v-model.number="nodeEditForm.chapterId" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white">
+                          <option :value="0">不归入章节</option>
+                          <option v-for="chapter in flatChapters" :key="chapter.id" :value="chapter.id">{{ '　'.repeat(chapter.level) }}{{ chapter.title }}</option>
+                        </select>
+                        <input v-model.number="nodeEditForm.estMinutes" type="number" min="0" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" />
+                      </div>
+                      <input v-model.trim="nodeEditForm.learnGoal" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" placeholder="学习目标" />
+                      <textarea v-model.trim="nodeEditForm.description" rows="2" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" placeholder="描述" />
+                      <div class="flex gap-2">
+                        <button type="submit" class="focus-ring inline-flex h-9 items-center rounded-md bg-[rgb(var(--color-brand))] px-3 text-sm font-semibold text-white" :disabled="authoringBusy">
+                          <CheckIcon class="size-4" aria-hidden="true" />
+                        </button>
+                        <button type="button" class="focus-ring inline-flex h-9 items-center rounded-md border border-slate-200 px-3 text-sm font-semibold text-slate-700 dark:border-white/10 dark:text-slate-200" @click="cancelNodeEdit">
+                          <XMarkIcon class="size-4" aria-hidden="true" />
+                        </button>
+                      </div>
+                    </form>
                   </li>
                 </ul>
               </div>
@@ -812,20 +986,48 @@ onMounted(load)
                 <EmptyState v-if="!selectedNode" class="mt-3" title="未选择知识点" description="先选择一个知识点。" />
                 <EmptyState v-else-if="coursewares.length === 0" class="mt-3" title="暂无课件" description="创建课件后可在这里管理。" />
                 <ul v-else class="mt-3 divide-y divide-slate-100 rounded-md border border-slate-200 dark:divide-white/10 dark:border-white/10">
-                  <li v-for="item in coursewares" :key="item.id" class="flex items-center justify-between gap-3 px-3 py-2">
-                    <span class="min-w-0 text-sm text-slate-700 dark:text-slate-200">
-                      <span class="block truncate">{{ item.title }}</span>
-                      <span class="text-xs text-slate-400">{{ coursewareTypeLabel(item.type) }}</span>
-                    </span>
-                    <button
-                      type="button"
-                      class="shrink-0 text-rose-600 hover:underline"
-                      :disabled="authoringBusy"
-                      @click="removeCourseware(item)"
-                    >
-                      <TrashIcon class="size-4" aria-hidden="true" />
-                      <span class="sr-only">删除课件</span>
-                    </button>
+                  <li v-for="item in coursewares" :key="item.id" class="px-3 py-2">
+                    <div class="flex items-center justify-between gap-3">
+                      <span class="min-w-0 text-sm text-slate-700 dark:text-slate-200">
+                        <span class="block truncate">{{ item.title }}</span>
+                        <span class="text-xs text-slate-400">{{ coursewareTypeLabel(item.type) }}</span>
+                      </span>
+                      <div class="flex shrink-0 items-center gap-2">
+                        <button type="button" class="text-[rgb(var(--color-brand))] hover:underline" :disabled="authoringBusy" @click="startCoursewareEdit(item)">
+                          <PencilSquareIcon class="size-4" aria-hidden="true" />
+                          <span class="sr-only">编辑课件</span>
+                        </button>
+                        <button type="button" class="text-rose-600 hover:underline" :disabled="authoringBusy" @click="removeCourseware(item)">
+                          <TrashIcon class="size-4" aria-hidden="true" />
+                          <span class="sr-only">删除课件</span>
+                        </button>
+                      </div>
+                    </div>
+                    <form v-if="editingCoursewareId === item.id" class="mt-3 grid gap-2" @submit.prevent="submitCoursewareEdit(item)">
+                      <input v-model.trim="coursewareEditForm.title" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" required />
+                      <div class="grid gap-2 sm:grid-cols-2">
+                        <select v-model.number="coursewareEditForm.type" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white">
+                          <option :value="1">视频</option>
+                          <option :value="2">文档</option>
+                          <option :value="3">图文</option>
+                          <option :value="4">链接</option>
+                        </select>
+                        <input v-model.number="coursewareEditForm.sortNo" type="number" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" />
+                      </div>
+                      <div class="grid gap-2 sm:grid-cols-2">
+                        <input v-model.number="coursewareEditForm.fileId" type="number" min="1" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" placeholder="文件 ID" />
+                        <input v-model.number="coursewareEditForm.durationSec" type="number" min="0" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" placeholder="时长秒" />
+                      </div>
+                      <input v-model.trim="coursewareEditForm.contentRef" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" placeholder="内容引用" />
+                      <div class="flex gap-2">
+                        <button type="submit" class="focus-ring inline-flex h-9 items-center rounded-md bg-[rgb(var(--color-brand))] px-3 text-sm font-semibold text-white" :disabled="authoringBusy">
+                          <CheckIcon class="size-4" aria-hidden="true" />
+                        </button>
+                        <button type="button" class="focus-ring inline-flex h-9 items-center rounded-md border border-slate-200 px-3 text-sm font-semibold text-slate-700 dark:border-white/10 dark:text-slate-200" @click="cancelCoursewareEdit">
+                          <XMarkIcon class="size-4" aria-hidden="true" />
+                        </button>
+                      </div>
+                    </form>
                   </li>
                 </ul>
               </div>

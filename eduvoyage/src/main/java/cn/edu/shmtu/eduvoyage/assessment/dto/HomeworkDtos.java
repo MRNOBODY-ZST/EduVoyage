@@ -81,14 +81,16 @@ public final class HomeworkDtos {
             @Schema(description = "是否防切屏") boolean antiSwitch,
             @Schema(description = "状态：0 草稿 1 已发布 2 已关闭") Integer status,
             @Schema(description = "题目数量") int questionCount,
-            @Schema(description = "创建时间") LocalDateTime createdAt
+            @Schema(description = "创建时间") LocalDateTime createdAt,
+            @Schema(description = "试卷题目项") List<PaperItem> items
     ) {
-        public static HomeworkResponse from(Homework h, int questionCount) {
+        public static HomeworkResponse from(Homework h, List<PaperItem> items) {
+            List<PaperItem> paperItems = items == null ? List.of() : items;
             return new HomeworkResponse(h.getId(), h.getCourseId(), h.getTitle(), h.getTotalScore(),
                     h.getTimeLimit(), h.getDeadline(), h.getMaxAttempts(),
                     h.getShuffle() != null && h.getShuffle() == 1,
                     h.getAntiSwitch() != null && h.getAntiSwitch() == 1,
-                    h.getStatus(), questionCount, h.getCreatedAt());
+                    h.getStatus(), paperItems.size(), h.getCreatedAt(), paperItems);
         }
     }
 }

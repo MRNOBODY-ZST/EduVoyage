@@ -1,6 +1,16 @@
 <script setup lang="ts">
 import { computed, onMounted, reactive, ref, watch } from 'vue'
-import { ArrowPathIcon, CheckCircleIcon, PlusIcon, RocketLaunchIcon, TrashIcon, XCircleIcon } from '@heroicons/vue/24/outline'
+import {
+  ArrowPathIcon,
+  CheckCircleIcon,
+  CheckIcon,
+  PencilSquareIcon,
+  PlusIcon,
+  RocketLaunchIcon,
+  TrashIcon,
+  XCircleIcon,
+  XMarkIcon,
+} from '@heroicons/vue/24/outline'
 
 import EmptyState from '@/components/state/EmptyState.vue'
 import {
@@ -13,6 +23,8 @@ import {
   fetchQuestions,
   gradeSubmission,
   publishHomework,
+  updateHomework,
+  updateQuestion,
 } from '@/lib/services'
 import { formatDateTime } from '@/lib/format'
 import type { AnswerResult, HomeworkResponse, KnowledgeNodeResponse, QuestionResponse, SubmissionResult } from '@/types/api'
@@ -36,6 +48,8 @@ const scoreMap = reactive<Record<number, number>>({})
 const selectedHomeworkId = ref(0)
 const submissions = ref<SubmissionResult[]>([])
 const activeSubmissionId = ref(0)
+const editingQuestionId = ref(0)
+const editingHomeworkId = ref(0)
 const gradeMap = reactive<Record<number, number>>({})
 const commentMap = reactive<Record<number, string>>({})
 
@@ -64,7 +78,36 @@ const homeworkForm = reactive({
   antiSwitch: false,
 })
 
+const questionEditForm = reactive({
+  type: 1,
+  stem: '',
+  answer: '',
+  analysis: '',
+  difficulty: 3,
+  nodeId: 0,
+  lang: '',
+  options: [
+    { optionKey: 'A', content: '', correct: false, sortNo: 1 },
+    { optionKey: 'B', content: '', correct: false, sortNo: 2 },
+    { optionKey: 'C', content: '', correct: false, sortNo: 3 },
+    { optionKey: 'D', content: '', correct: false, sortNo: 4 },
+  ],
+})
+
+const homeworkEditForm = reactive({
+  title: '',
+  timeLimit: null as number | null,
+  deadline: '',
+  maxAttempts: 1,
+  shuffle: false,
+  antiSwitch: false,
+})
+
+const editQuestionIds = ref<number[]>([])
+const editScoreMap = reactive<Record<number, number>>({})
+
 const needsOptions = computed(() => questionForm.type <= 3)
+const editNeedsOptions = computed(() => questionEditForm.type <= 3)
 const selectedHomework = computed(() => props.homeworks.find((item) => item.id === selectedHomeworkId.value))
 const activeSubmission = computed(() => submissions.value.find((item) => item.id === activeSubmissionId.value))
 const questionById = computed(() => new Map(questions.value.map((item) => [item.id, item])))
@@ -124,6 +167,31 @@ function normalizeDeadline(value: string) {
   return value ? value : undefined
 }
 
+function toDateTimeLocal(value: string | undefined) {
+  return value ? value.slice(0, 16) : ''
+}
+
+function seedQuestionOptions(question: QuestionResponse) {
+  const source = question.options?.length
+    ? question.options
+    : [
+        { optionKey: 'A', content: '', correct: false, sortNo: 1 },
+        { optionKey: 'B', content: '', correct: false, sortNo: 2 },
+        { optionKey: 'C', content: '', correct: false, sortNo: 3 },
+        { optionKey: 'D', content: '', correct: false, sortNo: 4 },
+      ]
+  questionEditForm.options.splice(
+    0,
+    questionEditForm.options.length,
+    ...source.map((option, index) => ({
+      optionKey: option.optionKey,
+      content: option.content,
+      correct: option.correct,
+      sortNo: option.sortNo ?? index + 1,
+    })),
+  )
+}
+
 function toggleQuestion(id: number) {
   if (selectedQuestionIds.value.includes(id)) {
     selectedQuestionIds.value = selectedQuestionIds.value.filter((item) => item !== id)
@@ -132,6 +200,77 @@ function toggleQuestion(id: number) {
     selectedQuestionIds.value = [...selectedQuestionIds.value, id]
     scoreMap[id] = scoreMap[id] || 10
   }
+}
+
+function toggleEditQuestion(id: number) {
+  if (editQuestionIds.value.includes(id)) {
+    editQuestionIds.value = editQuestionIds.value.filter((item) => item !== id)
+    delete editScoreMap[id]
+  } else {
+    editQuestionIds.value = [...editQuestionIds.value, id]
+    editScoreMap[id] = editScoreMap[id] || 10
+  }
+}
+
+function startQuestionEdit(question: QuestionResponse) {
+  editingQuestionId.value = question.id
+  questionEditForm.type = question.type
+  questionEditForm.stem = question.stem
+  questionEditForm.answer = question.answer || ''
+  questionEditForm.analysis = question.analysis || ''
+  questionEditForm.difficulty = question.difficulty || 3
+  questionEditForm.nodeId = question.nodeId || 0
+  questionEditForm.lang = question.lang || ''
+  seedQuestionOptions(question)
+}
+
+function cancelQuestionEdit() {
+  editingQuestionId.value = 0
+  questionEditForm.type = 1
+  questionEditForm.stem = ''
+  questionEditForm.answer = ''
+  questionEditForm.analysis = ''
+  questionEditForm.difficulty = 3
+  questionEditForm.nodeId = 0
+  questionEditForm.lang = ''
+  questionEditForm.options.splice(0, questionEditForm.options.length,
+    { optionKey: 'A', content: '', correct: false, sortNo: 1 },
+    { optionKey: 'B', content: '', correct: false, sortNo: 2 },
+    { optionKey: 'C', content: '', correct: false, sortNo: 3 },
+    { optionKey: 'D', content: '', correct: false, sortNo: 4 },
+  )
+}
+
+function startHomeworkEdit(homework: HomeworkResponse) {
+  if (homework.status !== 0) {
+    error.value = '已发布或已关闭作业不可修改试卷题目'
+    return
+  }
+  editingHomeworkId.value = homework.id
+  homeworkEditForm.title = homework.title
+  homeworkEditForm.timeLimit = homework.timeLimit ?? null
+  homeworkEditForm.deadline = toDateTimeLocal(homework.deadline)
+  homeworkEditForm.maxAttempts = homework.maxAttempts || 1
+  homeworkEditForm.shuffle = homework.shuffle
+  homeworkEditForm.antiSwitch = homework.antiSwitch
+  const items = homework.items || []
+  editQuestionIds.value = items.map((item) => item.questionId)
+  Object.keys(editScoreMap).forEach((key) => delete editScoreMap[Number(key)])
+  items.forEach((item) => {
+    editScoreMap[item.questionId] = Number(item.score || 10)
+  })
+}
+
+function cancelHomeworkEdit() {
+  editingHomeworkId.value = 0
+  homeworkEditForm.title = ''
+  homeworkEditForm.timeLimit = null
+  homeworkEditForm.deadline = ''
+  homeworkEditForm.maxAttempts = 1
+  homeworkEditForm.shuffle = false
+  homeworkEditForm.antiSwitch = false
+  editQuestionIds.value = []
+  Object.keys(editScoreMap).forEach((key) => delete editScoreMap[Number(key)])
 }
 
 async function loadQuestions() {
@@ -253,6 +392,39 @@ async function submitQuestion() {
   }
 }
 
+async function submitQuestionEdit(question: QuestionResponse) {
+  if (!questionEditForm.stem.trim()) {
+    return
+  }
+  loading.value = true
+  error.value = ''
+  message.value = ''
+  try {
+    await updateQuestion(question.id, {
+      courseId: props.courseId,
+      type: questionEditForm.type,
+      stem: questionEditForm.stem.trim(),
+      answer: questionEditForm.answer || undefined,
+      analysis: questionEditForm.analysis || undefined,
+      difficulty: questionEditForm.difficulty || undefined,
+      nodeId: questionEditForm.nodeId || undefined,
+      lang: questionEditForm.lang || undefined,
+      options: editNeedsOptions.value
+        ? questionEditForm.options
+            .filter((option) => option.optionKey && option.content)
+            .map((option) => ({ ...option }))
+        : undefined,
+    })
+    cancelQuestionEdit()
+    message.value = '题目已更新'
+    await loadQuestions()
+  } catch (e) {
+    error.value = e instanceof Error ? e.message : '题目更新失败'
+  } finally {
+    loading.value = false
+  }
+}
+
 async function submitHomework() {
   if (!homeworkForm.title.trim() || selectedQuestionIds.value.length === 0) {
     error.value = '请填写标题并选择题目'
@@ -292,6 +464,38 @@ async function submitHomework() {
   }
 }
 
+async function submitHomeworkEdit(homework: HomeworkResponse) {
+  if (!homeworkEditForm.title.trim() || editQuestionIds.value.length === 0) {
+    error.value = '请填写标题并选择题目'
+    return
+  }
+  loading.value = true
+  error.value = ''
+  message.value = ''
+  try {
+    await updateHomework(homework.id, {
+      title: homeworkEditForm.title.trim(),
+      timeLimit: homeworkEditForm.timeLimit || undefined,
+      deadline: normalizeDeadline(homeworkEditForm.deadline),
+      maxAttempts: homeworkEditForm.maxAttempts || 1,
+      shuffle: homeworkEditForm.shuffle,
+      antiSwitch: homeworkEditForm.antiSwitch,
+      items: editQuestionIds.value.map((id, index) => ({
+        questionId: id,
+        score: editScoreMap[id] || 10,
+        sortNo: index + 1,
+      })),
+    })
+    cancelHomeworkEdit()
+    message.value = '作业已更新'
+    emit('refresh')
+  } catch (e) {
+    error.value = e instanceof Error ? e.message : '作业更新失败'
+  } finally {
+    loading.value = false
+  }
+}
+
 async function publish(id: number) {
   loading.value = true
   error.value = ''
@@ -315,7 +519,12 @@ async function removeQuestion(question: QuestionResponse) {
   try {
     await deleteQuestion(question.id)
     selectedQuestionIds.value = selectedQuestionIds.value.filter((id) => id !== question.id)
+    editQuestionIds.value = editQuestionIds.value.filter((id) => id !== question.id)
     delete scoreMap[question.id]
+    delete editScoreMap[question.id]
+    if (editingQuestionId.value === question.id) {
+      cancelQuestionEdit()
+    }
     message.value = '题目已删除'
     await loadQuestions()
   } catch (e) {
@@ -493,11 +702,56 @@ watch(
                   step="0.5"
                   class="focus-ring h-8 w-20 rounded-md border border-slate-300 bg-white px-2 text-sm text-slate-950 dark:border-white/10 dark:bg-white/5 dark:text-white"
                 />
-                <button type="button" class="shrink-0 text-rose-600 hover:underline" :disabled="loading" @click="removeQuestion(question)">
-                  <TrashIcon class="size-4" aria-hidden="true" />
-                  <span class="sr-only">删除题目</span>
-                </button>
+                <div class="flex shrink-0 items-center gap-2">
+                  <button type="button" class="text-[rgb(var(--color-brand))] hover:underline" :disabled="loading" @click="startQuestionEdit(question)">
+                    <PencilSquareIcon class="size-4" aria-hidden="true" />
+                    <span class="sr-only">编辑题目</span>
+                  </button>
+                  <button type="button" class="text-rose-600 hover:underline" :disabled="loading" @click="removeQuestion(question)">
+                    <TrashIcon class="size-4" aria-hidden="true" />
+                    <span class="sr-only">删除题目</span>
+                  </button>
+                </div>
               </div>
+              <form v-if="editingQuestionId === question.id" class="mt-4 grid gap-3 border-t border-slate-100 pt-4 dark:border-white/10" @submit.prevent="submitQuestionEdit(question)">
+                <div class="grid gap-3 sm:grid-cols-3">
+                  <select v-model.number="questionEditForm.type" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white">
+                    <option :value="1">单选</option>
+                    <option :value="2">多选</option>
+                    <option :value="3">判断</option>
+                    <option :value="4">填空</option>
+                    <option :value="5">简答</option>
+                  </select>
+                  <input v-model.number="questionEditForm.difficulty" type="number" min="1" max="5" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" />
+                  <select v-model.number="questionEditForm.nodeId" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white">
+                    <option :value="0">不关联知识点</option>
+                    <option v-for="node in nodes" :key="node.id" :value="node.id">{{ node.name }}</option>
+                  </select>
+                </div>
+                <textarea v-model.trim="questionEditForm.stem" rows="3" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" required />
+                <input v-model.trim="questionEditForm.answer" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" placeholder="参考答案" />
+                <div v-if="editNeedsOptions" class="grid gap-2">
+                  <label v-for="option in questionEditForm.options" :key="option.optionKey" class="grid gap-2 sm:grid-cols-[72px_minmax(0,1fr)_80px] sm:items-center">
+                    <span class="text-sm font-medium text-slate-700 dark:text-slate-200">{{ option.optionKey }}</span>
+                    <input v-model.trim="option.content" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" />
+                    <label class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
+                      <input v-model="option.correct" type="checkbox" />
+                      正确
+                    </label>
+                  </label>
+                </div>
+                <textarea v-model.trim="questionEditForm.analysis" rows="2" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" placeholder="解析" />
+                <div class="flex gap-2">
+                  <button type="submit" class="btn-primary focus-ring inline-flex h-9 items-center gap-2 px-3 text-sm" :disabled="loading">
+                    <CheckIcon class="size-4" aria-hidden="true" />
+                    保存题目
+                  </button>
+                  <button type="button" class="focus-ring inline-flex h-9 items-center gap-2 rounded-md border border-slate-200 px-3 text-sm font-semibold text-slate-700 dark:border-white/10 dark:text-slate-200" @click="cancelQuestionEdit">
+                    <XMarkIcon class="size-4" aria-hidden="true" />
+                    取消
+                  </button>
+                </div>
+              </form>
             </li>
           </ul>
         </div>
@@ -513,12 +767,23 @@ watch(
       <h4 class="text-sm font-semibold text-slate-950 dark:text-white">作业发布</h4>
       <EmptyState v-if="homeworks.length === 0" class="mt-3" title="暂无作业" description="创建作业后可发布给学生。" />
       <ul v-else class="mt-3 divide-y divide-slate-100 dark:divide-white/10">
-        <li v-for="homework in homeworks" :key="homework.id" class="flex items-center justify-between gap-4 py-3">
-          <div class="min-w-0">
-            <p class="truncate text-sm font-medium text-slate-950 dark:text-white">{{ homework.title }}</p>
-            <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">题量 {{ homework.questionCount }} · 总分 {{ Number(homework.totalScore || 0).toFixed(1) }}</p>
-          </div>
-          <div class="flex shrink-0 items-center gap-2">
+        <li v-for="homework in homeworks" :key="homework.id" class="py-3">
+          <div class="flex items-center justify-between gap-4">
+            <div class="min-w-0">
+              <p class="truncate text-sm font-medium text-slate-950 dark:text-white">{{ homework.title }}</p>
+              <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">题量 {{ homework.questionCount }} · 总分 {{ Number(homework.totalScore || 0).toFixed(1) }}</p>
+            </div>
+            <div class="flex shrink-0 items-center gap-2">
+              <button
+                v-if="homework.status === 0"
+                type="button"
+                class="focus-ring inline-flex h-9 items-center gap-2 rounded-md border border-slate-200 px-3 text-sm font-semibold text-slate-700 hover:bg-slate-50 dark:border-white/10 dark:text-slate-200 dark:hover:bg-white/10"
+                :disabled="loading"
+                @click="startHomeworkEdit(homework)"
+              >
+                <PencilSquareIcon class="size-4" aria-hidden="true" />
+                编辑
+              </button>
             <button
               v-if="homework.status === 0"
               type="button"
@@ -556,7 +821,68 @@ watch(
               <TrashIcon class="size-4" aria-hidden="true" />
               删除
             </button>
+            </div>
           </div>
+          <form v-if="editingHomeworkId === homework.id" class="mt-4 grid gap-4 rounded-md bg-slate-50 p-4 dark:bg-white/5" @submit.prevent="submitHomeworkEdit(homework)">
+            <div class="grid gap-4 sm:grid-cols-2">
+              <label class="sm:col-span-2">
+                <span class="text-sm font-medium text-slate-700 dark:text-slate-200">标题</span>
+                <input v-model.trim="homeworkEditForm.title" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" required />
+              </label>
+              <label>
+                <span class="text-sm font-medium text-slate-700 dark:text-slate-200">限时分钟</span>
+                <input v-model.number="homeworkEditForm.timeLimit" type="number" min="0" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" />
+              </label>
+              <label>
+                <span class="text-sm font-medium text-slate-700 dark:text-slate-200">截止时间</span>
+                <input v-model="homeworkEditForm.deadline" type="datetime-local" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" />
+              </label>
+              <label>
+                <span class="text-sm font-medium text-slate-700 dark:text-slate-200">最大尝试次数</span>
+                <input v-model.number="homeworkEditForm.maxAttempts" type="number" min="1" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" />
+              </label>
+              <div class="flex items-end gap-4">
+                <label class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
+                  <input v-model="homeworkEditForm.shuffle" type="checkbox" />
+                  乱序
+                </label>
+                <label class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
+                  <input v-model="homeworkEditForm.antiSwitch" type="checkbox" />
+                  防切屏
+                </label>
+              </div>
+            </div>
+            <div>
+              <p class="text-sm font-medium text-slate-700 dark:text-slate-200">题目与分值</p>
+              <div class="mt-3 max-h-80 divide-y divide-slate-200 overflow-y-auto rounded-md border border-slate-200 bg-white dark:divide-white/10 dark:border-white/10 dark:bg-slate-900">
+                <label v-for="question in questions" :key="question.id" class="flex items-start gap-3 p-3">
+                  <input :checked="editQuestionIds.includes(question.id)" type="checkbox" class="mt-1" @change="toggleEditQuestion(question.id)" />
+                  <span class="min-w-0 flex-1">
+                    <span class="line-clamp-2 text-sm font-medium text-slate-900 dark:text-white">{{ question.stem }}</span>
+                    <span class="mt-1 block text-xs text-slate-500 dark:text-slate-400">{{ typeLabel(question.type) }} · 难度 {{ question.difficulty || '-' }}</span>
+                  </span>
+                  <input
+                    v-if="editQuestionIds.includes(question.id)"
+                    v-model.number="editScoreMap[question.id]"
+                    type="number"
+                    min="0"
+                    step="0.5"
+                    class="focus-ring h-8 w-20 rounded-md border border-slate-300 bg-white px-2 text-sm text-slate-950 dark:border-white/10 dark:bg-white/5 dark:text-white"
+                  />
+                </label>
+              </div>
+            </div>
+            <div class="flex gap-2">
+              <button type="submit" class="btn-primary focus-ring inline-flex h-10 items-center gap-2 px-4 text-sm" :disabled="loading">
+                <CheckIcon class="size-4" aria-hidden="true" />
+                保存作业
+              </button>
+              <button type="button" class="focus-ring inline-flex h-10 items-center gap-2 rounded-md border border-slate-200 px-4 text-sm font-semibold text-slate-700 dark:border-white/10 dark:text-slate-200" @click="cancelHomeworkEdit">
+                <XMarkIcon class="size-4" aria-hidden="true" />
+                取消
+              </button>
+            </div>
+          </form>
         </li>
       </ul>
     </section>

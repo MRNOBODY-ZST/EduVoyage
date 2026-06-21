@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted, reactive, ref } from 'vue'
-import { ArrowPathIcon, PlusIcon, TrashIcon } from '@heroicons/vue/24/outline'
+import { ArrowPathIcon, CheckIcon, PencilSquareIcon, PlusIcon, TrashIcon, XMarkIcon } from '@heroicons/vue/24/outline'
 
 import EmptyState from '@/components/state/EmptyState.vue'
 import ErrorState from '@/components/state/ErrorState.vue'
@@ -15,6 +15,9 @@ import {
   fetchClasses,
   fetchDepartments,
   fetchMajors,
+  updateDepartment,
+  updateMajor,
+  updateOrgClass,
 } from '@/lib/services'
 import { useAuthStore } from '@/stores/auth'
 import type { ClassResponse, DepartmentResponse, MajorResponse } from '@/types/api'
@@ -27,10 +30,16 @@ const message = ref('')
 const departments = ref<DepartmentResponse[]>([])
 const majors = ref<MajorResponse[]>([])
 const classes = ref<ClassResponse[]>([])
+const editingDepartmentId = ref(0)
+const editingMajorId = ref(0)
+const editingClassId = ref(0)
 
 const departmentForm = reactive({ name: '', code: '' })
 const majorForm = reactive({ departmentId: 0, name: '', code: '' })
 const classForm = reactive({ majorId: 0, name: '', grade: new Date().getFullYear() })
+const departmentEditForm = reactive({ name: '', code: '' })
+const majorEditForm = reactive({ departmentId: 0, name: '', code: '' })
+const classEditForm = reactive({ majorId: 0, name: '', grade: new Date().getFullYear() })
 
 const majorsByDepartment = computed(() => {
   const result = new Map<number, MajorResponse[]>()
@@ -58,6 +67,46 @@ function majorName(id: number) {
 
 function canManage() {
   return auth.hasPermission('org:manage')
+}
+
+function startDepartmentEdit(item: DepartmentResponse) {
+  editingDepartmentId.value = item.id
+  departmentEditForm.name = item.name
+  departmentEditForm.code = item.code || ''
+}
+
+function startMajorEdit(item: MajorResponse) {
+  editingMajorId.value = item.id
+  majorEditForm.departmentId = item.departmentId
+  majorEditForm.name = item.name
+  majorEditForm.code = item.code || ''
+}
+
+function startClassEdit(item: ClassResponse) {
+  editingClassId.value = item.id
+  classEditForm.majorId = item.majorId
+  classEditForm.name = item.name
+  classEditForm.grade = item.grade || new Date().getFullYear()
+}
+
+function cancelDepartmentEdit() {
+  editingDepartmentId.value = 0
+  departmentEditForm.name = ''
+  departmentEditForm.code = ''
+}
+
+function cancelMajorEdit() {
+  editingMajorId.value = 0
+  majorEditForm.departmentId = 0
+  majorEditForm.name = ''
+  majorEditForm.code = ''
+}
+
+function cancelClassEdit() {
+  editingClassId.value = 0
+  classEditForm.majorId = 0
+  classEditForm.name = ''
+  classEditForm.grade = new Date().getFullYear()
 }
 
 async function load() {
@@ -93,6 +142,25 @@ async function submitDepartment() {
   }
 }
 
+async function submitDepartmentEdit(item: DepartmentResponse) {
+  if (!departmentEditForm.name.trim()) return
+  saving.value = true
+  error.value = ''
+  try {
+    await updateDepartment(item.id, {
+      name: departmentEditForm.name.trim(),
+      code: departmentEditForm.code || undefined,
+    })
+    cancelDepartmentEdit()
+    message.value = '院系已更新'
+    await load()
+  } catch (e) {
+    error.value = e instanceof Error ? e.message : '院系更新失败'
+  } finally {
+    saving.value = false
+  }
+}
+
 async function submitMajor() {
   if (!majorForm.departmentId || !majorForm.name.trim()) return
   saving.value = true
@@ -113,6 +181,26 @@ async function submitMajor() {
   }
 }
 
+async function submitMajorEdit(item: MajorResponse) {
+  if (!majorEditForm.departmentId || !majorEditForm.name.trim()) return
+  saving.value = true
+  error.value = ''
+  try {
+    await updateMajor(item.id, {
+      departmentId: majorEditForm.departmentId,
+      name: majorEditForm.name.trim(),
+      code: majorEditForm.code || undefined,
+    })
+    cancelMajorEdit()
+    message.value = '专业已更新'
+    await load()
+  } catch (e) {
+    error.value = e instanceof Error ? e.message : '专业更新失败'
+  } finally {
+    saving.value = false
+  }
+}
+
 async function submitClass() {
   if (!classForm.majorId || !classForm.name.trim()) return
   saving.value = true
@@ -127,6 +215,26 @@ async function submitClass() {
     await load()
   } catch (e) {
     error.value = e instanceof Error ? e.message : '班级创建失败'
+  } finally {
+    saving.value = false
+  }
+}
+
+async function submitClassEdit(item: ClassResponse) {
+  if (!classEditForm.majorId || !classEditForm.name.trim()) return
+  saving.value = true
+  error.value = ''
+  try {
+    await updateOrgClass(item.id, {
+      majorId: classEditForm.majorId,
+      name: classEditForm.name.trim(),
+      grade: classEditForm.grade || undefined,
+    })
+    cancelClassEdit()
+    message.value = '班级已更新'
+    await load()
+  } catch (e) {
+    error.value = e instanceof Error ? e.message : '班级更新失败'
   } finally {
     saving.value = false
   }
@@ -280,22 +388,63 @@ onMounted(load)
                   <h4 class="truncate text-sm font-semibold text-slate-950 dark:text-white">{{ department.name }}</h4>
                   <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">{{ department.code || '-' }}</p>
                 </div>
-                <button v-if="canManage()" type="button" class="text-rose-600 hover:underline" :disabled="saving" @click="removeDepartment(department)">
-                  <TrashIcon class="size-4" aria-hidden="true" />
-                  <span class="sr-only">删除院系</span>
-                </button>
+                <div v-if="canManage()" class="flex shrink-0 items-center gap-2">
+                  <button type="button" class="text-[rgb(var(--color-brand))] hover:underline" :disabled="saving" @click="startDepartmentEdit(department)">
+                    <PencilSquareIcon class="size-4" aria-hidden="true" />
+                    <span class="sr-only">编辑院系</span>
+                  </button>
+                  <button type="button" class="text-rose-600 hover:underline" :disabled="saving" @click="removeDepartment(department)">
+                    <TrashIcon class="size-4" aria-hidden="true" />
+                    <span class="sr-only">删除院系</span>
+                  </button>
+                </div>
               </div>
+              <form v-if="editingDepartmentId === department.id" class="mt-3 grid gap-2 sm:grid-cols-[minmax(0,1fr)_140px_auto]" @submit.prevent="submitDepartmentEdit(department)">
+                <input v-model.trim="departmentEditForm.name" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" required />
+                <input v-model.trim="departmentEditForm.code" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" />
+                <div class="flex gap-2">
+                  <button type="submit" class="focus-ring inline-flex h-9 items-center rounded-md bg-[rgb(var(--color-brand))] px-3 text-sm font-semibold text-white" :disabled="saving">
+                    <CheckIcon class="size-4" aria-hidden="true" />
+                  </button>
+                  <button type="button" class="focus-ring inline-flex h-9 items-center rounded-md border border-slate-200 px-3 text-sm font-semibold text-slate-700 dark:border-white/10 dark:text-slate-200" @click="cancelDepartmentEdit">
+                    <XMarkIcon class="size-4" aria-hidden="true" />
+                  </button>
+                </div>
+              </form>
               <ul class="mt-3 space-y-2">
                 <li
                   v-for="major in majorsByDepartment.get(department.id) || []"
                   :key="major.id"
-                  class="flex items-center justify-between gap-3 rounded-md bg-slate-50 px-3 py-2 text-sm dark:bg-white/5"
+                  class="rounded-md bg-slate-50 px-3 py-2 text-sm dark:bg-white/5"
                 >
-                  <span class="truncate text-slate-700 dark:text-slate-200">{{ major.name }} · {{ major.code || '-' }}</span>
-                  <button v-if="canManage()" type="button" class="text-rose-600 hover:underline" :disabled="saving" @click="removeMajor(major)">
-                    <TrashIcon class="size-4" aria-hidden="true" />
-                    <span class="sr-only">删除专业</span>
-                  </button>
+                  <div class="flex items-center justify-between gap-3">
+                    <span class="truncate text-slate-700 dark:text-slate-200">{{ major.name }} · {{ major.code || '-' }}</span>
+                    <div v-if="canManage()" class="flex shrink-0 items-center gap-2">
+                      <button type="button" class="text-[rgb(var(--color-brand))] hover:underline" :disabled="saving" @click="startMajorEdit(major)">
+                        <PencilSquareIcon class="size-4" aria-hidden="true" />
+                        <span class="sr-only">编辑专业</span>
+                      </button>
+                      <button type="button" class="text-rose-600 hover:underline" :disabled="saving" @click="removeMajor(major)">
+                        <TrashIcon class="size-4" aria-hidden="true" />
+                        <span class="sr-only">删除专业</span>
+                      </button>
+                    </div>
+                  </div>
+                  <form v-if="editingMajorId === major.id" class="mt-3 grid gap-2 sm:grid-cols-[140px_minmax(0,1fr)_120px_auto]" @submit.prevent="submitMajorEdit(major)">
+                    <select v-model.number="majorEditForm.departmentId" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white">
+                      <option v-for="option in departments" :key="option.id" :value="option.id">{{ option.name }}</option>
+                    </select>
+                    <input v-model.trim="majorEditForm.name" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" required />
+                    <input v-model.trim="majorEditForm.code" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" />
+                    <div class="flex gap-2">
+                      <button type="submit" class="focus-ring inline-flex h-9 items-center rounded-md bg-[rgb(var(--color-brand))] px-3 text-sm font-semibold text-white" :disabled="saving">
+                        <CheckIcon class="size-4" aria-hidden="true" />
+                      </button>
+                      <button type="button" class="focus-ring inline-flex h-9 items-center rounded-md border border-slate-200 px-3 text-sm font-semibold text-slate-700 dark:border-white/10 dark:text-slate-200" @click="cancelMajorEdit">
+                        <XMarkIcon class="size-4" aria-hidden="true" />
+                      </button>
+                    </div>
+                  </form>
                 </li>
               </ul>
             </article>
@@ -317,20 +466,47 @@ onMounted(load)
                 </tr>
               </thead>
               <tbody class="divide-y divide-slate-100 dark:divide-white/10">
-                <tr v-for="item in classes" :key="item.id">
-                  <td class="px-4 py-3 text-sm font-medium text-slate-950 dark:text-white">{{ item.name }}</td>
-                  <td class="px-4 py-3 text-sm text-slate-500 dark:text-slate-400">{{ majorName(item.majorId) }}</td>
-                  <td class="px-4 py-3 text-sm text-slate-500 dark:text-slate-400">
-                    {{ departmentName(majors.find((major) => major.id === item.majorId)?.departmentId || 0) }}
-                  </td>
-                  <td class="px-4 py-3 text-sm text-slate-500 dark:text-slate-400">{{ item.grade || '-' }}</td>
-                  <td class="px-4 py-3 text-right">
-                    <button v-if="canManage()" type="button" class="inline-flex items-center gap-1 text-sm font-semibold text-rose-600 hover:underline" :disabled="saving" @click="removeClass(item)">
-                      <TrashIcon class="size-4" aria-hidden="true" />
-                      删除
-                    </button>
-                  </td>
-                </tr>
+                <template v-for="item in classes" :key="item.id">
+                  <tr>
+                    <td class="px-4 py-3 text-sm font-medium text-slate-950 dark:text-white">{{ item.name }}</td>
+                    <td class="px-4 py-3 text-sm text-slate-500 dark:text-slate-400">{{ majorName(item.majorId) }}</td>
+                    <td class="px-4 py-3 text-sm text-slate-500 dark:text-slate-400">
+                      {{ departmentName(majors.find((major) => major.id === item.majorId)?.departmentId || 0) }}
+                    </td>
+                    <td class="px-4 py-3 text-sm text-slate-500 dark:text-slate-400">{{ item.grade || '-' }}</td>
+                    <td class="px-4 py-3 text-right">
+                      <div v-if="canManage()" class="flex justify-end gap-2">
+                        <button type="button" class="inline-flex items-center gap-1 text-sm font-semibold text-[rgb(var(--color-brand))] hover:underline" :disabled="saving" @click="startClassEdit(item)">
+                          <PencilSquareIcon class="size-4" aria-hidden="true" />
+                          编辑
+                        </button>
+                        <button type="button" class="inline-flex items-center gap-1 text-sm font-semibold text-rose-600 hover:underline" :disabled="saving" @click="removeClass(item)">
+                          <TrashIcon class="size-4" aria-hidden="true" />
+                          删除
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr v-if="editingClassId === item.id" class="bg-slate-50/80 dark:bg-white/5">
+                    <td colspan="5" class="px-4 py-4">
+                      <form class="grid gap-3 md:grid-cols-[180px_minmax(0,1fr)_120px_auto]" @submit.prevent="submitClassEdit(item)">
+                        <select v-model.number="classEditForm.majorId" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white">
+                          <option v-for="major in majors" :key="major.id" :value="major.id">{{ major.name }}</option>
+                        </select>
+                        <input v-model.trim="classEditForm.name" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" required />
+                        <input v-model.number="classEditForm.grade" type="number" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" />
+                        <div class="flex gap-2">
+                          <button type="submit" class="focus-ring inline-flex h-10 items-center rounded-md bg-[rgb(var(--color-brand))] px-3 text-sm font-semibold text-white" :disabled="saving">
+                            <CheckIcon class="size-4" aria-hidden="true" />
+                          </button>
+                          <button type="button" class="focus-ring inline-flex h-10 items-center rounded-md border border-slate-200 px-3 text-sm font-semibold text-slate-700 dark:border-white/10 dark:text-slate-200" @click="cancelClassEdit">
+                            <XMarkIcon class="size-4" aria-hidden="true" />
+                          </button>
+                        </div>
+                      </form>
+                    </td>
+                  </tr>
+                </template>
               </tbody>
             </table>
           </div>

@@ -175,6 +175,7 @@ export interface HomeworkResponse {
   status: number
   questionCount: number
   createdAt?: string
+  items?: Array<{ questionId: number; score: number; sortNo?: number }>
 }
 
 export interface QuestionOptionView {

@@ -163,8 +163,10 @@ public class HomeworkService {
     }
 
     private Mono<HomeworkResponse> toResponse(Homework h) {
-        return paperRepository.findByHomeworkId(h.getId()).count()
-                .map(count -> HomeworkResponse.from(h, count.intValue()));
+        return paperRepository.findByHomeworkId(h.getId())
+                .map(item -> new PaperItem(item.getQuestionId(), item.getScore(), item.getSortNo()))
+                .collectList()
+                .map(items -> HomeworkResponse.from(h, items));
     }
 
     private Mono<Void> replaceItems(Long homeworkId, List<PaperItem> items) {
