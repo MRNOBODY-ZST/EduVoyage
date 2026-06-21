@@ -29,7 +29,7 @@ springdoc:
     - group: drive
       paths-to-match: /api/drive/**
     - group: interaction
-      paths-to-match: /api/discussions/**, /api/notifications/**, /api/sse/**
+      paths-to-match: /api/discussions/**, /api/notifications/**, /api/sse/**, /api/courses/*/announcements
     - group: analytics
       paths-to-match: /api/analytics/**
 

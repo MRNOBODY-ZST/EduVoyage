@@ -60,7 +60,15 @@ public enum BizErrorCode {
     SHARE_EXPIRED(15002, "分享链接已失效", HttpStatus.GONE),
     SHARE_CODE_INVALID(15003, "提取码错误", HttpStatus.FORBIDDEN),
     UPLOAD_SESSION_INVALID(15004, "上传会话无效或已过期", HttpStatus.BAD_REQUEST),
-    STORAGE_ERROR(15005, "存储服务异常", HttpStatus.INTERNAL_SERVER_ERROR);
+    STORAGE_ERROR(15005, "存储服务异常", HttpStatus.INTERNAL_SERVER_ERROR),
+
+    // ---- interaction (16xxx) ----
+    DISCUSSION_NOT_FOUND(16000, "讨论不存在", HttpStatus.NOT_FOUND),
+    NOTIFICATION_NOT_FOUND(16001, "通知不存在", HttpStatus.NOT_FOUND),
+
+    // ---- analytics (17xxx) ----
+    ANALYTICS_SCOPE_INVALID(17000, "无权查看该分析范围", HttpStatus.FORBIDDEN),
+    LEARNING_LOG_INVALID(17001, "学习日志无效", HttpStatus.BAD_REQUEST);
 
     private final int code;
     private final String message;

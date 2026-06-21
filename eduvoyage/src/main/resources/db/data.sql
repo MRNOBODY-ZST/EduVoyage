@@ -33,6 +33,10 @@ INSERT IGNORE INTO sys_permission (id, code, name, type, parent_id) VALUES
   (410, 'homework:submit','提交作业',  3, 0),
   (500, 'drive:read',     '查看网盘',  3, 0),
   (501, 'drive:write',    '网盘读写',  3, 0),
+  (520, 'discussion:read', '查看讨论',  3, 0),
+  (521, 'discussion:write','参与讨论',  3, 0),
+  (530, 'notification:read','查看通知', 3, 0),
+  (531, 'notification:write','发送通知',3, 0),
   (600, 'analytics:view', '查看分析',  3, 0);
 
 -- ---- role-permission bindings ----
@@ -47,6 +51,7 @@ INSERT IGNORE INTO sys_role_permission (role_id, permission_id) VALUES
   (2, 300), (2, 301),
   (2, 400), (2, 401), (2, 402),
   (2, 500), (2, 501),
+  (2, 520), (2, 521), (2, 530), (2, 531),
   (2, 600);
 
 -- STUDENT: read course/graph, enroll, submit homework, drive, self analytics
@@ -55,6 +60,7 @@ INSERT IGNORE INTO sys_role_permission (role_id, permission_id) VALUES
   (3, 300),
   (3, 400), (3, 410),
   (3, 500), (3, 501),
+  (3, 520), (3, 521), (3, 530),
   (3, 600);
 
 -- ---- sample organization ----

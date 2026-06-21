@@ -3,6 +3,7 @@ package cn.edu.shmtu.eduvoyage.course.repository;
 import cn.edu.shmtu.eduvoyage.course.domain.CourseEnrollment;
 import org.springframework.data.r2dbc.repository.Query;
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface CourseEnrollmentRepository extends ReactiveCrudRepository<CourseEnrollment, Long> {
@@ -12,4 +13,11 @@ public interface CourseEnrollmentRepository extends ReactiveCrudRepository<Cours
 
     @Query("SELECT COUNT(*) FROM course_enrollment WHERE course_id = :courseId AND status = 1 AND deleted = 0")
     Mono<Long> countActiveByCourse(Long courseId);
+
+    @Query("""
+            SELECT * FROM course_enrollment
+            WHERE course_id = :courseId AND status = 1 AND deleted = 0
+            ORDER BY enrolled_at ASC, id ASC
+            """)
+    Flux<CourseEnrollment> findActiveByCourse(Long courseId);
 }
