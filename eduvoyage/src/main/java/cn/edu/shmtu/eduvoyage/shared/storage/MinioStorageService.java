@@ -22,7 +22,11 @@ import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 
 import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -56,7 +60,14 @@ public class MinioStorageService {
      */
     @PostConstruct
     void ensureBucket() {
-        Mono.defer(() -> {
+        ensureBucketReady()
+                .doOnError(e -> log.warn("MinIO bucket init failed for '{}': {}", bucket, e.toString()))
+                .onErrorComplete()
+                .subscribe(v -> {}, e -> {}, () -> log.info("MinIO bucket '{}' ready", bucket));
+    }
+
+    private Mono<Void> ensureBucketReady() {
+        return Mono.defer(() -> {
                     try {
                         return Mono.fromFuture(client.bucketExists(BucketExistsArgs.builder().bucket(bucket).build()));
                     } catch (Exception e) {
@@ -72,14 +83,12 @@ public class MinioStorageService {
                                 return Mono.error(e);
                             }
                         }))
-                .doOnError(e -> log.warn("MinIO bucket init failed for '{}': {}", bucket, e.toString()))
-                .onErrorComplete()
-                .subscribe(v -> {}, e -> {}, () -> log.info("MinIO bucket '{}' ready", bucket));
+                .onErrorMap(e -> new BizException(BizErrorCode.STORAGE_ERROR, "存储桶初始化失败", e));
     }
 
     /** Uploads raw bytes to {@code objectKey}; resolves to the stored object's ETag. */
     public Mono<String> putBytes(String objectKey, byte[] content, String contentType) {
-        return Mono.defer(() -> {
+        return ensureBucketReady().then(Mono.defer(() -> {
                     try {
                         return Mono.fromFuture(client.putObject(PutObjectArgs.builder()
                                 .bucket(bucket)
@@ -91,7 +100,47 @@ public class MinioStorageService {
                         return Mono.<io.minio.ObjectWriteResponse>error(
                                 new BizException(BizErrorCode.STORAGE_ERROR, "上传失败: " + e.getMessage(), e));
                     }
-                })
+                }))
+                .map(resp -> resp.etag())
+                .onErrorMap(e -> !(e instanceof BizException),
+                        e -> new BizException(BizErrorCode.STORAGE_ERROR, "上传失败", e));
+    }
+
+    /** Uploads a local temporary file without loading it fully into heap memory. */
+    public Mono<String> putFile(String objectKey, Path path, long size, String contentType) {
+        return ensureBucketReady().then(Mono.defer(() -> {
+                    InputStream input;
+                    try {
+                        input = Files.newInputStream(path);
+                        CompletableFuture<io.minio.ObjectWriteResponse> future;
+                        try {
+                            future = client.putObject(PutObjectArgs.builder()
+                                    .bucket(bucket)
+                                    .object(objectKey)
+                                    .stream(input, size, -1L)
+                                    .contentType(contentType == null ? "application/octet-stream" : contentType)
+                                    .build());
+                        } catch (Exception e) {
+                            try {
+                                input.close();
+                            } catch (Exception ignored) {
+                                // best-effort close
+                            }
+                            throw e;
+                        }
+                        future.whenComplete((resp, err) -> {
+                            try {
+                                input.close();
+                            } catch (Exception ignored) {
+                                // best-effort close
+                            }
+                        });
+                        return Mono.fromFuture(future);
+                    } catch (Exception e) {
+                        return Mono.<io.minio.ObjectWriteResponse>error(
+                                new BizException(BizErrorCode.STORAGE_ERROR, "上传失败: " + e.getMessage(), e));
+                    }
+                }))
                 .map(resp -> resp.etag())
                 .onErrorMap(e -> !(e instanceof BizException),
                         e -> new BizException(BizErrorCode.STORAGE_ERROR, "上传失败", e));
