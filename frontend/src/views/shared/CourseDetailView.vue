@@ -808,7 +808,14 @@ onMounted(load)
               </div>
             </div>
 
-            <EmptyState v-if="!flatChapters.length && !nodes.length" class="mt-4" title="暂无章节内容" description="教师创建章节、知识点和课件后会显示在这里。" />
+            <div v-if="!flatChapters.length && !nodes.length" class="mt-4 rounded-md border border-dashed border-slate-300 bg-slate-50/60 p-8 text-center dark:border-white/15 dark:bg-white/[0.02]">
+              <p class="text-sm font-medium text-slate-700 dark:text-slate-200">暂无章节内容</p>
+              <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">教师创建章节、知识点和课件后会显示在这里。</p>
+              <button v-if="auth.hasPermission('course:update')" type="button" class="btn-primary focus-ring mt-4 inline-flex h-9 items-center gap-1.5 px-4 text-sm" @click="activeTab = 'authoring'">
+                <PencilSquareIcon class="size-4" aria-hidden="true" />
+                前往内容维护
+              </button>
+            </div>
           </div>
 
           <aside class="rounded-md border border-slate-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-slate-900">
@@ -974,6 +981,13 @@ onMounted(load)
             <form class="rounded-md border border-slate-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-slate-900" @submit.prevent="submitCourseware">
               <h4 class="text-sm font-semibold text-slate-950 dark:text-white">新增课件</h4>
               <div class="mt-4 grid gap-4 sm:grid-cols-2">
+                <label class="sm:col-span-2">
+                  <span class="text-sm font-medium text-slate-700 dark:text-slate-200">挂载知识点 <span class="text-rose-500">*</span></span>
+                  <select v-model="selectedNodeId" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" required>
+                    <option :value="null">请选择知识点</option>
+                    <option v-for="node in nodes" :key="node.id" :value="node.id">{{ node.name }}</option>
+                  </select>
+                </label>
                 <label class="sm:col-span-2">
                   <span class="text-sm font-medium text-slate-700 dark:text-slate-200">标题</span>
                   <input v-model.trim="coursewareForm.title" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-white/5 dark:text-white" required />

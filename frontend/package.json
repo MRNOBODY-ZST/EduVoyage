@@ -17,6 +17,7 @@
     "echarts": "^6.0.0",
     "pinia": "^3.0.4",
     "tailwindcss": "^4.1.17",
+    "vis-network": "^10.1.0",
     "vue": "^3.5.25",
     "vue-echarts": "^8.0.1",
     "vue-router": "^4.6.3"
