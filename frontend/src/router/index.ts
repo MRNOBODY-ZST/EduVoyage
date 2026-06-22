@@ -5,12 +5,19 @@ import { useAuthStore } from '@/stores/auth'
 
 interface RouteMetaShape {
   title?: string
+  i18nKey?: string
   public?: boolean
   permission?: string
   roles?: string[]
 }
 
 const routes = [
+  {
+    path: '/home',
+    name: 'home',
+    component: () => import('@/views/shared/HomeView.vue'),
+    meta: { title: 'EduVoyage', i18nKey: 'app.name', public: true },
+  },
   {
     path: '/login',
     name: 'login',
@@ -32,49 +39,49 @@ const routes = [
         path: 'student/dashboard',
         name: 'student-dashboard',
         component: () => import('@/views/student/StudentDashboardView.vue'),
-        meta: { title: '学习仪表盘', permission: 'analytics:view', roles: ['STUDENT'] },
+        meta: { title: '学习仪表盘', i18nKey: 'nav.studentDashboard', permission: 'analytics:view', roles: ['STUDENT'] },
       },
       {
         path: 'student/analytics',
         name: 'student-analytics',
         component: () => import('@/views/student/StudentDashboardView.vue'),
-        meta: { title: '我的学情', permission: 'analytics:view', roles: ['STUDENT'] },
+        meta: { title: '我的学情', i18nKey: 'nav.studentAnalytics', permission: 'analytics:view', roles: ['STUDENT'] },
       },
       {
         path: 'teacher/courses',
         name: 'teacher-courses',
         component: () => import('@/views/teacher/TeacherCoursesView.vue'),
-        meta: { title: '课程工作台', permission: 'course:read', roles: ['TEACHER'] },
+        meta: { title: '课程工作台', i18nKey: 'nav.teacherCourses', permission: 'course:read', roles: ['TEACHER'] },
       },
       {
         path: 'teacher/analytics',
         name: 'teacher-analytics',
         component: () => import('@/views/teacher/TeacherAnalyticsView.vue'),
-        meta: { title: '教学分析', permission: 'analytics:view', roles: ['TEACHER'] },
+        meta: { title: '教学分析', i18nKey: 'nav.teacherAnalytics', permission: 'analytics:view', roles: ['TEACHER'] },
       },
       {
         path: 'admin/dashboard',
         name: 'admin-dashboard',
         component: () => import('@/views/admin/AdminDashboardView.vue'),
-        meta: { title: '运营大盘', permission: 'analytics:view', roles: ['ADMIN'] },
+        meta: { title: '运营大盘', i18nKey: 'nav.adminDashboard', permission: 'analytics:view', roles: ['ADMIN'] },
       },
       {
         path: 'admin/users',
         name: 'admin-users',
         component: () => import('@/views/admin/AdminUsersView.vue'),
-        meta: { title: '用户管理', permission: 'user:read', roles: ['ADMIN'] },
+        meta: { title: '用户管理', i18nKey: 'nav.adminUsers', permission: 'user:read', roles: ['ADMIN'] },
       },
       {
         path: 'admin/org',
         name: 'admin-org',
         component: () => import('@/views/admin/AdminOrgView.vue'),
-        meta: { title: '组织架构', permission: 'org:manage', roles: ['ADMIN'] },
+        meta: { title: '组织架构', i18nKey: 'nav.adminOrg', permission: 'org:manage', roles: ['ADMIN'] },
       },
       {
         path: 'courses',
         name: 'courses',
         component: () => import('@/views/shared/CoursesView.vue'),
-        meta: { title: '课程中心' },
+        meta: { title: '课程中心', i18nKey: 'nav.courses' },
       },
       {
         path: 'courses/:courseId',
@@ -86,19 +93,19 @@ const routes = [
         path: 'drive',
         name: 'drive',
         component: () => import('@/views/shared/DriveView.vue'),
-        meta: { title: '课程网盘', permission: 'drive:read' },
+        meta: { title: '课程网盘', i18nKey: 'nav.drive', permission: 'drive:read' },
       },
       {
         path: 'discussions',
         name: 'discussions',
         component: () => import('@/views/shared/DiscussionsView.vue'),
-        meta: { title: '课程讨论', permission: 'discussion:read' },
+        meta: { title: '课程讨论', i18nKey: 'nav.discussions', permission: 'discussion:read' },
       },
       {
         path: 'settings',
         name: 'settings',
         component: () => import('@/views/shared/SettingsView.vue'),
-        meta: { title: '偏好设置' },
+        meta: { title: '偏好设置', i18nKey: 'nav.settings' },
       },
     ],
   },
@@ -124,9 +131,13 @@ router.beforeEach(async (to) => {
     await auth.fetchMe()
   }
 
+  if (to.path === '/' && !auth.isAuthenticated) {
+    return { name: 'home' }
+  }
+
   const meta = to.meta as RouteMetaShape
   if (meta.public) {
-    if (to.name === 'login' && auth.isAuthenticated) {
+    if ((to.name === 'login' || to.name === 'home') && auth.isAuthenticated) {
       return defaultPath(auth.primaryRole)
     }
     return true

@@ -55,6 +55,7 @@ import type {
   HomeworkResponse,
   KnowledgeNodeResponse,
   LearningPath,
+  ApiId,
   WrongBookEntry,
 } from '@/types/api'
 
@@ -72,7 +73,7 @@ const loading = ref(true)
 const nodeLoading = ref(false)
 const enrolling = ref(false)
 const error = ref('')
-const activeTab = ref<TabKey>('graph')
+const activeTab = ref<TabKey>('materials')
 
 const course = ref<CourseResponse | null>(null)
 const chapters = ref<ChapterNode[]>([])
@@ -82,13 +83,14 @@ const learningPath = ref<LearningPath | null>(null)
 const homeworks = ref<HomeworkResponse[]>([])
 const wrongBook = ref<WrongBookEntry[]>([])
 const coursewares = ref<CoursewareResponse[]>([])
-const selectedNodeId = ref<number | null>(null)
+const coursewaresByNode = ref<Record<string, CoursewareResponse[]>>({})
+const selectedNodeId = ref<ApiId | null>(null)
 const authoringBusy = ref(false)
 const authoringMessage = ref('')
 const authoringError = ref('')
-const editingChapterId = ref(0)
-const editingNodeId = ref(0)
-const editingCoursewareId = ref(0)
+const editingChapterId = ref<ApiId | null>(null)
+const editingNodeId = ref<ApiId | null>(null)
+const editingCoursewareId = ref<ApiId | null>(null)
 
 const chapterForm = reactive({
   title: '',
@@ -143,10 +145,10 @@ const coursewareEditForm = reactive({
   sortNo: 0,
 })
 
-const courseId = computed(() => String(route.params.courseId || '') as unknown as number)
+const courseId = computed(() => String(route.params.courseId || ''))
 
 const flatChapters = computed(() => flatten(chapters.value))
-const selectedNode = computed(() => nodes.value.find((node) => node.id === selectedNodeId.value) || null)
+const selectedNode = computed(() => nodes.value.find((node) => isSameId(node.id, selectedNodeId.value)) || null)
 const masteredPercent = computed(() => {
   if (!learningPath.value?.totalCount) {
     return 0
@@ -164,7 +166,7 @@ const stats = computed(() => [
 const tabs = computed(() => [
   { key: 'graph' as const, label: '知识图谱', icon: MapIcon, visible: auth.hasPermission('graph:read') },
   { key: 'path' as const, label: '学习路径', icon: CheckCircleIcon, visible: auth.hasPermission('graph:read') },
-  { key: 'materials' as const, label: '课件资源', icon: LinkIcon, visible: true },
+  { key: 'materials' as const, label: '章节内容', icon: LinkIcon, visible: true },
   { key: 'homeworks' as const, label: '课程作业', icon: DocumentTextIcon, visible: auth.hasPermission('homework:read') },
   { key: 'wrong-book' as const, label: '错题本', icon: ExclamationCircleIcon, visible: auth.hasPermission('homework:submit') },
   { key: 'authoring' as const, label: '内容维护', icon: PencilSquareIcon, visible: auth.hasPermission('course:update') },
@@ -174,18 +176,34 @@ function flatten(items: ChapterNode[], level = 0): FlatChapter[] {
   return items.flatMap((item) => [{ ...item, level }, ...flatten(item.children || [], level + 1)])
 }
 
-function nodesForChapter(chapterId: number) {
-  return nodes.value.filter((node) => node.chapterId === chapterId)
+function idKey(id: ApiId | null | undefined) {
+  return id === null || id === undefined ? '' : String(id)
+}
+
+function isSameId(left: ApiId | null | undefined, right: ApiId | null | undefined) {
+  return idKey(left) !== '' && idKey(left) === idKey(right)
+}
+
+function nodesForChapter(chapterId: ApiId) {
+  return nodes.value.filter((node) => isSameId(node.chapterId, chapterId))
 }
 
 function ungroupedNodes() {
-  const chapterIds = new Set(flatChapters.value.map((chapter) => chapter.id))
-  return nodes.value.filter((node) => !node.chapterId || !chapterIds.has(node.chapterId))
+  const chapterIds = new Set(flatChapters.value.map((chapter) => idKey(chapter.id)))
+  return nodes.value.filter((node) => !node.chapterId || !chapterIds.has(idKey(node.chapterId)))
 }
 
-function selectNode(id: number | string, tab: TabKey = activeTab.value) {
-  selectedNodeId.value = id as number
+function selectNode(id: ApiId, tab: TabKey = activeTab.value) {
+  selectedNodeId.value = id
   activeTab.value = tab
+}
+
+function coursewaresForNode(nodeId: ApiId) {
+  return coursewaresByNode.value[idKey(nodeId)] || []
+}
+
+function materialCountForChapter(chapterId: ApiId) {
+  return nodesForChapter(chapterId).reduce((count, node) => count + coursewaresForNode(node.id).length, 0)
 }
 
 function coursewareTypeLabel(type: number) {
@@ -236,14 +254,14 @@ function startCoursewareEdit(item: CoursewareResponse) {
 }
 
 function cancelChapterEdit() {
-  editingChapterId.value = 0
+  editingChapterId.value = null
   chapterEditForm.title = ''
   chapterEditForm.parentId = 0
   chapterEditForm.sortNo = 0
 }
 
 function cancelNodeEdit() {
-  editingNodeId.value = 0
+  editingNodeId.value = null
   nodeEditForm.name = ''
   nodeEditForm.chapterId = 0
   nodeEditForm.description = ''
@@ -252,7 +270,7 @@ function cancelNodeEdit() {
 }
 
 function cancelCoursewareEdit() {
-  editingCoursewareId.value = 0
+  editingCoursewareId.value = null
   coursewareEditForm.title = ''
   coursewareEditForm.type = 4
   coursewareEditForm.contentRef = ''
@@ -262,7 +280,7 @@ function cancelCoursewareEdit() {
 }
 
 async function load() {
-  if (!Number.isFinite(courseId.value)) {
+  if (!courseId.value) {
     error.value = '课程 ID 不正确'
     loading.value = false
     return
@@ -287,6 +305,7 @@ async function load() {
     homeworks.value = homeworkList
     wrongBook.value = wrongBookList
     selectedNodeId.value = selectedNodeId.value || nodeList[0]?.id || graphInfo?.nodes[0]?.id || null
+    await loadAllCoursewares(nodeList)
   } catch (e) {
     error.value = e instanceof Error ? e.message : '课程详情加载失败'
   } finally {
@@ -301,7 +320,7 @@ async function refreshHomeworks() {
   homeworks.value = await fetchHomeworks(courseId.value).catch(() => [])
 }
 
-async function loadCoursewares(nodeId: number | null) {
+async function loadCoursewares(nodeId: ApiId | null) {
   coursewares.value = []
   if (!nodeId) {
     return
@@ -309,9 +328,26 @@ async function loadCoursewares(nodeId: number | null) {
   nodeLoading.value = true
   try {
     coursewares.value = await fetchCoursewares(nodeId).catch(() => [])
+    coursewaresByNode.value = { ...coursewaresByNode.value, [idKey(nodeId)]: coursewares.value }
   } finally {
     nodeLoading.value = false
   }
+}
+
+async function loadAllCoursewares(nodeList: KnowledgeNodeResponse[]) {
+  if (!nodeList.length) {
+    coursewaresByNode.value = {}
+    coursewares.value = []
+    return
+  }
+  const entries = await Promise.all(
+    nodeList.map(async (node) => {
+      const items = await fetchCoursewares(node.id as number).catch(() => [])
+      return [idKey(node.id), items] as const
+    }),
+  )
+  coursewaresByNode.value = Object.fromEntries(entries)
+  coursewares.value = selectedNodeId.value ? coursewaresForNode(selectedNodeId.value) : []
 }
 
 async function enroll() {
@@ -378,7 +414,7 @@ async function submitNode() {
 }
 
 async function submitEdge() {
-  if (!edgeForm.fromId || !edgeForm.toId || edgeForm.fromId === edgeForm.toId) {
+  if (!edgeForm.fromId || !edgeForm.toId || isSameId(edgeForm.fromId, edgeForm.toId)) {
     authoringError.value = '请选择两个不同的知识点'
     return
   }
@@ -442,7 +478,7 @@ async function removeNode(node: KnowledgeNodeResponse) {
   if (!window.confirm(`确认删除知识点“${node.name}”？`)) return
   await runAuthoring(async () => {
     await deleteKnowledgeNode(node.id)
-    if (selectedNodeId.value === node.id) {
+    if (isSameId(selectedNodeId.value, node.id)) {
       selectedNodeId.value = null
     }
     await load()
@@ -519,15 +555,26 @@ onMounted(load)
           <h2 class="mt-3 text-xl font-semibold text-slate-950 dark:text-white">{{ course.title }}</h2>
           <p class="mt-2 max-w-3xl text-sm leading-6 text-slate-600 dark:text-slate-300">{{ course.intro || '暂无课程简介' }}</p>
         </div>
-        <button
-          v-if="auth.hasPermission('course:enroll')"
-          type="button"
-          class="btn-primary focus-ring inline-flex h-10 shrink-0 items-center justify-center px-4 text-sm disabled:cursor-not-allowed disabled:opacity-60"
-          :disabled="course.enrolled || enrolling"
-          @click="enroll"
-        >
-          {{ course.enrolled ? '已选课' : enrolling ? '处理中' : '加入课程' }}
-        </button>
+        <div class="flex shrink-0 flex-wrap gap-3">
+          <button
+            v-if="auth.hasPermission('course:update')"
+            type="button"
+            class="focus-ring inline-flex h-10 items-center justify-center gap-2 rounded-md border border-slate-200 bg-white px-4 text-sm font-semibold text-slate-700 hover:bg-slate-50 dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:bg-white/10"
+            @click="activeTab = 'authoring'"
+          >
+            <PencilSquareIcon class="size-4" aria-hidden="true" />
+            维护章节与课件
+          </button>
+          <button
+            v-if="auth.hasPermission('course:enroll')"
+            type="button"
+            class="btn-primary focus-ring inline-flex h-10 items-center justify-center px-4 text-sm disabled:cursor-not-allowed disabled:opacity-60"
+            :disabled="course.enrolled || enrolling"
+            @click="enroll"
+          >
+            {{ course.enrolled ? '已选课' : enrolling ? '处理中' : '加入课程' }}
+          </button>
+        </div>
       </div>
     </section>
 
@@ -559,7 +606,7 @@ onMounted(load)
                 :key="node.id"
                 type="button"
                 :class="[
-                  selectedNodeId === node.id
+                  isSameId(selectedNodeId, node.id)
                     ? 'bg-[rgb(var(--color-brand-soft))] text-[rgb(var(--color-brand-strong))] dark:text-white'
                     : 'text-slate-600 hover:bg-slate-50 hover:text-[rgb(var(--color-brand))] dark:text-slate-300 dark:hover:bg-white/5',
                   'block w-full truncate rounded-md px-2 py-1.5 text-left text-sm',
@@ -580,7 +627,7 @@ onMounted(load)
               :key="node.id"
               type="button"
               :class="[
-                selectedNodeId === node.id
+                isSameId(selectedNodeId, node.id)
                   ? 'bg-[rgb(var(--color-brand-soft))] text-[rgb(var(--color-brand-strong))] dark:text-white'
                   : 'text-slate-600 hover:bg-slate-50 hover:text-[rgb(var(--color-brand))] dark:text-slate-300 dark:hover:bg-white/5',
                 'block w-full truncate rounded-md px-2 py-1.5 text-left text-sm',
@@ -675,33 +722,129 @@ onMounted(load)
           </div>
         </section>
 
-        <section v-else-if="activeTab === 'materials'" class="rounded-md border border-slate-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-slate-900">
-          <div class="flex flex-wrap items-start justify-between gap-4">
-            <div>
-              <h3 class="text-base font-semibold text-slate-950 dark:text-white">{{ selectedNode?.name || '选择知识点' }}</h3>
-              <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">课件资源与知识点绑定</p>
-            </div>
-            <span v-if="selectedNode" class="inline-flex items-center gap-1 rounded-md bg-slate-100 px-2 py-1 text-xs text-slate-600 dark:bg-white/10 dark:text-slate-300">
-              <ClockIcon class="size-3.5" aria-hidden="true" />
-              {{ selectedNode.estMinutes ?? 0 }} 分钟
-            </span>
-          </div>
-          <LoadingState v-if="nodeLoading" class="mt-4" />
-          <EmptyState v-else-if="!selectedNode" class="mt-4" title="未选择知识点" description="从左侧课程结构或图谱中选择知识点。" />
-          <EmptyState v-else-if="coursewares.length === 0" class="mt-4" title="暂无课件" description="教师上传课件后会显示在这里。" />
-          <ul v-else class="mt-4 divide-y divide-slate-100 dark:divide-white/10">
-            <li v-for="item in coursewares" :key="item.id" class="flex items-center justify-between gap-4 py-3">
-              <div class="min-w-0">
-                <p class="truncate text-sm font-medium text-slate-950 dark:text-white">{{ item.title }}</p>
-                <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
-                  {{ coursewareTypeLabel(item.type) }} · {{ item.durationSec ? formatDuration(item.durationSec) : formatDateTime(item.createdAt) }}
-                </p>
+        <section v-else-if="activeTab === 'materials'" class="grid gap-6 xl:grid-cols-[minmax(0,1fr)_360px]">
+          <div class="rounded-md border border-slate-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-slate-900">
+            <div class="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <h3 class="text-base font-semibold text-slate-950 dark:text-white">章节内容</h3>
+                <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">按章节浏览知识点、学习目标和绑定课件。</p>
               </div>
-              <a v-if="item.contentRef && item.type === 4" :href="item.contentRef" class="text-sm font-semibold text-[rgb(var(--color-brand))] hover:underline" target="_blank" rel="noreferrer">
-                打开
-              </a>
-            </li>
-          </ul>
+              <button
+                v-if="auth.hasPermission('course:update')"
+                type="button"
+                class="btn-primary focus-ring inline-flex h-9 items-center gap-2 px-3 text-sm"
+                @click="activeTab = 'authoring'"
+              >
+                <PencilSquareIcon class="size-4" aria-hidden="true" />
+                维护内容
+              </button>
+            </div>
+
+            <div v-if="flatChapters.length" class="mt-5 space-y-4">
+              <article
+                v-for="chapter in flatChapters"
+                :key="chapter.id"
+                class="rounded-md border border-slate-200 bg-slate-50/70 p-4 dark:border-white/10 dark:bg-white/[0.03]"
+              >
+                <div class="flex flex-wrap items-start justify-between gap-3">
+                  <div class="min-w-0">
+                    <p class="truncate text-sm font-semibold text-slate-950 dark:text-white">
+                      <span class="text-slate-400">{{ '　'.repeat(chapter.level) }}</span>{{ chapter.title }}
+                    </p>
+                    <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
+                      {{ nodesForChapter(chapter.id).length }} 个知识点 · {{ materialCountForChapter(chapter.id) }} 个课件
+                    </p>
+                  </div>
+                </div>
+
+                <div v-if="nodesForChapter(chapter.id).length" class="mt-4 divide-y divide-slate-200 rounded-md border border-slate-200 bg-white dark:divide-white/10 dark:border-white/10 dark:bg-slate-950/30">
+                  <div v-for="node in nodesForChapter(chapter.id)" :key="node.id" class="p-4">
+                    <button type="button" class="block w-full text-left" @click="selectNode(node.id, 'materials')">
+                      <span class="flex items-start justify-between gap-3">
+                        <span class="min-w-0">
+                          <span class="block truncate text-sm font-semibold text-slate-950 dark:text-white">{{ node.name }}</span>
+                          <span class="mt-1 block line-clamp-2 text-sm/6 text-slate-500 dark:text-slate-400">
+                            {{ node.learnGoal || node.description || '暂无学习目标或描述' }}
+                          </span>
+                        </span>
+                        <span class="inline-flex shrink-0 items-center gap-1 rounded-md bg-slate-100 px-2 py-1 text-xs text-slate-600 dark:bg-white/10 dark:text-slate-300">
+                          <ClockIcon class="size-3.5" aria-hidden="true" />
+                          {{ node.estMinutes ?? 0 }} 分钟
+                        </span>
+                      </span>
+                    </button>
+                    <div v-if="coursewaresForNode(node.id).length" class="mt-3 flex flex-wrap gap-2">
+                      <a
+                        v-for="item in coursewaresForNode(node.id)"
+                        :key="item.id"
+                        :href="item.type === 4 && item.contentRef ? item.contentRef : undefined"
+                        class="inline-flex max-w-full items-center gap-2 rounded-md bg-[rgb(var(--color-brand-soft))] px-2.5 py-1.5 text-xs font-medium text-[rgb(var(--color-brand-strong))] hover:underline dark:text-white"
+                        :target="item.type === 4 && item.contentRef ? '_blank' : undefined"
+                        rel="noreferrer"
+                      >
+                        <LinkIcon class="size-3.5 shrink-0" aria-hidden="true" />
+                        <span class="truncate">{{ item.title }}</span>
+                      </a>
+                    </div>
+                    <p v-else class="mt-3 text-xs text-slate-400">暂无课件</p>
+                  </div>
+                </div>
+                <EmptyState v-else class="mt-4" title="本章暂无知识点" description="教师维护知识点后会显示在这里。" />
+              </article>
+            </div>
+
+            <div v-if="ungroupedNodes().length" class="mt-5 rounded-md border border-dashed border-slate-300 p-4 dark:border-white/15">
+              <h4 class="text-sm font-semibold text-slate-950 dark:text-white">未归入章节</h4>
+              <div class="mt-3 flex flex-wrap gap-2">
+                <button
+                  v-for="node in ungroupedNodes()"
+                  :key="node.id"
+                  type="button"
+                  class="rounded-md bg-slate-100 px-3 py-2 text-sm text-slate-700 hover:text-[rgb(var(--color-brand))] dark:bg-white/10 dark:text-slate-200"
+                  @click="selectNode(node.id, 'materials')"
+                >
+                  {{ node.name }}
+                </button>
+              </div>
+            </div>
+
+            <EmptyState v-if="!flatChapters.length && !nodes.length" class="mt-4" title="暂无章节内容" description="教师创建章节、知识点和课件后会显示在这里。" />
+          </div>
+
+          <aside class="rounded-md border border-slate-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-slate-900">
+            <div class="flex flex-wrap items-start justify-between gap-4">
+              <div>
+                <h3 class="text-base font-semibold text-slate-950 dark:text-white">{{ selectedNode?.name || '选择知识点' }}</h3>
+                <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">当前知识点详情与课件资源</p>
+              </div>
+              <span v-if="selectedNode" class="inline-flex items-center gap-1 rounded-md bg-slate-100 px-2 py-1 text-xs text-slate-600 dark:bg-white/10 dark:text-slate-300">
+                <ClockIcon class="size-3.5" aria-hidden="true" />
+                {{ selectedNode.estMinutes ?? 0 }} 分钟
+              </span>
+            </div>
+            <LoadingState v-if="nodeLoading" class="mt-4" />
+            <EmptyState v-else-if="!selectedNode" class="mt-4" title="未选择知识点" description="从左侧课程结构、章节内容或图谱中选择知识点。" />
+            <template v-else>
+              <div class="mt-4 rounded-md bg-slate-50 p-4 text-sm/6 text-slate-600 dark:bg-white/5 dark:text-slate-300">
+                <p>{{ selectedNode.description || '暂无知识点描述' }}</p>
+                <p v-if="selectedNode.learnGoal" class="mt-3 font-medium text-slate-800 dark:text-slate-100">学习目标：{{ selectedNode.learnGoal }}</p>
+              </div>
+              <EmptyState v-if="coursewares.length === 0" class="mt-4" title="暂无课件" description="教师添加课件后会显示在这里。" />
+              <ul v-else class="mt-4 divide-y divide-slate-100 dark:divide-white/10">
+                <li v-for="item in coursewares" :key="item.id" class="flex items-center justify-between gap-4 py-3">
+                  <div class="min-w-0">
+                    <p class="truncate text-sm font-medium text-slate-950 dark:text-white">{{ item.title }}</p>
+                    <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
+                      {{ coursewareTypeLabel(item.type) }} · {{ item.durationSec ? formatDuration(item.durationSec) : formatDateTime(item.createdAt) }}
+                    </p>
+                  </div>
+                  <a v-if="item.contentRef && item.type === 4" :href="item.contentRef" class="text-sm font-semibold text-[rgb(var(--color-brand))] hover:underline" target="_blank" rel="noreferrer">
+                    打开
+                  </a>
+                </li>
+              </ul>
+            </template>
+          </aside>
         </section>
 
         <section v-else-if="activeTab === 'homeworks'">
@@ -893,7 +1036,7 @@ onMounted(load)
                         </button>
                       </div>
                     </div>
-                    <form v-if="editingChapterId === chapter.id" class="mt-3 grid gap-2" @submit.prevent="submitChapterEdit(chapter)">
+                    <form v-if="isSameId(editingChapterId, chapter.id)" class="mt-3 grid gap-2" @submit.prevent="submitChapterEdit(chapter)">
                       <input v-model.trim="chapterEditForm.title" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" required />
                       <div class="grid gap-2 sm:grid-cols-2">
                         <select v-model="chapterEditForm.parentId" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white">
@@ -935,7 +1078,7 @@ onMounted(load)
                         </button>
                       </div>
                     </div>
-                    <form v-if="editingNodeId === node.id" class="mt-3 grid gap-2" @submit.prevent="submitNodeEdit(node)">
+                    <form v-if="isSameId(editingNodeId, node.id)" class="mt-3 grid gap-2" @submit.prevent="submitNodeEdit(node)">
                       <input v-model.trim="nodeEditForm.name" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" required />
                       <div class="grid gap-2 sm:grid-cols-2">
                         <select v-model="nodeEditForm.chapterId" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white">
@@ -1003,7 +1146,7 @@ onMounted(load)
                         </button>
                       </div>
                     </div>
-                    <form v-if="editingCoursewareId === item.id" class="mt-3 grid gap-2" @submit.prevent="submitCoursewareEdit(item)">
+                    <form v-if="isSameId(editingCoursewareId, item.id)" class="mt-3 grid gap-2" @submit.prevent="submitCoursewareEdit(item)">
                       <input v-model.trim="coursewareEditForm.title" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" required />
                       <div class="grid gap-2 sm:grid-cols-2">
                         <select v-model.number="coursewareEditForm.type" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white">

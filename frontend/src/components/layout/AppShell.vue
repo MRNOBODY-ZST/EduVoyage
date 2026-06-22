@@ -31,11 +31,12 @@ import type { Component } from 'vue'
 
 import LogoMark from '@/components/layout/LogoMark.vue'
 import NotificationBell from '@/components/nav/NotificationBell.vue'
+import { useI18n } from '@/i18n'
 import { roleLabel } from '@/lib/format'
 import { useAuthStore } from '@/stores/auth'
 
 interface NavigationItem {
-  name: string
+  labelKey: string
   to: string
   icon: Component
   permission?: string
@@ -43,7 +44,7 @@ interface NavigationItem {
 }
 
 interface TeamItem {
-  name: string
+  labelKey: string
   to: string
   initial: string
   permission?: string
@@ -53,33 +54,34 @@ interface TeamItem {
 const route = useRoute()
 const router = useRouter()
 const auth = useAuthStore()
+const { t } = useI18n()
 const sidebarOpen = ref(false)
 
 const navigation: NavigationItem[] = [
-  { name: '学习仪表盘', to: '/student/dashboard', icon: HomeIcon, permission: 'analytics:view', roles: ['STUDENT'] },
-  { name: '我的学情', to: '/student/analytics', icon: ChartBarSquareIcon, permission: 'analytics:view', roles: ['STUDENT'] },
-  { name: '课程工作台', to: '/teacher/courses', icon: RectangleStackIcon, permission: 'course:read', roles: ['TEACHER'] },
-  { name: '教学分析', to: '/teacher/analytics', icon: ChartBarSquareIcon, permission: 'analytics:view', roles: ['TEACHER'] },
-  { name: '运营大盘', to: '/admin/dashboard', icon: ServerStackIcon, permission: 'analytics:view', roles: ['ADMIN'] },
-  { name: '用户管理', to: '/admin/users', icon: UsersIcon, permission: 'user:read', roles: ['ADMIN'] },
-  { name: '组织架构', to: '/admin/org', icon: BuildingLibraryIcon, permission: 'org:manage', roles: ['ADMIN'] },
-  { name: '课程中心', to: '/courses', icon: AcademicCapIcon },
-  { name: '课程网盘', to: '/drive', icon: FolderIcon, permission: 'drive:read' },
-  { name: '课程讨论', to: '/discussions', icon: ChatBubbleLeftRightIcon, permission: 'discussion:read' },
-  { name: '偏好设置', to: '/settings', icon: Cog6ToothIcon },
+  { labelKey: 'nav.studentDashboard', to: '/student/dashboard', icon: HomeIcon, permission: 'analytics:view', roles: ['STUDENT'] },
+  { labelKey: 'nav.studentAnalytics', to: '/student/analytics', icon: ChartBarSquareIcon, permission: 'analytics:view', roles: ['STUDENT'] },
+  { labelKey: 'nav.teacherCourses', to: '/teacher/courses', icon: RectangleStackIcon, permission: 'course:read', roles: ['TEACHER'] },
+  { labelKey: 'nav.teacherAnalytics', to: '/teacher/analytics', icon: ChartBarSquareIcon, permission: 'analytics:view', roles: ['TEACHER'] },
+  { labelKey: 'nav.adminDashboard', to: '/admin/dashboard', icon: ServerStackIcon, permission: 'analytics:view', roles: ['ADMIN'] },
+  { labelKey: 'nav.adminUsers', to: '/admin/users', icon: UsersIcon, permission: 'user:read', roles: ['ADMIN'] },
+  { labelKey: 'nav.adminOrg', to: '/admin/org', icon: BuildingLibraryIcon, permission: 'org:manage', roles: ['ADMIN'] },
+  { labelKey: 'nav.courses', to: '/courses', icon: AcademicCapIcon },
+  { labelKey: 'nav.drive', to: '/drive', icon: FolderIcon, permission: 'drive:read' },
+  { labelKey: 'nav.discussions', to: '/discussions', icon: ChatBubbleLeftRightIcon, permission: 'discussion:read' },
+  { labelKey: 'nav.settings', to: '/settings', icon: Cog6ToothIcon },
 ]
 
 const studentTeams: TeamItem[] = [
-  { name: '图谱共学组', to: '/courses', initial: '图' },
-  { name: '作业互评组', to: '/student/dashboard', initial: '作', permission: 'analytics:view', roles: ['STUDENT'] },
-  { name: '课程资料组', to: '/drive', initial: '资', permission: 'drive:read' },
-  { name: '教学协作组', to: '/teacher/courses', initial: '教', permission: 'course:read', roles: ['TEACHER'] },
-  { name: '运营支持组', to: '/admin/dashboard', initial: '运', permission: 'analytics:view', roles: ['ADMIN'] },
+  { labelKey: 'nav.groupGraph', to: '/courses', initial: '图' },
+  { labelKey: 'nav.groupHomework', to: '/student/dashboard', initial: '作', permission: 'analytics:view', roles: ['STUDENT'] },
+  { labelKey: 'nav.groupFiles', to: '/drive', initial: '资', permission: 'drive:read' },
+  { labelKey: 'nav.groupTeaching', to: '/teacher/courses', initial: '教', permission: 'course:read', roles: ['TEACHER'] },
+  { labelKey: 'nav.groupOps', to: '/admin/dashboard', initial: '运', permission: 'analytics:view', roles: ['ADMIN'] },
 ]
 
 const visibleNavigation = computed(() => navigation.filter(canShow))
 const visibleTeams = computed(() => studentTeams.filter(canShow))
-const currentTitle = computed(() => String(route.meta.title || '工作台'))
+const currentTitle = computed(() => t(String(route.meta.i18nKey || ''), String(route.meta.title || t('app.workspace'))))
 const userInitial = computed(() => (auth.displayName || 'E').slice(0, 1).toUpperCase())
 
 function canShow(item: NavigationItem | TeamItem) {
@@ -135,8 +137,8 @@ async function logout() {
                 leave-to="opacity-0"
               >
                 <div class="absolute left-full top-0 flex w-16 justify-center pt-5">
-                  <button type="button" class="-m-2.5 p-2.5" title="关闭侧栏" @click="sidebarOpen = false">
-                    <span class="sr-only">关闭侧栏</span>
+                  <button type="button" class="-m-2.5 p-2.5" :title="t('shell.closeSidebar')" @click="sidebarOpen = false">
+                    <span class="sr-only">{{ t('shell.closeSidebar') }}</span>
                     <XMarkIcon class="size-6 text-white" aria-hidden="true" />
                   </button>
                 </div>
@@ -169,15 +171,15 @@ async function logout() {
                               ]"
                               aria-hidden="true"
                             />
-                            {{ item.name }}
+                            {{ t(item.labelKey) }}
                           </RouterLink>
                         </li>
                       </ul>
                     </li>
                     <li>
-                      <div class="text-xs/6 font-semibold text-gray-400">学生小组</div>
+                      <div class="text-xs/6 font-semibold text-gray-400">{{ t('nav.studentGroups') }}</div>
                       <ul role="list" class="-mx-2 mt-2 space-y-1">
-                        <li v-for="team in visibleTeams" :key="team.name">
+                        <li v-for="team in visibleTeams" :key="team.labelKey">
                           <RouterLink
                             :to="team.to"
                             :class="[
@@ -198,7 +200,7 @@ async function logout() {
                             >
                               {{ team.initial }}
                             </span>
-                            <span class="truncate">{{ team.name }}</span>
+                            <span class="truncate">{{ t(team.labelKey) }}</span>
                           </RouterLink>
                         </li>
                       </ul>
@@ -210,7 +212,7 @@ async function logout() {
                         @click="sidebarOpen = false"
                       >
                         <Cog6ToothIcon class="size-6 shrink-0 text-gray-400 group-hover:text-indigo-600" aria-hidden="true" />
-                        个人设置
+                        {{ t('nav.personalSettings') }}
                       </RouterLink>
                     </li>
                   </ul>
@@ -249,15 +251,15 @@ async function logout() {
                       ]"
                       aria-hidden="true"
                     />
-                    {{ item.name }}
+                    {{ t(item.labelKey) }}
                   </RouterLink>
                 </li>
               </ul>
             </li>
             <li>
-              <div class="text-xs/6 font-semibold text-gray-400">学生小组</div>
+              <div class="text-xs/6 font-semibold text-gray-400">{{ t('nav.studentGroups') }}</div>
               <ul role="list" class="-mx-2 mt-2 space-y-1">
-                <li v-for="team in visibleTeams" :key="team.name">
+                <li v-for="team in visibleTeams" :key="team.labelKey">
                   <RouterLink
                     :to="team.to"
                     :class="[
@@ -277,7 +279,7 @@ async function logout() {
                     >
                       {{ team.initial }}
                     </span>
-                    <span class="truncate">{{ team.name }}</span>
+                    <span class="truncate">{{ t(team.labelKey) }}</span>
                   </RouterLink>
                 </li>
               </ul>
@@ -288,7 +290,7 @@ async function logout() {
                 class="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-700 hover:bg-gray-50 hover:text-indigo-600"
               >
                 <Cog6ToothIcon class="size-6 shrink-0 text-gray-400 group-hover:text-indigo-600" aria-hidden="true" />
-                个人设置
+                {{ t('nav.personalSettings') }}
               </RouterLink>
             </li>
           </ul>
@@ -298,8 +300,8 @@ async function logout() {
 
     <div class="lg:pl-72">
       <header class="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
-        <button type="button" class="-m-2.5 p-2.5 text-gray-700 lg:hidden" title="打开侧栏" @click="sidebarOpen = true">
-          <span class="sr-only">打开侧栏</span>
+        <button type="button" class="-m-2.5 p-2.5 text-gray-700 lg:hidden" :title="t('shell.openSidebar')" @click="sidebarOpen = true">
+          <span class="sr-only">{{ t('shell.openSidebar') }}</span>
           <Bars3Icon class="size-6" aria-hidden="true" />
         </button>
 
@@ -308,9 +310,9 @@ async function logout() {
         <div class="grid flex-1 grid-cols-1">
           <input
             name="search"
-            aria-label="搜索"
+            :aria-label="t('shell.search')"
             class="col-start-1 row-start-1 block size-full bg-white py-1.5 pl-8 text-base text-gray-900 outline-none placeholder:text-gray-400 sm:text-sm/6"
-            placeholder="搜索课程、文件、讨论"
+            :placeholder="t('shell.search')"
           />
           <MagnifyingGlassIcon class="pointer-events-none col-start-1 row-start-1 size-5 self-center text-gray-400" aria-hidden="true" />
         </div>
@@ -322,7 +324,7 @@ async function logout() {
 
           <Menu as="div" class="relative">
             <MenuButton class="-m-1.5 flex items-center p-1.5">
-              <span class="sr-only">打开用户菜单</span>
+              <span class="sr-only">{{ t('shell.openUserMenu') }}</span>
               <span class="grid size-8 place-items-center rounded-full bg-indigo-50 text-sm font-semibold text-indigo-700">
                 {{ userInitial }}
               </span>
@@ -348,7 +350,7 @@ async function logout() {
                 </MenuItem>
                 <MenuItem v-slot="{ active }">
                   <RouterLink :class="[active ? 'bg-gray-50' : '', 'block px-3 py-1 text-sm/6 text-gray-900']" to="/settings">
-                    个人设置
+                    {{ t('nav.personalSettings') }}
                   </RouterLink>
                 </MenuItem>
                 <MenuItem v-slot="{ active }">
@@ -357,7 +359,7 @@ async function logout() {
                     :class="[active ? 'bg-gray-50' : '', 'block w-full px-3 py-1 text-left text-sm/6 text-gray-900']"
                     @click="logout"
                   >
-                    退出登录
+                    {{ t('shell.logout') }}
                   </button>
                 </MenuItem>
               </MenuItems>
@@ -369,7 +371,7 @@ async function logout() {
       <main class="py-10">
         <div class="px-4 sm:px-6 lg:px-8">
           <div class="mb-8">
-            <p class="text-sm/6 font-medium text-gray-500">EduVoyage</p>
+            <p class="text-sm/6 font-medium text-gray-500">{{ t('app.name') }}</p>
             <h1 class="mt-2 text-2xl font-semibold text-gray-900">{{ currentTitle }}</h1>
           </div>
           <RouterView />

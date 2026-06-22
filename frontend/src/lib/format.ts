@@ -1,6 +1,16 @@
+const LOCALE_KEY = 'eduvoyage.locale'
+
+function currentLocale() {
+  return localStorage.getItem(LOCALE_KEY) || 'zh-CN'
+}
+
+function isEnglish() {
+  return currentLocale().startsWith('en')
+}
+
 export function formatNumber(value: number | string | null | undefined) {
   const n = Number(value ?? 0)
-  return new Intl.NumberFormat('zh-CN').format(Number.isFinite(n) ? n : 0)
+  return new Intl.NumberFormat(currentLocale()).format(Number.isFinite(n) ? n : 0)
 }
 
 export function formatPercent(value: number | string | null | undefined, digits = 1) {
@@ -22,6 +32,12 @@ export function formatDuration(seconds: number | null | undefined) {
   const total = Math.max(0, Number(seconds ?? 0))
   const hours = Math.floor(total / 3600)
   const minutes = Math.floor((total % 3600) / 60)
+  if (isEnglish()) {
+    if (hours > 0) {
+      return `${hours}h ${minutes}m`
+    }
+    return `${minutes}m`
+  }
   if (hours > 0) {
     return `${hours} 小时 ${minutes} 分钟`
   }
@@ -36,7 +52,7 @@ export function formatDateTime(value: string | null | undefined) {
   if (Number.isNaN(date.getTime())) {
     return value
   }
-  return new Intl.DateTimeFormat('zh-CN', {
+  return new Intl.DateTimeFormat(currentLocale(), {
     month: '2-digit',
     day: '2-digit',
     hour: '2-digit',
@@ -46,20 +62,20 @@ export function formatDateTime(value: string | null | undefined) {
 
 export function courseStatusLabel(status: number | null | undefined) {
   if (status === 1) {
-    return '已发布'
+    return isEnglish() ? 'Published' : '已发布'
   }
   if (status === 2) {
-    return '已归档'
+    return isEnglish() ? 'Archived' : '已归档'
   }
-  return '草稿'
+  return isEnglish() ? 'Draft' : '草稿'
 }
 
 export function roleLabel(role: string | null | undefined) {
   if (role === 'ADMIN') {
-    return '管理员'
+    return isEnglish() ? 'Admin' : '管理员'
   }
   if (role === 'TEACHER') {
-    return '教师'
+    return isEnglish() ? 'Teacher' : '教师'
   }
-  return '学生'
+  return isEnglish() ? 'Student' : '学生'
 }

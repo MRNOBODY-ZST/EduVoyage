@@ -3,18 +3,17 @@ import { computed, onMounted, ref, watch } from 'vue'
 import { ChartBarIcon, ClockIcon, PresentationChartLineIcon, UsersIcon } from '@heroicons/vue/24/outline'
 
 import EChart from '@/components/charts/EChart.vue'
-import StatCard from '@/components/data/StatCard.vue'
 import EmptyState from '@/components/state/EmptyState.vue'
 import ErrorState from '@/components/state/ErrorState.vue'
 import LoadingState from '@/components/state/LoadingState.vue'
 import { formatDuration, formatNumber, formatPercent } from '@/lib/format'
 import { fetchCourseAnalytics, fetchCourses } from '@/lib/services'
 import { useAuthStore } from '@/stores/auth'
-import type { CourseAnalyticsResponse, CourseResponse } from '@/types/api'
+import type { ApiId, CourseAnalyticsResponse, CourseResponse } from '@/types/api'
 
 const auth = useAuthStore()
 const courses = ref<CourseResponse[]>([])
-const selectedCourseId = ref<number | null>(null)
+const selectedCourseId = ref<ApiId | null>(null)
 const loadingCourses = ref(true)
 const loadingAnalytics = ref(false)
 const error = ref('')
@@ -58,7 +57,7 @@ async function loadCourses() {
   }
 }
 
-async function loadAnalytics(courseId: number | null) {
+async function loadAnalytics(courseId: ApiId | null) {
   if (!courseId) {
     analytics.value = null
     return
@@ -66,7 +65,7 @@ async function loadAnalytics(courseId: number | null) {
   loadingAnalytics.value = true
   error.value = ''
   try {
-    analytics.value = await fetchCourseAnalytics(courseId)
+    analytics.value = await fetchCourseAnalytics(courseId as number)
   } catch (e) {
     error.value = e instanceof Error ? e.message : '教学分析加载失败'
   } finally {
@@ -83,23 +82,45 @@ onMounted(loadCourses)
   <ErrorState v-else-if="error && !analytics" :message="error" @retry="loadCourses" />
   <EmptyState v-else-if="courses.length === 0" title="暂无可分析课程" description="创建并发布课程后可查看教学分析。" />
   <div v-else class="space-y-6">
-    <section class="rounded-md border border-slate-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-slate-900">
-      <label class="block max-w-sm">
-        <span class="text-sm font-medium text-slate-700 dark:text-slate-200">选择课程</span>
-        <select
-          v-model="selectedCourseId"
-          class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white"
-        >
-          <option v-for="course in courses" :key="course.id" :value="course.id">{{ course.title }}</option>
-        </select>
-      </label>
+    <section class="overflow-hidden rounded-md bg-slate-950 shadow-sm">
+      <div class="grid gap-6 p-6 sm:p-8 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-end">
+        <div>
+          <p class="text-sm font-semibold text-sky-200">Teaching analytics</p>
+          <h2 class="mt-3 text-2xl font-semibold text-white">从课程参与、提交和知识点掌握定位教学风险。</h2>
+          <p class="mt-3 max-w-2xl text-sm/6 text-slate-300">切换课程后，关键指标、掌握度热力和学生排行会同步刷新。</p>
+        </div>
+        <label class="block">
+          <span class="text-sm font-medium text-slate-200">选择课程</span>
+          <select
+            v-model="selectedCourseId"
+            class="focus-ring mt-2 block w-full rounded-md border border-white/10 bg-white/10 px-3 py-2 text-sm text-white outline-none"
+          >
+            <option v-for="course in courses" :key="course.id" class="text-slate-950" :value="course.id">{{ course.title }}</option>
+          </select>
+        </label>
+      </div>
     </section>
 
     <LoadingState v-if="loadingAnalytics" />
     <ErrorState v-else-if="error" :message="error" @retry="loadAnalytics(selectedCourseId)" />
     <template v-else-if="analytics">
       <section class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <StatCard v-for="item in stats" :key="item.label" v-bind="item" />
+        <article
+          v-for="item in stats"
+          :key="item.label"
+          class="rounded-md border border-slate-200 bg-white p-4 shadow-sm dark:border-white/10 dark:bg-slate-900"
+        >
+          <div class="flex items-start justify-between gap-3">
+            <div class="min-w-0">
+              <p class="text-sm text-slate-500 dark:text-slate-400">{{ item.label }}</p>
+              <p class="mt-2 truncate text-2xl font-semibold text-slate-950 dark:text-white">{{ item.value }}</p>
+              <p class="mt-3 text-xs text-slate-500 dark:text-slate-400">{{ item.hint }}</p>
+            </div>
+            <span class="grid size-10 shrink-0 place-items-center rounded-md bg-[rgb(var(--color-brand-soft))] text-[rgb(var(--color-brand-strong))] dark:text-white">
+              <component :is="item.icon" class="size-5" aria-hidden="true" />
+            </span>
+          </div>
+        </article>
       </section>
 
       <section class="grid gap-6 xl:grid-cols-[minmax(0,1.1fr)_minmax(360px,0.9fr)]">

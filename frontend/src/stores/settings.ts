@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 
 type ThemeMode = 'light' | 'dark' | 'auto'
+type Locale = 'zh-CN' | 'en-US'
 
 interface BrandTheme {
   key: string
@@ -15,6 +16,7 @@ interface BrandTheme {
 
 const MODE_KEY = 'eduvoyage.theme.mode'
 const BRAND_KEY = 'eduvoyage.theme.brand'
+const LOCALE_KEY = 'eduvoyage.locale'
 
 export const brandThemes: BrandTheme[] = [
   {
@@ -73,6 +75,7 @@ export const useSettingsStore = defineStore('settings', {
   state: () => ({
     mode: (localStorage.getItem(MODE_KEY) as ThemeMode) || 'auto',
     brand: localStorage.getItem(BRAND_KEY) || 'ocean',
+    locale: ((localStorage.getItem(LOCALE_KEY) as Locale) || 'zh-CN') as Locale,
   }),
   getters: {
     brandTheme: (state) => brandThemes.find((theme) => theme.key === state.brand) || brandThemes[0]!,
@@ -88,6 +91,11 @@ export const useSettingsStore = defineStore('settings', {
       localStorage.setItem(BRAND_KEY, brand)
       this.applyTheme()
     },
+    setLocale(locale: Locale) {
+      this.locale = locale
+      localStorage.setItem(LOCALE_KEY, locale)
+      document.documentElement.lang = locale
+    },
     applyTheme() {
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
       const dark = this.mode === 'dark' || (this.mode === 'auto' && prefersDark)
@@ -97,6 +105,7 @@ export const useSettingsStore = defineStore('settings', {
       document.documentElement.style.setProperty('--color-brand', dark ? brand.dark : brand.light)
       document.documentElement.style.setProperty('--color-brand-strong', dark ? brand.strongDark : brand.strongLight)
       document.documentElement.style.setProperty('--color-brand-soft', dark ? brand.softDark : brand.softLight)
+      document.documentElement.lang = this.locale
     },
   },
 })

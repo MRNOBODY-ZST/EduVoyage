@@ -4,6 +4,7 @@ import { RouterLink } from 'vue-router'
 import {
   ArchiveBoxIcon,
   ArrowPathIcon,
+  BookOpenIcon,
   CheckIcon,
   PencilSquareIcon,
   PlusIcon,
@@ -310,6 +311,13 @@ onMounted(load)
                 <td class="px-4 py-4 text-sm text-slate-500 dark:text-slate-400">{{ formatDateTime(course.createdAt) }}</td>
                 <td class="px-4 py-4 text-right">
                   <div class="flex flex-wrap justify-end gap-2">
+                    <RouterLink
+                      :to="`/courses/${course.id}`"
+                      class="inline-flex items-center gap-1 text-sm font-semibold text-[rgb(var(--color-brand))] hover:underline"
+                    >
+                      <BookOpenIcon class="size-4" aria-hidden="true" />
+                      内容
+                    </RouterLink>
                     <button
                       v-if="auth.hasPermission('course:update')"
                       type="button"

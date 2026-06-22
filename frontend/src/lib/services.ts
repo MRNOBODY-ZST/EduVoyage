@@ -1,6 +1,7 @@
 import { api, deleteData, getData, postData, putData } from '@/lib/http'
 import type {
   AdminDashboardResponse,
+  ApiId,
   BreadcrumbItem,
   ChapterNode,
   ClassResponse,
@@ -32,7 +33,7 @@ import type {
   WrongBookEntry,
 } from '@/types/api'
 
-export function fetchUsers(params: { keyword?: string; status?: number; classId?: number; pageNo?: number; pageSize?: number }) {
+export function fetchUsers(params: { keyword?: string; status?: number; classId?: ApiId; pageNo?: number; pageSize?: number }) {
   return getData<PageResult<UserProfile>>('/api/users', { params })
 }
 
@@ -43,14 +44,14 @@ export function createUser(payload: {
   email?: string
   phone?: string
   gender?: number
-  classId?: number
+  classId?: ApiId
   roleCodes: string[]
 }) {
   return postData<UserProfile>('/api/users', payload)
 }
 
 export function updateUser(
-  id: number,
+  id: ApiId,
   payload: {
     realName?: string
     email?: string
@@ -58,7 +59,7 @@ export function updateUser(
     gender?: number
     avatarUrl?: string
     status?: number
-    classId?: number
+    classId?: ApiId
     roleCodes?: string[]
   },
 ) {
@@ -121,11 +122,11 @@ export function deleteOrgClass(id: number) {
   return deleteData<void>(`/api/org/classes/${id}`)
 }
 
-export function fetchCourses(params: { keyword?: string; teacherId?: number; pageNo?: number; pageSize?: number }) {
+export function fetchCourses(params: { keyword?: string; teacherId?: ApiId; pageNo?: number; pageSize?: number }) {
   return getData<PageResult<CourseResponse>>('/api/courses', { params })
 }
 
-export function fetchCourse(courseId: number) {
+export function fetchCourse(courseId: ApiId) {
   return getData<CourseResponse>(`/api/courses/${courseId}`)
 }
 
@@ -137,17 +138,17 @@ export function createCourse(payload: {
   visibility?: number
   startDate?: string
   endDate?: string
-  classScope?: number[]
+  classScope?: ApiId[]
 }) {
   return postData<CourseResponse>('/api/courses', payload)
 }
 
-export function publishCourse(courseId: number) {
+export function publishCourse(courseId: ApiId) {
   return postData<CourseResponse>(`/api/courses/${courseId}/publish`)
 }
 
 export function updateCourse(
-  courseId: number,
+  courseId: ApiId,
   payload: {
     title: string
     coverUrl?: string
@@ -156,51 +157,51 @@ export function updateCourse(
     visibility?: number
     startDate?: string
     endDate?: string
-    classScope?: number[]
+    classScope?: ApiId[]
   },
 ) {
   return putData<CourseResponse>(`/api/courses/${courseId}`, payload)
 }
 
-export function archiveCourse(courseId: number) {
+export function archiveCourse(courseId: ApiId) {
   return postData<CourseResponse>(`/api/courses/${courseId}/archive`)
 }
 
-export function deleteCourse(courseId: number) {
+export function deleteCourse(courseId: ApiId) {
   return deleteData<void>(`/api/courses/${courseId}`)
 }
 
-export function enrollCourse(courseId: number) {
+export function enrollCourse(courseId: ApiId) {
   return postData(`/api/courses/${courseId}/enroll`)
 }
 
-export function fetchChapters(courseId: number) {
+export function fetchChapters(courseId: ApiId) {
   return getData<ChapterNode[]>(`/api/courses/${courseId}/chapters`)
 }
 
-export function createChapter(courseId: number, payload: { title: string; parentId?: number; sortNo?: number }) {
+export function createChapter(courseId: ApiId, payload: { title: string; parentId?: ApiId; sortNo?: number }) {
   return postData<ChapterNode>(`/api/courses/${courseId}/chapters`, payload)
 }
 
-export function updateChapter(id: number, payload: { title: string; parentId?: number; sortNo?: number }) {
+export function updateChapter(id: ApiId, payload: { title: string; parentId?: ApiId; sortNo?: number }) {
   return putData<ChapterNode>(`/api/chapters/${id}`, payload)
 }
 
-export function deleteChapter(id: number) {
+export function deleteChapter(id: ApiId) {
   return deleteData<void>(`/api/chapters/${id}`)
 }
 
-export function fetchKnowledgeNodes(courseId: number, chapterId?: number) {
+export function fetchKnowledgeNodes(courseId: ApiId, chapterId?: ApiId) {
   return getData<KnowledgeNodeResponse[]>(`/api/courses/${courseId}/nodes`, {
     params: { chapterId },
   })
 }
 
 export function createKnowledgeNode(
-  courseId: number,
+  courseId: ApiId,
   payload: {
     name: string
-    chapterId?: number
+    chapterId?: ApiId
     description?: string
     learnGoal?: string
     estMinutes?: number
@@ -211,15 +212,15 @@ export function createKnowledgeNode(
   return postData<KnowledgeNodeResponse>(`/api/courses/${courseId}/nodes`, payload)
 }
 
-export function deleteKnowledgeNode(id: number) {
+export function deleteKnowledgeNode(id: ApiId) {
   return deleteData<void>(`/api/nodes/${id}`)
 }
 
 export function updateKnowledgeNode(
-  id: number,
+  id: ApiId,
   payload: {
     name: string
-    chapterId?: number
+    chapterId?: ApiId
     description?: string
     learnGoal?: string
     estMinutes?: number
@@ -230,17 +231,17 @@ export function updateKnowledgeNode(
   return putData<KnowledgeNodeResponse>(`/api/nodes/${id}`, payload)
 }
 
-export function fetchCoursewares(nodeId: number) {
+export function fetchCoursewares(nodeId: ApiId) {
   return getData<CoursewareResponse[]>(`/api/nodes/${nodeId}/coursewares`)
 }
 
 export function createCourseware(
-  nodeId: number,
+  nodeId: ApiId,
   payload: {
     title: string
     type: number
     contentRef?: string
-    fileId?: number
+    fileId?: ApiId
     durationSec?: number
     sortNo?: number
   },
@@ -248,17 +249,17 @@ export function createCourseware(
   return postData<CoursewareResponse>(`/api/nodes/${nodeId}/coursewares`, payload)
 }
 
-export function deleteCourseware(id: number) {
+export function deleteCourseware(id: ApiId) {
   return deleteData<void>(`/api/coursewares/${id}`)
 }
 
 export function updateCourseware(
-  id: number,
+  id: ApiId,
   payload: {
     title: string
     type: number
     contentRef?: string
-    fileId?: number
+    fileId?: ApiId
     durationSec?: number
     sortNo?: number
   },
@@ -266,31 +267,31 @@ export function updateCourseware(
   return putData<CoursewareResponse>(`/api/coursewares/${id}`, payload)
 }
 
-export function fetchGraph(courseId: number) {
+export function fetchGraph(courseId: ApiId) {
   return getData<GraphView>(`/api/courses/${courseId}/graph`)
 }
 
 export function createGraphEdge(
-  courseId: number,
-  payload: { fromId: number; toId: number; type: 'PREREQUISITE' | 'RELATED'; weight?: number },
+  courseId: ApiId,
+  payload: { fromId: ApiId; toId: ApiId; type: 'PREREQUISITE' | 'RELATED'; weight?: number },
 ) {
   return postData(`/api/courses/${courseId}/graph/edges`, payload)
 }
 
-export function deleteGraphEdge(id: number) {
+export function deleteGraphEdge(id: ApiId) {
   return deleteData<void>(`/api/graph/edges/${id}`)
 }
 
-export function fetchLearningPath(courseId: number) {
+export function fetchLearningPath(courseId: ApiId) {
   return getData<LearningPath>(`/api/courses/${courseId}/graph/learning-path`)
 }
 
-export function fetchHomeworks(courseId: number) {
+export function fetchHomeworks(courseId: ApiId) {
   return getData<HomeworkResponse[]>(`/api/courses/${courseId}/homeworks`)
 }
 
 export function createHomework(
-  courseId: number,
+  courseId: ApiId,
   payload: {
     title: string
     timeLimit?: number
@@ -298,7 +299,7 @@ export function createHomework(
     maxAttempts?: number
     shuffle: boolean
     antiSwitch: boolean
-    items: Array<{ questionId: number; score: number; sortNo?: number }>
+    items: Array<{ questionId: ApiId; score: number; sortNo?: number }>
   },
 ) {
   return postData<HomeworkResponse>(`/api/courses/${courseId}/homeworks`, payload)
@@ -317,7 +318,7 @@ export function deleteHomework(homeworkId: number) {
 }
 
 export function updateHomework(
-  homeworkId: number,
+  homeworkId: ApiId,
   payload: {
     title: string
     timeLimit?: number
@@ -325,18 +326,18 @@ export function updateHomework(
     maxAttempts?: number
     shuffle: boolean
     antiSwitch: boolean
-    items: Array<{ questionId: number; score: number; sortNo?: number }>
+    items: Array<{ questionId: ApiId; score: number; sortNo?: number }>
   },
 ) {
   return putData<HomeworkResponse>(`/api/homeworks/${homeworkId}`, payload)
 }
 
 export function fetchQuestions(params: {
-  courseId?: number
+  courseId?: ApiId
   keyword?: string
   type?: number
   difficulty?: number
-  nodeId?: number
+  nodeId?: ApiId
   pageNo?: number
   pageSize?: number
 }) {
@@ -344,13 +345,13 @@ export function fetchQuestions(params: {
 }
 
 export function createQuestion(payload: {
-  courseId?: number
+  courseId?: ApiId
   type: number
   stem: string
   answer?: string
   analysis?: string
   difficulty?: number
-  nodeId?: number
+  nodeId?: ApiId
   lang?: string
   options?: Array<{ optionKey: string; content: string; correct: boolean; sortNo?: number }>
 }) {
@@ -408,7 +409,7 @@ export function fetchStudentDashboard() {
   return getData<StudentDashboardResponse>('/api/analytics/me')
 }
 
-export function fetchCourseAnalytics(courseId: number) {
+export function fetchCourseAnalytics(courseId: ApiId) {
   return getData<CourseAnalyticsResponse>(`/api/analytics/courses/${courseId}`)
 }
 
