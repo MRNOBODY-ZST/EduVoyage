@@ -87,7 +87,7 @@ onMounted(loadCourses)
       <label class="block max-w-sm">
         <span class="text-sm font-medium text-slate-700 dark:text-slate-200">选择课程</span>
         <select
-          v-model.number="selectedCourseId"
+          v-model="selectedCourseId"
           class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white"
         >
           <option v-for="course in courses" :key="course.id" :value="course.id">{{ course.title }}</option>

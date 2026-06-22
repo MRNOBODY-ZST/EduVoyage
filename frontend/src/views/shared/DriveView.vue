@@ -284,9 +284,9 @@ onMounted(load)
             </select>
             <input
               v-if="spaceType === 2"
-              v-model.number="courseId"
-              type="number"
-              min="1"
+              v-model="courseId"
+              type="text"
+              inputmode="numeric"
               class="focus-ring h-10 w-32 rounded-md border border-slate-300 bg-white px-3 text-sm text-slate-950 dark:border-white/10 dark:bg-white/5 dark:text-white"
               placeholder="课程 ID"
               @keyup.enter="goRoot"
@@ -447,7 +447,7 @@ onMounted(load)
         <label class="mt-4 block">
           <span class="text-sm font-medium text-slate-700 dark:text-slate-200">目标目录</span>
           <select
-            v-model.number="targetParentId"
+            v-model="targetParentId"
             class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white"
           >
             <option :value="0">根目录</option>

@@ -334,7 +334,7 @@ onMounted(load)
           <h3 class="text-sm font-semibold text-slate-950 dark:text-white">新增专业</h3>
           <label class="mt-4 block">
             <span class="text-sm font-medium text-slate-700 dark:text-slate-200">院系</span>
-            <select v-model.number="majorForm.departmentId" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white">
+            <select v-model="majorForm.departmentId" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white">
               <option :value="0">请选择</option>
               <option v-for="department in departments" :key="department.id" :value="department.id">{{ department.name }}</option>
             </select>
@@ -357,7 +357,7 @@ onMounted(load)
           <h3 class="text-sm font-semibold text-slate-950 dark:text-white">新增班级</h3>
           <label class="mt-4 block">
             <span class="text-sm font-medium text-slate-700 dark:text-slate-200">专业</span>
-            <select v-model.number="classForm.majorId" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white">
+            <select v-model="classForm.majorId" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white">
               <option :value="0">请选择</option>
               <option v-for="major in majors" :key="major.id" :value="major.id">{{ major.name }}</option>
             </select>
@@ -431,7 +431,7 @@ onMounted(load)
                     </div>
                   </div>
                   <form v-if="editingMajorId === major.id" class="mt-3 grid gap-2 sm:grid-cols-[140px_minmax(0,1fr)_120px_auto]" @submit.prevent="submitMajorEdit(major)">
-                    <select v-model.number="majorEditForm.departmentId" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white">
+                    <select v-model="majorEditForm.departmentId" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white">
                       <option v-for="option in departments" :key="option.id" :value="option.id">{{ option.name }}</option>
                     </select>
                     <input v-model.trim="majorEditForm.name" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" required />
@@ -490,7 +490,7 @@ onMounted(load)
                   <tr v-if="editingClassId === item.id" class="bg-slate-50/80 dark:bg-white/5">
                     <td colspan="5" class="px-4 py-4">
                       <form class="grid gap-3 md:grid-cols-[180px_minmax(0,1fr)_120px_auto]" @submit.prevent="submitClassEdit(item)">
-                        <select v-model.number="classEditForm.majorId" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white">
+                        <select v-model="classEditForm.majorId" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white">
                           <option v-for="major in majors" :key="major.id" :value="major.id">{{ major.name }}</option>
                         </select>
                         <input v-model.trim="classEditForm.name" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" required />

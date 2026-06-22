@@ -17,6 +17,7 @@ import org.springframework.web.server.WebFilterChain;
 import reactor.core.publisher.Mono;
 
 import java.net.InetSocketAddress;
+import java.util.Optional;
 
 /**
  * Enforces {@link RateLimit} declared on annotated-controller handler methods.
@@ -52,17 +53,19 @@ public class RateLimitWebFilter implements WebFilter {
         }
         return handlerMapping.getHandler(exchange)
                 .cast(Object.class)
-                .flatMap(handler -> {
-                    if (handler instanceof HandlerMethod hm) {
-                        RateLimit rl = hm.getMethodAnnotation(RateLimit.class);
-                        if (rl != null) {
-                            return applyLimit(exchange, chain, rl);
-                        }
-                    }
-                    return chain.filter(exchange);
-                })
+                .map(this::rateLimitFor)
                 // no matching handler (e.g. static/unmapped) -> let the chain proceed
-                .switchIfEmpty(Mono.defer(() -> chain.filter(exchange)));
+                .defaultIfEmpty(Optional.empty())
+                .flatMap(match -> match
+                        .map(rl -> applyLimit(exchange, chain, rl))
+                        .orElseGet(() -> chain.filter(exchange)));
+    }
+
+    private Optional<RateLimit> rateLimitFor(Object handler) {
+        if (handler instanceof HandlerMethod hm) {
+            return Optional.ofNullable(hm.getMethodAnnotation(RateLimit.class));
+        }
+        return Optional.empty();
     }
 
     private Mono<Void> applyLimit(ServerWebExchange exchange, WebFilterChain chain, RateLimit rl) {

@@ -622,7 +622,7 @@ watch(
           </label>
           <label>
             <span class="text-sm font-medium text-slate-700 dark:text-slate-200">知识点</span>
-            <select v-model.number="questionForm.nodeId" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white">
+            <select v-model="questionForm.nodeId" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white">
               <option :value="0">不关联</option>
               <option v-for="node in nodes" :key="node.id" :value="node.id">{{ node.name }}</option>
             </select>
@@ -723,7 +723,7 @@ watch(
                     <option :value="5">简答</option>
                   </select>
                   <input v-model.number="questionEditForm.difficulty" type="number" min="1" max="5" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" />
-                  <select v-model.number="questionEditForm.nodeId" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white">
+                  <select v-model="questionEditForm.nodeId" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white">
                     <option :value="0">不关联知识点</option>
                     <option v-for="node in nodes" :key="node.id" :value="node.id">{{ node.name }}</option>
                   </select>
@@ -897,7 +897,7 @@ watch(
         </div>
         <div class="flex flex-wrap items-center gap-2">
           <select
-            v-model.number="selectedHomeworkId"
+            v-model="selectedHomeworkId"
             class="focus-ring h-9 rounded-md border border-slate-300 bg-white px-3 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white"
             @change="loadSubmissions()"
           >

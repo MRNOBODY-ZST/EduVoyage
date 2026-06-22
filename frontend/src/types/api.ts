@@ -13,8 +13,10 @@ export interface PageResult<T> {
   totalPages: number
 }
 
+export type ApiId = string | number
+
 export interface UserProfile {
-  id: number
+  id: ApiId
   username: string
   realName?: string
   email?: string
@@ -22,13 +24,13 @@ export interface UserProfile {
   avatarUrl?: string
   gender?: number
   status?: number
-  classId?: number
+  classId?: ApiId
   lastLoginAt?: string
   roles?: string[]
 }
 
 export interface RoleResponse {
-  id: number
+  id: ApiId
   code: string
   name: string
   description?: string
@@ -36,21 +38,21 @@ export interface RoleResponse {
 }
 
 export interface DepartmentResponse {
-  id: number
+  id: ApiId
   name: string
   code?: string
 }
 
 export interface MajorResponse {
-  id: number
-  departmentId: number
+  id: ApiId
+  departmentId: ApiId
   name: string
   code?: string
 }
 
 export interface ClassResponse {
-  id: number
-  majorId: number
+  id: ApiId
+  majorId: ApiId
   name: string
   grade?: number
 }
@@ -70,36 +72,36 @@ export interface TokenResponse {
 }
 
 export interface CourseResponse {
-  id: number
+  id: ApiId
   title: string
   coverUrl?: string
   intro?: string
   credit?: number
-  teacherId: number
+  teacherId: ApiId
   visibility: number
   status: number
   startDate?: string
   endDate?: string
   createdAt?: string
-  classScope?: number[]
+  classScope?: ApiId[]
   enrolled?: boolean
   favorite?: boolean
 }
 
 export interface ChapterNode {
-  id: number
-  courseId: number
-  parentId: number
+  id: ApiId
+  courseId: ApiId
+  parentId: ApiId
   title: string
   sortNo?: number
   children: ChapterNode[]
 }
 
 export interface KnowledgeNodeResponse {
-  id: number
-  courseId: number
-  chapterId?: number
-  graphId: number
+  id: ApiId
+  courseId: ApiId
+  chapterId?: ApiId
+  graphId: ApiId
   name: string
   description?: string
   learnGoal?: string
@@ -110,52 +112,52 @@ export interface KnowledgeNodeResponse {
 }
 
 export interface CoursewareResponse {
-  id: number
-  nodeId: number
+  id: ApiId
+  nodeId: ApiId
   title: string
   type: number
   contentRef?: string
-  fileId?: number
+  fileId?: ApiId
   durationSec?: number
   sortNo?: number
   createdAt?: string
 }
 
 export interface GraphNode {
-  id: number
+  id: ApiId
   name: string
-  chapterId?: number
+  chapterId?: ApiId
   estMinutes?: number
   posX?: number
   posY?: number
 }
 
 export interface GraphLink {
-  id: number
-  fromId: number
-  toId: number
+  id: ApiId
+  fromId: ApiId
+  toId: ApiId
   type: 'PREREQUISITE' | 'RELATED' | string
   weight?: number
 }
 
 export interface GraphView {
-  graphId: number
-  courseId: number
+  graphId: ApiId
+  courseId: ApiId
   name: string
   nodes: GraphNode[]
   links: GraphLink[]
 }
 
 export interface PathNode {
-  id: number
+  id: ApiId
   name: string
   estMinutes?: number
   mastered: boolean
 }
 
 export interface LearningPath {
-  graphId: number
-  courseId: number
+  graphId: ApiId
+  courseId: ApiId
   masteredCount: number
   totalCount: number
   learnable: PathNode[]
@@ -163,8 +165,8 @@ export interface LearningPath {
 }
 
 export interface HomeworkResponse {
-  id: number
-  courseId: number
+  id: ApiId
+  courseId: ApiId
   title: string
   totalScore: number
   timeLimit?: number
@@ -175,11 +177,11 @@ export interface HomeworkResponse {
   status: number
   questionCount: number
   createdAt?: string
-  items?: Array<{ questionId: number; score: number; sortNo?: number }>
+  items?: Array<{ questionId: ApiId; score: number; sortNo?: number }>
 }
 
 export interface QuestionOptionView {
-  id: number
+  id: ApiId
   optionKey: string
   content: string
   correct: boolean
@@ -187,14 +189,14 @@ export interface QuestionOptionView {
 }
 
 export interface QuestionResponse {
-  id: number
-  courseId?: number
+  id: ApiId
+  courseId?: ApiId
   type: number
   stem: string
   answer?: string
   analysis?: string
   difficulty?: number
-  nodeId?: number
+  nodeId?: ApiId
   lang?: string
   options: QuestionOptionView[]
   createdAt?: string
@@ -206,7 +208,7 @@ export interface StudentOption {
 }
 
 export interface StudentQuestion {
-  id: number
+  id: ApiId
   type: number
   stem: string
   difficulty?: number
@@ -216,8 +218,8 @@ export interface StudentQuestion {
 }
 
 export interface ExamPaper {
-  submissionId: number
-  homeworkId: number
+  submissionId: ApiId
+  homeworkId: ApiId
   title: string
   attemptNo: number
   timeLimit?: number
@@ -227,7 +229,7 @@ export interface ExamPaper {
 }
 
 export interface AnswerResult {
-  questionId: number
+  questionId: ApiId
   answer?: string
   score?: number
   isCorrect?: number
@@ -235,9 +237,9 @@ export interface AnswerResult {
 }
 
 export interface SubmissionResult {
-  id: number
-  homeworkId: number
-  studentId: number
+  id: ApiId
+  homeworkId: ApiId
+  studentId: ApiId
   attemptNo: number
   status: number
   totalScore?: number
@@ -246,9 +248,9 @@ export interface SubmissionResult {
 }
 
 export interface WrongBookEntry {
-  id: number
-  questionId: number
-  nodeId?: number
+  id: ApiId
+  questionId: ApiId
+  nodeId?: ApiId
   wrongCount: number
   lastWrongAt?: string
   mastered: boolean
@@ -256,7 +258,7 @@ export interface WrongBookEntry {
 
 export interface NotificationResponse {
   id: string
-  toUserId: number
+  toUserId: ApiId
   type: string
   title: string
   body: string
@@ -267,19 +269,19 @@ export interface NotificationResponse {
 }
 
 export interface StudentDashboardResponse {
-  studentId: number
+  studentId: ApiId
   totalDurationSec: number
   activeDays: number
   enrolledCourses: number
   todoHomeworks: number
   averageScore: number
   masteryPercent: number
-  gradeTrend: Array<{ homeworkId: number; title: string; score: number; submittedAt?: string }>
+  gradeTrend: Array<{ homeworkId: ApiId; title: string; score: number; submittedAt?: string }>
   recentLogs: Array<{
     id: string
-    userId: number
-    courseId: number
-    nodeId?: number
+    userId: ApiId
+    courseId: ApiId
+    nodeId?: ApiId
     action: string
     durationSec: number
     ts: string
@@ -287,14 +289,14 @@ export interface StudentDashboardResponse {
 }
 
 export interface CourseAnalyticsResponse {
-  courseId: number
+  courseId: ApiId
   enrolledCount: number
   activeLearners: number
   totalDurationSec: number
   submissionRate: number
   averageScore: number
   homeworkStats: Array<{
-    homeworkId: number
+    homeworkId: ApiId
     title: string
     submittedCount: number
     totalStudents: number
@@ -302,19 +304,19 @@ export interface CourseAnalyticsResponse {
     averageScore: number
   }>
   studentRankings: Array<{
-    studentId: number
+    studentId: ApiId
     studentName: string
     averageScore: number
     submittedCount: number
   }>
   masteryHeatmap: Array<{
-    nodeId: number
+    nodeId: ApiId
     nodeName: string
     averageProgress: number
     masteryRate: number
   }>
   weakNodes: Array<{
-    nodeId: number
+    nodeId: ApiId
     nodeName: string
     averageProgress: number
     masteryRate: number
@@ -332,14 +334,14 @@ export interface AdminDashboardResponse {
 }
 
 export interface DriveNodeResponse {
-  id: number
-  ownerId: number
+  id: ApiId
+  ownerId: ApiId
   spaceType: number
-  courseId?: number
-  parentId: number
+  courseId?: ApiId
+  parentId: ApiId
   name: string
   directory: boolean
-  fileId?: number
+  fileId?: ApiId
   sha256?: string
   size?: number
   mime?: string
@@ -353,28 +355,28 @@ export interface DriveTreeNode {
 }
 
 export interface BreadcrumbItem {
-  id: number
+  id: ApiId
   name: string
-  parentId: number
+  parentId: ApiId
 }
 
 export interface FileUrlResponse {
-  nodeId: number
+  nodeId: ApiId
   url: string
   expireAt: string
 }
 
 export interface QuotaResponse {
-  userId: number
+  userId: ApiId
   totalBytes: number
   usedBytes: number
   remainingBytes: number
 }
 
 export interface ShareResponse {
-  id: number
-  nodeId: number
-  ownerId: number
+  id: ApiId
+  nodeId: ApiId
+  ownerId: ApiId
   token: string
   extractCode: string
   expireAt?: string
@@ -393,9 +395,9 @@ export interface ShareViewResponse {
 
 export interface DiscussionResponse {
   id: string
-  courseId: number
-  nodeId?: number
-  authorId: number
+  courseId: ApiId
+  nodeId?: ApiId
+  authorId: ApiId
   title: string
   content: string
   parentId?: string

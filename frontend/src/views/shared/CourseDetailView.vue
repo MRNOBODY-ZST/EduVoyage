@@ -143,7 +143,7 @@ const coursewareEditForm = reactive({
   sortNo: 0,
 })
 
-const courseId = computed(() => Number(route.params.courseId))
+const courseId = computed(() => String(route.params.courseId || '') as unknown as number)
 
 const flatChapters = computed(() => flatten(chapters.value))
 const selectedNode = computed(() => nodes.value.find((node) => node.id === selectedNodeId.value) || null)
@@ -183,8 +183,8 @@ function ungroupedNodes() {
   return nodes.value.filter((node) => !node.chapterId || !chapterIds.has(node.chapterId))
 }
 
-function selectNode(id: number, tab: TabKey = activeTab.value) {
-  selectedNodeId.value = id
+function selectNode(id: number | string, tab: TabKey = activeTab.value) {
+  selectedNodeId.value = id as number
   activeTab.value = tab
 }
 
@@ -753,7 +753,7 @@ onMounted(load)
                 </label>
                 <label>
                   <span class="text-sm font-medium text-slate-700 dark:text-slate-200">父章节</span>
-                  <select v-model.number="chapterForm.parentId" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white">
+                  <select v-model="chapterForm.parentId" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white">
                     <option :value="0">顶级章节</option>
                     <option v-for="chapter in flatChapters" :key="chapter.id" :value="chapter.id">{{ '　'.repeat(chapter.level) }}{{ chapter.title }}</option>
                   </select>
@@ -775,7 +775,7 @@ onMounted(load)
                 </label>
                 <label>
                   <span class="text-sm font-medium text-slate-700 dark:text-slate-200">章节</span>
-                  <select v-model.number="nodeForm.chapterId" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white">
+                  <select v-model="nodeForm.chapterId" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white">
                     <option :value="0">不归入章节</option>
                     <option v-for="chapter in flatChapters" :key="chapter.id" :value="chapter.id">{{ '　'.repeat(chapter.level) }}{{ chapter.title }}</option>
                   </select>
@@ -801,14 +801,14 @@ onMounted(load)
               <div class="mt-4 grid gap-4 sm:grid-cols-2">
                 <label>
                   <span class="text-sm font-medium text-slate-700 dark:text-slate-200">起点</span>
-                  <select v-model.number="edgeForm.fromId" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" required>
+                  <select v-model="edgeForm.fromId" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" required>
                     <option :value="0">请选择</option>
                     <option v-for="node in nodes" :key="node.id" :value="node.id">{{ node.name }}</option>
                   </select>
                 </label>
                 <label>
                   <span class="text-sm font-medium text-slate-700 dark:text-slate-200">终点</span>
-                  <select v-model.number="edgeForm.toId" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" required>
+                  <select v-model="edgeForm.toId" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" required>
                     <option :value="0">请选择</option>
                     <option v-for="node in nodes" :key="node.id" :value="node.id">{{ node.name }}</option>
                   </select>
@@ -850,7 +850,7 @@ onMounted(load)
                 </label>
                 <label>
                   <span class="text-sm font-medium text-slate-700 dark:text-slate-200">文件 ID</span>
-                  <input v-model.number="coursewareForm.fileId" type="number" min="1" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-white/5 dark:text-white" />
+                  <input v-model="coursewareForm.fileId" type="text" inputmode="numeric" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-white/5 dark:text-white" />
                 </label>
                 <label>
                   <span class="text-sm font-medium text-slate-700 dark:text-slate-200">时长秒</span>
@@ -896,7 +896,7 @@ onMounted(load)
                     <form v-if="editingChapterId === chapter.id" class="mt-3 grid gap-2" @submit.prevent="submitChapterEdit(chapter)">
                       <input v-model.trim="chapterEditForm.title" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" required />
                       <div class="grid gap-2 sm:grid-cols-2">
-                        <select v-model.number="chapterEditForm.parentId" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white">
+                        <select v-model="chapterEditForm.parentId" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white">
                           <option :value="0">顶级章节</option>
                           <option v-for="option in flatChapters.filter((item) => item.id !== chapter.id)" :key="option.id" :value="option.id">{{ '　'.repeat(option.level) }}{{ option.title }}</option>
                         </select>
@@ -938,7 +938,7 @@ onMounted(load)
                     <form v-if="editingNodeId === node.id" class="mt-3 grid gap-2" @submit.prevent="submitNodeEdit(node)">
                       <input v-model.trim="nodeEditForm.name" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" required />
                       <div class="grid gap-2 sm:grid-cols-2">
-                        <select v-model.number="nodeEditForm.chapterId" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white">
+                        <select v-model="nodeEditForm.chapterId" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white">
                           <option :value="0">不归入章节</option>
                           <option v-for="chapter in flatChapters" :key="chapter.id" :value="chapter.id">{{ '　'.repeat(chapter.level) }}{{ chapter.title }}</option>
                         </select>
@@ -1015,7 +1015,7 @@ onMounted(load)
                         <input v-model.number="coursewareEditForm.sortNo" type="number" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" />
                       </div>
                       <div class="grid gap-2 sm:grid-cols-2">
-                        <input v-model.number="coursewareEditForm.fileId" type="number" min="1" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" placeholder="文件 ID" />
+                        <input v-model="coursewareEditForm.fileId" type="text" inputmode="numeric" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" placeholder="文件 ID" />
                         <input v-model.number="coursewareEditForm.durationSec" type="number" min="0" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" placeholder="时长秒" />
                       </div>
                       <input v-model.trim="coursewareEditForm.contentRef" class="focus-ring rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white" placeholder="内容引用" />

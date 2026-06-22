@@ -6,11 +6,11 @@ import type { GraphView } from '@/types/api'
 
 const props = defineProps<{
   graph: GraphView
-  selectedNodeId?: number | null
+  selectedNodeId?: number | string | null
 }>()
 
 const emit = defineEmits<{
-  selectNode: [id: number]
+  selectNode: [id: number | string]
 }>()
 
 const container = ref<HTMLElement | null>(null)
@@ -86,8 +86,8 @@ async function render() {
     behaviors: ['drag-canvas', 'zoom-canvas', 'drag-element'],
   })
   graphInstance.on('node:click', (event: { target?: { id?: string } }) => {
-    const id = Number(event.target?.id)
-    if (Number.isFinite(id)) {
+    const id = event.target?.id
+    if (id) {
       emit('selectNode', id)
     }
   })

@@ -298,7 +298,7 @@ onMounted(load)
         </label>
         <label>
           <span class="text-sm font-medium text-slate-700 dark:text-slate-200">班级</span>
-          <select v-model.number="form.classId" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white">
+          <select v-model="form.classId" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white">
             <option :value="0">不分配</option>
             <option v-for="item in classes" :key="item.id" :value="item.id">{{ item.name }}</option>
           </select>
@@ -434,7 +434,7 @@ onMounted(load)
                     </label>
                     <label>
                       <span class="text-sm font-medium text-slate-700 dark:text-slate-200">班级</span>
-                      <select v-model.number="editForm.classId" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white">
+                      <select v-model="editForm.classId" class="focus-ring mt-2 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-950 dark:border-white/10 dark:bg-slate-900 dark:text-white">
                         <option :value="0">不分配</option>
                         <option v-for="item in classes" :key="item.id" :value="item.id">{{ item.name }}</option>
                       </select>
