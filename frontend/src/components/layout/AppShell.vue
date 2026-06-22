@@ -31,7 +31,6 @@ import type { Component } from 'vue'
 
 import LogoMark from '@/components/layout/LogoMark.vue'
 import NotificationBell from '@/components/nav/NotificationBell.vue'
-import ThemeSwitcher from '@/components/nav/ThemeSwitcher.vue'
 import { roleLabel } from '@/lib/format'
 import { useAuthStore } from '@/stores/auth'
 
@@ -43,50 +42,53 @@ interface NavigationItem {
   roles?: string[]
 }
 
+interface TeamItem {
+  name: string
+  to: string
+  initial: string
+  permission?: string
+  roles?: string[]
+}
+
 const route = useRoute()
 const router = useRouter()
 const auth = useAuthStore()
 const sidebarOpen = ref(false)
 
-const groups: Array<{ name: string; items: NavigationItem[] }> = [
-  {
-    name: '工作台',
-    items: [
-      { name: '学习仪表盘', to: '/student/dashboard', icon: HomeIcon, permission: 'analytics:view', roles: ['STUDENT'] },
-      { name: '课程工作台', to: '/teacher/courses', icon: RectangleStackIcon, permission: 'course:read', roles: ['TEACHER'] },
-      { name: '教学分析', to: '/teacher/analytics', icon: ChartBarSquareIcon, permission: 'analytics:view', roles: ['TEACHER'] },
-      { name: '运营大盘', to: '/admin/dashboard', icon: ServerStackIcon, permission: 'analytics:view', roles: ['ADMIN'] },
-      { name: '用户管理', to: '/admin/users', icon: UsersIcon, permission: 'user:read', roles: ['ADMIN'] },
-      { name: '组织架构', to: '/admin/org', icon: BuildingLibraryIcon, permission: 'org:manage', roles: ['ADMIN'] },
-    ],
-  },
-  {
-    name: '学习协同',
-    items: [
-      { name: '课程中心', to: '/courses', icon: AcademicCapIcon },
-      { name: '课程网盘', to: '/drive', icon: FolderIcon, permission: 'drive:read' },
-      { name: '课程讨论', to: '/discussions', icon: ChatBubbleLeftRightIcon, permission: 'discussion:read' },
-    ],
-  },
+const navigation: NavigationItem[] = [
+  { name: '学习仪表盘', to: '/student/dashboard', icon: HomeIcon, permission: 'analytics:view', roles: ['STUDENT'] },
+  { name: '我的学情', to: '/student/analytics', icon: ChartBarSquareIcon, permission: 'analytics:view', roles: ['STUDENT'] },
+  { name: '课程工作台', to: '/teacher/courses', icon: RectangleStackIcon, permission: 'course:read', roles: ['TEACHER'] },
+  { name: '教学分析', to: '/teacher/analytics', icon: ChartBarSquareIcon, permission: 'analytics:view', roles: ['TEACHER'] },
+  { name: '运营大盘', to: '/admin/dashboard', icon: ServerStackIcon, permission: 'analytics:view', roles: ['ADMIN'] },
+  { name: '用户管理', to: '/admin/users', icon: UsersIcon, permission: 'user:read', roles: ['ADMIN'] },
+  { name: '组织架构', to: '/admin/org', icon: BuildingLibraryIcon, permission: 'org:manage', roles: ['ADMIN'] },
+  { name: '课程中心', to: '/courses', icon: AcademicCapIcon },
+  { name: '课程网盘', to: '/drive', icon: FolderIcon, permission: 'drive:read' },
+  { name: '课程讨论', to: '/discussions', icon: ChatBubbleLeftRightIcon, permission: 'discussion:read' },
+  { name: '偏好设置', to: '/settings', icon: Cog6ToothIcon },
 ]
 
-const visibleGroups = computed(() =>
-  groups
-    .map((group) => ({
-      ...group,
-      items: group.items.filter((item) => {
-        const roleAllowed = !item.roles?.length || item.roles.some((role) => auth.hasRole(role))
-        const permissionAllowed = !item.permission || auth.hasPermission(item.permission)
-        return roleAllowed && permissionAllowed
-      }),
-    }))
-    .filter((group) => group.items.length > 0),
-)
+const studentTeams: TeamItem[] = [
+  { name: '图谱共学组', to: '/courses', initial: '图' },
+  { name: '作业互评组', to: '/student/dashboard', initial: '作', permission: 'analytics:view', roles: ['STUDENT'] },
+  { name: '课程资料组', to: '/drive', initial: '资', permission: 'drive:read' },
+  { name: '教学协作组', to: '/teacher/courses', initial: '教', permission: 'course:read', roles: ['TEACHER'] },
+  { name: '运营支持组', to: '/admin/dashboard', initial: '运', permission: 'analytics:view', roles: ['ADMIN'] },
+]
 
+const visibleNavigation = computed(() => navigation.filter(canShow))
+const visibleTeams = computed(() => studentTeams.filter(canShow))
 const currentTitle = computed(() => String(route.meta.title || '工作台'))
 const userInitial = computed(() => (auth.displayName || 'E').slice(0, 1).toUpperCase())
 
-function isActive(item: NavigationItem) {
+function canShow(item: NavigationItem | TeamItem) {
+  const roleAllowed = !item.roles?.length || item.roles.some((role) => auth.hasRole(role))
+  const permissionAllowed = !item.permission || auth.hasPermission(item.permission)
+  return roleAllowed && permissionAllowed
+}
+
+function isActive(item: NavigationItem | TeamItem) {
   return route.path === item.to || route.path.startsWith(`${item.to}/`)
 }
 
@@ -97,200 +99,262 @@ async function logout() {
 </script>
 
 <template>
-  <div class="min-h-screen bg-[rgb(var(--color-bg))] text-slate-950 dark:text-slate-100">
+  <div class="min-h-screen bg-white text-gray-900">
     <TransitionRoot as="template" :show="sidebarOpen">
       <Dialog class="relative z-50 lg:hidden" @close="sidebarOpen = false">
         <TransitionChild
           as="template"
-          enter="transition-opacity ease-linear duration-200"
+          enter="transition-opacity ease-linear duration-300"
           enter-from="opacity-0"
           enter-to="opacity-100"
-          leave="transition-opacity ease-linear duration-200"
+          leave="transition-opacity ease-linear duration-300"
           leave-from="opacity-100"
           leave-to="opacity-0"
         >
-          <div class="fixed inset-0 bg-slate-950/70" />
+          <div class="fixed inset-0 bg-gray-900/80" />
         </TransitionChild>
 
         <div class="fixed inset-0 flex">
           <TransitionChild
             as="template"
-            enter="transition ease-in-out duration-200 transform"
+            enter="transition ease-in-out duration-300 transform"
             enter-from="-translate-x-full"
             enter-to="translate-x-0"
-            leave="transition ease-in-out duration-200 transform"
+            leave="transition ease-in-out duration-300 transform"
             leave-from="translate-x-0"
             leave-to="-translate-x-full"
           >
             <DialogPanel class="relative mr-16 flex w-full max-w-xs flex-1">
               <TransitionChild
                 as="template"
-                enter="ease-in-out duration-200"
+                enter="ease-in-out duration-300"
                 enter-from="opacity-0"
                 enter-to="opacity-100"
-                leave="ease-in-out duration-200"
+                leave="ease-in-out duration-300"
                 leave-from="opacity-100"
                 leave-to="opacity-0"
               >
                 <div class="absolute left-full top-0 flex w-16 justify-center pt-5">
-                  <button type="button" class="-m-2.5 p-2.5 text-white" title="关闭侧栏" @click="sidebarOpen = false">
-                    <XMarkIcon class="size-6" aria-hidden="true" />
+                  <button type="button" class="-m-2.5 p-2.5" title="关闭侧栏" @click="sidebarOpen = false">
                     <span class="sr-only">关闭侧栏</span>
+                    <XMarkIcon class="size-6 text-white" aria-hidden="true" />
                   </button>
                 </div>
               </TransitionChild>
-              <aside class="flex grow flex-col overflow-y-auto bg-white px-5 pb-4 shadow-xl dark:bg-slate-900">
+
+              <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-white px-6 pb-4">
                 <div class="flex h-16 shrink-0 items-center">
                   <LogoMark />
                 </div>
-                <nav class="mt-2 flex flex-1 flex-col gap-7">
-                  <div v-for="group in visibleGroups" :key="group.name">
-                    <p class="px-2 text-xs font-semibold text-slate-400">{{ group.name }}</p>
-                    <ul role="list" class="mt-2 space-y-1">
-                      <li v-for="item in group.items" :key="item.to">
-                        <RouterLink
-                          :to="item.to"
-                          :class="[
-                            isActive(item)
-                              ? 'bg-[rgb(var(--color-brand-soft))] text-[rgb(var(--color-brand-strong))] dark:text-white'
-                              : 'text-slate-700 hover:bg-slate-50 hover:text-[rgb(var(--color-brand))] dark:text-slate-300 dark:hover:bg-white/5 dark:hover:text-white',
-                            'group flex items-center gap-3 rounded-md px-2 py-2 text-sm font-semibold',
-                          ]"
-                          @click="sidebarOpen = false"
-                        >
-                          <component
-                            :is="item.icon"
+                <nav class="flex flex-1 flex-col">
+                  <ul role="list" class="flex flex-1 flex-col gap-y-7">
+                    <li>
+                      <ul role="list" class="-mx-2 space-y-1">
+                        <li v-for="item in visibleNavigation" :key="item.to">
+                          <RouterLink
+                            :to="item.to"
                             :class="[
-                              isActive(item) ? 'text-[rgb(var(--color-brand))] dark:text-white' : 'text-slate-400 group-hover:text-[rgb(var(--color-brand))]',
-                              'size-5 shrink-0',
+                              isActive(item)
+                                ? 'bg-gray-50 text-indigo-600'
+                                : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600',
+                              'group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold',
                             ]"
-                            aria-hidden="true"
-                          />
-                          {{ item.name }}
-                        </RouterLink>
-                      </li>
-                    </ul>
-                  </div>
-                  <RouterLink
-                    to="/settings"
-                    class="mt-auto flex items-center gap-3 rounded-md px-2 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50 hover:text-[rgb(var(--color-brand))] dark:text-slate-300 dark:hover:bg-white/5 dark:hover:text-white"
-                    @click="sidebarOpen = false"
-                  >
-                    <Cog6ToothIcon class="size-5 text-slate-400" aria-hidden="true" />
-                    偏好设置
-                  </RouterLink>
+                            @click="sidebarOpen = false"
+                          >
+                            <component
+                              :is="item.icon"
+                              :class="[
+                                isActive(item) ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-600',
+                                'size-6 shrink-0',
+                              ]"
+                              aria-hidden="true"
+                            />
+                            {{ item.name }}
+                          </RouterLink>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <div class="text-xs/6 font-semibold text-gray-400">学生小组</div>
+                      <ul role="list" class="-mx-2 mt-2 space-y-1">
+                        <li v-for="team in visibleTeams" :key="team.name">
+                          <RouterLink
+                            :to="team.to"
+                            :class="[
+                              isActive(team)
+                                ? 'bg-gray-50 text-indigo-600'
+                                : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600',
+                              'group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold',
+                            ]"
+                            @click="sidebarOpen = false"
+                          >
+                            <span
+                              :class="[
+                                isActive(team)
+                                  ? 'border-indigo-600 text-indigo-600'
+                                  : 'border-gray-200 text-gray-400 group-hover:border-indigo-600 group-hover:text-indigo-600',
+                                'flex size-6 shrink-0 items-center justify-center rounded-lg border bg-white text-[0.625rem] font-medium',
+                              ]"
+                            >
+                              {{ team.initial }}
+                            </span>
+                            <span class="truncate">{{ team.name }}</span>
+                          </RouterLink>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="mt-auto">
+                      <RouterLink
+                        to="/settings"
+                        class="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-700 hover:bg-gray-50 hover:text-indigo-600"
+                        @click="sidebarOpen = false"
+                      >
+                        <Cog6ToothIcon class="size-6 shrink-0 text-gray-400 group-hover:text-indigo-600" aria-hidden="true" />
+                        个人设置
+                      </RouterLink>
+                    </li>
+                  </ul>
                 </nav>
-              </aside>
+              </div>
             </DialogPanel>
           </TransitionChild>
         </div>
       </Dialog>
     </TransitionRoot>
 
-    <aside class="hidden lg:fixed lg:inset-y-0 lg:z-40 lg:flex lg:w-72 lg:flex-col">
-      <div class="flex grow flex-col overflow-y-auto border-r border-slate-200 bg-white px-6 pb-5 dark:border-white/10 dark:bg-slate-950">
+    <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
+      <div class="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6 pb-4">
         <div class="flex h-16 shrink-0 items-center">
           <LogoMark />
         </div>
-        <nav class="mt-4 flex flex-1 flex-col gap-7">
-          <div v-for="group in visibleGroups" :key="group.name">
-            <p class="px-2 text-xs font-semibold text-slate-400">{{ group.name }}</p>
-            <ul role="list" class="mt-2 space-y-1">
-              <li v-for="item in group.items" :key="item.to">
-                <RouterLink
-                  :to="item.to"
-                  :class="[
-                    isActive(item)
-                      ? 'bg-[rgb(var(--color-brand-soft))] text-[rgb(var(--color-brand-strong))] dark:text-white'
-                      : 'text-slate-700 hover:bg-slate-50 hover:text-[rgb(var(--color-brand))] dark:text-slate-300 dark:hover:bg-white/5 dark:hover:text-white',
-                    'group flex items-center gap-3 rounded-md px-2 py-2 text-sm font-semibold',
-                  ]"
-                >
-                  <component
-                    :is="item.icon"
+        <nav class="flex flex-1 flex-col">
+          <ul role="list" class="flex flex-1 flex-col gap-y-7">
+            <li>
+              <ul role="list" class="-mx-2 space-y-1">
+                <li v-for="item in visibleNavigation" :key="item.to">
+                  <RouterLink
+                    :to="item.to"
                     :class="[
-                      isActive(item) ? 'text-[rgb(var(--color-brand))] dark:text-white' : 'text-slate-400 group-hover:text-[rgb(var(--color-brand))]',
-                      'size-5 shrink-0',
+                      isActive(item)
+                        ? 'bg-gray-50 text-indigo-600'
+                        : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600',
+                      'group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold',
                     ]"
-                    aria-hidden="true"
-                  />
-                  {{ item.name }}
-                </RouterLink>
-              </li>
-            </ul>
-          </div>
-          <RouterLink
-            to="/settings"
-            class="mt-auto flex items-center gap-3 rounded-md px-2 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50 hover:text-[rgb(var(--color-brand))] dark:text-slate-300 dark:hover:bg-white/5 dark:hover:text-white"
-          >
-            <Cog6ToothIcon class="size-5 text-slate-400" aria-hidden="true" />
-            偏好设置
-          </RouterLink>
+                  >
+                    <component
+                      :is="item.icon"
+                      :class="[
+                        isActive(item) ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-600',
+                        'size-6 shrink-0',
+                      ]"
+                      aria-hidden="true"
+                    />
+                    {{ item.name }}
+                  </RouterLink>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <div class="text-xs/6 font-semibold text-gray-400">学生小组</div>
+              <ul role="list" class="-mx-2 mt-2 space-y-1">
+                <li v-for="team in visibleTeams" :key="team.name">
+                  <RouterLink
+                    :to="team.to"
+                    :class="[
+                      isActive(team)
+                        ? 'bg-gray-50 text-indigo-600'
+                        : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600',
+                      'group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold',
+                    ]"
+                  >
+                    <span
+                      :class="[
+                        isActive(team)
+                          ? 'border-indigo-600 text-indigo-600'
+                          : 'border-gray-200 text-gray-400 group-hover:border-indigo-600 group-hover:text-indigo-600',
+                        'flex size-6 shrink-0 items-center justify-center rounded-lg border bg-white text-[0.625rem] font-medium',
+                      ]"
+                    >
+                      {{ team.initial }}
+                    </span>
+                    <span class="truncate">{{ team.name }}</span>
+                  </RouterLink>
+                </li>
+              </ul>
+            </li>
+            <li class="mt-auto">
+              <RouterLink
+                to="/settings"
+                class="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-700 hover:bg-gray-50 hover:text-indigo-600"
+              >
+                <Cog6ToothIcon class="size-6 shrink-0 text-gray-400 group-hover:text-indigo-600" aria-hidden="true" />
+                个人设置
+              </RouterLink>
+            </li>
+          </ul>
         </nav>
       </div>
-    </aside>
+    </div>
 
     <div class="lg:pl-72">
-      <header
-        class="sticky top-0 z-30 flex h-16 shrink-0 items-center gap-x-4 border-b border-slate-200 bg-white/95 px-4 shadow-sm backdrop-blur sm:gap-x-6 sm:px-6 lg:px-8 dark:border-white/10 dark:bg-slate-950/90 dark:shadow-none"
-      >
-        <button
-          type="button"
-          class="-m-2.5 p-2.5 text-slate-700 hover:text-slate-950 lg:hidden dark:text-slate-300 dark:hover:text-white"
-          title="打开侧栏"
-          @click="sidebarOpen = true"
-        >
-          <Bars3Icon class="size-6" aria-hidden="true" />
+      <header class="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
+        <button type="button" class="-m-2.5 p-2.5 text-gray-700 lg:hidden" title="打开侧栏" @click="sidebarOpen = true">
           <span class="sr-only">打开侧栏</span>
+          <Bars3Icon class="size-6" aria-hidden="true" />
         </button>
 
-        <div class="h-6 w-px bg-slate-200 lg:hidden dark:bg-white/10" aria-hidden="true" />
+        <div class="h-6 w-px bg-gray-200 lg:hidden" aria-hidden="true" />
 
         <div class="grid flex-1 grid-cols-1">
           <input
             name="search"
             aria-label="搜索"
-            class="col-start-1 row-start-1 block size-full bg-transparent py-1.5 pl-8 text-sm text-slate-900 outline-none placeholder:text-slate-400 dark:text-white dark:placeholder:text-slate-500"
+            class="col-start-1 row-start-1 block size-full bg-white py-1.5 pl-8 text-base text-gray-900 outline-none placeholder:text-gray-400 sm:text-sm/6"
             placeholder="搜索课程、文件、讨论"
           />
-          <MagnifyingGlassIcon class="pointer-events-none col-start-1 row-start-1 size-5 self-center text-slate-400" aria-hidden="true" />
+          <MagnifyingGlassIcon class="pointer-events-none col-start-1 row-start-1 size-5 self-center text-gray-400" aria-hidden="true" />
         </div>
 
-        <div class="flex items-center gap-x-2 sm:gap-x-3">
-          <ThemeSwitcher />
+        <div class="flex items-center gap-x-4 lg:gap-x-6">
           <NotificationBell v-if="auth.hasPermission('notification:read')" />
-          <div class="hidden h-6 w-px bg-slate-200 sm:block dark:bg-white/10" aria-hidden="true" />
+
+          <div class="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-200" aria-hidden="true" />
+
           <Menu as="div" class="relative">
-            <MenuButton class="flex items-center gap-2 rounded-md p-1.5 hover:bg-slate-100 dark:hover:bg-white/10">
-              <span class="grid size-8 place-items-center rounded-full bg-[rgb(var(--color-brand-soft))] text-sm font-semibold text-[rgb(var(--color-brand-strong))] dark:text-white">
+            <MenuButton class="-m-1.5 flex items-center p-1.5">
+              <span class="sr-only">打开用户菜单</span>
+              <span class="grid size-8 place-items-center rounded-full bg-indigo-50 text-sm font-semibold text-indigo-700">
                 {{ userInitial }}
               </span>
-              <span class="hidden min-w-0 text-left lg:block">
-                <span class="block max-w-36 truncate text-sm font-semibold text-slate-900 dark:text-white">{{ auth.displayName }}</span>
-                <span class="block text-xs text-slate-500 dark:text-slate-400">{{ roleLabel(auth.primaryRole) }}</span>
+              <span class="hidden lg:flex lg:items-center">
+                <span class="ml-4 text-sm/6 font-semibold text-gray-900" aria-hidden="true">{{ auth.displayName }}</span>
+                <ChevronDownIcon class="ml-2 size-5 text-gray-400" aria-hidden="true" />
               </span>
-              <ChevronDownIcon class="hidden size-4 text-slate-400 lg:block" aria-hidden="true" />
             </MenuButton>
             <transition
               enter-active-class="transition ease-out duration-100"
-              enter-from-class="opacity-0 scale-95"
-              enter-to-class="opacity-100 scale-100"
+              enter-from-class="transform opacity-0 scale-95"
+              enter-to-class="transform opacity-100 scale-100"
               leave-active-class="transition ease-in duration-75"
-              leave-from-class="opacity-100 scale-100"
-              leave-to-class="opacity-0 scale-95"
+              leave-from-class="transform opacity-100 scale-100"
+              leave-to-class="transform opacity-0 scale-95"
             >
-              <MenuItems
-                class="absolute right-0 z-20 mt-2 w-40 origin-top-right rounded-md bg-white py-1 shadow-lg outline-1 outline-slate-900/5 dark:bg-slate-800 dark:outline-white/10"
-              >
+              <MenuItems class="absolute right-0 z-10 mt-2.5 w-40 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none">
                 <MenuItem v-slot="{ active }">
-                  <RouterLink :class="[active ? 'bg-slate-50 dark:bg-white/5' : '', 'block px-3 py-2 text-sm text-slate-700 dark:text-slate-100']" to="/settings">
-                    偏好设置
+                  <div :class="[active ? 'bg-gray-50' : '', 'px-3 py-2']">
+                    <p class="truncate text-sm font-semibold text-gray-900">{{ auth.displayName }}</p>
+                    <p class="mt-0.5 text-xs text-gray-500">{{ roleLabel(auth.primaryRole) }}</p>
+                  </div>
+                </MenuItem>
+                <MenuItem v-slot="{ active }">
+                  <RouterLink :class="[active ? 'bg-gray-50' : '', 'block px-3 py-1 text-sm/6 text-gray-900']" to="/settings">
+                    个人设置
                   </RouterLink>
                 </MenuItem>
                 <MenuItem v-slot="{ active }">
                   <button
                     type="button"
-                    :class="[active ? 'bg-slate-50 dark:bg-white/5' : '', 'block w-full px-3 py-2 text-left text-sm text-slate-700 dark:text-slate-100']"
+                    :class="[active ? 'bg-gray-50' : '', 'block w-full px-3 py-1 text-left text-sm/6 text-gray-900']"
                     @click="logout"
                   >
                     退出登录
@@ -302,11 +366,11 @@ async function logout() {
         </div>
       </header>
 
-      <main class="min-h-[calc(100vh-4rem)]">
-        <div class="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-          <div class="mb-6">
-            <p class="text-sm text-slate-500 dark:text-slate-400">EduVoyage</p>
-            <h1 class="mt-1 text-2xl font-semibold text-slate-950 dark:text-white">{{ currentTitle }}</h1>
+      <main class="py-10">
+        <div class="px-4 sm:px-6 lg:px-8">
+          <div class="mb-8">
+            <p class="text-sm/6 font-medium text-gray-500">EduVoyage</p>
+            <h1 class="mt-2 text-2xl font-semibold text-gray-900">{{ currentTitle }}</h1>
           </div>
           <RouterView />
         </div>
